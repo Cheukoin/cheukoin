@@ -1,11 +1,22 @@
 
 #include <SFML/Graphics.hpp>
+#include <stdio.h>
+#include <iostream>
+
+using namespace std;
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
-	sf::CircleShape shape(100.f);
-	shape.setFillColor(sf::Color::Green);
+	sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
+	sf::Texture textureBack;
+	if (!textureBack.loadFromFile("ressource/cardBack.png")) {
+		// handle texture not loaded
+		cout << "Texture file fucking not loaded";
+	}
+	sf::Sprite rectangle;
+	rectangle.setTextureRect(sf::IntRect(0, 0, 342, 480));
+	rectangle.setTexture(textureBack);
+	rectangle.setScale(sf::Vector2f(0.3, 0.3));
 
 	while (window.isOpen())
 	{
@@ -16,8 +27,8 @@ int main()
 				window.close();
 		}
 
-		window.clear();
-		window.draw(shape);
+		window.clear(sf::Color::Color(63, 150, 61, 255));
+		window.draw(rectangle);
 		window.display();
 	}
 
