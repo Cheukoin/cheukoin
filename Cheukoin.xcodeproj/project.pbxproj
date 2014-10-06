@@ -102,8 +102,7 @@
 				19A57CF019E298ED00FE40DD /* sndfile.framework */,
 				19A57CD319E2989E00FE40DD /* Cheukoin */,
 				19A57CD219E2989E00FE40DD /* Products */,
-				19EAA46219E2C72C00F23D27 /* json */,
-				19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */,
+				C0B83EC519E2C89A0037C5AE /* vendor */,
 				C0B83EAC19E2C23C0037C5AE /* Resources */,
 			);
 			sourceTree = "<group>";
@@ -171,6 +170,15 @@
 			);
 			name = Resources;
 			path = Cheukoin/Resources;
+			sourceTree = "<group>";
+		};
+		C0B83EC519E2C89A0037C5AE /* vendor */ = {
+			isa = PBXGroup;
+			children = (
+				19EAA46219E2C72C00F23D27 /* json */,
+				19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */,
+			);
+			name = vendor;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
