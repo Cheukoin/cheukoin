@@ -102,6 +102,7 @@
 				19A57CF019E298ED00FE40DD /* sndfile.framework */,
 				19A57CD319E2989E00FE40DD /* Cheukoin */,
 				19A57CD219E2989E00FE40DD /* Products */,
+				19A57CD419E2989E00FE40DD /* Supporting Files */,
 				C0B83EC519E2C89A0037C5AE /* vendor */,
 				C0B83EAC19E2C23C0037C5AE /* Resources */,
 			);
@@ -135,7 +136,6 @@
 				C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */,
 				C0B83EAF19E2C23C0037C5AE /* Score.cpp */,
 				C0B83EB019E2C23C0037C5AE /* Score.h */,
-				19A57CD419E2989E00FE40DD /* Supporting Files */,
 				C0B83EB119E2C23C0037C5AE /* Team.cpp */,
 				C0B83EB219E2C23C0037C5AE /* Team.h */,
 				C0B83EB319E2C23C0037C5AE /* Trick.cpp */,
@@ -150,6 +150,7 @@
 				19A57CD519E2989E00FE40DD /* Cheukoin-Info.plist */,
 			);
 			name = "Supporting Files";
+			path = Cheukoin;
 			sourceTree = "<group>";
 		};
 		19EAA46219E2C72C00F23D27 /* json */ = {
