@@ -84,11 +84,28 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bid.cpp" />
     <ClCompile Include="Card.cpp" />
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Hand.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetworkManager.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Score.cpp" />
+    <ClCompile Include="Team.cpp" />
+    <ClCompile Include="Trick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bid.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="Hand.h" />
+    <ClInclude Include="NetworkManager.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="ResourcePath.h" />
+    <ClInclude Include="Score.h" />
+    <ClInclude Include="Team.h" />
+    <ClInclude Include="Trick.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\cardBack.png" />
