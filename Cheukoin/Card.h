@@ -7,19 +7,34 @@
 
 using namespace std;
 
-
-class Card
-{
-public:
-	string value;
-    string color;
-	sf::Sprite sprite;
-	shared_ptr<sf::Texture> textureBack;
-
-	void playCard();
-	void makeBid();
-
-	Card();
-	~Card();
+enum Suit {
+    Spades,
+    Hearts,
+    Diamonds,
+    Clubs
 };
 
+enum Value {
+    Ace,
+    King,
+    Queen,
+    Jack,
+    Ten,
+    Nine,
+    Eight,
+    Seven
+};
+
+class Card {
+public:
+    string value;
+    string color;
+    sf::Sprite sprite;
+    shared_ptr<sf::Texture> textureBack;
+
+    void playCard();
+    void makeBid();
+
+    Card();
+    ~Card();
+};
