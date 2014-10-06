@@ -2,3 +2,5 @@
 *.ilk
 *.pdb
 *.opensdf
+Cheukoin/Debug/*
+*.xcuserstate

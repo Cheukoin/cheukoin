@@ -1,29 +1,13 @@
 #include <SFML/Graphics.hpp>
-#include <stdio.h>
 #include <iostream>
-
-#ifdef __APPLE__
-#include "ResourcePath.hpp"
-#else
-std::string resourcePath() {
-    return "Resources";
-}
-#endif
+#include "Card.h"
 
 using namespace std;
 
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
-	sf::Texture textureBack;
-	if (!textureBack.loadFromFile(resourcePath() + "cardBack.png")) {
-		// handle texture not loaded
-		cout << "Texture file fucking not loaded";
-	}
-	sf::Sprite rectangle;
-	rectangle.setTextureRect(sf::IntRect(0, 0, 342, 480));
-	rectangle.setTexture(textureBack);
-	rectangle.setScale(sf::Vector2f(0.3, 0.3));
+	Card card = Card::Card();
 
 	while (window.isOpen())
 	{
@@ -35,7 +19,7 @@ int main()
 		}
 
 		window.clear(sf::Color::Color(63, 150, 61, 255));
-		window.draw(rectangle);
+		window.draw(card.sprite);
 		window.display();
 	}
 
