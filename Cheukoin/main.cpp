@@ -4,7 +4,6 @@
 #include "NetworkManager.h"
 
 using namespace std;
-using namespace sf;
 
 int main()
 {
@@ -12,7 +11,7 @@ int main()
     Card card = Card::Card();
 
     NetworkManager::createLobby();
-    Vector2i v(1, 1);
+    sf::Vector2i v(1, 1);
 
     while (window.isOpen()) {
         sf::Event event;
