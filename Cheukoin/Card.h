@@ -5,8 +5,6 @@
 #include <iostream>
 #include <memory>
 
-using namespace std;
-
 enum Suit {
     Spades,
     Hearts,
@@ -27,10 +25,10 @@ enum Value {
 
 class Card {
 public:
-    string value;
-    string color;
+    Value value;
+    Suit suit;
     sf::Sprite sprite;
-    shared_ptr<sf::Texture> textureBack;
+    std::shared_ptr<sf::Texture> textureBack;
 
     void playCard();
     void makeBid();

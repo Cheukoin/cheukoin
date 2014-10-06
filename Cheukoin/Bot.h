@@ -8,5 +8,5 @@ public:
     ~Bot();
 
 private:
-    std::map<Suit, vector<Card> > _remainingCardsInGame;
+    std::map<Suit, std::vector<Card> > _remainingCardsInGame;
 };
