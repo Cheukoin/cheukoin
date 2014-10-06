@@ -1,7 +1,14 @@
-
 #include <SFML/Graphics.hpp>
 #include <stdio.h>
 #include <iostream>
+
+#ifdef __APPLE__
+#include "ResourcePath.hpp"
+#else
+std::string resourcePath() {
+    return "Resources";
+}
+#endif
 
 using namespace std;
 
@@ -9,7 +16,7 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
 	sf::Texture textureBack;
-	if (!textureBack.loadFromFile("ressource/cardBack.png")) {
+	if (!textureBack.loadFromFile(resourcePath() + "cardBack.png")) {
 		// handle texture not loaded
 		cout << "Texture file fucking not loaded";
 	}
