@@ -6,20 +6,21 @@
 //  Copyright (c) 2014 Corentin. All rights reserved.
 //
 
-#ifndef __Cheukoin__NetworkManager__
-#define __Cheukoin__NetworkManager__
+#pragma once
 
 #include <iostream>
 #include "SFML/Network.hpp"
+#include "json/json.h"
 
 using namespace std;
 
 class NetworkManager {
 
 public:
-
     static void createLobby();
-    
-};
 
-#endif /* defined(__Cheukoin__NetworkManager__) */
+private:
+    static Json::Value request(const string& url, const string& body, sf::Http::Request::Method method);
+    static Json::Value get(const string& url);
+    static Json::Value post(const string& url, const string& body);
+};

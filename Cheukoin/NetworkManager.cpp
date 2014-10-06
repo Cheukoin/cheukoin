@@ -7,35 +7,43 @@
 //
 
 #include "NetworkManager.h"
-#include "json/json.h"
 
-void NetworkManager::createLobby() {
+void NetworkManager::createLobby()
+{
+    auto response = get("/lobby/new/");
+    cout << response.toStyledString();
+}
+
+Json::Value NetworkManager::request(const string& url, const string& body, sf::Http::Request::Method method)
+{
+    Json::Value root; // will contains the root value after parsing.
     sf::Http http;
     http.setHost("http://localhost/", 8000);
     sf::Http::Request request("/lobby/new/");
     sf::Http::Response response = http.sendRequest(request);
 
     sf::Http::Response::Status status = response.getStatus();
-    if (status == sf::Http::Response::Ok)
-    {
-        Json::Value root;   // will contains the root value after parsing.
+    if (status == sf::Http::Response::Ok) {
         Json::Reader reader;
-        bool parsingSuccessful = reader.parse( response.getBody(), root );
+        bool parsingSuccessful = reader.parse(response.getBody(), root);
 
-        if (!parsingSuccessful)
-        {
-            // report to the user the failure and their locations in the document.
-            cout  << "Failed to parse configuration\n" << reader.getFormattedErrorMessages();
-            return;
+        if (!parsingSuccessful) {
+            cout << "Failed to parse configuration\n" << reader.getFormattedErrorMessages();
         }
-        else
-        {
-            cout << root["Hello"];
-        }
-
     }
-    else
-    {
+    else {
         cout << "Error " << status << std::endl;
     }
+
+    return root;
+}
+
+Json::Value NetworkManager::get(const string& url)
+{
+    return request(url, "", sf::Http::Request::Get);
+}
+
+Json::Value NetworkManager::post(const string& url, const string& body)
+{
+    return request(url, body, sf::Http::Request::Post);
 }
