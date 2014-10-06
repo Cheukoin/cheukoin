@@ -1,11 +1,13 @@
 #include "Hand.h"
 
 
-Hand::Hand()
+Hand::Hand():
+_cards()
 {
-}
+};
 
 
 Hand::~Hand()
 {
-}
+};
+

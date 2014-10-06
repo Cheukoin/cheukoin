@@ -19,8 +19,5 @@ public:
 private:
 	Bid m_retainedBid; 
 	vector<string, int> m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
-
-
-
 };
 
