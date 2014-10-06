@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Card.h"
+#include "NetworkManager.h"
 
 using namespace std;
 
@@ -8,6 +9,8 @@ int main()
 {
 	sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
 	Card card = Card::Card();
+
+    NetworkManager::createLobby();
 
 	while (window.isOpen())
 	{

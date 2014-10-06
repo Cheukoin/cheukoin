@@ -11,6 +11,8 @@
 		1967D96519E2A22B009AE732 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 1967D96319E2A22B009AE732 /* cardBack.png */; };
 		1967D96619E2A22B009AE732 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 1967D96419E2A22B009AE732 /* Thumbs.db */; };
 		1967D96919E2A246009AE732 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D96719E2A246009AE732 /* Card.cpp */; };
+		1967D97219E2BEC9009AE732 /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D97019E2BEC9009AE732 /* NetworkManager.cpp */; };
+		1967D97719E2C47D009AE732 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D97619E2C47D009AE732 /* jsoncpp.cpp */; };
 		19A57CDA19E2989E00FE40DD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A57CD919E2989E00FE40DD /* main.cpp */; };
 		19A57CF119E298ED00FE40DD /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CE919E298ED00FE40DD /* freetype.framework */; };
 		19A57CF219E298ED00FE40DD /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEA19E298ED00FE40DD /* sfml-audio.framework */; };
@@ -30,6 +32,11 @@
 		1967D96719E2A246009AE732 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Card.cpp; path = ../../cheukoin/Cheukoin/Card.cpp; sourceTree = "<group>"; };
 		1967D96819E2A246009AE732 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../../cheukoin/Cheukoin/Card.h; sourceTree = "<group>"; };
 		1967D96B19E2A39B009AE732 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcePath.h; path = ../../cheukoin/Cheukoin/ResourcePath.h; sourceTree = "<group>"; };
+		1967D97019E2BEC9009AE732 /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkManager.cpp; path = ../../cheukoin/Cheukoin/NetworkManager.cpp; sourceTree = "<group>"; };
+		1967D97119E2BEC9009AE732 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = ../../cheukoin/Cheukoin/NetworkManager.h; sourceTree = "<group>"; };
+		1967D97419E2C47D009AE732 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		1967D97519E2C47D009AE732 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		1967D97619E2C47D009AE732 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = ../cheukoin/Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
 		19A57CD119E2989E00FE40DD /* Cheukoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheukoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A57CD519E2989E00FE40DD /* Cheukoin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cheukoin-Info.plist"; sourceTree = "<group>"; };
 		19A57CD919E2989E00FE40DD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -72,6 +79,16 @@
 			path = ../../cheukoin/Cheukoin/Resources;
 			sourceTree = "<group>";
 		};
+		1967D97319E2C47D009AE732 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				1967D97419E2C47D009AE732 /* json-forwards.h */,
+				1967D97519E2C47D009AE732 /* json.h */,
+			);
+			name = json;
+			path = ../cheukoin/Cheukoin/json;
+			sourceTree = "<group>";
+		};
 		19A57CC719E2989E00FE40DD = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +102,8 @@
 				19A57CF019E298ED00FE40DD /* sndfile.framework */,
 				19A57CD319E2989E00FE40DD /* Cheukoin */,
 				19A57CD219E2989E00FE40DD /* Products */,
+				1967D97319E2C47D009AE732 /* json */,
+				1967D97619E2C47D009AE732 /* jsoncpp.cpp */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,10 +120,12 @@
 			children = (
 				1967D96719E2A246009AE732 /* Card.cpp */,
 				1967D96819E2A246009AE732 /* Card.h */,
+				19A57CD919E2989E00FE40DD /* main.cpp */,
+				1967D97019E2BEC9009AE732 /* NetworkManager.cpp */,
+				1967D97119E2BEC9009AE732 /* NetworkManager.h */,
+				1967D96B19E2A39B009AE732 /* ResourcePath.h */,
 				1967D95F19E2A11D009AE732 /* ResourcePathOSX.hpp */,
 				1967D96019E2A11D009AE732 /* ResourcePathOSX.mm */,
-				19A57CD919E2989E00FE40DD /* main.cpp */,
-				1967D96B19E2A39B009AE732 /* ResourcePath.h */,
 				1967D96219E2A22B009AE732 /* Resources */,
 				19A57CD419E2989E00FE40DD /* Supporting Files */,
 			);
@@ -204,6 +225,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1967D97719E2C47D009AE732 /* jsoncpp.cpp in Sources */,
+				1967D97219E2BEC9009AE732 /* NetworkManager.cpp in Sources */,
 				1967D96919E2A246009AE732 /* Card.cpp in Sources */,
 				1967D96119E2A11D009AE732 /* ResourcePathOSX.mm in Sources */,
 				19A57CDA19E2989E00FE40DD /* main.cpp in Sources */,
