@@ -14,8 +14,8 @@ public:
 
 
 private:
-	string m_name;
-	Hand m_hand;
-	Bid m_bid;
+	string _name;
+	Hand _hand;
+	Bid _bid;
 };
 

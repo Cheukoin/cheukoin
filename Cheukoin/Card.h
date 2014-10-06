@@ -11,7 +11,8 @@ using namespace std;
 class Card
 {
 public:
-	string name;
+	string value;
+    string color;
 	sf::Sprite sprite;
 	shared_ptr<sf::Texture> textureBack;
 
