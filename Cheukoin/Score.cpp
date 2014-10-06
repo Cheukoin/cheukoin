@@ -5,7 +5,6 @@ Score::Score()
 {
 }
 
-
 Score::~Score()
 {
 }

@@ -4,17 +4,16 @@
 
 class Hand
 {
-
-private:
-    std::vector<int, string> _cards;
-
 public:
 	void removeCard();
 	void addCard(Card card);
-	std::vector <int, string> getCards();
+    std::vector<pair<int, std::string>> getCards();
 	bool isHandValid();
     Hand();
     ~Hand();
+
+private:
+    std::vector<pair<int, std::string>> _cards;
 };
 
 

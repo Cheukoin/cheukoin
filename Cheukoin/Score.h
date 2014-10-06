@@ -14,10 +14,10 @@ public:
 	Bid getRetainedBid(); 
 	void computeScore(Trick trick);
 	void addOutcome(string equipe, int score);
-	vector<string, int> getOutcome();
+    vector<pair<int, std::string>> getOutcome();
 
 private:
 	Bid m_retainedBid; 
-	vector<string, int> m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
+    vector<pair<int, std::string>> m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
 };
 
