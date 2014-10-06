@@ -1,14 +1,12 @@
+#include <map>
 #include <string>
 #include "Player.h"
 
-class Bot:Player
-{
+class Bot : Player {
 public:
     Bot();
     ~Bot();
-    
-private:
-    
-    
-};
 
+private:
+    std::map<char, vector<Card> > _remainingCardsInGame;
+};
