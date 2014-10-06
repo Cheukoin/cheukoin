@@ -101,11 +101,11 @@
 			children = (
 				1967D96719E2A246009AE732 /* Card.cpp */,
 				1967D96819E2A246009AE732 /* Card.h */,
-				1967D96219E2A22B009AE732 /* Resources */,
 				1967D95F19E2A11D009AE732 /* ResourcePathOSX.hpp */,
 				1967D96019E2A11D009AE732 /* ResourcePathOSX.mm */,
 				19A57CD919E2989E00FE40DD /* main.cpp */,
 				1967D96B19E2A39B009AE732 /* ResourcePath.h */,
+				1967D96219E2A22B009AE732 /* Resources */,
 				19A57CD419E2989E00FE40DD /* Supporting Files */,
 			);
 			path = Cheukoin;
