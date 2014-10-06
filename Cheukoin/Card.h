@@ -5,20 +5,34 @@
 #include <iostream>
 #include <memory>
 
-using namespace std;
-
-
-class Card
-{
-public:
-	string name;
-	sf::Sprite sprite;
-	shared_ptr<sf::Texture> textureBack;
-
-	void playCard();
-	void makeBid();
-
-	Card();
-	~Card();
+enum Suit {
+    Spades,
+    Hearts,
+    Diamonds,
+    Clubs
 };
 
+enum Value {
+    Ace,
+    King,
+    Queen,
+    Jack,
+    Ten,
+    Nine,
+    Eight,
+    Seven
+};
+
+class Card {
+public:
+    Value value;
+    Suit suit;
+    sf::Sprite sprite;
+    std::shared_ptr<sf::Texture> textureBack;
+
+    void playCard();
+    void makeBid();
+
+    Card();
+    ~Card();
+};

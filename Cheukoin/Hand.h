@@ -2,18 +2,15 @@
 #include <vector>
 #include "Card.h"
 
-class Hand
-{
+class Hand {
 public:
-	void removeCard();
-	void addCard(Card card);
-    std::vector<pair<int, std::string>> getCards();
-	bool isHandValid();
+    void removeCard();
+    void addCard(Card card);
+    std::vector<std::pair<int, std::string> > getCards();
+    bool isHandValid();
     Hand();
     ~Hand();
 
 private:
-    std::vector<pair<int, std::string>> _cards;
+    std::vector<std::pair<int, std::string> > _cards;
 };
-
-

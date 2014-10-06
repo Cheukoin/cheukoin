@@ -29,6 +29,7 @@
 		C0B83EC219E2C23C0037C5AE /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAF19E2C23C0037C5AE /* Score.cpp */; };
 		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
+		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,8 @@
 		C0B83EB219E2C23C0037C5AE /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
 		C0B83EB319E2C23C0037C5AE /* Trick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trick.cpp; sourceTree = "<group>"; };
 		C0B83EB419E2C23C0037C5AE /* Trick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trick.h; sourceTree = "<group>"; };
+		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
+		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 			children = (
 				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
 				C0B83E9A19E2C23C0037C5AE /* Bid.h */,
+				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
+				C0B83EC719E2C95A0037C5AE /* Bot.h */,
 				C0B83E9B19E2C23C0037C5AE /* Card.cpp */,
 				C0B83E9C19E2C23C0037C5AE /* Card.h */,
 				C0B83EA019E2C23C0037C5AE /* Game.cpp */,
@@ -267,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */,
 				C0B83EBB19E2C23C0037C5AE /* Hand.cpp in Sources */,
 				C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */,
 				C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */,
