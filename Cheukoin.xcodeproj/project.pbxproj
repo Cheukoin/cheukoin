@@ -7,13 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1967D96119E2A11D009AE732 /* ResourcePathOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = 1967D96019E2A11D009AE732 /* ResourcePathOSX.mm */; };
-		1967D96519E2A22B009AE732 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 1967D96319E2A22B009AE732 /* cardBack.png */; };
-		1967D96619E2A22B009AE732 /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = 1967D96419E2A22B009AE732 /* Thumbs.db */; };
-		1967D96919E2A246009AE732 /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D96719E2A246009AE732 /* Card.cpp */; };
-		1967D97219E2BEC9009AE732 /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D97019E2BEC9009AE732 /* NetworkManager.cpp */; };
-		1967D97719E2C47D009AE732 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1967D97619E2C47D009AE732 /* jsoncpp.cpp */; };
-		19A57CDA19E2989E00FE40DD /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19A57CD919E2989E00FE40DD /* main.cpp */; };
 		19A57CF119E298ED00FE40DD /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CE919E298ED00FE40DD /* freetype.framework */; };
 		19A57CF219E298ED00FE40DD /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEA19E298ED00FE40DD /* sfml-audio.framework */; };
 		19A57CF319E298ED00FE40DD /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */; };
@@ -22,24 +15,25 @@
 		19A57CF619E298ED00FE40DD /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEE19E298ED00FE40DD /* sfml-window.framework */; };
 		19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
 		19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
+		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
+		C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
+		C0B83EB619E2C23C0037C5AE /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9B19E2C23C0037C5AE /* Card.cpp */; };
+		C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA019E2C23C0037C5AE /* Game.cpp */; };
+		C0B83EBB19E2C23C0037C5AE /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA219E2C23C0037C5AE /* Hand.cpp */; };
+		C0B83EBC19E2C23C0037C5AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA419E2C23C0037C5AE /* main.cpp */; };
+		C0B83EBD19E2C23C0037C5AE /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */; };
+		C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA719E2C23C0037C5AE /* Player.cpp */; };
+		C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */; };
+		C0B83EC019E2C23C0037C5AE /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B83EAD19E2C23C0037C5AE /* cardBack.png */; };
+		C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */ = {isa = PBXBuildFile; fileRef = C0B83EAE19E2C23C0037C5AE /* Thumbs.db */; };
+		C0B83EC219E2C23C0037C5AE /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAF19E2C23C0037C5AE /* Score.cpp */; };
+		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
+		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1967D95F19E2A11D009AE732 /* ResourcePathOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = ResourcePathOSX.hpp; path = ../../cheukoin/Cheukoin/ResourcePathOSX.hpp; sourceTree = "<group>"; };
-		1967D96019E2A11D009AE732 /* ResourcePathOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; name = ResourcePathOSX.mm; path = ../../cheukoin/Cheukoin/ResourcePathOSX.mm; sourceTree = "<group>"; };
-		1967D96319E2A22B009AE732 /* cardBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardBack.png; sourceTree = "<group>"; };
-		1967D96419E2A22B009AE732 /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
-		1967D96719E2A246009AE732 /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Card.cpp; path = ../../cheukoin/Cheukoin/Card.cpp; sourceTree = "<group>"; };
-		1967D96819E2A246009AE732 /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Card.h; path = ../../cheukoin/Cheukoin/Card.h; sourceTree = "<group>"; };
-		1967D96B19E2A39B009AE732 /* ResourcePath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResourcePath.h; path = ../../cheukoin/Cheukoin/ResourcePath.h; sourceTree = "<group>"; };
-		1967D97019E2BEC9009AE732 /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NetworkManager.cpp; path = ../../cheukoin/Cheukoin/NetworkManager.cpp; sourceTree = "<group>"; };
-		1967D97119E2BEC9009AE732 /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = NetworkManager.h; path = ../../cheukoin/Cheukoin/NetworkManager.h; sourceTree = "<group>"; };
-		1967D97419E2C47D009AE732 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
-		1967D97519E2C47D009AE732 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
-		1967D97619E2C47D009AE732 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = ../cheukoin/Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
 		19A57CD119E2989E00FE40DD /* Cheukoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheukoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A57CD519E2989E00FE40DD /* Cheukoin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cheukoin-Info.plist"; sourceTree = "<group>"; };
-		19A57CD919E2989E00FE40DD /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		19A57CE919E298ED00FE40DD /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = ../../../../Library/Frameworks/freetype.framework; sourceTree = "<group>"; };
 		19A57CEA19E298ED00FE40DD /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "../../../../Library/Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
 		19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "../../../../Library/Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
@@ -48,6 +42,32 @@
 		19A57CEE19E298ED00FE40DD /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
 		19A57CEF19E298ED00FE40DD /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
 		19A57CF019E298ED00FE40DD /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sndfile.framework; path = ../../../../Library/Frameworks/sndfile.framework; sourceTree = "<group>"; };
+		19EAA46319E2C72C00F23D27 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
+		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
+		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
+		C0B83E9919E2C23C0037C5AE /* Bid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bid.cpp; sourceTree = "<group>"; };
+		C0B83E9A19E2C23C0037C5AE /* Bid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bid.h; sourceTree = "<group>"; };
+		C0B83E9B19E2C23C0037C5AE /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
+		C0B83E9C19E2C23C0037C5AE /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
+		C0B83EA019E2C23C0037C5AE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		C0B83EA119E2C23C0037C5AE /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		C0B83EA219E2C23C0037C5AE /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
+		C0B83EA319E2C23C0037C5AE /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
+		C0B83EA419E2C23C0037C5AE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManager.cpp; sourceTree = "<group>"; };
+		C0B83EA619E2C23C0037C5AE /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
+		C0B83EA719E2C23C0037C5AE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
+		C0B83EA819E2C23C0037C5AE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		C0B83EAA19E2C23C0037C5AE /* ResourcePathOSX.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = ResourcePathOSX.hpp; sourceTree = "<group>"; };
+		C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = ResourcePathOSX.mm; sourceTree = "<group>"; };
+		C0B83EAD19E2C23C0037C5AE /* cardBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardBack.png; sourceTree = "<group>"; };
+		C0B83EAE19E2C23C0037C5AE /* Thumbs.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = Thumbs.db; sourceTree = "<group>"; };
+		C0B83EAF19E2C23C0037C5AE /* Score.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Score.cpp; sourceTree = "<group>"; };
+		C0B83EB019E2C23C0037C5AE /* Score.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Score.h; sourceTree = "<group>"; };
+		C0B83EB119E2C23C0037C5AE /* Team.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Team.cpp; sourceTree = "<group>"; };
+		C0B83EB219E2C23C0037C5AE /* Team.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Team.h; sourceTree = "<group>"; };
+		C0B83EB319E2C23C0037C5AE /* Trick.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Trick.cpp; sourceTree = "<group>"; };
+		C0B83EB419E2C23C0037C5AE /* Trick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trick.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,26 +89,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1967D96219E2A22B009AE732 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				1967D96319E2A22B009AE732 /* cardBack.png */,
-				1967D96419E2A22B009AE732 /* Thumbs.db */,
-			);
-			name = Resources;
-			path = ../../cheukoin/Cheukoin/Resources;
-			sourceTree = "<group>";
-		};
-		1967D97319E2C47D009AE732 /* json */ = {
-			isa = PBXGroup;
-			children = (
-				1967D97419E2C47D009AE732 /* json-forwards.h */,
-				1967D97519E2C47D009AE732 /* json.h */,
-			);
-			name = json;
-			path = ../cheukoin/Cheukoin/json;
-			sourceTree = "<group>";
-		};
 		19A57CC719E2989E00FE40DD = {
 			isa = PBXGroup;
 			children = (
@@ -102,8 +102,9 @@
 				19A57CF019E298ED00FE40DD /* sndfile.framework */,
 				19A57CD319E2989E00FE40DD /* Cheukoin */,
 				19A57CD219E2989E00FE40DD /* Products */,
-				1967D97319E2C47D009AE732 /* json */,
-				1967D97619E2C47D009AE732 /* jsoncpp.cpp */,
+				19EAA46219E2C72C00F23D27 /* json */,
+				19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */,
+				C0B83EAC19E2C23C0037C5AE /* Resources */,
 			);
 			sourceTree = "<group>";
 		};
@@ -118,16 +119,28 @@
 		19A57CD319E2989E00FE40DD /* Cheukoin */ = {
 			isa = PBXGroup;
 			children = (
-				1967D96719E2A246009AE732 /* Card.cpp */,
-				1967D96819E2A246009AE732 /* Card.h */,
-				19A57CD919E2989E00FE40DD /* main.cpp */,
-				1967D97019E2BEC9009AE732 /* NetworkManager.cpp */,
-				1967D97119E2BEC9009AE732 /* NetworkManager.h */,
-				1967D96B19E2A39B009AE732 /* ResourcePath.h */,
-				1967D95F19E2A11D009AE732 /* ResourcePathOSX.hpp */,
-				1967D96019E2A11D009AE732 /* ResourcePathOSX.mm */,
-				1967D96219E2A22B009AE732 /* Resources */,
+				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
+				C0B83E9A19E2C23C0037C5AE /* Bid.h */,
+				C0B83E9B19E2C23C0037C5AE /* Card.cpp */,
+				C0B83E9C19E2C23C0037C5AE /* Card.h */,
+				C0B83EA019E2C23C0037C5AE /* Game.cpp */,
+				C0B83EA119E2C23C0037C5AE /* Game.h */,
+				C0B83EA219E2C23C0037C5AE /* Hand.cpp */,
+				C0B83EA319E2C23C0037C5AE /* Hand.h */,
+				C0B83EA419E2C23C0037C5AE /* main.cpp */,
+				C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */,
+				C0B83EA619E2C23C0037C5AE /* NetworkManager.h */,
+				C0B83EA719E2C23C0037C5AE /* Player.cpp */,
+				C0B83EA819E2C23C0037C5AE /* Player.h */,
+				C0B83EAA19E2C23C0037C5AE /* ResourcePathOSX.hpp */,
+				C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */,
+				C0B83EAF19E2C23C0037C5AE /* Score.cpp */,
+				C0B83EB019E2C23C0037C5AE /* Score.h */,
 				19A57CD419E2989E00FE40DD /* Supporting Files */,
+				C0B83EB119E2C23C0037C5AE /* Team.cpp */,
+				C0B83EB219E2C23C0037C5AE /* Team.h */,
+				C0B83EB319E2C23C0037C5AE /* Trick.cpp */,
+				C0B83EB419E2C23C0037C5AE /* Trick.h */,
 			);
 			path = Cheukoin;
 			sourceTree = "<group>";
@@ -138,6 +151,26 @@
 				19A57CD519E2989E00FE40DD /* Cheukoin-Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		19EAA46219E2C72C00F23D27 /* json */ = {
+			isa = PBXGroup;
+			children = (
+				19EAA46319E2C72C00F23D27 /* json-forwards.h */,
+				19EAA46419E2C72C00F23D27 /* json.h */,
+			);
+			name = json;
+			path = Cheukoin/json;
+			sourceTree = "<group>";
+		};
+		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C0B83EAD19E2C23C0037C5AE /* cardBack.png */,
+				C0B83EAE19E2C23C0037C5AE /* Thumbs.db */,
+			);
+			name = Resources;
+			path = Cheukoin/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +230,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1967D96619E2A22B009AE732 /* Thumbs.db in Resources */,
-				1967D96519E2A22B009AE732 /* cardBack.png in Resources */,
+				C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */,
+				C0B83EC019E2C23C0037C5AE /* cardBack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,11 +258,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1967D97719E2C47D009AE732 /* jsoncpp.cpp in Sources */,
-				1967D97219E2BEC9009AE732 /* NetworkManager.cpp in Sources */,
-				1967D96919E2A246009AE732 /* Card.cpp in Sources */,
-				1967D96119E2A11D009AE732 /* ResourcePathOSX.mm in Sources */,
-				19A57CDA19E2989E00FE40DD /* main.cpp in Sources */,
+				C0B83EBB19E2C23C0037C5AE /* Hand.cpp in Sources */,
+				C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */,
+				C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */,
+				C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */,
+				C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */,
+				C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */,
+				C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */,
+				C0B83EBC19E2C23C0037C5AE /* main.cpp in Sources */,
+				C0B83EC219E2C23C0037C5AE /* Score.cpp in Sources */,
+				19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */,
+				C0B83EBD19E2C23C0037C5AE /* NetworkManager.cpp in Sources */,
+				C0B83EB619E2C23C0037C5AE /* Card.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

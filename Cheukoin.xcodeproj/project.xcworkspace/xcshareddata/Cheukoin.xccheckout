@@ -14,7 +14,7 @@
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>B43E967EA06AA4A45D59D5100F4CC9A416C9FA07</key>
-		<string>cheukoin/</string>
+		<string>cheukoin</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>github.com:Klorophyl/cheukoin.git</string>
