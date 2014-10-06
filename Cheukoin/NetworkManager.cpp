@@ -16,7 +16,7 @@ void NetworkManager::createLobby()
 
 Json::Value NetworkManager::request(const string& url, const string& body, sf::Http::Request::Method method)
 {
-    Json::Value root; // will contains the root value after parsing.
+    Json::Value root;
     sf::Http http;
     http.setHost("http://localhost/", 8000);
     sf::Http::Request request("/lobby/new/");
