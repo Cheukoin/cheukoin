@@ -12,15 +12,13 @@
 #include "SFML/Network.hpp"
 #include "json/json.h"
 
-using namespace std;
-
 class NetworkManager {
 
 public:
     static void createLobby();
 
 private:
-    static Json::Value request(const string& url, const string& body, sf::Http::Request::Method method);
-    static Json::Value get(const string& url);
-    static Json::Value post(const string& url, const string& body);
+    static Json::Value request(const std::string& url, const std::string& body, sf::Http::Request::Method method);
+    static Json::Value get(const std::string& url);
+    static Json::Value post(const std::string& url, const std::string& body);
 };

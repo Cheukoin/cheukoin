@@ -28,10 +28,14 @@ class Card {
 public:
     Value value;
     Suit suit;
-    bool isEqual (Card const& a) const;
+    bool isEqual(Card const& a) const;
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> textureBack;
-    Card();
+    Card(Suit suit, Value value);
     ~Card();
+
+private:
+    Suit _suit;
+    Value _value;
 };
-bool operator== (Card const& a, Card const& b);
+bool operator==(Card const& a, Card const& b);
