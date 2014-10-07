@@ -1,9 +1,22 @@
-//
-//  Bot.cpp
-//  Cheukoin
-//
-//  Created by Gabriel Samain on 06/10/2014.
-//  Copyright (c) 2014 Corentin. All rights reserved.
-//  Moi aussi j'veux jouer
-
 #include "Bot.h"
+
+using namespace std;
+
+Bot::Bot()
+{
+}
+
+Bot::~Bot()
+{
+}
+
+void Bot::play()
+{
+    Card nextCard = chooseCard();
+    playCard(nextCard);
+}
+
+Card Bot::chooseCard()
+{
+    return Card();
+}
