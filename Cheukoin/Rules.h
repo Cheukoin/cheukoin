@@ -21,7 +21,7 @@ public:
     
     
 private:
-    static std::map<Value, int> _cardValues;
+    
     
 };
 

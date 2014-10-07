@@ -20,4 +20,15 @@ Rules::Rules()
         {King,4},
         {Ace,11}
     };
+    
+    _cardValuesAsset = {
+        {Seven, 0},
+        {Eight, 0},
+        {Nine, 14},
+        {Ten, 10},
+        {Jack, 20},
+        {Queen, 3},
+        {King, 4},
+        {Ace, 11},
+    };
 }
