@@ -1,8 +1,10 @@
 #pragma once
-#include "Bid.h"
 #include "Trick.h"
+#include "Team.h"
 #include <vector>
 #include <string>
+#include <map>
+#include "Rules.h"
 
 using namespace std;
 
@@ -11,13 +13,16 @@ class Score
 public:
 	Score();
 	~Score();
-	Bid getRetainedBid(); 
-	void computeScore(Trick trick);
+	Bid getRetainedBid();
+	int computeScore(Trick trick);
+    Team computeWinner(Trick trick);
 	void addOutcome(string equipe, int score);
-    vector<pair<int, std::string>> getOutcome();
+    std::map<int, std::string> getOutcome();
 
 private:
-	Bid m_retainedBid; 
-    vector<pair<int, std::string>> m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
+	Bid _retainedBid;
+    Team _biddingTeam;
+    std::map<int, std::string> _gameOutcome; // ensemble des pairs de pairs {équipe, score}
+    
 };
 

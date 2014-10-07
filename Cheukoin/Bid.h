@@ -15,6 +15,7 @@ public:
 private:
 	Value _value;
 	Suit _suit;
+    
 
 };
 

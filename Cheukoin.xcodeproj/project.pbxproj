@@ -30,6 +30,7 @@
 		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
+		C919B60019E3F9D1009830AC /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C919B5FE19E3F9D1009830AC /* Rules.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,8 @@
 		C0B83EB419E2C23C0037C5AE /* Trick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trick.h; sourceTree = "<group>"; };
 		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
+		C919B5FE19E3F9D1009830AC /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
+		C919B5FF19E3F9D1009830AC /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +148,8 @@
 				C0B83EB219E2C23C0037C5AE /* Team.h */,
 				C0B83EB319E2C23C0037C5AE /* Trick.cpp */,
 				C0B83EB419E2C23C0037C5AE /* Trick.h */,
+				C919B5FE19E3F9D1009830AC /* Rules.cpp */,
+				C919B5FF19E3F9D1009830AC /* Rules.h */,
 			);
 			path = Cheukoin;
 			sourceTree = "<group>";
@@ -281,6 +286,7 @@
 				C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */,
 				C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */,
 				C0B83EBC19E2C23C0037C5AE /* main.cpp in Sources */,
+				C919B60019E3F9D1009830AC /* Rules.cpp in Sources */,
 				C0B83EC219E2C23C0037C5AE /* Score.cpp in Sources */,
 				19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */,
 				C0B83EBD19E2C23C0037C5AE /* NetworkManager.cpp in Sources */,
