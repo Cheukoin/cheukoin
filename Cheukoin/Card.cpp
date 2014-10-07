@@ -1,8 +1,10 @@
 #include "Card.h"
 #include "ResourcePath.h"
 
-Card::Card()
+Card::Card(Suit suit, Value value)
     : textureBack(new sf::Texture())
+    , _suit(suit)
+    , _value(value)
 {
     if (!textureBack->loadFromFile(resourcePath("cardBack.png"))) {
         // handle texture not loaded
