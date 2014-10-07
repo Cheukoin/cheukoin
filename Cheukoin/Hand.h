@@ -8,6 +8,7 @@ public:
     void addCard(Card card);
     std::vector<std::pair<int, std::string> > getCards();
     bool isHandValid();
+
     Hand();
     ~Hand();
 

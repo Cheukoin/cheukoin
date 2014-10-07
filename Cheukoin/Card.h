@@ -30,9 +30,6 @@ public:
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> textureBack;
 
-    void playCard();
-    void makeBid();
-
     Card();
     ~Card();
 };

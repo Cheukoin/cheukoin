@@ -1,19 +1,20 @@
 #include <string>
+#include "Card.h"
 
 class Bid
 {
 public:
 	Bid();
 	~Bid();
-	int getBidValue(); // getter valeur du bid
-	void setBidValue(int value); // setter valeur du bid
-	void setBidColor(std::string color); //setter couleur du bid
-	std::string getBidColor(); // couleur (Sans Att? Tout Att?), représentée par string?
-	bool isBidValid(); // supérieur à 80, au précédent, couleur correcte,etc...
+	Value getValue();
+	void setValue(Value value);
+	void setSuit(Suit suit);
+	Suit getSuit();
+	bool isBidValid(Bid previousBid);
 
 private:
-	int m_bidValue;
-	std::string m_bidColor;
+	Value _value;
+	Suit _suit;
 
 };
 

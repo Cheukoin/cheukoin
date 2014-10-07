@@ -403,6 +403,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Cheukoin/Cheukoin-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -416,6 +417,7 @@
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Cheukoin/Cheukoin-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
