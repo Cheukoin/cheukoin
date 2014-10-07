@@ -4,8 +4,8 @@
 
 class Hand {
 public:
-    void removeCard();
-    void addCard(Card card);
+    void removeCard(Card const& card);
+    void addCard(Card const& card);
     std::vector<Card> getCards();
     bool isHandValid();
 

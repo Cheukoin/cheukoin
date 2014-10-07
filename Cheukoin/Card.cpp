@@ -20,3 +20,18 @@ Card::~Card()
 	puts("Card destroyed");
 }
 
+
+bool Card::isEqual (Card const& a) const
+{
+    if ((a.suit==suit) && (a.value ==value))
+        return true;
+    else return false;
+}
+
+bool operator==(Card const& a, Card const& b)
+{
+    if (a.isEqual(b))
+        return true;
+    else
+        return false;
+}
