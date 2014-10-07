@@ -4,20 +4,16 @@
 #include <vector>
 #include <string>
 
-using namespace std;
-
-class Score
-{
+class Score {
 public:
-	Score();
-	~Score();
-	Bid getRetainedBid(); 
-	void computeScore(Trick trick);
-	void addOutcome(string equipe, int score);
-    vector<pair<int, std::string>> getOutcome();
+    Score();
+    ~Score();
+    Bid getRetainedBid();
+    void computeScore(Trick trick);
+    void addOutcome(std::string equipe, int score);
+    std::vector<std::pair<int, std::string> > getOutcome();
 
 private:
-	Bid m_retainedBid; 
-    vector<pair<int, std::string>> m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
+    Bid m_retainedBid;
+    std::vector<std::pair<int, std::string> > m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
 };
-

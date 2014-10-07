@@ -8,22 +8,25 @@
 
 #include "NetworkManager.h"
 
+using namespace std;
+using namespace sf;
+
 void NetworkManager::createLobby()
 {
     auto response = get("/lobby/new/");
     cout << response.toStyledString();
 }
 
-Json::Value NetworkManager::request(const string& url, const string& body, sf::Http::Request::Method method)
+Json::Value NetworkManager::request(const string& url, const string& body, Http::Request::Method method)
 {
     Json::Value root;
-    sf::Http http;
+    Http http;
     http.setHost("http://localhost/", 8000);
-    sf::Http::Request request("/lobby/new/");
-    sf::Http::Response response = http.sendRequest(request);
+    Http::Request request("/lobby/new/");
+    Http::Response response = http.sendRequest(request);
 
-    sf::Http::Response::Status status = response.getStatus();
-    if (status == sf::Http::Response::Ok) {
+    Http::Response::Status status = response.getStatus();
+    if (status == Http::Response::Ok) {
         Json::Reader reader;
         bool parsingSuccessful = reader.parse(response.getBody(), root);
 
@@ -40,10 +43,10 @@ Json::Value NetworkManager::request(const string& url, const string& body, sf::H
 
 Json::Value NetworkManager::get(const string& url)
 {
-    return request(url, "", sf::Http::Request::Get);
+    return request(url, "", Http::Request::Get);
 }
 
 Json::Value NetworkManager::post(const string& url, const string& body)
 {
-    return request(url, body, sf::Http::Request::Post);
+    return request(url, body, Http::Request::Post);
 }
