@@ -6,12 +6,12 @@ class Hand {
 public:
     void removeCard();
     void addCard(Card card);
-    std::vector<std::pair<int, std::string> > getCards();
+    std::vector<Card> getCards();
     bool isHandValid();
 
     Hand();
     ~Hand();
 
 private:
-    std::vector<std::pair<int, std::string> > _cards;
+    std::vector<Card> _cards;
 };
