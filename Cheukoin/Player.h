@@ -7,7 +7,7 @@ public:
     Player();
     ~Player();
 
-    void playCard(Card card);
+    void playCard(Card const& card);
     Bid makeBid(int amount, std::string asset);
 
     std::string getName();
