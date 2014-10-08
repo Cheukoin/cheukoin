@@ -27,15 +27,12 @@ bool Hand::isHandValid()
 {
     return (_cards.size() <= 8);
 }
-std::vector <Card> Hand::getCards () // change the hand object into a vector of cards is it useful somewhere?
+
+std::vector <Card> Hand::getCards ()
 {
-    int i;
-    for (i=0;i<_cards.size();i++)
-    {
-        getCards()[i]= _cards[i];
-    }
-    return getCards();
+    return _cards;
 }
+
 void Hand::displayCards(std::ostream& flux) const
 {
     int i=0 ;

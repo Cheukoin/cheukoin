@@ -35,7 +35,7 @@ vector<Card> Trick::getComposition()
     return _composition;
 }
 
-bool Trick::isGreater(Card card1, Card card2, Suit suit) const //greater meaning beats (takes asset's cut into account)
+bool Trick::isGreater(Card card1, Card card2, Suit suit) const //greater meaning card 1 beats card2 (takes asset's cut into account)
 {
     
     
@@ -55,7 +55,7 @@ bool Trick::isGreater(Card card1, Card card2, Suit suit) const //greater meaning
         {
             order = _cardValuesAsset;
         }
-        else
+        else if ()
         {
             order = _cardValues;
         }
