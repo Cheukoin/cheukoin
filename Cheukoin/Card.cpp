@@ -19,9 +19,6 @@ Card::Card(Suit suit, Value value)
     sprite.setTexture(*textureBack);
     sprite.setScale(sf::Vector2f(0.3, 0.3));
 }
-Card::Card()
-{
-}
 
 Card::~Card()
 {
