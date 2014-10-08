@@ -20,7 +20,7 @@ public:
     Rules();
     ~Rules();
     bool isGreater(Card card1, Card card2, Suit asset);
-    Card tagueule();
+    Card winningCard(Trick trick, Suit asset);
     
  
 private:
