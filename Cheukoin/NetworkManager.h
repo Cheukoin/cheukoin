@@ -12,6 +12,8 @@
 #include "SFML/Network.hpp"
 #include "json/json.h"
 
+#define ROOT_URL "http://cheukoin.herokuapp.com/"
+
 class NetworkManager {
 
 public:

@@ -8,6 +8,8 @@
 
 #include "NetworkManager.h"
 
+#define LOGGING_ENABLED
+
 using namespace std;
 using namespace sf;
 
@@ -20,12 +22,16 @@ void NetworkManager::createLobby()
 Json::Value NetworkManager::request(const string& url, const string& body, Http::Request::Method method)
 {
     Json::Value root;
-    Http http;
-    http.setHost("http://localhost/", 8000);
-    Http::Request request("/lobby/new/");
-    Http::Response response = http.sendRequest(request);
+    Http http(ROOT_URL);
+
+    Http::Request httpRequest("/lobby/new/");
+#ifdef LOGGING_ENABLED
+//    cout << "[Network] - Sending request to " << httpRequest.url;
+#endif
+    Http::Response response = http.sendRequest(httpRequest);
 
     Http::Response::Status status = response.getStatus();
+
     if (status == Http::Response::Ok) {
         Json::Reader reader;
         bool parsingSuccessful = reader.parse(response.getBody(), root);
