@@ -3,6 +3,7 @@
 using namespace std;
 
 Player::Player()
+    : _name("Player 1")
 {
 }
 
@@ -10,7 +11,17 @@ Player::~Player()
 {
 }
 
-void Player::playCard(Card card) {}
+void Player::playCard(Card const& card)
+{
+#warning TODO : verify move is valid with rules
+}
+
+Bid Player::makeBid(int amount, Suit asset)
+{
+    _bid.setAmount(amount);
+    _bid.setSuit(asset);
+    return _bid;
+}
 
 string Player::getName()
 {

@@ -9,14 +9,14 @@ Bid::~Bid()
 {
 }
 
-Value Bid::getValue()
+int Bid::getAmount()
 {
-    return _value;
+    return _amount;
 }
 
-void Bid::setValue(Value value)
+void Bid::setAmount(int amount)
 {
-    _value = value;
+    _amount = amount;
 }
 
 void Bid::setSuit(Suit suit)

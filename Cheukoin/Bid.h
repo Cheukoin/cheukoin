@@ -6,14 +6,14 @@ class Bid
 public:
 	Bid();
 	~Bid();
-	Value getValue();
-	void setValue(Value value);
+	int getAmount();
+	void setAmount(int amount);
 	void setSuit(Suit suit);
 	Suit getSuit();
 	bool isBidValid(Bid previousBid);
 
 private:
-	Value _value;
+	int _amount;
 	Suit _suit;
     
 

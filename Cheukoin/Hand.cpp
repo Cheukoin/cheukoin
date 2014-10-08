@@ -22,7 +22,6 @@ void Hand::addCard(Card const& card)
     _cards.push_back(card);
 }
 
-
 bool Hand::isHandValid()
 {
     return (_cards.size() <= 8);
