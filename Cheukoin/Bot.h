@@ -2,11 +2,15 @@
 #include <string>
 #include "Player.h"
 
-class Bot : Player {
+class Bot : public Player {
 public:
     Bot();
     ~Bot();
 
+    void play();
+    Card chooseCard();
+
 private:
-    std::map<Suit, std::vector<Card> > _remainingCardsInGame;
+    std::vector<Card> _remainingCardsInGame;
+    std::vector<Card> _remainingAssets;
 };
