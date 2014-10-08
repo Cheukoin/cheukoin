@@ -7,10 +7,10 @@
 #include <iostream>
 
 enum Suit {
-    Spades,
+    Clubs,
     Hearts,
     Diamonds,
-    Clubs
+    Spades
 };
 
 enum Value {
@@ -26,8 +26,6 @@ enum Value {
 
 class Card {
 public:
-    Value value;
-    Suit suit;
     bool isEqual(Card const& a) const;
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> textureBack;
@@ -35,12 +33,13 @@ public:
     Value getValue() const;
     Suit getSuit() const;
 
+    std::string toString();
+
     Card(Suit suit, Value value);
     ~Card();
     
 private:
     Suit _suit;
     Value _value;
-
 };
 bool operator==(Card const& a, Card const& b);
