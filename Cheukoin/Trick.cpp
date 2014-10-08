@@ -55,7 +55,7 @@ bool Trick::isGreater(Card card1, Card card2, Suit suit) const //greater meaning
         {
             order = _cardValuesAsset;
         }
-        else if ()
+        else if (true)
         {
             order = _cardValues;
         }
