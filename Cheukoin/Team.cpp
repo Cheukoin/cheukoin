@@ -20,7 +20,14 @@ Team::~Team()
 
 void Team::addPlayer(Player const& player)
 {
-    _players.push_back(player);
+    if (_players.size() > 1)
+    {
+        
+    }
+    else
+    {
+        _players.push_back(player);
+    }
 }
 
 void Team::addTrick(Trick const& trick)

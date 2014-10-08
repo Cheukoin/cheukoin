@@ -1,5 +1,9 @@
 #include "Card.h"
 #include "ResourcePath.h"
+#include <map>
+#include <string>
+
+using namespace std;
 
 Card::Card(Suit suit, Value value)
     : textureBack(new sf::Texture())
@@ -11,9 +15,13 @@ Card::Card(Suit suit, Value value)
         puts("Texture file not loaded");
     }
 
-    sprite.setTextureRect(sf::IntRect(0, 0, 342, 480));
-    sprite.setTexture(*textureBack);
-    sprite.setScale(sf::Vector2f(0.3, 0.3));
+	sprite.setTextureRect(sf::IntRect(0, 0, 342, 480));
+	sprite.setTexture(*textureBack);
+	sprite.setScale(sf::Vector2f(0.3, 0.3));
+}
+Card::Card()
+{
+    
 }
 
 Card::~Card()
@@ -21,18 +29,29 @@ Card::~Card()
     puts("Card destroyed");
 }
 
+Value Card::getValue() const
+{
+    return _value;
+}
+
+
+Suit Card::getSuit() const
+{
+    return _suit;
+}
+
 bool Card::isEqual(Card const& a) const
 {
-    if ((a.suit == suit) && (a.value == value))
-        return true;
-    else
-        return false;
+    return (a.getSuit() == _suit) && (a.getValue() == _value);
 }
 
 bool operator==(Card const& a, Card const& b)
 {
-    if (a.isEqual(b))
-        return true;
-    else
-        return false;
+    return a.isEqual(b);
 }
+
+string Card::toString()
+{
+    return "test";
+}
+
