@@ -36,6 +36,7 @@ public:
     std::string toString();
 
     Card(Suit suit, Value value);
+    Card();
     ~Card();
     
 private:
