@@ -54,7 +54,7 @@ Suit Card::getSuit() const
     return _suit;
 }
 
-bool Card::isGreater(Card card, Suit suit) const
+bool Card::isGreater(Card card, Suit suit) const //greater meaning beats (takes asset's cut into account)
 {
     
     
