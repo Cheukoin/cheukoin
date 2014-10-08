@@ -62,6 +62,14 @@ bool Rules::isGreater(Card card1, Card card2, Suit asset)
 
 Card Rules::winningCard(Trick trick, Suit asset)
 {
-    
+    Card max = trick.getComposition()[0];
+    for (int i = 0; i < trick.getComposition().size(); i++)
+    {
+        if (isGreater(trick.getComposition()[i], max, asset))
+        {
+            max = trick.getComposition()[i];
+        }
+    }
+    return max;
 }
 
