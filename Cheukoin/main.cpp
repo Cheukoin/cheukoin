@@ -18,7 +18,6 @@ int main()
     trick.addCard(card); trick.addCard(card2); trick.addCard(card3); trick.addCard(card4);
     //cout << trick.winningCard(Hearts).getValue() << endl;
     //cout << trick.winningCard(Hearts).getSuit() << endl;
-    
 
     NetworkManager::createLobby();
     sf::Vector2i v(1, 1);
