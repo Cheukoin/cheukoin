@@ -15,25 +15,22 @@ Card::Card(Suit suit, Value value)
         puts("Texture file not loaded");
     }
 
-	sprite.setTextureRect(sf::IntRect(0, 0, 342, 480));
-	sprite.setTexture(*textureBack);
-	sprite.setScale(sf::Vector2f(0.3, 0.3));
+    sprite.setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprite.setTexture(*textureBack);
+    sprite.setScale(sf::Vector2f(0.3, 0.3));
 }
 Card::Card()
 {
-    
 }
 
 Card::~Card()
 {
-    puts("Card destroyed");
 }
 
 Value Card::getValue() const
 {
     return _value;
 }
-
 
 Suit Card::getSuit() const
 {
@@ -50,8 +47,8 @@ bool operator==(Card const& a, Card const& b)
     return a.isEqual(b);
 }
 
-string Card::toString()
+ostream& operator<<(ostream& os, const Card& card)
 {
-    return "test";
+    os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";
+    return os;
 }
-

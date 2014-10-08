@@ -33,14 +33,15 @@ public:
     Value getValue() const;
     Suit getSuit() const;
 
-    std::string toString();
-
     Card(Suit suit, Value value);
     Card();
     ~Card();
-    
+
 private:
     Suit _suit;
     Value _value;
 };
+
 bool operator==(Card const& a, Card const& b);
+
+std::ostream& operator<<(std::ostream& os, const Card& card);
