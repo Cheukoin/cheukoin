@@ -6,7 +6,7 @@ class Player {
 public:
     Player();
     ~Player();
-    void playCard();
+    void playCard(Card card);
     Bid makeBid(int amount, std::string asset);
     std::string getName();
     void setName(std::string name);

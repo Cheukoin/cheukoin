@@ -4,44 +4,25 @@
 
 using namespace std;
 
-Card::Card():
-textureBack(new sf::Texture())
+Card::Card(Suit suit, Value value)
+    : textureBack(new sf::Texture())
+    , _suit(suit)
+    , _value(value)
 {
-	if (!textureBack->loadFromFile(resourcePath("cardBack.png"))) {
-		// handle texture not loaded
-		puts("Texture file not loaded");
-	}
+    if (!textureBack->loadFromFile(resourcePath("cardBack.png"))) {
+        // handle texture not loaded
+        puts("Texture file not loaded");
+    }
 
 	sprite.setTextureRect(sf::IntRect(0, 0, 342, 480));
 	sprite.setTexture(*textureBack);
 	sprite.setScale(sf::Vector2f(0.3, 0.3));
-    _cardValues = {
-        {Seven,0},
-        {Eight,0},
-        {Nine,0},
-        {Ten,10},
-        {Jack,2},
-        {Queen,3},
-        {King,4},
-        {Ace,11}
-    };
-    
-    _cardValuesAsset = {
-        {Seven, 0},
-        {Eight, 0},
-        {Nine, 14},
-        {Ten, 10},
-        {Jack, 20},
-        {Queen, 3},
-        {King, 4},
-        {Ace, 11},
-    };
-}
 
+}
 
 Card::~Card()
 {
-	puts("Card destroyed");
+    puts("Card destroyed");
 }
 
 Value Card::getValue() const
@@ -54,39 +35,19 @@ Suit Card::getSuit() const
     return _suit;
 }
 
-bool Card::isGreater(Card card, Suit suit) const //greater meaning beats (takes asset's cut into account)
+bool Card::isEqual(Card const& a) const
 {
-    
-    
-    if (_suit != suit && card.getSuit() == suit)
-    {
-        return false;
-    }
-    else if (_suit == suit && card.getSuit() != suit)
-    {
+    if ((a.suit == suit) && (a.value == value))
         return true;
-    }
     else
-    {
-        map <Value, int> order;
-        
-        if (card._suit == suit)
-        {
-            order = _cardValuesAsset;
-        }
-        else
-        {
-            order = _cardValues;
-        }
-        
-        if (_value > card.getValue())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
+        return false;
+}
+
+bool operator==(Card const& a, Card const& b)
+{
+    if (a.isEqual(b))
+        return true;
+    else
+        return false;
 }
 

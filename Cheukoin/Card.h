@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
+#include <iostream>
 
 enum Suit {
     Spades,
@@ -27,18 +28,19 @@ class Card {
 public:
     Value value;
     Suit suit;
+    bool isEqual(Card const& a) const;
     sf::Sprite sprite;
     std::shared_ptr<sf::Texture> textureBack;
-    bool isGreater(Card card, Suit suit) const;
+
     Value getValue() const;
     Suit getSuit() const;
 
-    Card();
+    Card(Suit suit, Value value);
     ~Card();
     
 private:
     Suit _suit;
     Value _value;
-    static std::map<Value, int> _cardValues;
-    static std::map<Value, int> _cardValuesAsset;
+
 };
+bool operator==(Card const& a, Card const& b);

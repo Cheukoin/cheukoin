@@ -5,11 +5,9 @@
 #include <string>
 #include <map>
 
-using namespace std;
-
-class Score
-{
+class Score {
 public:
+<<<<<<< HEAD
 	Score();
 	~Score();
 	Bid getRetainedBid();
@@ -23,5 +21,16 @@ private:
     Team _biddingTeam;
     std::map<int, std::string> _gameOutcome; // ensemble des pairs de pairs {équipe, score}
     
-};
+=======
+    Score();
+    ~Score();
+    Bid getRetainedBid();
+    void computeScore(Trick trick);
+    void addOutcome(std::string equipe, int score);
+    std::vector<std::pair<int, std::string> > getOutcome();
 
+private:
+    Bid m_retainedBid;
+    std::vector<std::pair<int, std::string> > m_gameOutcome; // ensemble des pairs de pairs {équipe, score}
+>>>>>>> master
+};
