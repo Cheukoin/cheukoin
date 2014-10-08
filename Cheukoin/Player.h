@@ -17,7 +17,7 @@ public:
     Bid getBid();
     void setBid(Bid bid);
 
-private:
+protected:
     std::string _name;
     Hand _hand;
     Bid _bid;
