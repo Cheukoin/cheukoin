@@ -14,10 +14,14 @@ int main()
     Card card3 = Card(Spades, Queen);
     Card card4 = Card(Hearts, Seven);
     Trick trick = Trick(1);
-    
-    trick.addCard(card); trick.addCard(card2); trick.addCard(card3); trick.addCard(card4);
-    //cout << trick.winningCard(Hearts).getValue() << endl;
-    //cout << trick.winningCard(Hearts).getSuit() << endl;
+
+    trick.addCard(card);
+    trick.addCard(card2);
+    trick.addCard(card3);
+    trick.addCard(card4);
+
+    cout << trick.winningCard(Hearts) << endl;
+    cout << trick.winningCard(Hearts) << endl;
 
     NetworkManager::createLobby();
     sf::Vector2i v(1, 1);
