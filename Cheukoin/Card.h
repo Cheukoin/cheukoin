@@ -34,7 +34,6 @@ public:
     Suit getSuit() const;
 
     Card(Suit suit, Value value);
-    Card();
     ~Card();
 
 private:
