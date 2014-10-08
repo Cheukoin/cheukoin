@@ -2,7 +2,7 @@
 #include <string>
 #include "Player.h"
 
-class Bot : Player {
+class Bot : public Player {
 public:
     Bot();
     ~Bot();

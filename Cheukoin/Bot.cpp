@@ -12,11 +12,11 @@ Bot::~Bot()
 
 void Bot::play()
 {
-    Card nextCard = chooseCard();
-    playCard(nextCard);
+    Card nextCard = Bot::chooseCard();
+    Player::playCard(nextCard);
 }
 
 Card Bot::chooseCard()
 {
-    return Card();
+    return _hand.getCards()[0];
 }
