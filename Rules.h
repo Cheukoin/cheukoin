@@ -14,19 +14,16 @@
 #include "Card.h"
 #include "Trick.h"
 
-class Rules
-{
+class Rules {
 public:
     Rules();
     ~Rules();
     bool isGreater(Card card1, Card card2, Suit asset);
     Card winningCard(Trick trick, Suit asset);
-    
- 
+
 private:
     std::map<Value, int> _cardValues;
     std::map<Value, int> _cardValuesAsset;
-    
 };
 
 #endif /* defined(__Cheukoin__Rules__) */
