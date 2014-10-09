@@ -8,14 +8,14 @@ public:
     ~Player();
 
     void playCard(Card const& card);
-    Bid makeBid(int amount, Suit asset);
+    Bid makeBid(int amount, Suit const& asset);
 
     std::string getName();
     void setName(std::string name);
     Hand getHand();
-    void setHand(Hand hand);
+    void setHand(Hand& hand);
     Bid getBid();
-    void setBid(Bid bid);
+    void setBid(Bid& bid);
 
 protected:
     std::string _name;

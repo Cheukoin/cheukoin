@@ -14,9 +14,10 @@ Player::~Player()
 void Player::playCard(Card const& card)
 {
 #warning TODO : verify move is valid with rules
+    _hand.removeCard(card);
 }
 
-Bid Player::makeBid(int amount, Suit asset)
+Bid Player::makeBid(int amount, Suit const& asset)
 {
     _bid.setAmount(amount);
     _bid.setSuit(asset);
@@ -38,7 +39,7 @@ Hand Player::getHand()
     return _hand;
 }
 
-void Player::setHand(Hand hand)
+void Player::setHand(Hand& hand)
 {
     _hand = hand;
 }
@@ -48,7 +49,7 @@ Bid Player::getBid()
     return _bid;
 }
 
-void Player::setBid(Bid bid)
+void Player::setBid(Bid& bid)
 {
     _bid = bid;
 }
