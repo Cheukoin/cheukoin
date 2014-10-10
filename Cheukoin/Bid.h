@@ -1,21 +1,24 @@
-#include <string>
-#include "Card.h"
+#ifndef __Cheukoin_Bid__
+#define __Cheukoin_Bid__
 
-class Bid
-{
+#include "Constants.h"
+
+class Game;
+class Card;
+
+class Bid {
 public:
-	Bid();
-	~Bid();
-	int getAmount();
-	void setAmount(int amount);
-	void setSuit(Suit suit);
-	Suit getSuit();
-	bool isBidValid(Bid previousBid);
+    Bid();
+    ~Bid();
+    int getAmount();
+    void setAmount(int amount);
+    void setSuit(Suit suit);
+    Suit getSuit();
+    bool isBidValid(Bid previousBid);
 
 private:
-	int _amount;
-	Suit _suit;
-    
-
+    int _amount;
+    Suit _suit;
 };
 
+#endif

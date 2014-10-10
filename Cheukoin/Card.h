@@ -1,28 +1,15 @@
-#pragma once
+#ifndef __Cheukoin_Card__
+#define __Cheukoin_Card__
 
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <memory>
-#include <iostream>
+#include <map>
+#include <string>
 
-enum Suit {
-    Clubs,
-    Hearts,
-    Diamonds,
-    Spades
-};
-
-enum Value {
-    Ace,
-    King,
-    Queen,
-    Jack,
-    Ten,
-    Nine,
-    Eight,
-    Seven
-};
+#include "ResourcePath.h"
+#include "Constants.h"
 
 class Card {
 public:
@@ -47,3 +34,5 @@ private:
 bool operator==(Card const& a, Card const& b);
 
 std::ostream& operator<<(std::ostream& os, const Card& card);
+
+#endif

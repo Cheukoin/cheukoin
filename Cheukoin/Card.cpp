@@ -1,7 +1,4 @@
 #include "Card.h"
-#include "ResourcePath.h"
-#include <map>
-#include <string>
 
 using namespace std;
 

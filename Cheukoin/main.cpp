@@ -1,8 +1,18 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
+
+#include "Bid.h"
+#include "Bot.h"
 #include "Card.h"
-#include "Trick.h"
+#include "Game.h"
+#include "Hand.h"
 #include "NetworkManager.h"
+#include "Player.h"
+#include "ResourcePath.h"
+#include "Score.h"
+#include "Team.h"
+#include "Trick.h"
+#include "Rules.h"
 
 using namespace std;
 

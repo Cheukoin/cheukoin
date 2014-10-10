@@ -14,6 +14,8 @@ Player::~Player()
 void Player::playCard(Card const& card)
 {
 #warning TODO : verify move is valid with rules
+#warning TODO : add to current trick
+#warning TODO : notify server if multiplayer
     _hand.removeCard(card);
 }
 

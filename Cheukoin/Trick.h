@@ -1,21 +1,22 @@
-#pragma once
+#ifndef __Cheukoin_Trick__
+#define __Cheukoin_Trick__
+
 #include <vector>
 #include <map>
 #include "Card.h"
 
-class Trick
-{
+class Trick {
 public:
-	Trick();
+    Trick();
     Trick(int number);
-	~Trick();
+    ~Trick();
     void setNumber(int number);
     int getNumber();
     void addCard(Card const& Card);
     std::vector<Card> getComposition();
     Card winningCard(Suit const& suit);
     bool isGreater(Card card1, Card card2, Suit suit) const;
-    
+
 private:
     int _number;
     std::vector<Card> _composition;
@@ -23,3 +24,4 @@ private:
     std::map<Value, int> _cardValuesAsset;
 };
 
+#endif

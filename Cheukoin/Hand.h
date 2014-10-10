@@ -1,7 +1,10 @@
-#pragma once
+#ifndef __Cheukoin_Hand__
+#define __Cheukoin_Hand__
+
 #include <vector>
 #include "Card.h"
 #include <iostream>
+#include "Game.h"
 
 class Hand {
 public:
@@ -19,3 +22,5 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& flux, Hand const& hand);
+
+#endif

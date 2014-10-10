@@ -1,5 +1,4 @@
 #include "Bid.h"
-using namespace std;
 
 Bid::Bid()
 {

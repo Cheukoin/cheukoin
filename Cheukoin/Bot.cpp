@@ -12,7 +12,7 @@ Bot::~Bot()
 
 void Bot::play()
 {
-    Card nextCard = Bot::chooseCard();
+    Card nextCard = chooseCard();
     Player::playCard(nextCard);
 }
 
@@ -20,3 +20,5 @@ Card Bot::chooseCard()
 {
     return _hand.getCards()[0];
 }
+
+void Bot::guessHands() {}
