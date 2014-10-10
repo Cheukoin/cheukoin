@@ -27,7 +27,6 @@ enum Value {
 class Card {
 public:
     bool isEqual(Card const& a) const;
-    int k = 0;
     std::shared_ptr<sf::Sprite> sprites2; //est-ce que ça marche?
     Value getValue() const;
     Suit getSuit() const;
