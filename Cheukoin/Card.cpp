@@ -9,15 +9,15 @@ Card::Card(Suit suit, Value value)
     : _texture(sf::Texture())
     , _suit(suit)
     , _value(value)
-    , sprites2(new sf::Sprite())
+    , sprites(new sf::Sprite())
 {
     if (!_texture.loadFromFile(resourcePath("cardBack.png"))) {
         // handle texture not loaded
         puts("Texture file not loaded");
     }
-    sprites2->setTextureRect(sf::IntRect(0, 0, 342, 480));
-    sprites2->setTexture(_texture);
-    sprites2->setScale(sf::Vector2f(0.3, 0.3));
+    sprites->setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprites->setTexture(_texture);
+    sprites->setScale(sf::Vector2f(0.3, 0.3));
 }
 
 Card::~Card()
@@ -43,9 +43,9 @@ void Card::turn()
         puts("Texture file not loaded");
     }
     this->changeTexture(test);
-    sprites2->setTextureRect(sf::IntRect(0, 0, 342, 480));
-    sprites2->setTexture(_texture);
-    sprites2->setScale(sf::Vector2f(0.3, 0.3));
+    sprites->setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprites->setTexture(_texture);
+    sprites->setScale(sf::Vector2f(0.3, 0.3));
 }
 Value Card::getValue() const
 {

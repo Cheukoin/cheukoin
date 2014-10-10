@@ -33,22 +33,22 @@ int main()
                 window.close();
         }
 
-        auto pos = card.sprites2->getPosition();
-        if (pos.x > window.getSize().x - card.sprites2->getGlobalBounds().width || pos.x < 0) {
+        auto pos = card.sprites->getPosition();
+        if (pos.x > window.getSize().x - card.sprites->getGlobalBounds().width || pos.x < 0) {
             v.x *= -1;
         }
-        if (pos.y > window.getSize().y - card.sprites2->getGlobalBounds().height || pos.y < 0) {
+        if (pos.y > window.getSize().y - card.sprites->getGlobalBounds().height || pos.y < 0) {
             v.y *= -1;
         }
-        card.sprites2->setPosition(pos.x + v.x, pos.y + v.y);
-        card2.sprites2->setPosition(pos.x + v.x + 30, pos.y + v.y);
+        card.sprites->setPosition(pos.x + v.x, pos.y + v.y);
+        card2.sprites->setPosition(pos.x + v.x + 30, pos.y + v.y);
 
         window.clear(sf::Color::Color(63, 150, 61, 255));
         //window.draw(card.sprite);
 
         card.turn();
-        window.draw(*card.sprites2);
-        window.draw(*card2.sprites2);
+        window.draw(*card.sprites);
+        window.draw(*card2.sprites);
         window.display();
     }
 
