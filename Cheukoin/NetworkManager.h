@@ -17,7 +17,8 @@
 class NetworkManager {
 
 public:
-    static void createLobby();
+    static void createLobby(const std::string& name);
+    static void listLobbies();
 
 private:
     static Json::Value request(const std::string& url, const std::string& body, sf::Http::Request::Method method);

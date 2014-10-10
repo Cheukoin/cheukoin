@@ -23,7 +23,9 @@ int main()
     cout << trick.winningCard(Hearts) << endl;
     cout << trick.winningCard(Hearts) << endl;
 
-    NetworkManager::createLobby();
+    NetworkManager::createLobby("Ma super Coinche !");
+    NetworkManager::listLobbies();
+
     sf::Vector2i v(1, 1);
 
     while (window.isOpen()) {
