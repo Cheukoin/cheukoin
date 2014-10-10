@@ -13,6 +13,7 @@ public:
     void displayCards(std::ostream& flux) const;
     std::vector<Card> getCards();
     bool isHandValid();
+    std::vector<Card> cardsForSuit(Suit suit);
 
     Hand();
     ~Hand();
@@ -22,5 +23,6 @@ private:
 };
 
 std::ostream& operator<<(std::ostream& flux, Hand const& hand);
+std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit); //same as member function, but for any vector of cards (useful to analyse parts of hands, parts of tricks, etc...)
 
 #endif

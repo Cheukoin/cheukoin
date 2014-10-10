@@ -67,27 +67,55 @@ bool Rules::isTeamValid(Team team)
     return (team.getComposition().size() == 2) && (team.getComposition()[0].getName() != team.getComposition()[1].getName());
 }
 
-std::vector<Card> Rules::playableCard(Player player, Card firstCard, Suit asset)
+bool Rules::isFriendMaster(Player player, vector<Card> firstCards, Suit asset)
 {
-    Suit demandedSuit = firstCard.getSuit();
+    bool master = false;
+    int numberPlayedCards = firstCards.size();
+    std::vector<Card> enemyCards;
+    if (numberPlayedCards > 1) {
+        Card friendlyCard = firstCards[numberPlayedCards - 2];
+        for (auto c : firstCards) {
+            if (c != friendlyCard) {
+                enemyCards.push_back(c);
+            }
+        }
+        master = isCardGreater(friendlyCard, enemyCards[0], asset) && isCardGreater(friendlyCard, enemyCards[1], asset);
+    }
+    return master;
+}
+
+std::vector<Card> Rules::playableCard(Player player, vector<Card> firstCards, Suit asset)
+{
+
+    Suit demandedSuit = firstCards[0].getSuit();
     std::vector<Card> playableCards;
     bool piss = true;
-    for (auto c : player.getHand().getCards()) {
-        if (c.getSuit() == demandedSuit) {
-            piss = false;
-            playableCards.push_back(c);
-        }
-        else if (c.getSuit() == asset) {
-            piss = false;
-            playableCards.push_back(c);
-        }
+    if (player.getHand().cardsForSuit(demandedSuit).size() != 0) {
+        piss = false;
+        playableCards = player.getHand().cardsForSuit(demandedSuit);
     }
-    if (piss) {
-        return player.getHand().getCards();
+    else if (isFriendMaster(player, firstCards, asset)) {
+        playableCards = player.getHand().getCards();
+    }
+    else if (player.getHand().cardsForSuit(asset).size() != 0) {
+        piss = false;
+        std::vector<Card> assets = cardsForSuit(firstCards, asset);
+        Card max = assets[0];
+        for (auto c : assets) {
+            if (isCardGreater(c, max, asset)) {
+                max = c;
+            }
+        }
+        for (auto c : player.getHand().cardsForSuit(asset)) {
+            if (isCardGreater(c, max, asset)) {
+                playableCards.push_back(c);
+            }
+        }
     }
     else {
-        return playableCards;
+        playableCards = playableCards = player.getHand().getCards();
     }
+    return playableCards;
 }
 
 bool Rules::isTrickvalid(Trick trick)
