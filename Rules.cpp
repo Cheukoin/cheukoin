@@ -61,3 +61,25 @@ Card Rules::winningCard(Trick trick, Suit asset)
     }
     return max;
 }
+
+bool Rules::isTeamValid(Team team)
+{
+    return (team.getComposition().size() == 2) && (team.getComposition()[0].getName() != team.getComposition()[1].getName());
+}
+
+std::vector<Card> Rules::playableCard(Player player, Card firstCard, Suit asset)
+{
+    Suit demandedSuit = firstCard.getSuit();
+    std::vector<Card> playableCards;
+    bool piss = false;
+    for (auto c : player.getHand().getCards()) {
+        if (c.getSuit() == demandedSuit) {
+            piss = true;
+        }
+    }
+}
+
+bool Rules::isTrickvalid(Trick trick)
+{
+    Suit demandedSuit = trick.getComposition()[0].getSuit();
+}

@@ -3,23 +3,24 @@
 #include <map>
 #include "Card.h"
 
-class Trick
-{
+class Trick {
 public:
-	Trick();
+    Trick();
     Trick(int number);
-	~Trick();
+    ~Trick();
     void setNumber(int number);
     int getNumber();
+    std::string getBeginner();
+    void setBeginner(std::string);
     void addCard(Card const& Card);
     std::vector<Card> getComposition();
     Card winningCard(Suit const& suit);
     bool isGreater(Card card1, Card card2, Suit suit) const;
-    
+
 private:
     int _number;
+    std::string _beginner;
     std::vector<Card> _composition;
     std::map<Value, int> _cardValues;
     std::map<Value, int> _cardValuesAsset;
 };
-

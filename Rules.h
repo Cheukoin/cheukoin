@@ -14,6 +14,7 @@
 #include "Card.h"
 #include "Trick.h"
 #include "Team.h"
+#include "Player.h"
 
 class Rules {
 public:
@@ -23,6 +24,7 @@ public:
     Card winningCard(Trick trick, Suit asset);
     bool isTrickvalid(Trick trick);
     bool isTeamValid(Team team);
+    std::vector<Card> playableCard(Player player, Card firstCard, Suit asset);
 
 private:
     std::map<Value, int> _cardValues;
