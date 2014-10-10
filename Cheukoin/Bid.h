@@ -2,9 +2,7 @@
 #define __Cheukoin_Bid__
 
 #include "Constants.h"
-
-class Game;
-class Card;
+#include "Bid.h"
 
 class Bid {
 public:

@@ -1,15 +1,9 @@
 #ifndef __Cheukoin_Card__
 #define __Cheukoin_Card__
 
-#include <string>
 #include <SFML/Graphics.hpp>
-#include <iostream>
-#include <memory>
-#include <map>
-#include <string>
-
-#include "ResourcePath.h"
 #include "Constants.h"
+#include "ResourcePath.h"
 
 class Card {
 public:

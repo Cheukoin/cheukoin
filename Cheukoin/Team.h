@@ -2,9 +2,8 @@
 #define __Cheukoin_Team__
 
 #include <string>
-#include <vector>
-#include "Player.h"
 #include "Trick.h"
+#include "Player.h"
 
 class Team {
 public:

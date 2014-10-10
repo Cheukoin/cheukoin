@@ -1,9 +1,8 @@
 #ifndef __Cheukoin_Bot__
 #define __Cheukoin_Bot__
 
-#include <map>
-#include <string>
 #include "Player.h"
+#include "Card.h"
 
 class Bot : public Player {
 public:
