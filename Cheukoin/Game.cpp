@@ -6,12 +6,32 @@ Game& Game::getInstance()
     return instance;
 }
 
-void Game::setCurrentBid(Bid const& bid)
+void Game::setBid(Bid const& bid)
 {
-    _currentBid = bid;
+    _bid = bid;
 }
 
-Bid Game::getCurrentBid()
+Bid Game::getBid()
 {
-    return _currentBid;
+    return _bid;
+}
+
+void Game::addPlayer(Player& player)
+{
+    _players.push_back(player);
+}
+
+std::vector<Player> Game::getPlayers()
+{
+    return _players;
+}
+
+void Game::addTrick(Trick const& trick)
+{
+    _tricks.push_back(trick);
+}
+
+std::vector<Trick> Game::getTricks()
+{
+    return _tricks;
 }
