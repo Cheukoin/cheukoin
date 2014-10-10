@@ -1,6 +1,8 @@
 #ifndef __Cheuckoin_Score__
 #define __Cheuckoin_Score__
 
+#include <iostream>
+
 #include "Bid.h"
 #include "Trick.h"
 #include "Team.h"

@@ -1,7 +1,7 @@
 #ifndef __Cheukoin_Card__
 #define __Cheukoin_Card__
 
-#include "SFML/Graphics.hpp"
+#include <SFML/Graphics.hpp>
 #include "Constants.h"
 #include "ResourcePath.h"
 
