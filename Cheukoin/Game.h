@@ -1,9 +1,21 @@
-#pragma once
+#ifndef __Cheukoin_Game__
+#define __Cheukoin_Game__
 
-class Game
-{
+class Bid;
+
+class Game {
 public:
-	Game();
-	~Game();
+    static Game& getInstance();
+
+    void setCurrentBid(Bid* const& bid);
+    Bid* getCurrentBid();
+
+private:
+    Game(){};
+    Game(Game const&); // Don't Implement
+    void operator=(Game const&); // Don't implement\
+
+    Bid* _currentBid;
 };
 
+#endif

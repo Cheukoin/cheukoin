@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __Cheukoin_Trick__
+#define __Cheukoin_Trick__
+
 #include <vector>
 #include <map>
 #include "Card.h"
@@ -24,3 +26,5 @@ private:
     std::map<Value, int> _cardValues;
     std::map<Value, int> _cardValuesAsset;
 };
+
+#endif

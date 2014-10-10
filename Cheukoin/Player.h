@@ -1,6 +1,10 @@
+#ifndef __Cheukoin_Player__
+#define __Cheukoin_Player__
+
 #include <string>
 #include "Bid.h"
 #include "Hand.h"
+#include "Game.h"
 
 class Player {
 public:
@@ -22,3 +26,5 @@ protected:
     Hand _hand;
     Bid _bid;
 };
+
+#endif

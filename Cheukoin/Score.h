@@ -1,4 +1,6 @@
-#pragma once
+#ifndef __Cheuckoin_Score__
+#define __Cheuckoin_Score__
+
 #include "Trick.h"
 #include "Team.h"
 #include <vector>
@@ -9,18 +11,18 @@ using namespace std;
 
 class Score {
 public:
-
-	Score();
-	~Score();
-	Bid getRetainedBid();
-	int computeScore(Trick trick);
+    Score();
+    ~Score();
+    Bid getRetainedBid();
+    int computeScore(Trick trick);
     Team computeWinner(Trick trick);
-	void addOutcome(string equipe, int score);
+    void addOutcome(string equipe, int score);
     std::map<int, std::string> getOutcome();
 
 private:
-	Bid _retainedBid;
+    Bid _retainedBid;
     Team _biddingTeam;
     std::map<int, std::string> _gameOutcome; // ensemble des pairs de pairs {équipe, score}
-
 };
+
+#endif

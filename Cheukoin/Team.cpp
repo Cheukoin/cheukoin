@@ -1,17 +1,17 @@
 #include "Team.h"
-#include <vector>
 
 using namespace std;
 
-
-Team::Team(): _name("Thomas Mollard"), _score(0)
+Team::Team()
+    : _name("Thomas Mollard")
+    , _score(0)
 {
-    
 }
 
-Team::Team(string name): _name(name), _score(0)
+Team::Team(string name)
+    : _name(name)
+    , _score(0)
 {
-    
 }
 
 Team::~Team()
@@ -20,12 +20,9 @@ Team::~Team()
 
 void Team::addPlayer(Player const& player)
 {
-    if (_players.size() > 1)
-    {
-        
+    if (_players.size() > 1) {
     }
-    else
-    {
+    else {
         _players.push_back(player);
     }
 }
@@ -53,4 +50,9 @@ int Team::getScore()
 vector<Trick> Team::getTricks()
 {
     return _wonTricks;
+}
+
+std::vector<Player> Team::getComposition()
+{
+    return _players;
 }

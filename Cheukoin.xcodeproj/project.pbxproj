@@ -74,6 +74,7 @@
 		C0B83EB419E2C23C0037C5AE /* Trick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trick.h; sourceTree = "<group>"; };
 		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
+		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C956AE6319E53E2600F45B47 /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rules.cpp; path = ../Rules.cpp; sourceTree = "<group>"; };
 		C956AE6419E53E2600F45B47 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rules.h; path = ../Rules.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +153,7 @@
 				C0B83EB419E2C23C0037C5AE /* Trick.h */,
 				C956AE6319E53E2600F45B47 /* Rules.cpp */,
 				C956AE6419E53E2600F45B47 /* Rules.h */,
+				C0C093BE19E81BD900023F27 /* Constants.h */,
 			);
 			path = Cheukoin;
 			sourceTree = "<group>";
