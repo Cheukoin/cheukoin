@@ -1,12 +1,9 @@
 #include "Bid.h"
 using namespace std;
 
-
-
 Bid::Bid()
 {
 }
-
 
 Bid::~Bid()
 {
@@ -19,12 +16,12 @@ Value Bid::getValue()
 
 void Bid::setValue(Value value)
 {
-    _value=value;
+    _value = value;
 }
 
 void Bid::setSuit(Suit suit)
 {
-    _suit=suit;
+    _suit = suit;
 }
 
 Suit Bid::getSuit()
@@ -34,10 +31,5 @@ Suit Bid::getSuit()
 
 bool Bid::isBidValid(Bid previousBid)
 {
-    
+    return false;
 }
-
-
-
-
-
