@@ -71,11 +71,22 @@ std::vector<Card> Rules::playableCard(Player player, Card firstCard, Suit asset)
 {
     Suit demandedSuit = firstCard.getSuit();
     std::vector<Card> playableCards;
-    bool piss = false;
+    bool piss = true;
     for (auto c : player.getHand().getCards()) {
         if (c.getSuit() == demandedSuit) {
-            piss = true;
+            piss = false;
+            playableCards.push_back(c);
         }
+        else if (c.getSuit() == asset) {
+            piss = false;
+            playableCards.push_back(c);
+        }
+    }
+    if (piss) {
+        return player.getHand().getCards();
+    }
+    else {
+        return playableCards;
     }
 }
 
