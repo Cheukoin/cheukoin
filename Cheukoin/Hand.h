@@ -8,8 +8,8 @@ public:
     void removeCard(Card const& card);
     void addCard(Card const& card);
     void displayCards(std::ostream& flux) const;
-    std::vector <Card> getCards ();
-    bool isHandValid(); 
+    std::vector<Card> getCards();
+    bool isHandValid();
 
     Hand();
     ~Hand();

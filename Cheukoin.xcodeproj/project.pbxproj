@@ -16,6 +16,7 @@
 		19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
 		19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
+		93C2746A19E6D0AF00A52C42 /* ClubsNine.png in Resources */ = {isa = PBXBuildFile; fileRef = 93C2746919E6D0AF00A52C42 /* ClubsNine.png */; };
 		C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
 		C0B83EB619E2C23C0037C5AE /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9B19E2C23C0037C5AE /* Card.cpp */; };
 		C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA019E2C23C0037C5AE /* Game.cpp */; };
@@ -47,6 +48,7 @@
 		19EAA46319E2C72C00F23D27 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
+		93C2746919E6D0AF00A52C42 /* ClubsNine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ClubsNine.png; sourceTree = "<group>"; };
 		C0B83E9919E2C23C0037C5AE /* Bid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bid.cpp; sourceTree = "<group>"; };
 		C0B83E9A19E2C23C0037C5AE /* Bid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bid.h; sourceTree = "<group>"; };
 		C0B83E9B19E2C23C0037C5AE /* Card.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Card.cpp; sourceTree = "<group>"; };
@@ -176,6 +178,7 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				93C2746919E6D0AF00A52C42 /* ClubsNine.png */,
 				C0B83EAD19E2C23C0037C5AE /* cardBack.png */,
 				C0B83EAE19E2C23C0037C5AE /* Thumbs.db */,
 			);
@@ -250,6 +253,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */,
+				93C2746A19E6D0AF00A52C42 /* ClubsNine.png in Resources */,
 				C0B83EC019E2C23C0037C5AE /* cardBack.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
