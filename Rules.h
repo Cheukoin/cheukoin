@@ -13,13 +13,16 @@
 #include <map>
 #include "Card.h"
 #include "Trick.h"
+#include "Team.h"
 
 class Rules {
 public:
     Rules();
     ~Rules();
-    bool isGreater(Card card1, Card card2, Suit asset);
+    bool isCardGreater(Card card1, Card card2, Suit asset);
     Card winningCard(Trick trick, Suit asset);
+    bool isTrickvalid(Trick trick);
+    bool isTeamValid(Team team);
 
 private:
     std::map<Value, int> _cardValues;

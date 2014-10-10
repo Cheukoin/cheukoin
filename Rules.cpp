@@ -21,7 +21,7 @@ Rules::~Rules()
 {
 }
 
-bool Rules::isGreater(Card card1, Card card2, Suit asset)
+bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
 {
     if (card1.getSuit() != asset && card2.getSuit() == asset) {
         return false;
@@ -55,7 +55,7 @@ Card Rules::winningCard(Trick trick, Suit asset)
 {
     Card max = trick.getComposition()[0];
     for (int i = 0; i < trick.getComposition().size(); i++) {
-        if (isGreater(trick.getComposition()[i], max, asset)) {
+        if (isCardGreater(trick.getComposition()[i], max, asset)) {
             max = trick.getComposition()[i];
         }
     }
