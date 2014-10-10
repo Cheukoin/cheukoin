@@ -2,9 +2,10 @@
 #define __Cheukoin_Player__
 
 #include <string>
+
 #include "Bid.h"
 #include "Hand.h"
-#include "Game.h"
+#include "Card.h"
 
 class Player {
 public:

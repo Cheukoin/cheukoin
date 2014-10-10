@@ -6,12 +6,12 @@ Game& Game::getInstance()
     return instance;
 }
 
-void Game::setCurrentBid(Bid* const& bid)
+void Game::setCurrentBid(Bid const& bid)
 {
     _currentBid = bid;
 }
 
-Bid* Game::getCurrentBid()
+Bid Game::getCurrentBid()
 {
     return _currentBid;
 }

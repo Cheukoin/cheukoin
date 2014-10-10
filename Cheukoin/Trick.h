@@ -1,9 +1,8 @@
 #ifndef __Cheukoin_Trick__
 #define __Cheukoin_Trick__
 
-#include <vector>
-#include <map>
 #include "Card.h"
+#include "Constants.h"
 
 class Trick {
 public:

@@ -9,12 +9,11 @@
 #ifndef __Cheukoin__Rules__
 #define __Cheukoin__Rules__
 
-#include <iostream>
-#include <map>
 #include "Card.h"
 #include "Trick.h"
 #include "Team.h"
 #include "Player.h"
+#include "Constants.h"
 
 class Rules {
 public:

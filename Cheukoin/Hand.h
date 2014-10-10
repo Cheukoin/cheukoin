@@ -1,10 +1,7 @@
 #ifndef __Cheukoin_Hand__
 #define __Cheukoin_Hand__
 
-#include <vector>
 #include "Card.h"
-#include <iostream>
-#include "Game.h"
 
 class Hand {
 public:

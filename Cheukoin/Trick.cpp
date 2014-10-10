@@ -1,4 +1,5 @@
 #include "Trick.h"
+
 using namespace std;
 
 Trick::Trick()

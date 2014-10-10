@@ -1,11 +1,9 @@
 #ifndef __Cheuckoin_Score__
 #define __Cheuckoin_Score__
 
+#include "Bid.h"
 #include "Trick.h"
 #include "Team.h"
-#include <vector>
-#include <string>
-#include <map>
 
 using namespace std;
 
