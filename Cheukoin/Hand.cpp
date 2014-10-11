@@ -74,9 +74,24 @@ std::vector<sf::Sprite> Hand::displayCards() const
     return vect;
 }
 
-/*std::ostream& operator<<(std::ostream& flux, Hand const& hand)
+std::vector<Card> Hand::cardsForSuit(Suit suit)
 {
-    hand.displayCards(flux);
-    return flux;
+    std::vector<Card> cardsForSuit;
+    for (auto c : _cards) {
+        if (c.getSuit() == suit) {
+            cardsForSuit.push_back(c);
+        }
+    }
+    return cardsForSuit;
 }
- */
+
+std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
+{
+    std::vector<Card> cardsForSuit;
+    for (auto c : cards) {
+        if (c.getSuit() == suit) {
+            cardsForSuit.push_back(c);
+        }
+    }
+    return cardsForSuit;
+}

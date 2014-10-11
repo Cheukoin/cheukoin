@@ -64,6 +64,11 @@ bool operator==(Card const& a, Card const& b)
     return a.isEqual(b);
 }
 
+bool operator!=(Card const& a, Card const& b)
+{
+    return not(a.isEqual(b));
+}
+
 ostream& operator<<(ostream& os, const Card& card)
 {
     os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";

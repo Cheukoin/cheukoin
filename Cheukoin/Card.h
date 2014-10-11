@@ -26,6 +26,7 @@ private:
 };
 
 bool operator==(Card const& a, Card const& b);
+bool operator!=(Card const& a, Card const& b);
 
 std::ostream& operator<<(std::ostream& os, const Card& card);
 

@@ -17,9 +17,12 @@ public:
     std::vector<sf::Sprite> displayCards() const;
     std::vector<Card> getCards();
     bool isHandValid();
+
     Position getPosition(Hand hand) const;
     void setPosition(Hand hand);
     void turn(Hand hand, Position position);
+
+    std::vector<Card> cardsForSuit(Suit suit);
 
     Hand(std::vector<Card> cards, Position position);
     ~Hand();
@@ -29,5 +32,8 @@ private:
     std::vector<Card> _cards;
     Position _position;
 };
+
+std::ostream& operator<<(std::ostream& flux, Hand const& hand);
+std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit); //same as member function, but for any vector of cards (useful to analyse parts of hands, parts of tricks, etc...)
 
 #endif
