@@ -20,7 +20,6 @@
 
 #include "Constants.h"
 
-
 class Rules {
 public:
     Rules();
@@ -31,6 +30,7 @@ public:
     bool isTeamValid(Team team);
     bool isFriendMaster(Player player, std::vector<Card> firstCards, Suit asset);
     std::vector<Card> playableCard(Player player, std::vector<Card> firstCards, Suit asset);
+    void giveWinnerTrick(Trick trick, Suit asset);
 
 private:
     std::map<Value, int> _cardValues;

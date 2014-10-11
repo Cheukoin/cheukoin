@@ -8,7 +8,6 @@
 
 #include "Rules.h"
 
-
 using namespace std;
 
 Rules::Rules()
@@ -121,4 +120,11 @@ std::vector<Card> Rules::playableCard(Player player, vector<Card> firstCards, Su
 bool Rules::isTrickvalid(Trick trick)
 {
     Suit demandedSuit = trick.getComposition()[0].getSuit();
+}
+
+void Rules::giveWinnerTrick(Trick trick, Suit asset)
+{
+    Card best = winningCard(trick, asset);
+    for (auto c : trick.getComposition()) {
+    }
 }

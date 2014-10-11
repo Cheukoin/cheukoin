@@ -6,7 +6,6 @@
 
 class Trick {
 public:
-    Trick();
     Trick(int number);
     ~Trick();
     void setNumber(int number);
