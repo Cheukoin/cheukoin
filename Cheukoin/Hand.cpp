@@ -1,10 +1,16 @@
 #include "Hand.h"
 
-Hand::Hand()
-    : _cards()
+Hand::Hand(std::vector<Card> cards, Position position)
+    : _cards(cards)
+    , _position(position)
 {
 }
+Hand::Hand()
+    : _cards()
+    , _position()
 
+{
+}
 Hand::~Hand()
 {
 }
@@ -14,8 +20,9 @@ void Hand::removeCard(Card const& card)
     int i = 0;
     if (_cards.size() != 0)
         for (i = 0; i < _cards.size(); i++)
-            if (_cards[i] == card)
+            if (_cards[i] == card) {
                 _cards.erase(_cards.begin() + i);
+            }
 }
 
 void Hand::addCard(Card const& card)
@@ -33,16 +40,43 @@ std::vector<Card> Hand::getCards()
     return _cards;
 }
 
-void Hand::displayCards(std::ostream& flux) const
+std::vector<sf::Sprite> Hand::displayCards() const
 {
     int i = 0;
-    for (i = 0; i < _cards.size(); i++) {
-        flux << &_cards[i];
+    std::vector<sf::Sprite> vect;
+    auto pos = _cards[0].sprites->getPosition();
+    if (_position == Left) {
+        for (i = 0; i < _cards.size(); i++) {
+            _cards[i].sprites->setPosition(pos.x, 100 + i * 40);
+            vect.push_back(*_cards[i].sprites);
+        }
     }
+    if (_position == Right) {
+        for (i = 0; i < _cards.size(); i++) {
+            _cards[i].sprites->setPosition(700, 100 + i * 40);
+            vect.push_back(*_cards[i].sprites);
+        }
+    }
+
+    if (_position == Up) {
+        for (i = 0; i < _cards.size(); i++) {
+            _cards[i].sprites->setPosition(100 + i * 50, 10);
+            vect.push_back(*_cards[i].sprites);
+        }
+    }
+
+    if (_position == Down) {
+        for (i = 0; i < _cards.size(); i++) {
+            _cards[i].sprites->setPosition(100 + i * 50, 450);
+            vect.push_back(*_cards[i].sprites);
+        }
+    }
+    return vect;
 }
 
-std::ostream& operator<<(std::ostream& flux, Hand const& hand)
+/*std::ostream& operator<<(std::ostream& flux, Hand const& hand)
 {
     hand.displayCards(flux);
     return flux;
 }
+ */
