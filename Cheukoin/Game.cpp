@@ -6,6 +6,16 @@ Game& Game::getInstance()
     return instance;
 }
 
+void Game::setMode(GameMode mode)
+{
+    _mode = mode;
+}
+
+GameMode Game::getMode()
+{
+    return _mode;
+}
+
 void Game::setBid(Bid* const& bid)
 {
     _bid = bid;
@@ -34,4 +44,9 @@ void Game::addTrick(Trick* const& trick)
 std::vector<Trick*> Game::getTricks()
 {
     return _tricks;
+}
+
+Trick* Game::getCurrentTrick()
+{
+    return _tricks.back();
 }

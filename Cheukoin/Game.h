@@ -3,6 +3,8 @@
 
 #include <vector>
 
+#include "Constants.h"
+
 class Trick;
 class Player;
 class Bid;
@@ -10,6 +12,9 @@ class Bid;
 class Game {
 public:
     static Game& getInstance();
+
+    void setMode(GameMode mode);
+    GameMode getMode();
 
     void setBid(Bid* const& bid);
     Bid* getBid();
@@ -19,12 +24,14 @@ public:
 
     void addTrick(Trick* const& trick);
     std::vector<Trick*> getTricks();
+    Trick* getCurrentTrick();
 
 private:
     Game(){};
-    Game(Game const&); // Don't Implement
-    void operator=(Game const&); // Don't implement\
+    Game(Game const&);
+    void operator=(Game const&);
 
+    GameMode _mode;
     Bid* _bid;
     std::vector<Player*> _players;
     std::vector<Trick*> _tricks;

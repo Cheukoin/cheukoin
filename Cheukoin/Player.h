@@ -7,6 +7,8 @@
 #include "Hand.h"
 #include "Card.h"
 #include "Game.h"
+#include "Trick.h"
+#include "Constants.h"
 
 class Player {
 public:
