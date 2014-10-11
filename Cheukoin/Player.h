@@ -6,11 +6,11 @@
 #include "Bid.h"
 #include "Hand.h"
 #include "Card.h"
+#include "Game.h"
 
 class Player {
 public:
     Player();
-    ~Player();
 
     void playCard(Card const& card);
     Bid makeBid(int amount, Suit const& asset);
@@ -26,6 +26,7 @@ protected:
     std::string _name;
     Hand _hand;
     Bid _bid;
+    Game& _game = Game::getInstance();
 };
 
 #endif
