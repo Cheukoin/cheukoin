@@ -3,31 +3,38 @@
 
 #include <vector>
 
-#include "Bid.h"
-#include "Player.h"
-#include "Trick.h"
+#include "Constants.h"
+
+class Trick;
+class Player;
+class Bid;
 
 class Game {
 public:
     static Game& getInstance();
 
-    void setBid(Bid const& bid);
-    Bid getBid();
+    void setMode(GameMode mode);
+    GameMode getMode();
 
-    void addPlayer(Player& player);
-    std::vector<Player> getPlayers();
+    void setBid(Bid* const& bid);
+    Bid* getBid();
 
-    void addTrick(Trick const& trick);
-    std::vector<Trick> getTricks();
+    void addPlayer(Player*& player);
+    std::vector<Player*> getPlayers();
+
+    void addTrick(Trick* const& trick);
+    std::vector<Trick*> getTricks();
+    Trick* getCurrentTrick();
 
 private:
     Game(){};
-    Game(Game const&); // Don't Implement
-    void operator=(Game const&); // Don't implement\
+    Game(Game const&);
+    void operator=(Game const&);
 
-    Bid _bid;
-    std::vector<Player> _players;
-    std::vector<Trick> _tricks;
+    GameMode _mode;
+    Bid* _bid;
+    std::vector<Player*> _players;
+    std::vector<Trick*> _tricks;
 };
 
 #endif

@@ -6,32 +6,47 @@ Game& Game::getInstance()
     return instance;
 }
 
-void Game::setBid(Bid const& bid)
+void Game::setMode(GameMode mode)
+{
+    _mode = mode;
+}
+
+GameMode Game::getMode()
+{
+    return _mode;
+}
+
+void Game::setBid(Bid* const& bid)
 {
     _bid = bid;
 }
 
-Bid Game::getBid()
+Bid* Game::getBid()
 {
     return _bid;
 }
 
-void Game::addPlayer(Player& player)
+void Game::addPlayer(Player*& player)
 {
     _players.push_back(player);
 }
 
-std::vector<Player> Game::getPlayers()
+std::vector<Player*> Game::getPlayers()
 {
     return _players;
 }
 
-void Game::addTrick(Trick const& trick)
+void Game::addTrick(Trick* const& trick)
 {
     _tricks.push_back(trick);
 }
 
-std::vector<Trick> Game::getTricks()
+std::vector<Trick*> Game::getTricks()
 {
     return _tricks;
+}
+
+Trick* Game::getCurrentTrick()
+{
+    return _tricks.back();
 }
