@@ -18,6 +18,10 @@ public:
     void changeTexture(sf::Texture texture2);
     std::string getFileName();
     sf::Sprite _sprite;
+    float getLeft();
+    float getRight();
+    float getTop();
+    float getBottom();
 
 private:
     Suit _suit;
