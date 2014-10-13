@@ -24,6 +24,7 @@ public:
 
     std::vector<Card> cardsForSuit(Suit suit);
     void move(Card c);
+    void moveToTrick(Card c);
     void playOneCard(sf::RenderWindow& window, Card c);
     void playByClick(sf::RenderWindow& window);
     Hand(std::vector<Card> cards, Position position);

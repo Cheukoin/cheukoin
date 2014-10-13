@@ -24,14 +24,14 @@ Hand::Hand(std::vector<Card> cards, Position position)
 
     if (_position == Up) {
         for (i = 0; i < _cards.size(); i++) {
-            _cards[i].sprites->setPosition(100 + i * 50, 10);
+            _cards[i].sprites->setPosition(150 + i * 50, 10);
             vect.push_back(*_cards[i].sprites);
         }
     }
 
     if (_position == Down) {
         for (i = 0; i < _cards.size(); i++) {
-            _cards[i].sprites->setPosition(100 + i * 50, 450);
+            _cards[i].sprites->setPosition(150 + i * 50, 450);
             vect.push_back(*_cards[i].sprites);
         }
     }
@@ -58,7 +58,7 @@ void Hand::playByClick(sf::RenderWindow& window)
         for (k = 0; k < vect.size(); k++) {
             if (mousePosition.x >= vect[k].getLeft() && mousePosition.x <= vect[k].getRight() && mousePosition.y >= vect[k].getTop() && mousePosition.y <= vect[k].getBottom()) {
                 vect[k].turn();
-                move(vect[k]);
+                moveToTrick(vect[k]);
                 _cardPlayed = true;
             }
         }
@@ -127,6 +127,17 @@ void Hand::move(Card c)
         c.moveTo(350, 175);
     if (_position == Down)
         c.moveTo(350, 275);
+}
+void Hand::moveToTrick(Card c)
+{
+    if (_position == Left)
+        c.sprites->setPosition(300, 225);
+    if (_position == Right)
+        c.sprites->setPosition(400, 225);
+    if (_position == Up)
+        c.sprites->setPosition(350, 175);
+    if (_position == Down)
+        c.sprites->setPosition(350, 275);
 }
 
 std::vector<Card> Hand::cardsForSuit(Suit suit)

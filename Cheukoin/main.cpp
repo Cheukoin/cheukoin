@@ -11,18 +11,18 @@ using namespace std;
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
-    Card card = Card(Clubs, King);
-    Card card2 = Card(Clubs, Nine);
-    Card card3 = Card(Spades, Queen);
-    Card card4 = Card(Hearts, Seven);
-    Card card5 = Card(Hearts, Ten);
+    Card card = Card(Hearts, Queen); // 12
+    Card card2 = Card(Clubs, Nine); // 05
+    Card card3 = Card(Hearts, Ten); //14
+    Card card4 = Card(Hearts, King); //11
+    Card card5 = Card(Hearts, Ten); //14
     Trick trick = Trick(1);
     Player player1;
 
     Hand hand1({ card }, Up);
-    Hand hand2({ card4, card2 }, Down);
-    Hand hand3({ card5 }, Right);
-    Hand hand4({ card3 }, Left);
+    Hand hand2({ card5, card2 }, Down);
+    Hand hand3({ card3 }, Right);
+    Hand hand4({ card4 }, Left);
 
     player1.setHand(hand1);
     NetworkManager::createLobby();
@@ -46,9 +46,10 @@ int main()
         hand1.displayCards(window);
         hand2.playByClick(window);
         if (hand2.cardPlayed() == true) {
+
+            hand4.playOneCard(window, card4);
+            hand3.playOneCard(window, card3);
             hand1.playOneCard(window, card);
-            hand3.playOneCard(window, card5);
-            hand4.playOneCard(window, card3);
         }
         window.setMouseCursorVisible(true);
         window.display();

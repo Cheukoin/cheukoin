@@ -16,14 +16,13 @@ public:
     void turn();
     Card(Suit suit, Value value);
     ~Card();
-    std::string getFileName();
     sf::Sprite _sprite;
     float getLeft();
     float getRight();
     float getTop();
     float getBottom();
-    void moveTo(float x,float y);
-    
+    void moveTo(float x, float y);
+    std::string getFileName(Card& c);
 
 private:
     Suit _suit;

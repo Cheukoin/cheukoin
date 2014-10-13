@@ -20,6 +20,12 @@ Card::Card(Suit suit, Value value)
 Card::~Card()
 {
 }
+std::string Card::getFileName(Card& c)
+{
+    string str;
+    str = to_string(_suit) + to_string(_value) + ".png";
+    return str;
+}
 void Card::moveTo(float x, float y)
 {
 
@@ -55,14 +61,7 @@ sf::Texture Card::getTexture() const
 
 void Card::turn()
 {
-    std::string str;
-    if ((_suit == Clubs)
-        && (_value == Nine)) {
-        str = "ClubsNine.png"; //getFileName
-    }
-    else
-        str = "cc.png";
-
+    std::string str = getFileName(*this);
     if (!_texture->loadFromFile(resourcePath(str))) {
         // handle texture not loaded
         puts("Texture file not loaded");
