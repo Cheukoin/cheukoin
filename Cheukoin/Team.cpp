@@ -56,3 +56,14 @@ std::vector<Player> Team::getComposition()
 {
     return _players;
 }
+
+bool Team::isTeamDealing()
+{
+    bool dealing = false;
+    for (auto p : _players) {
+        if (p.isDealer()) {
+            dealing = true;
+        }
+    }
+    return dealing;
+}

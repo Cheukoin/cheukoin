@@ -42,11 +42,6 @@ int main()
             window.draw(vect[i]);
             sf::sleep(sf::milliseconds(3));
         }
-        std::vector<sf::Sprite> vect1 = tric.displayCards();
-        for (int i = 1; i < vect1.size(); i++) {
-            window.draw(vect1[i]);
-            sf::sleep(sf::milliseconds(3));
-        }
 
         int k = 0;
         sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
@@ -57,10 +52,14 @@ int main()
             for (k = 0; k < vect2.size(); k++) {
                 if (mousePosition.x >= vect2[k].getLeft() && mousePosition.x <= vect2[k].getRight() && mousePosition.y >= vect2[k].getTop() && mousePosition.y <= vect2[k].getBottom()) {
                     vect2[k].turn();
+
                     //hand1.removeCard(card)
                     //vect2[k] move
 
                     b = k;
+
+                    // pb avec la texture
+                    card.turn();
 
                     //play k + condition valid to play the card
                     // remove card hand , add to current trick move & display the current trick

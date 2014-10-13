@@ -53,3 +53,18 @@ void Player::setBid(Bid& bid)
 {
     _bid = bid;
 }
+
+void Player::makeDealer()
+{
+    _dealer = true;
+}
+
+void Player::changeDealer()
+{
+    _dealer = false;
+}
+
+bool Player::isDealer()
+{
+    return _dealer;
+}
