@@ -39,6 +39,7 @@ void Card::turn()
         // handle texture not loaded
         puts("Texture file not loaded");
     }
+
     this->changeTexture(test);
     sprites->setTextureRect(sf::IntRect(0, 0, 342, 480));
     sprites->setTexture(_texture);
@@ -69,6 +70,34 @@ bool operator!=(Card const& a, Card const& b)
     return not(a.isEqual(b));
 }
 
+float Card::getLeft()
+{
+    auto pos = this->sprites->getPosition();
+    sf::Vector2f size(342, 480);
+    sf::FloatRect rect(pos, size);
+    return rect.left;
+}
+float Card::getRight()
+{
+    auto pos = this->sprites->getPosition();
+    sf::Vector2f size(342, 480);
+    sf::FloatRect rect(pos, size);
+    return rect.left + 50;
+}
+float Card::getTop()
+{
+    auto pos = this->sprites->getPosition();
+    sf::Vector2f size(342, 480);
+    sf::FloatRect rect(pos, size);
+    return rect.top;
+}
+float Card::getBottom()
+{
+    auto pos = this->sprites->getPosition();
+    sf::Vector2f size(342, 480);
+    sf::FloatRect rect(pos, size);
+    return rect.height + rect.top;
+}
 ostream& operator<<(ostream& os, const Card& card)
 {
     os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";
