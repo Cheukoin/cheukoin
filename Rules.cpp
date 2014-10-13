@@ -127,9 +127,19 @@ bool Rules::isTrickvalid(Trick trick)
     return valid;
 }
 
-void Rules::giveWinnerTrick(Trick trick, Suit asset)
+void Rules::giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& team2)
 {
     Card best = winningCard(trick, asset);
-    for (auto c : trick.getComposition()) {
+    int winningIndex = 5;
+    int i = 0;
+    while (winningIndex == 5) {
+        if (trick.getComposition()[i] == best) {
+            winningIndex = i;
+        }
+        else {
+            i++;
+        }
+    }
+    if (winningIndex == 1 or i == 3) {
     }
 }

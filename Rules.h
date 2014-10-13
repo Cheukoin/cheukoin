@@ -30,7 +30,7 @@ public:
     bool isTeamValid(Team team);
     bool isFriendMaster(Player player, std::vector<Card> firstCards, Suit asset);
     std::vector<Card> playableCard(Player player, std::vector<Card> firstCards, Suit asset);
-    void giveWinnerTrick(Trick trick, Suit asset);
+    void giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& team2);
 
 private:
     std::map<Value, int> _cardValues;
