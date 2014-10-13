@@ -119,7 +119,12 @@ std::vector<Card> Rules::playableCard(Player player, vector<Card> firstCards, Su
 
 bool Rules::isTrickvalid(Trick trick)
 {
+    bool valid = true;
     Suit demandedSuit = trick.getComposition()[0].getSuit();
+    if (trick.getComposition().size() != 4) {
+        valid = false;
+    }
+    return valid;
 }
 
 void Rules::giveWinnerTrick(Trick trick, Suit asset)
