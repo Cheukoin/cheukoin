@@ -23,6 +23,7 @@ Card::~Card()
 void Card::changeTexture(sf::Texture texture2)
 {
     _texture = texture2;
+    _sprite.setTexture(_texture);
 }
 sf::Texture Card::getTexture() const
 {
@@ -102,4 +103,14 @@ ostream& operator<<(ostream& os, const Card& card)
 {
     os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";
     return os;
+}
+
+sf::Sprite Card::getSprite()
+{
+    return _sprite;
+}
+
+void Card::displayCard(sf::RenderWindow& window)
+{
+    window.draw(_sprite);
 }

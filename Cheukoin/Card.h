@@ -17,7 +17,8 @@ public:
     ~Card();
     void changeTexture(sf::Texture texture2);
     std::string getFileName();
-    sf::Sprite _sprite;
+    void displayCard(sf::RenderWindow& window);
+    sf::Sprite getSprite();
     float getLeft();
     float getRight();
     float getTop();
@@ -27,6 +28,7 @@ private:
     Suit _suit;
     Value _value;
     sf::Texture _texture;
+    sf::Sprite _sprite;
 };
 
 bool operator==(Card const& a, Card const& b);

@@ -2,6 +2,7 @@
 #define __Cheukoin_Hand__
 
 #include "Card.h"
+#include <SFML/Graphics.hpp>
 #include <iostream>
 enum Position {
     Left,
@@ -21,6 +22,7 @@ public:
     Position getPosition(Hand hand) const;
     void setPosition(Hand hand);
     void turn(Hand hand, Position position);
+    void displayHand(Position position, sf::RenderWindow& window);
 
     std::vector<Card> cardsForSuit(Suit suit);
 

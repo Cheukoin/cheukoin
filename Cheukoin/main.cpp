@@ -12,14 +12,12 @@ int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
     Card card = Card(Clubs, Nine);
-    Card card2 = Card(Spades, King);
-    Card card3 = Card(Spades, Queen);
-    Card card4 = Card(Hearts, Seven);
-    Trick trick = Trick(1);
+    Card card2 = Card(Spades, Seven);
     Player player1;
 
-    Hand hand1({ card3, card4, card2, card }, Down);
-    player1.setHand(hand1);
+    Hand hand1;
+    hand1.addCard(card);
+
     NetworkManager::createLobby();
     sf::Vector2i v(1, 1);
 
@@ -32,56 +30,22 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
+
+        sf::Texture clubsNine;
+        clubsNine.loadFromFile(resourcePath("ClubsNine.png"));
+        card.changeTexture(clubsNine);
+        sf::Texture spadesSeven;
+        spadesSeven.loadFromFile(resourcePath("SpadesSeven.png"));
+        sf::Sprite sprite = card.getSprite();
+        sprite.scale(0.2f, 0.2f);
+        card2.changeTexture(spadesSeven);
+        sf::Sprite sprite2 = card2.getSprite();
+        sprite2.scale(0.2f, 0.2f);
+        sprite2.setPosition(sprite.getPosition());
+        sprite2.move(20, 0);
         window.clear(sf::Color::Color(63, 150, 61, 255));
-
-        //display Hand left
-        int i = 0;
-        std::vector<sf::Sprite> vect = hand1.displayCards();
-        for (i = 0; i < vect.size(); i++) {
-            window.draw(vect[i]);
-#warning main crashes and displays Thread 1: EXC_ARITHMETIC (code = EXC_I286...)
-        }
-        int k = 0;
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            std::vector<Card> vect2 = hand1.getCards();
-            for (k = 0; k < vect2.size(); k++) {
-                if (mousePosition.x >= vect2[k].getLeft() && mousePosition.x <= vect2[k].getRight() && mousePosition.y >= vect2[k].getTop() && mousePosition.y <= vect2[k].getBottom()) {
-                    vect2[k].turn();
-                    // pb avec la texture
-                    card.turn();
-                    //play k + condition valid to play the card
-                }
-            }
-        }
-
-        //play card player left
-        //player1.playCard(card);
-
-        hand1.removeCard(card);
-        auto pos = card.sprites->getPosition();
-        sf::Vector2i v(1, 2);
-        if (pos.y >= 200) {
-            if (pos.x >= 200)
-                card.sprites->setPosition(pos.x - v.x, pos.y - v.y);
-            if (pos.x <= 200)
-                card.sprites->setPosition(pos.x + v.x, pos.y - v.y);
-        }
-        else {
-            if (pos.x >= 200)
-                card.sprites->setPosition(pos.x - v.x, pos.y + v.y);
-            else
-                card.sprites->setPosition(pos.x + v.x, pos.y + v.y);
-        }
-        if ((pos.x >= 200)
-            && (pos.y > 200) && (pos.y < 400) && (pos.x < 400)) {
-            v.x = 0;
-            v.y = 0;
-            card.sprites->setPosition(pos.x, pos.y);
-        }
-        //card.turn();
-        window.draw(*card.sprites);
-        window.setMouseCursorVisible(true);
+        window.draw(sprite);
+        window.draw(sprite2);
         window.display();
     }
 
