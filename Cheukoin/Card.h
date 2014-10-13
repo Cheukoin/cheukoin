@@ -22,6 +22,8 @@ public:
     float getRight();
     float getTop();
     float getBottom();
+    void moveTo(float x,float y);
+    
 
 private:
     Suit _suit;

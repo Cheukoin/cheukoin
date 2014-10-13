@@ -19,8 +19,11 @@ int main()
     Trick trick = Trick(1);
     Player player1;
 
-    Hand hand1({ card, card4, card2, card5 }, Left);
-    Hand tric({ card3 }, Up);
+    Hand hand1({ card }, Up);
+    Hand hand2({ card4, card2 }, Down);
+    Hand hand3({ card5 }, Right);
+    Hand hand4({ card3 }, Left);
+
     player1.setHand(hand1);
     NetworkManager::createLobby();
     sf::Vector2i v(1, 1);
@@ -37,62 +40,16 @@ int main()
         window.clear(sf::Color::Color(63, 150, 61, 255));
 
         //display Hand left
-        std::vector<sf::Sprite> vect = hand1.displayCards();
-        for (int i = 0; i < vect.size(); i++) {
-            window.draw(vect[i]);
-            sf::sleep(sf::milliseconds(3));
+        hand4.displayCards(window);
+        hand2.displayCards(window);
+        hand3.displayCards(window);
+        hand1.displayCards(window);
+        hand2.playByClick(window);
+        if (hand2.cardPlayed() == true) {
+            hand1.playOneCard(window, card);
+            hand3.playOneCard(window, card5);
+            hand4.playOneCard(window, card3);
         }
-
-        int k = 0;
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-        int b = 0;
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            std::vector<Card> vect2 = hand1.getCards();
-
-            for (k = 0; k < vect2.size(); k++) {
-                if (mousePosition.x >= vect2[k].getLeft() && mousePosition.x <= vect2[k].getRight() && mousePosition.y >= vect2[k].getTop() && mousePosition.y <= vect2[k].getBottom()) {
-                    vect2[k].turn();
-
-                    //hand1.removeCard(card)
-                    //vect2[k] move
-
-                    b = k;
-
-                    // pb avec la texture
-                    card.turn();
-
-                    //play k + condition valid to play the card
-                    // remove card hand , add to current trick move & display the current trick
-                }
-            }
-        }
-
-        //play card player left
-        //player1.playCard(card);
-        hand1.removeCard(card);
-        auto pos = card.sprites->getPosition();
-        sf::Vector2i v(1, 1);
-        if (pos.y > 200) {
-            if (pos.x > 200)
-                card.sprites->setPosition(pos.x - v.x, pos.y - v.y);
-            if (pos.x < 200)
-                card.sprites->setPosition(pos.x + v.x, pos.y - v.y);
-        }
-        else {
-            if (pos.x > 200)
-                card.sprites->setPosition(pos.x - v.x, pos.y + v.y);
-            else
-                card.sprites->setPosition(pos.x + v.x, pos.y + v.y);
-        }
-        if ((pos.x > 200)
-            && (pos.y > 200) && (pos.y < 300) && (pos.x < 400)) {
-            v.x = 0;
-            v.y = 0;
-            card.sprites->setPosition(pos.x, pos.y);
-        }
-        card.turn();
-
-        window.draw(*card.sprites);
         window.setMouseCursorVisible(true);
         window.display();
     }

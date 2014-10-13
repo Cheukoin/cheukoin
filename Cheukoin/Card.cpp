@@ -1,5 +1,5 @@
 #include "Card.h"
-
+#include <math.h>
 using namespace std;
 
 Card::Card(Suit suit, Value value)
@@ -19,6 +19,33 @@ Card::Card(Suit suit, Value value)
 
 Card::~Card()
 {
+}
+void Card::moveTo(float x, float y)
+{
+
+    auto pos = this->sprites->getPosition();
+    float a = fabs((x - pos.x) / 10);
+    float b = fabs(y - pos.y) / 10;
+
+    sf::Vector2i v(a, b);
+    if (pos.y > y) {
+        if (pos.x > x)
+            this->sprites->setPosition(pos.x - v.x, pos.y - v.y);
+        if (pos.x < x)
+            this->sprites->setPosition(pos.x + v.x, pos.y - v.y);
+    }
+    else {
+        if (pos.x > x)
+            this->sprites->setPosition(pos.x - v.x, pos.y + v.y);
+        else
+            this->sprites->setPosition(pos.x + v.x, pos.y + v.y);
+    }
+    if ((pos.x == x)
+        && (pos.y == y)) {
+        v.x = 0;
+        v.y = 0;
+        this->sprites->setPosition(pos.x, pos.y);
+    }
 }
 
 sf::Texture Card::getTexture() const
