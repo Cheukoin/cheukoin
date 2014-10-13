@@ -3,6 +3,7 @@
 Hand::Hand(std::vector<Card> cards, Position position)
     : _cards(cards)
     , _position(position)
+    , _cardRemoved(true)
 {
 }
 Hand::Hand()
@@ -14,15 +15,21 @@ Hand::Hand()
 Hand::~Hand()
 {
 }
-
+bool Hand::cardRemoved()
+{
+    return _cardRemoved;
+}
 void Hand::removeCard(Card const& card)
 {
+    _cardRemoved = false;
     int i = 0;
     if (_cards.size() != 0)
         for (i = 0; i < _cards.size(); i++)
             if (_cards[i] == card) {
+                //_cards.insert(_cards.begin() + i, c); c un rectangle
                 _cards.erase(_cards.begin() + i);
             }
+    _cardRemoved = true;
 }
 
 void Hand::addCard(Card const& card)

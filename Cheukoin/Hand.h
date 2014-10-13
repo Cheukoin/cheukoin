@@ -27,10 +27,12 @@ public:
     Hand(std::vector<Card> cards, Position position);
     ~Hand();
     Hand();
+    bool cardRemoved();
 
 private:
     std::vector<Card> _cards;
     Position _position;
+    bool _cardRemoved;
 };
 
 std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit); //same as member function, but for any vector of cards (useful to analyse parts of hands, parts of tricks, etc...)
