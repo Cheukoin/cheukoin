@@ -140,6 +140,20 @@ void Rules::giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& 
             i++;
         }
     }
-    if (winningIndex == 1 or i == 3) {
+    if (team1.isTeamDealing()) {
+        if (winningIndex == 1 or winningIndex == 3) {
+            team1.addTrick(trick);
+        }
+        else {
+            team2.addTrick(trick);
+        }
+    }
+    else {
+        if (winningIndex == 1 or winningIndex == 3) {
+            team2.addTrick(trick);
+        }
+        else {
+            team1.addTrick(trick);
+        }
     }
 }
