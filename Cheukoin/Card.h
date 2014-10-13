@@ -23,6 +23,7 @@ public:
     float getBottom();
     void moveTo(float x, float y);
     std::string getFileName(Card& c);
+    std::string toString(Card& c);
 
 private:
     Suit _suit;

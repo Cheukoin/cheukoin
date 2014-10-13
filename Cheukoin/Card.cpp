@@ -26,6 +26,27 @@ std::string Card::getFileName(Card& c)
     str = to_string(_suit) + to_string(_value) + ".png";
     return str;
 }
+std::string Card::toString(Card& c)
+{
+    std::vector<std::string> suitIs = { "Clubs", "Hearts",
+                                        "Diamonds",
+                                        "Spades" };
+    std::vector<std::string> valueIs = { "Ace",
+                                         "King",
+                                         "Queen",
+                                         "Jack",
+                                         "Ten",
+                                         "Nine",
+                                         "Eight",
+                                         "Seven" };
+    std::string st = to_string(_suit);
+    std::string stt = to_string(_value);
+    std::string str;
+    int x = std::atoi(st.c_str());
+    int y = std::atoi(st.c_str());
+    str = suitIs[x] + valueIs[y];
+    return str;
+}
 void Card::moveTo(float x, float y)
 {
 
