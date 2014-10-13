@@ -23,12 +23,16 @@ public:
     void setHand(Hand& hand);
     Bid getBid();
     void setBid(Bid& bid);
+    void makeDealer();
+    void changeDealer();
+    bool isDealer();
 
 protected:
     std::string _name;
     Hand _hand;
     Bid _bid;
     Game& _game = Game::getInstance();
+    bool _dealer;
 };
 
 #endif
