@@ -39,6 +39,7 @@ int main()
         std::vector<sf::Sprite> vect = hand1.displayCards();
         for (i = 0; i < vect.size(); i++) {
             window.draw(vect[i]);
+#warning main crashes and displays Thread 1: EXC_ARITHMETIC (code = EXC_I286...)
         }
         int k = 0;
         sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
@@ -47,7 +48,7 @@ int main()
             for (k = 0; k < vect2.size(); k++) {
                 if (mousePosition.x >= vect2[k].getLeft() && mousePosition.x <= vect2[k].getRight() && mousePosition.y >= vect2[k].getTop() && mousePosition.y <= vect2[k].getBottom()) {
                     vect2[k].turn();
-                    // pb avec la texture 
+                    // pb avec la texture
                     card.turn();
                     //play k + condition valid to play the card
                 }
