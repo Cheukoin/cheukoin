@@ -3,6 +3,7 @@
 #include "Card.h"
 #include "Trick.h"
 #include "NetworkManager.h"
+#include "ResourcePath.h"
 #include "Hand.h"
 #include "Player.h"
 
@@ -31,6 +32,17 @@ int main()
     NetworkManager::createLobby();
     sf::Vector2i v(1, 1);
 
+    // init background
+    sf::Texture bgTexture;
+    if (!bgTexture.loadFromFile(resourcePath("table.jpeg"))) {
+        puts("Texture table not loaded");
+    }
+    bgTexture.setRepeated(true);
+    sf::Sprite bgSprite;
+    bgSprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+    bgSprite.setTexture(bgTexture);
+
+    // game logic
     while (window.isOpen()) {
         sf::Event event;
         event.type = sf::Event::MouseButtonPressed;
@@ -40,7 +52,9 @@ int main()
             if (event.type == sf::Event::Closed)
                 window.close();
         }
-        window.clear(sf::Color::Color(63, 150, 61, 255));
+        //        window.clear(sf::Color::Color(63, 150, 61, 255));
+        window.clear();
+        window.draw(bgSprite);
 
         //display Hand left
         hand4.displayCards(window);
