@@ -177,3 +177,14 @@ void Rules::giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& 
         }
     }
 }
+
+std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
+{
+    std::vector<Card> cardsForSuit;
+    for (auto c : cards) {
+        if (c.getSuit() == suit) {
+            cardsForSuit.push_back(c);
+        }
+    }
+    return cardsForSuit;
+}

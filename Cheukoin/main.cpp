@@ -2,6 +2,7 @@
 
 #include "Card.h"
 #include "Trick.h"
+#include "Game.h"
 #include "NetworkManager.h"
 #include "ResourcePath.h"
 #include "Hand.h"
@@ -11,8 +12,11 @@ using namespace std;
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
-    window.setFramerateLimit(60);
+    shared_ptr<sf::RenderWindow> window = make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Cheukoin !");
+    window->setFramerateLimit(60);
+
+    Game& game = Game::getInstance();
+    game.setWindow(window);
 
     Card card = Card(Hearts, Queen); // 12
     Card card2 = Card(Clubs, Nine); // 05
@@ -39,37 +43,34 @@ int main()
     }
     bgTexture.setRepeated(true);
     sf::Sprite bgSprite;
-    bgSprite.setTextureRect(sf::IntRect(0, 0, window.getSize().x, window.getSize().y));
+    bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
     // game logic
-    while (window.isOpen()) {
+    while (window->isOpen()) {
         sf::Event event;
         event.type = sf::Event::MouseButtonPressed;
         event.mouseButton.button = sf::Mouse::Left;
 
-        while (window.pollEvent(event)) {
+        while (window->pollEvent(event)) {
             if (event.type == sf::Event::Closed)
-                window.close();
+                window->close();
         }
         //        window.clear(sf::Color::Color(63, 150, 61, 255));
-        window.clear();
-        window.draw(bgSprite);
+        window->clear();
+        window->draw(bgSprite);
 
         //display Hand left
-        hand4.displayCards(window);
-        hand2.displayCards(window);
-        hand3.displayCards(window);
-        hand1.displayCards(window);
-        hand2.playByClick(window);
-        if (hand2.cardPlayed() == true) {
-
-            hand4.playOneCard(window, card4);
-            hand3.playOneCard(window, card3);
-            hand1.playOneCard(window, card);
-        }
-        window.setMouseCursorVisible(true);
-        window.display();
+        hand4.draw();
+        hand2.draw();
+        hand3.draw();
+        hand1.draw();
+        //        hand2.playByClick();
+        //        hand4.playOneCard(window, card4);
+        //        hand3.playOneCard(window, card3);
+        //        hand1.playOneCard(window, card);
+        window->setMouseCursorVisible(true);
+        window->display();
     }
 
     return 0;

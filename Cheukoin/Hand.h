@@ -3,6 +3,7 @@
 
 #include "Card.h"
 #include <iostream>
+
 enum Position {
     Left,
     Right,
@@ -12,34 +13,33 @@ enum Position {
 
 class Hand {
 public:
-    void removeCard(Card const& card);
-    void addCard(Card const& card);
-    void displayCards(sf::RenderWindow& window) const;
-    std::vector<Card> getCards();
-    bool isHandValid();
-
-    Position getPosition(Hand hand) const;
-    void setPosition(Hand hand);
-    //void turn(Hand hand, Position position);
-
-    std::vector<Card> cardsForSuit(Suit suit);
-    void move(Card c);
-    void moveToTrick(Card c);
-    void playOneCard(sf::RenderWindow& window, Card c);
-    void playByClick(sf::RenderWindow& window);
     Hand(std::vector<Card> cards, Position position);
     ~Hand();
     Hand();
-    bool cardRemoved();
-    bool cardPlayed();
+#warning TODO : to be removed when instanciated in Player
+
+    void addCard(Card const& card);
+    void removeCard(Card const& card);
+    std::vector<Card> getCards();
+
+    void draw() const;
+
+    Position getPosition(Hand hand) const;
+    void setPosition(Hand hand);
+
+    std::vector<Card> cardsForSuit(Suit suit);
+    void playCard(sf::RenderWindow& window, Card card);
+#warning TODO : plus besoin de window
+    void playByClick(sf::RenderWindow& window);
+#warning TODO : rien a foutre ds hand + pas besoind e window
+
+#warning TODO : bouge le dans card
+    void moveToTrick(Card c);
+    void move(Card c);
 
 private:
     std::vector<Card> _cards;
     Position _position;
-    bool _cardRemoved;
-    bool _cardPlayed;
 };
-
-std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit); //same as member function, but for any vector of cards (useful to analyse parts of hands, parts of tricks, etc...)
 
 #endif

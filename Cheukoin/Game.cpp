@@ -1,5 +1,7 @@
 #include "Game.h"
 
+using namespace std;
+
 Game& Game::getInstance()
 {
     static Game instance;
@@ -49,4 +51,13 @@ std::vector<Trick*> Game::getTricks()
 Trick* Game::getCurrentTrick()
 {
     return _tricks.back();
+}
+
+shared_ptr<sf::RenderWindow> Game::getWindow()
+{
+    return _window;
+}
+void Game::setWindow(shared_ptr<sf::RenderWindow> window)
+{
+    _window = window;
 }

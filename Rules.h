@@ -15,15 +15,14 @@
 #include "Trick.h"
 #include "Team.h"
 #include "Player.h"
-
 #include "Hand.h"
-
 #include "Constants.h"
 
 class Rules {
 public:
     Rules();
     ~Rules();
+
     bool isCardGreater(Card card1, Card card2, Suit asset);
     Card winningCard(Trick trick, Suit asset);
     bool isTrickvalid(Trick trick);
@@ -36,5 +35,8 @@ private:
     static const std::map<Value, int> _cardValues;
     static const std::map<Value, int> _cardValuesAsset;
 };
+
+#warning TODO : faire methode statique, instancier rules ds Game
+std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
 
 #endif /* defined(__Cheukoin__Rules__) */
