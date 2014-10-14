@@ -17,12 +17,15 @@ public:
     void playCard(Card const& card);
     Bid makeBid(int amount, Suit const& asset);
 
-    std::string getName();
+    std::string getName() const;
     void setName(std::string name);
-    Hand getHand();
+
+    Hand getHand() const;
     void setHand(Hand& hand);
-    Bid getBid();
+
+    Bid getBid() const;
     void setBid(Bid& bid);
+
     void makeDealer();
     void changeDealer();
     bool isDealer();
@@ -34,5 +37,8 @@ protected:
     Game& _game = Game::getInstance();
     bool _dealer;
 };
+
+bool operator==(Player const& a, Player const& b);
+bool operator!=(Player const& a, Player const& b);
 
 #endif

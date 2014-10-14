@@ -33,8 +33,8 @@ public:
     void giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& team2);
 
 private:
-    std::map<Value, int> _cardValues;
-    std::map<Value, int> _cardValuesAsset;
+    static const std::map<Value, int> _cardValues;
+    static const std::map<Value, int> _cardValuesAsset;
 };
 
 #endif /* defined(__Cheukoin__Rules__) */
