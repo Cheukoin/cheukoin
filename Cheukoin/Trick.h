@@ -8,18 +8,18 @@ class Trick {
 public:
     Trick(int number);
     ~Trick();
-    void setNumber(int number);
+
     int getNumber();
-    std::string getBeginner();
-    void setBeginner(std::string);
+    void setNumber(int number);
+
     void addCard(Card const& Card);
+
+#warning TODO: change name to getCards
     std::vector<Card> getComposition();
-    Card winningCard(Suit const& suit);
-    bool isGreater(Card card1, Card card2, Suit suit) const;
 
 private:
+#warning TODO: see if we can get rid of this
     int _number;
-    std::string _beginner;
     std::vector<Card> _composition;
 };
 

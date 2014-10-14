@@ -72,6 +72,7 @@ bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
 
 Card Rules::winningCard(Trick trick, Suit asset)
 {
+#warning TODO: check if we can use a lambda with std::max
     Card max = trick.getComposition()[0];
     for (int i = 0; i < trick.getComposition().size(); i++) {
         if (isCardGreater(trick.getComposition()[i], max, asset)) {
@@ -103,12 +104,13 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards, Suit asset)
     return master;
 }
 
-std::vector<Card> Rules::playableCard(Player player, vector<Card> firstCards, Suit asset)
+std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards, Suit asset)
 {
-
+#warning TODO: add comments
     Suit demandedSuit = firstCards[0].getSuit();
     std::vector<Card> playableCards;
     bool piss = true;
+
     if (player.getHand().cardsForSuit(demandedSuit).size() != 0) {
         piss = false;
         playableCards = player.getHand().cardsForSuit(demandedSuit);
@@ -137,7 +139,7 @@ std::vector<Card> Rules::playableCard(Player player, vector<Card> firstCards, Su
     return playableCards;
 }
 
-bool Rules::isTrickvalid(Trick trick)
+bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
     Suit demandedSuit = trick.getComposition()[0].getSuit();
@@ -147,21 +149,16 @@ bool Rules::isTrickvalid(Trick trick)
     return valid;
 }
 
-void Rules::giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& team2)
+void Rules::giveTrickToWinner(Trick& trick, const Suit& asset, Team& team1, Team& team2)
 {
     Card best = winningCard(trick, asset);
-    int winningIndex = 5;
-    int i = 0;
-    while (winningIndex == 5) {
-        if (trick.getComposition()[i] == best) {
-            winningIndex = i;
-        }
-        else {
-            i++;
-        }
-    }
+    vector<Card> cards = trick.getComposition();
+    int winningCardIndex = find(cards.begin(), cards.end(), best) - cards.begin();
+
+#warning TODO: maybe getDealingTeam somewhere (Game?)
+#warning TODO: add player attribute on played card
     if (team1.isTeamDealing()) {
-        if (winningIndex == 1 or winningIndex == 3) {
+        if (winningCardIndex == 1 || winningCardIndex == 3) {
             team1.addTrick(trick);
         }
         else {
@@ -169,7 +166,7 @@ void Rules::giveWinnerTrick(Trick& trick, Suit const& asset, Team& team1, Team& 
         }
     }
     else {
-        if (winningIndex == 1 or winningIndex == 3) {
+        if (winningCardIndex == 1 || winningCardIndex == 3) {
             team2.addTrick(trick);
         }
         else {

@@ -13,9 +13,11 @@ public:
     void addPlayer(Player const& player);
     void addTrick(Trick const& trick);
     void setScore(int const& newScore);
-    void addScore(int const& score);
+    void addPoints(int const& score);
     int getScore();
     std::vector<Trick> getTricks();
+
+#warning TODO: change name to getPlayers
     std::vector<Player> getComposition();
     bool isTeamDealing();
 

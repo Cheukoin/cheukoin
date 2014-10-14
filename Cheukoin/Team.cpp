@@ -37,7 +37,7 @@ void Team::setScore(int const& newScore)
     _score = newScore;
 }
 
-void Team::addScore(int const& score)
+void Team::addPoints(int const& score)
 {
     _score += score;
 }

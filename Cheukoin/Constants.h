@@ -28,8 +28,8 @@ enum Value {
 };
 
 enum GameMode {
-    online,
-    local
+    Online,
+    Local
 };
 
 #endif /* defined(__Cheukoin__Constants__) */

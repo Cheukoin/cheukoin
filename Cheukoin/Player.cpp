@@ -12,7 +12,7 @@ void Player::playCard(Card const& card)
 #warning TODO : verify move is valid with rules
     _game.getCurrentTrick()->addCard(card);
     _hand.removeCard(card);
-    if (_game.getMode() == online) {
+    if (_game.getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
 }
