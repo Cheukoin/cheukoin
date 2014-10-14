@@ -33,7 +33,12 @@
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
 		C916D0CB19EBD7C000A51096 /* old_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C916D0C919EBD7C000A51096 /* old_main.cpp */; };
 		C916D0CD19EC16C900A51096 /* SpadesSeven.png in Resources */ = {isa = PBXBuildFile; fileRef = C916D0CC19EC16C900A51096 /* SpadesSeven.png */; };
+		C916D0CF19EC4A6A00A51096 /* HeartAce.png in Resources */ = {isa = PBXBuildFile; fileRef = C916D0CE19EC4A6A00A51096 /* HeartAce.png */; };
 		C956AE6519E53E2600F45B47 /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C956AE6319E53E2600F45B47 /* Rules.cpp */; };
+		C9AC7BFA19ECFCD80086297D /* SpadesEight.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AC7BF619ECFCD80086297D /* SpadesEight.png */; };
+		C9AC7BFB19ECFCD80086297D /* SpadesNine.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AC7BF719ECFCD80086297D /* SpadesNine.png */; };
+		C9AC7BFC19ECFCD80086297D /* SpadesSeven.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AC7BF819ECFCD80086297D /* SpadesSeven.png */; };
+		C9AC7BFD19ECFCD80086297D /* SpadesTen.png in Resources */ = {isa = PBXBuildFile; fileRef = C9AC7BF919ECFCD80086297D /* SpadesTen.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,8 +84,13 @@
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C916D0C919EBD7C000A51096 /* old_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = old_main.cpp; sourceTree = "<group>"; };
 		C916D0CC19EC16C900A51096 /* SpadesSeven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpadesSeven.png; sourceTree = "<group>"; };
+		C916D0CE19EC4A6A00A51096 /* HeartAce.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HeartAce.png; sourceTree = "<group>"; };
 		C956AE6319E53E2600F45B47 /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Rules.cpp; path = ../Rules.cpp; sourceTree = "<group>"; };
 		C956AE6419E53E2600F45B47 /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Rules.h; path = ../Rules.h; sourceTree = "<group>"; };
+		C9AC7BF619ECFCD80086297D /* SpadesEight.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpadesEight.png; sourceTree = "<group>"; };
+		C9AC7BF719ECFCD80086297D /* SpadesNine.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpadesNine.png; sourceTree = "<group>"; };
+		C9AC7BF819ECFCD80086297D /* SpadesSeven.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpadesSeven.png; sourceTree = "<group>"; };
+		C9AC7BF919ECFCD80086297D /* SpadesTen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SpadesTen.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,7 +196,12 @@
 			isa = PBXGroup;
 			children = (
 				C916D0CC19EC16C900A51096 /* SpadesSeven.png */,
+				C9AC7BF619ECFCD80086297D /* SpadesEight.png */,
+				C9AC7BF719ECFCD80086297D /* SpadesNine.png */,
+				C9AC7BF819ECFCD80086297D /* SpadesSeven.png */,
+				C9AC7BF919ECFCD80086297D /* SpadesTen.png */,
 				93C2746919E6D0AF00A52C42 /* ClubsNine.png */,
+				C916D0CE19EC4A6A00A51096 /* HeartAce.png */,
 				C0B83EAD19E2C23C0037C5AE /* cardBack.png */,
 				C0B83EAE19E2C23C0037C5AE /* Thumbs.db */,
 			);
@@ -260,10 +275,15 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9AC7BFD19ECFCD80086297D /* SpadesTen.png in Resources */,
+				C9AC7BFB19ECFCD80086297D /* SpadesNine.png in Resources */,
 				C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */,
+				C916D0CF19EC4A6A00A51096 /* HeartAce.png in Resources */,
+				C9AC7BFC19ECFCD80086297D /* SpadesSeven.png in Resources */,
 				93C2746A19E6D0AF00A52C42 /* ClubsNine.png in Resources */,
 				C0B83EC019E2C23C0037C5AE /* cardBack.png in Resources */,
 				C916D0CD19EC16C900A51096 /* SpadesSeven.png in Resources */,
+				C9AC7BFA19ECFCD80086297D /* SpadesEight.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

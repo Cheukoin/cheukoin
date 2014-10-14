@@ -98,4 +98,32 @@ std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
 
 void Hand::displayHand(Position pos, sf::RenderWindow& window)
 {
+    float width = window.getSize().x;
+    float height = window.getSize().y;
+    float cardWidth = _cards[0].getSprite().getGlobalBounds().width;
+    float cardHeight = _cards[0].getSprite().getGlobalBounds().height;
+    float offset = 40;
+    float alpha = (width - offset) / (((8 + 1) / 2) * cardWidth + 2 * cardHeight);
+    int k = 0;
+    if (pos == Up) {
+        float beginningTop = (width - (_cards.size() + 1) * cardWidth * alpha / 2) / 2;
+        for (auto c : _cards) {
+            sf::Sprite sprite = c.getSprite();
+            sprite.setScale(alpha, alpha);
+            sprite.setPosition(beginningTop + k * cardWidth * alpha / 2, 20);
+            k += 1;
+            window.draw(sprite);
+        }
+    }
+    else if (pos == Left) {
+        float beginningLeft = (height - (_cards.size() + 1) * cardWidth * alpha / 2) / 2;
+        for (auto c : _cards) {
+            sf::Sprite sprite = c.getSprite();
+            sprite.setScale(alpha, alpha);
+            sprite.setRotation(-90);
+            sprite.setPosition(20, beginningLeft + k * cardWidth * alpha / 2);
+            k += 1;
+            window.draw(sprite);
+        }
+    }
 }

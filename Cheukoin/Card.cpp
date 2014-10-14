@@ -12,7 +12,7 @@ Card::Card(Suit suit, Value value)
         // handle texture not loaded
         puts("Texture file not loaded");
     }
-    sprites->setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprites->setTextureRect(sf::IntRect(0, 0, 63, 88));
     sprites->setTexture(_texture);
     sprites->setScale(sf::Vector2f(0.3, 0.3));
 }
