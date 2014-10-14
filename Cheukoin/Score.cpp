@@ -19,10 +19,11 @@ int Score::computeScore(Trick trick)
 {
     if (trick.getComposition().size() != 4) {
         cout << "Ce n'est pas une pli valide!" << endl;
-        return false;
     }
     else {
     }
+
+    return -1;
 }
 
 void Score::addOutcome(string equipe, int score)
