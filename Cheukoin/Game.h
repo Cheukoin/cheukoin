@@ -2,7 +2,7 @@
 #define __Cheukoin_Game__
 
 #include <vector>
-#include <memory.h>
+#include <memory>
 #include <SFML/Graphics.hpp>
 
 #include "Constants.h"
@@ -29,7 +29,7 @@ public:
     Trick* getCurrentTrick();
 
     std::shared_ptr<sf::RenderWindow> getWindow();
-    void setWindow(std::shared_ptr<sf::RenderWindow> window);
+    void initWindow();
 
 private:
     Game(){};
@@ -40,7 +40,7 @@ private:
     Bid* _bid;
     std::vector<Player*> _players;
     std::vector<Trick*> _tricks;
-    std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<sf::RenderWindow> _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Cheukoin !");
 };
 
 #endif

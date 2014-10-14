@@ -102,7 +102,7 @@ Suit Card::getSuit() const
 
 void Card::draw() const
 {
-    Game::getInstance().getWindow()->draw(*sprite);
+    Game::getInstance().getWindow()->draw(*sprite.get());
 }
 
 bool operator==(Card const& a, Card const& b)

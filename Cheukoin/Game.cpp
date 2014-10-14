@@ -57,7 +57,3 @@ shared_ptr<sf::RenderWindow> Game::getWindow()
 {
     return _window;
 }
-void Game::setWindow(shared_ptr<sf::RenderWindow> window)
-{
-    _window = window;
-}

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <memory>
 
 #include "Card.h"
 #include "Trick.h"
@@ -12,11 +13,9 @@ using namespace std;
 
 int main()
 {
-    shared_ptr<sf::RenderWindow> window = make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Cheukoin !");
-    window->setFramerateLimit(60);
-
     Game& game = Game::getInstance();
-    game.setWindow(window);
+    shared_ptr<sf::RenderWindow> window = game.getWindow();
+    window->setFramerateLimit(60);
 
     Card card = Card(Hearts, Queen); // 12
     Card card2 = Card(Clubs, Nine); // 05
