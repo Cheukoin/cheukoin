@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>Cheukoin-tests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 		<key>Cheukoin.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
@@ -13,6 +18,11 @@
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
 		<key>19A57CD019E2989E00FE40DD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>19F5852B19EBC77C00C2DC44</key>
 		<dict>
 			<key>primary</key>
 			<true/>

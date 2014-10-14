@@ -11,11 +11,14 @@ using namespace std;
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(800, 600), "Cheukoin !");
+    window.setFramerateLimit(60);
+
     Card card = Card(Hearts, Queen); // 12
     Card card2 = Card(Clubs, Nine); // 05
     Card card3 = Card(Hearts, Ten); //14
     Card card4 = Card(Hearts, King); //11
     Card card5 = Card(Hearts, Ten); //14
+
     Trick trick = Trick(1);
     Player player1;
 
