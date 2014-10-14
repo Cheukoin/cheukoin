@@ -16,7 +16,6 @@
 		19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
 		19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
-
 		93DC657719EC37FE00E71B91 /* 11.png in Resources */ = {isa = PBXBuildFile; fileRef = 93DC657619EC37FE00E71B91 /* 11.png */; };
 		93DC657919EC390100E71B91 /* 05.png in Resources */ = {isa = PBXBuildFile; fileRef = 93DC657819EC390100E71B91 /* 05.png */; };
 		93DC657B19EC3A7100E71B91 /* 14.png in Resources */ = {isa = PBXBuildFile; fileRef = 93DC657A19EC3A7100E71B91 /* 14.png */; };
