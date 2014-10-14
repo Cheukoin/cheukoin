@@ -3,6 +3,7 @@
 
 #include <math.h>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Constants.h"
 #include "Game.h"
 #include "ResourcePath.h"

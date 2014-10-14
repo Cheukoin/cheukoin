@@ -11,21 +11,25 @@ Hand::Hand(std::vector<Card> cards, Position position)
         for (int i = 0; i < _cards.size(); i++) {
             _cards[i].sprite->setPosition(pos.x, 100 + i * 40);
         }
+        break;
 
     case Right:
         for (int i = 0; i < _cards.size(); i++) {
             _cards[i].sprite->setPosition(700, 100 + i * 40);
         }
-
-    case Down:
-        for (int i = 0; i < _cards.size(); i++) {
-            _cards[i].sprite->setPosition(150 + i * 50, 10);
-        }
+        break;
 
     case Up:
         for (int i = 0; i < _cards.size(); i++) {
+            _cards[i].sprite->setPosition(150 + i * 50, 10);
+        }
+        break;
+
+    case Down:
+        for (int i = 0; i < _cards.size(); i++) {
             _cards[i].sprite->setPosition(150 + i * 50, 450);
         }
+        break;
 
     default:
         break;
@@ -87,7 +91,7 @@ std::vector<Card> Hand::getCards()
 
 void Hand::draw() const
 {
-    for (auto card : _cards) {
+    for (Card card : _cards) {
         card.draw();
     }
 }
@@ -95,26 +99,26 @@ void Hand::draw() const
 #warning TODO : bouge le dans card
 void Hand::move(Card c)
 {
-    if (_position == Left)
-        c.moveTo(300, 225);
-    if (_position == Right)
-        c.moveTo(400, 225);
-    if (_position == Up)
-        c.moveTo(350, 175);
-    if (_position == Down)
-        c.moveTo(350, 275);
+    //    if (_position == Left)
+    //        c.moveTo(300, 225);
+    //    if (_position == Right)
+    //        c.moveTo(400, 225);
+    //    if (_position == Up)
+    //        c.moveTo(350, 175);
+    //    if (_position == Down)
+    //        c.moveTo(350, 275);
 }
 
 void Hand::moveToTrick(Card c)
 {
-    if (_position == Left)
-        c.sprite->setPosition(300, 225);
-    if (_position == Right)
-        c.sprite->setPosition(400, 225);
-    if (_position == Up)
-        c.sprite->setPosition(350, 175);
-    if (_position == Down)
-        c.sprite->setPosition(350, 275);
+    //    if (_position == Left)
+    //        c.sprite->setPosition(300, 225);
+    //    if (_position == Right)
+    //        c.sprite->setPosition(400, 225);
+    //    if (_position == Up)
+    //        c.sprite->setPosition(350, 175);
+    //    if (_position == Down)
+    //        c.sprite->setPosition(350, 275);
 }
 
 std::vector<Card> Hand::cardsForSuit(Suit suit)
