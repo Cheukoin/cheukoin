@@ -21,8 +21,6 @@ private:
     int _number;
     std::string _beginner;
     std::vector<Card> _composition;
-    std::map<Value, int> _cardValues;
-    std::map<Value, int> _cardValuesAsset;
 };
 
 #endif

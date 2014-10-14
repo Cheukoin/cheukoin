@@ -24,7 +24,7 @@ Bid Player::makeBid(int amount, Suit const& asset)
     return _bid;
 }
 
-string Player::getName()
+string Player::getName() const
 {
     return _name;
 }
@@ -34,7 +34,7 @@ void Player::setName(string name)
     _name = name;
 }
 
-Hand Player::getHand()
+Hand Player::getHand() const
 {
     return _hand;
 }
@@ -44,7 +44,7 @@ void Player::setHand(Hand& hand)
     _hand = hand;
 }
 
-Bid Player::getBid()
+Bid Player::getBid() const
 {
     return _bid;
 }
@@ -67,4 +67,14 @@ void Player::changeDealer()
 bool Player::isDealer()
 {
     return _dealer;
+}
+
+bool operator==(Player const& a, Player const& b)
+{
+    return a.getName() == b.getName();
+}
+
+bool operator!=(Player const& a, Player const& b)
+{
+    return !(a == b);
 }

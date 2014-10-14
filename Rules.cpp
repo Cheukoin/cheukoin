@@ -11,14 +11,34 @@
 using namespace std;
 
 Rules::Rules()
-    : _cardValuesAsset({ { Seven, 0 }, { Eight, 0 }, { Nine, 14 }, { Ten, 10 }, { Jack, 20 }, { Queen, 3 }, { King, 4 }, { Ace, 11 } })
-    , _cardValues({ { Seven, 0 }, { Eight, 0 }, { Nine, 0 }, { Ten, 10 }, { Jack, 2 }, { Queen, 3 }, { King, 4 }, { Ace, 11 } })
 {
 }
 
 Rules::~Rules()
 {
 }
+
+const map<Value, int> Rules::_cardValues = {
+    { Seven, 0 },
+    { Eight, 0 },
+    { Nine, 0 },
+    { Ten, 10 },
+    { Jack, 2 },
+    { Queen, 3 },
+    { King, 4 },
+    { Ace, 11 }
+};
+
+const map<Value, int> Rules::_cardValuesAsset = {
+    { Seven, 0 },
+    { Eight, 0 },
+    { Nine, 14 },
+    { Ten, 10 },
+    { Jack, 20 },
+    { Queen, 3 },
+    { King, 4 },
+    { Ace, 11 }
+};
 
 bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
 {
@@ -63,7 +83,7 @@ Card Rules::winningCard(Trick trick, Suit asset)
 
 bool Rules::isTeamValid(Team team)
 {
-    return (team.getComposition().size() == 2) && (team.getComposition()[0].getName() != team.getComposition()[1].getName());
+    return (team.getComposition().size() == 2) && (team.getComposition()[0] != team.getComposition()[1]);
 }
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards, Suit asset)
