@@ -17,26 +17,28 @@
 #include "Player.h"
 #include "Hand.h"
 #include "Constants.h"
+#include "Game.h"
 
 class Rules {
 public:
-    Rules();
+    Rules(Suit asset);
     ~Rules();
 
     // Returns card1 > card2 for the specified asset
-    bool isCardGreater(Card card1, Card card2, Suit asset);
-    Card winningCard(Trick trick, Suit asset);
+    bool isCardGreater(Card card1, Card card2);
+    Card winningCard(Trick trick);
     bool isTrickValid(Trick trick);
     bool isTeamValid(Team team);
 
     //
-    bool isFriendMaster(Player player, std::vector<Card> firstCards, Suit asset);
-    std::vector<Card> playableCards(Player player, std::vector<Card> firstCards, Suit asset);
-    void giveTrickToWinner(Trick& trick, const Suit& asset, Team& team1, Team& team2);
+    bool isFriendMaster(Player player, std::vector<Card> firstCards);
+    std::vector<Card> playableCards(Player player, std::vector<Card> firstCards);
+    void giveTrickToWinner(Trick& trick, Team& team1, Team& team2);
 
 private:
     static const std::map<Value, int> _cardValues;
     static const std::map<Value, int> _cardValuesAsset;
+    Suit _asset;
 };
 
 #warning TODO : faire methode statique, instancier rules ds Game

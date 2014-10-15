@@ -44,18 +44,7 @@ Hand::Hand()
 {
 }
 
-void Hand::playByClick(sf::RenderWindow& window)
-{
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(window);
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        for (auto card : _cards) {
-            if (card.sprite->getGlobalBounds().contains(mousePosition.x, mousePosition.y)) {
-                card.flip();
-                moveToTrick(card);
-            }
-        }
-    }
-}
+
 void Hand::playCard(sf::RenderWindow& window, Card c)
 {
     int i = 0;

@@ -10,6 +10,7 @@
 
 class Card {
 public:
+    Card();
     Card(Suit suit, Value value);
     ~Card();
 

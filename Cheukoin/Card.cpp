@@ -2,6 +2,10 @@
 
 using namespace std;
 
+Card::Card()
+{
+}
+
 Card::Card(Suit suit, Value value)
     : texture(make_shared<sf::Texture>())
     , sprite(make_shared<sf::Sprite>())

@@ -7,11 +7,16 @@ Player::Player()
 {
 }
 
+Player::~Player()
+{
+}
+
 void Player::playCard(Card const& card)
 {
 #warning TODO : verify move is valid with rules
     _game.getCurrentTrick()->addCard(card);
     _hand.removeCard(card);
+    _playedCard = card;
     if (_game.getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
@@ -32,6 +37,11 @@ string Player::getName() const
 void Player::setName(string name)
 {
     _name = name;
+}
+
+Card Player::getPlayedCard()
+{
+    return _playedCard;
 }
 
 Hand Player::getHand() const
@@ -78,3 +88,17 @@ bool operator!=(Player const& a, Player const& b)
 {
     return !(a == b);
 }
+
+/*
+void Player::playByClick()
+{
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_game.getWindow().get());
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        for (auto card : _hand.getCards()) {
+            if (card.sprite->getGlobalBounds().contains(mousePosition.x, mousePosition.y)) {
+                card.flip();
+                _game.getCurrentTrick()->addCard(card);
+            }
+        }
+    }
+}*/

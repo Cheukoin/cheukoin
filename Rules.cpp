@@ -10,7 +10,8 @@
 
 using namespace std;
 
-Rules::Rules()
+Rules::Rules(Suit asset)
+    : _asset(asset)
 {
 }
 
@@ -40,12 +41,14 @@ const map<Value, int> Rules::_cardValuesAsset = {
     { Ace, 11 }
 };
 
-bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
+// true if first arg bigger than second arg
+
+bool Rules::isCardGreater(Card card1, Card card2)
 {
-    if (card1.getSuit() != asset && card2.getSuit() == asset) {
+    if (card1.getSuit() != _asset && card2.getSuit() == _asset) {
         return false;
     }
-    else if (card1.getSuit() == asset && card2.getSuit() != asset) {
+    else if (card1.getSuit() == _asset && card2.getSuit() != _asset) {
         return true;
     }
     else {
@@ -54,7 +57,7 @@ bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
         if (card1.getSuit() != card2.getSuit()) {
             return false;
         }
-        else if (card1.getSuit() == asset) {
+        else if (card1.getSuit() == _asset) {
             order = _cardValuesAsset;
         }
         else {
@@ -70,12 +73,12 @@ bool Rules::isCardGreater(Card card1, Card card2, Suit asset)
     }
 }
 
-Card Rules::winningCard(Trick trick, Suit asset)
+Card Rules::winningCard(Trick trick)
 {
 #warning TODO: check if we can use a lambda with std::max
     Card max = trick.getComposition()[0];
     for (int i = 0; i < trick.getComposition().size(); i++) {
-        if (isCardGreater(trick.getComposition()[i], max, asset)) {
+        if (isCardGreater(trick.getComposition()[i], max)) {
             max = trick.getComposition()[i];
         }
     }
@@ -87,7 +90,7 @@ bool Rules::isTeamValid(Team team)
     return (team.getComposition().size() == 2) && (team.getComposition()[0] != team.getComposition()[1]);
 }
 
-bool Rules::isFriendMaster(Player player, vector<Card> firstCards, Suit asset)
+bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
 {
     bool master = false;
     int numberPlayedCards = firstCards.size();
@@ -99,40 +102,51 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards, Suit asset)
                 enemyCards.push_back(c);
             }
         }
-        master = isCardGreater(friendlyCard, enemyCards[0], asset) && isCardGreater(friendlyCard, enemyCards[1], asset);
+        master = isCardGreater(friendlyCard, enemyCards[0]) && isCardGreater(friendlyCard, enemyCards[1]);
     }
     return master;
 }
 
-std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards, Suit asset)
+std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
 {
 #warning TODO: add comments
     Suit demandedSuit = firstCards[0].getSuit();
     std::vector<Card> playableCards;
     bool piss = true;
 
+    // first, look wether the player have the demanded suit in his hand
+
     if (player.getHand().cardsForSuit(demandedSuit).size() != 0) {
         piss = false;
         playableCards = player.getHand().cardsForSuit(demandedSuit);
     }
-    else if (isFriendMaster(player, firstCards, asset)) {
+
+    // if not, he can still play whatever he wants if his friends is the current master of the trick
+
+    else if (isFriendMaster(player, firstCards)) {
         playableCards = player.getHand().getCards();
     }
-    else if (player.getHand().cardsForSuit(asset).size() != 0) {
+
+    // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
+
+    else if (player.getHand().cardsForSuit(_asset).size() != 0) {
         piss = false;
-        std::vector<Card> assets = cardsForSuit(firstCards, asset);
+        std::vector<Card> assets = cardsForSuit(firstCards, _asset);
         Card max = assets[0];
         for (auto c : assets) {
-            if (isCardGreater(c, max, asset)) {
+            if (isCardGreater(c, max)) {
                 max = c;
             }
         }
-        for (auto c : player.getHand().cardsForSuit(asset)) {
-            if (isCardGreater(c, max, asset)) {
+        for (auto c : player.getHand().cardsForSuit(_asset)) {
+            if (isCardGreater(c, max)) {
                 playableCards.push_back(c);
             }
         }
     }
+
+    // if the friend isn't master and he hasn't got neither asked suit nor bigger assets, he can play whatever he wants
+
     else {
         playableCards = playableCards = player.getHand().getCards();
     }
@@ -143,34 +157,29 @@ bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
     Suit demandedSuit = trick.getComposition()[0].getSuit();
+    
     if (trick.getComposition().size() != 4) {
         valid = false;
+    }
+    else {
+        
     }
     return valid;
 }
 
-void Rules::giveTrickToWinner(Trick& trick, const Suit& asset, Team& team1, Team& team2)
+void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
 {
-    Card best = winningCard(trick, asset);
+    Card best = winningCard(trick);
     vector<Card> cards = trick.getComposition();
-    int winningCardIndex = find(cards.begin(), cards.end(), best) - cards.begin();
-
-#warning TODO: maybe getDealingTeam somewhere (Game?)
-#warning TODO: add player attribute on played card
-    if (team1.isTeamDealing()) {
-        if (winningCardIndex == 1 || winningCardIndex == 3) {
-            team1.addTrick(trick);
-        }
-        else {
-            team2.addTrick(trick);
-        }
-    }
-    else {
-        if (winningCardIndex == 1 || winningCardIndex == 3) {
-            team2.addTrick(trick);
-        }
-        else {
-            team1.addTrick(trick);
+    std::vector<Player*> players = Game::getInstance().getPlayers();
+    for (Player* player : players) {
+        if (player->getPlayedCard() == best) {
+            if (team1.getComposition()[0] == *player || team1.getComposition()[1] == *player) {
+                team1.addTrick(trick);
+            }
+            else {
+                team2.addTrick(trick);
+            }
         }
     }
 }

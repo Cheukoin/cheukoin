@@ -30,7 +30,7 @@ public:
     std::vector<Card> cardsForSuit(Suit suit);
     void playCard(sf::RenderWindow& window, Card card);
 #warning TODO : plus besoin de window
-    void playByClick(sf::RenderWindow& window);
+    
 #warning TODO : rien a foutre ds hand + pas besoind e window
 
 #warning TODO : bouge le dans card

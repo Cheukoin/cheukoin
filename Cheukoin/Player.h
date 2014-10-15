@@ -13,12 +13,15 @@
 class Player {
 public:
     Player();
+    ~Player();
 
     void playCard(Card const& card);
     Bid makeBid(int amount, Suit const& asset);
 
     std::string getName() const;
     void setName(std::string name);
+
+    Card getPlayedCard();
 
     Hand getHand() const;
     void setHand(Hand& hand);
@@ -29,6 +32,7 @@ public:
     void makeDealer();
     void changeDealer();
     bool isDealer();
+    void playByClick();
 
 protected:
     std::string _name;
@@ -36,6 +40,7 @@ protected:
     Bid _bid;
     Game& _game = Game::getInstance();
     bool _dealer;
+    Card _playedCard;
 };
 
 bool operator==(Player const& a, Player const& b);
