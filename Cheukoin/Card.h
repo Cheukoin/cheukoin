@@ -2,6 +2,11 @@
 #define __Cheukoin_Card__
 
 #include <math.h>
+#include <iostream> // std::cout
+#include <algorithm> // std::shuffle
+#include <random> // std::default_random_engine
+#include <chrono> // std::chrono::system_clock
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Constants.h"

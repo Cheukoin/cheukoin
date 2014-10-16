@@ -51,30 +51,31 @@ std::string Card::_getFilename()
 void Card::moveTo(float x, float y)
 {
 #warning TODO : animate stuff
-    auto pos = this->sprite->getPosition();
-    float a = fabs((x - pos.x) / 10);
-    float b = fabs(y - pos.y) / 10;
+    //    auto pos = this->sprite->getPosition();
+    //    float a = fabs((x - pos.x) / 10);
+    //    float b = fabs(y - pos.y) / 10;
+    //
+    //    sf::Vector2i v(a, b);
+    //    if (pos.y > y) {
+    //        if (pos.x > x)
+    //            this->sprite->setPosition(pos.x - v.x, pos.y - v.y);
+    //        if (pos.x < x)
+    //            this->sprite->setPosition(pos.x + v.x, pos.y - v.y);
+    //    }
+    //    else {
+    //        if (pos.x > x)
+    //            this->sprite->setPosition(pos.x - v.x, pos.y + v.y);
+    //        else
+    //            this->sprite->setPosition(pos.x + v.x, pos.y + v.y);
+    //    }
+    //
+    //    if ((pos.x == x) && (pos.y == y)) {
+    //        v.x = 0;
+    //        v.y = 0;
+    //        this->sprite->setPosition(pos.x, pos.y);
+    //    }
 
-    sf::Vector2i v(a, b);
-    if (pos.y > y) {
-        if (pos.x > x)
-            this->sprite->setPosition(pos.x - v.x, pos.y - v.y);
-        if (pos.x < x)
-            this->sprite->setPosition(pos.x + v.x, pos.y - v.y);
-    }
-    else {
-        if (pos.x > x)
-            this->sprite->setPosition(pos.x - v.x, pos.y + v.y);
-        else
-            this->sprite->setPosition(pos.x + v.x, pos.y + v.y);
-    }
-
-    if ((pos.x == x)
-        && (pos.y == y)) {
-        v.x = 0;
-        v.y = 0;
-        this->sprite->setPosition(pos.x, pos.y);
-    }
+    this->sprite->setPosition(x, y);
 }
 
 sf::Texture Card::getTexture() const
@@ -119,7 +120,11 @@ vector<Card> Card::getAllCardsShuffled()
         }
     }
 
-    random_shuffle(cards.begin(), cards.end());
+    // initialize pseudo random number genrator
+    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+
+    // actually shuffle the cards
+    shuffle(cards.begin(), cards.end(), default_random_engine(seed));
 
     return cards;
 }
