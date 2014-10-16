@@ -1,4 +1,7 @@
 #include "Game.h"
+#include "Bot.h"
+#include "Team.h"
+#include "Lobby.h"
 
 using namespace std;
 
@@ -6,6 +9,26 @@ Game& Game::getInstance()
 {
     static Game instance;
     return instance;
+}
+
+void Game::startGame()
+{
+    Bot bot0;
+    Bot bot1;
+    Bot bot2;
+    Bot bot3;
+
+    Team teamA;
+    teamA.addPlayer(bot0);
+    teamA.addPlayer(bot2);
+
+    Team teamB;
+    teamB.addPlayer(bot1);
+    teamB.addPlayer(bot3);
+
+    Lobby lobby("My great lobby", vector<Team>{ teamA, teamB });
+
+    lobby.deal();
 }
 
 void Game::setMode(GameMode mode)

@@ -94,6 +94,7 @@ void Card::flip()
     sprite->setTexture(*texture);
     sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
+
 Value Card::getValue() const
 {
     return _value;
@@ -107,6 +108,20 @@ Suit Card::getSuit() const
 void Card::draw() const
 {
     Game::getInstance().getWindow()->draw(*sprite.get());
+}
+
+vector<Card> Card::getAllCardsShuffled()
+{
+    vector<Card> cards;
+    for (int suit = 0; suit < 4; suit++) {
+        for (int value = 0; value < 8; value++) {
+            cards.push_back(Card((Suit)suit, (Value)value));
+        }
+    }
+
+    random_shuffle(cards.begin(), cards.end());
+
+    return cards;
 }
 
 bool operator==(Card const& a, Card const& b)

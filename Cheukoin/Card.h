@@ -26,6 +26,8 @@ public:
     void flip();
     void moveTo(float x, float y);
 
+    static std::vector<Card> getAllCardsShuffled();
+
 private:
     Suit _suit;
     Value _value;

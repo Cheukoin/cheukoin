@@ -9,11 +9,15 @@
 
 class Trick;
 class Player;
+class Team;
+class Bot;
 class Bid;
 
 class Game {
 public:
     static Game& getInstance();
+
+    void startGame();
 
     void setMode(GameMode mode);
     GameMode getMode();
