@@ -157,12 +157,12 @@ bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
     Suit demandedSuit = trick.getComposition()[0].getSuit();
-    
+
     if (trick.getComposition().size() != 4) {
         valid = false;
     }
     else {
-        
+#warning au delà de la taille du pli, tout le reste est géré par playableCards, non?
     }
     return valid;
 }
