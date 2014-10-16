@@ -3,37 +3,43 @@
 Hand::Hand(std::vector<Card> cards, Position position)
     : _cards(cards)
     , _position(position)
+
 {
-    sf::Vector2f pos = _cards[0].sprite->getPosition();
-#warning TODO : search another way
+#warning TODO : search another way WIP
+    auto x = Game::getInstance().getWindow()->getSize().x;
+    auto y = Game::getInstance().getWindow()->getSize().y;
+    auto xnew = (x - (7 * _cards[0].sprite->getLocalBounds().height) / 50);
     switch (_position) {
     case Left:
         for (int i = 0; i < _cards.size(); i++) {
-            _cards[i].sprite->setPosition(pos.x, 100 + i * 40);
+            _cards[i].sprite->setPosition(0, (i + 1) * y / 10);
         }
         break;
 
     case Right:
         for (int i = 0; i < _cards.size(); i++) {
-            _cards[i].sprite->setPosition(700, 100 + i * 40);
+            _cards[i].sprite->setRotation(_cards[i].sprite->getRotation() + 90);
+            _cards[i].sprite->setPosition(xnew, (i + 1) * y / 10);
         }
         break;
 
     case Up:
         for (int i = 0; i < _cards.size(); i++) {
-            _cards[i].sprite->setPosition(150 + i * 50, 10);
+            _cards[i].sprite->setPosition(x / 10 * (1 + i), 0);
         }
         break;
 
     case Down:
         for (int i = 0; i < _cards.size(); i++) {
-            _cards[i].sprite->setPosition(150 + i * 50, 450);
+            _cards[i].sprite->setPosition(x / 10 * (1 + i), 9 * y / 10);
         }
         break;
 
     default:
         break;
     }
+
+#warning TODO : search another way
 }
 
 Hand::~Hand()
@@ -44,15 +50,14 @@ Hand::Hand()
 {
 }
 
-
-void Hand::playCard(sf::RenderWindow& window, Card c)
+void Hand::playCard(Card card)
 {
     int i = 0;
     if (_cards.size() != 0)
         for (i = 0; i < _cards.size(); i++)
-            if (_cards[i] == c) {
+            if (_cards[i] == card) {
                 _cards[i].flip();
-                move(_cards[i]);
+                _cards[i].move();
             }
 }
 
@@ -73,41 +78,26 @@ void Hand::addCard(Card const& card)
     _cards.push_back(card);
 }
 
-std::vector<Card> Hand::getCards()
+std::vector<Card> Hand::getCards() const
 {
     return _cards;
 }
 
 void Hand::draw() const
 {
+
     for (Card card : _cards) {
         card.draw();
     }
 }
 
-#warning TODO : bouge le dans card
-void Hand::move(Card c)
+Position Hand::getPosition() const
 {
-    //    if (_position == Left)
-    //        c.moveTo(300, 225);
-    //    if (_position == Right)
-    //        c.moveTo(400, 225);
-    //    if (_position == Up)
-    //        c.moveTo(350, 175);
-    //    if (_position == Down)
-    //        c.moveTo(350, 275);
+    return _position;
 }
-
-void Hand::moveToTrick(Card c)
+void Hand::setPosition(Position position)
 {
-    //    if (_position == Left)
-    //        c.sprite->setPosition(300, 225);
-    //    if (_position == Right)
-    //        c.sprite->setPosition(400, 225);
-    //    if (_position == Up)
-    //        c.sprite->setPosition(350, 175);
-    //    if (_position == Down)
-    //        c.sprite->setPosition(350, 275);
+    _position = position;
 }
 
 std::vector<Card> Hand::cardsForSuit(Suit suit)
@@ -120,4 +110,9 @@ std::vector<Card> Hand::cardsForSuit(Suit suit)
         }
     }
     return cardsForSuit;
+}
+Hand& Hand::operator=(Hand const& hand)
+{
+    setPosition(hand.getPosition());
+    _cards = hand.getCards();
 }

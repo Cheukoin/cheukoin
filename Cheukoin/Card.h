@@ -30,6 +30,8 @@ public:
 
     void flip();
     void moveTo(float x, float y);
+    void moveToTrick();
+    void move();
 
     static std::vector<Card> getAllCardsShuffled();
 

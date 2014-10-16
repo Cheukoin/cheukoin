@@ -96,6 +96,30 @@ void Card::flip()
     sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
 
+void Card::move()
+{
+    //    if (_position == Left)
+    //        c.moveTo(300, 225);
+    //    if (_position == Right)
+    //        c.moveTo(400, 225);
+    //    if (_position == Up)
+    //        c.moveTo(350, 175);
+    //    if (_position == Down)
+    //        c.moveTo(350, 275);
+}
+
+void Card::moveToTrick()
+{
+    //    if (_position == Left)
+    //        c.sprite->setPosition(300, 225);
+    //    if (_position == Right)
+    //        c.sprite->setPosition(400, 225);
+    //    if (_position == Up)
+    //        c.sprite->setPosition(350, 175);
+    //    if (_position == Down)
+    //        c.sprite->setPosition(350, 275);
+}
+
 Value Card::getValue() const
 {
     return _value;

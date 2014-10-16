@@ -4,6 +4,7 @@
 #include "Card.h"
 #include <iostream>
 #include <algorithm>
+#include "Game.h"
 
 enum Position {
     Left,
@@ -21,22 +22,16 @@ public:
 
     void addCard(Card const& card);
     void removeCard(Card const& card);
-    std::vector<Card> getCards();
+    std::vector<Card> getCards() const;
 
     void draw() const;
 
-    Position getPosition(Hand hand) const;
-    void setPosition(Hand hand);
+    Position getPosition() const;
+    void setPosition(Position position);
 
     std::vector<Card> cardsForSuit(Suit suit);
-    void playCard(sf::RenderWindow& window, Card card);
-#warning TODO : plus besoin de window
-
-#warning TODO : rien a foutre ds hand + pas besoind e window
-
-#warning TODO : bouge le dans card
-    void moveToTrick(Card c);
-    void move(Card c);
+    void playCard(Card card);
+    Hand& operator=(Hand const& hand);
 
 private:
     std::vector<Card> _cards;

@@ -47,7 +47,7 @@ int Team::getScore()
     return _score;
 }
 
-vector<Trick> Team::getTricks()
+vector<Trick> Team::getTricks() 
 {
     return _wonTricks;
 }
