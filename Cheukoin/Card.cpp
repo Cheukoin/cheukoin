@@ -11,13 +11,13 @@ Card::Card(Suit suit, Value value)
     , sprite(make_shared<sf::Sprite>())
     , _suit(suit)
     , _value(value)
-    , _size(sf::Vector2u(342, 480))
+    , _size(sf::Vector2u(500, 726))
 {
     if (!texture->loadFromFile(resourcePath("cardBack.png"))) {
         puts("Texture file not loaded");
     }
     texture->setSmooth(true);
-    sprite->setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
     sprite->setTexture(*texture);
     sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
@@ -29,23 +29,23 @@ Card::~Card()
 std::string Card::_getFilename()
 {
     std::vector<std::string> suits = {
-        "Clubs",
-        "Hearts",
-        "Diamonds",
-        "Spades"
+        "clubs",
+        "hearts",
+        "diamonds",
+        "spades"
     };
     std::vector<std::string> values = {
-        "Ace",
-        "King",
-        "Queen",
-        "Jack",
-        "Ten",
-        "Nine",
-        "Eight",
-        "Seven"
+        "ace",
+        "king",
+        "queen",
+        "jack",
+        "10",
+        "9",
+        "8",
+        "7"
     };
 
-    return suits[_suit] + values[_value] + ".png";
+    return values[_value] + "_of_" + suits[_suit] + ".png";
 }
 
 void Card::moveTo(float x, float y)
@@ -90,7 +90,7 @@ void Card::flip()
         puts("Texture file not loaded");
     }
 
-    sprite->setTextureRect(sf::IntRect(0, 0, 342, 480));
+    sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
     sprite->setTexture(*texture);
     sprite->setScale(sf::Vector2f(0.3, 0.3));
 }

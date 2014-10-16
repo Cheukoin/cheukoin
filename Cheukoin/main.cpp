@@ -17,9 +17,8 @@ int main()
     shared_ptr<sf::RenderWindow> window = game.getWindow();
     window->setFramerateLimit(60);
 
-    game.startGame();
-
     sf::Vector2i v(1, 1);
+    sf::Event event;
 
     // init background
     sf::Texture bgTexture;
@@ -31,21 +30,30 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    // game logic
+    vector<Card> cards = Card::getAllCardsShuffled();
+
+    // main game loop
     while (window->isOpen()) {
-        sf::Event event;
+
         event.type = sf::Event::MouseButtonPressed;
         event.mouseButton.button = sf::Mouse::Left;
 
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed)
+            if (event.type == sf::Event::Closed) {
                 window->close();
+            }
         }
 
         window->clear();
         window->draw(bgSprite);
 
-        window->setMouseCursorVisible(true);
+        for (int i = 0; i < cards.size(); i++) {
+            cards[i].flip();
+            cards[i].draw();
+
+            cards[i].moveTo(20 * i, 50);
+        }
+
         window->display();
     }
 
