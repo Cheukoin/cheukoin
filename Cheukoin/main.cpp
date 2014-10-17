@@ -8,6 +8,7 @@
 #include "ResourcePath.h"
 #include "Hand.h"
 #include "Player.h"
+#include "Lobby.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    vector<Card> cards = Card::getAllCardsShuffled();
+    game.startGame();
 
     // main game loop
     while (window->isOpen()) {
@@ -47,11 +48,18 @@ int main()
         window->clear();
         window->draw(bgSprite);
 
-        for (int i = 0; i < cards.size(); i++) {
-            cards[i].flip();
-            cards[i].draw();
+        vector<Player> players = game.getLobby()->getPlayers();
 
-            cards[i].moveTo(20 * i, 50);
+        int count = 0;
+        for (Player player : players) {
+            vector<Card> cards = player.getHand().getCards();
+            for (int i = 0; i < cards.size(); i++) {
+                cards[i].flip();
+                cards[i].draw();
+
+                cards[i].moveTo(20 * i, 100 * count);
+            }
+            count++;
         }
 
         window->display();

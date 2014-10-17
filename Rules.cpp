@@ -171,10 +171,10 @@ void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
 {
     Card best = winningCard(trick);
     vector<Card> cards = trick.getComposition();
-    std::vector<Player*> players = Game::getInstance().getPlayers();
-    for (Player* player : players) {
-        if (player->getPlayedCard() == best) {
-            if (team1.getComposition()[0] == *player || team1.getComposition()[1] == *player) {
+    std::vector<Player> players = Game::getInstance().getLobby()->getPlayers();
+    for (Player player : players) {
+        if (player.getPlayedCard() == best) {
+            if (team1.getComposition()[0] == player || team1.getComposition()[1] == player) {
                 team1.addTrick(trick);
             }
             else {

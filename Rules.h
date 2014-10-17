@@ -18,6 +18,7 @@
 #include "Hand.h"
 #include "Constants.h"
 #include "Game.h"
+#include "Lobby.h"
 
 class Rules {
 public:

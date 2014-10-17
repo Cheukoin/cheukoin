@@ -2,6 +2,7 @@
 #include "Bot.h"
 #include "Team.h"
 #include "Lobby.h"
+#include "Player.h"
 
 using namespace std;
 
@@ -26,9 +27,9 @@ void Game::startGame()
     teamB.addPlayer(bot1);
     teamB.addPlayer(bot3);
 
-    Lobby lobby("My great lobby", vector<Team>{ teamA, teamB });
+    _lobby = make_shared<Lobby>("My great lobby", vector<Team>{ teamA, teamB });
 
-    lobby.deal();
+    _lobby->deal();
 }
 
 void Game::setMode(GameMode mode)
@@ -41,6 +42,11 @@ GameMode Game::getMode()
     return _mode;
 }
 
+std::shared_ptr<Lobby> Game::getLobby()
+{
+    return _lobby;
+}
+
 void Game::setBid(Bid* const& bid)
 {
     _bid = bid;
@@ -49,16 +55,6 @@ void Game::setBid(Bid* const& bid)
 Bid* Game::getBid()
 {
     return _bid;
-}
-
-void Game::addPlayer(Player*& player)
-{
-    _players.push_back(player);
-}
-
-std::vector<Player*> Game::getPlayers()
-{
-    return _players;
 }
 
 void Game::addTrick(Trick* const& trick)

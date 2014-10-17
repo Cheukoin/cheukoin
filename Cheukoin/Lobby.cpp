@@ -21,9 +21,9 @@ void Lobby::deal()
     vector<Card> cards = Card::getAllCardsShuffled();
     vector<Hand> hands = { Hand(), Hand(), Hand(), Hand() };
 
-    for (auto card : cards) {
-        for (int i = 0; i < getPlayers().size(); i++) {
-            hands[i].addCard(card);
+    for (Card card : cards) {
+        for (Hand hand : hands) {
+            hand.addCard(card);
         }
     }
 

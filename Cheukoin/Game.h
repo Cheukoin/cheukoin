@@ -12,6 +12,7 @@ class Player;
 class Team;
 class Bot;
 class Bid;
+class Lobby;
 
 class Game {
 public:
@@ -25,8 +26,7 @@ public:
     void setBid(Bid* const& bid);
     Bid* getBid();
 
-    void addPlayer(Player*& player);
-    std::vector<Player*> getPlayers();
+    std::shared_ptr<Lobby> getLobby();
 
     void addTrick(Trick* const& trick);
     std::vector<Trick*> getTricks();
@@ -42,6 +42,7 @@ private:
 
     GameMode _mode;
     Bid* _bid;
+    std::shared_ptr<Lobby> _lobby;
     std::vector<Player*> _players;
     std::vector<Trick*> _tricks;
     std::shared_ptr<sf::RenderWindow> _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Cheukoin !");
