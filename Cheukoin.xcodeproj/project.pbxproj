@@ -64,7 +64,6 @@
 		C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
 		C0B83EB619E2C23C0037C5AE /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9B19E2C23C0037C5AE /* Card.cpp */; };
 		C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA019E2C23C0037C5AE /* Game.cpp */; };
-		C0B83EBB19E2C23C0037C5AE /* Hand.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA219E2C23C0037C5AE /* Hand.cpp */; };
 		C0B83EBC19E2C23C0037C5AE /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA419E2C23C0037C5AE /* main.cpp */; };
 		C0B83EBD19E2C23C0037C5AE /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */; };
 		C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA719E2C23C0037C5AE /* Player.cpp */; };
@@ -148,8 +147,6 @@
 		C0B83E9C19E2C23C0037C5AE /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		C0B83EA019E2C23C0037C5AE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		C0B83EA119E2C23C0037C5AE /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		C0B83EA219E2C23C0037C5AE /* Hand.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Hand.cpp; sourceTree = "<group>"; };
-		C0B83EA319E2C23C0037C5AE /* Hand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hand.h; sourceTree = "<group>"; };
 		C0B83EA419E2C23C0037C5AE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManager.cpp; sourceTree = "<group>"; };
 		C0B83EA619E2C23C0037C5AE /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
@@ -244,7 +241,6 @@
 				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
 				C0B83E9B19E2C23C0037C5AE /* Card.cpp */,
 				C0B83EA019E2C23C0037C5AE /* Game.cpp */,
-				C0B83EA219E2C23C0037C5AE /* Hand.cpp */,
 				19D2FA1C19F034280074B105 /* Lobby.cpp */,
 				C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */,
 				C0B83EA719E2C23C0037C5AE /* Player.cpp */,
@@ -257,7 +253,6 @@
 				C0B83E9C19E2C23C0037C5AE /* Card.h */,
 				C0C093BE19E81BD900023F27 /* Constants.h */,
 				C0B83EA119E2C23C0037C5AE /* Game.h */,
-				C0B83EA319E2C23C0037C5AE /* Hand.h */,
 				19D2FA1D19F034280074B105 /* Lobby.h */,
 				C0B83EA619E2C23C0037C5AE /* NetworkManager.h */,
 				C0B83EA819E2C23C0037C5AE /* Player.h */,
@@ -490,7 +485,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */,
-				C0B83EBB19E2C23C0037C5AE /* Hand.cpp in Sources */,
 				C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */,
 				C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */,
 				C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */,

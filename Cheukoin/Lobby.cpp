@@ -19,16 +19,16 @@ Lobby::Lobby(string const& name, vector<Team> const& teams)
 void Lobby::deal()
 {
     vector<Card> cards = Card::getAllCardsShuffled();
-    vector<Hand> hands = { Hand(), Hand(), Hand(), Hand() };
 
+    int i = 0;
+    vector<vector<Card> > hands{ {}, {}, {}, {} };
     for (Card card : cards) {
-        for (Hand hand : hands) {
-            hand.addCard(card);
-        }
+        hands[i % 4].push_back(card);
+        i++;
     }
 
     for (int i = 0; i < getPlayers().size(); i++) {
-        getPlayers()[i].setHand(hands[i]);
+        getPlayers()[i].setCards(hands[i]);
     }
 }
 

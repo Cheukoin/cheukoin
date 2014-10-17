@@ -15,7 +15,6 @@
 #include "Trick.h"
 #include "Team.h"
 #include "Player.h"
-#include "Hand.h"
 #include "Constants.h"
 #include "Game.h"
 #include "Lobby.h"

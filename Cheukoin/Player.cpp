@@ -14,8 +14,16 @@ Player::~Player()
 void Player::playCard(Card const& card)
 {
 #warning TODO : verify move is valid with rules
+    if (_cards.size() != 0) {
+        for (int i = 0; i < _cards.size(); i++) {
+            if (_cards[i] == card) {
+                _cards[i].flip();
+                _cards[i].move();
+                _cards.erase(_cards.begin() + i);
+            }
+        }
+    }
     _game.getCurrentTrick()->addCard(card);
-    _hand.removeCard(card);
     _playedCard = card;
     if (_game.getMode() == Online) {
 #warning TODO : notify server if multiplayer
@@ -44,16 +52,6 @@ Card Player::getPlayedCard()
     return _playedCard;
 }
 
-Hand Player::getHand() const
-{
-    return _hand;
-}
-
-void Player::setHand(Hand& hand)
-{
-    _hand = hand;
-}
-
 Bid Player::getBid() const
 {
     return _bid;
@@ -79,6 +77,47 @@ bool Player::isDealer()
     return _dealer;
 }
 
+// Card management
+
+void Player::setCards(vector<Card>& cards)
+{
+    _cards = cards;
+}
+
+vector<Card> Player::getCards() const
+{
+    return _cards;
+}
+
+void Player::drawCards() const
+{
+    for (Card card : _cards) {
+        card.draw();
+    }
+}
+
+Position Player::getPosition() const
+{
+    return _position;
+}
+
+void Player::setPosition(Position position)
+{
+    _position = position;
+}
+
+vector<Card> Player::cardsForSuit(Suit suit)
+{
+#warning TODO : appeler l'equivalent ds rules
+    std::vector<Card> cardsForSuit;
+    for (auto c : _cards) {
+        if (c.getSuit() == suit) {
+            cardsForSuit.push_back(c);
+        }
+    }
+    return cardsForSuit;
+}
+
 bool operator==(Player const& a, Player const& b)
 {
     return a.getName() == b.getName();
@@ -88,17 +127,3 @@ bool operator!=(Player const& a, Player const& b)
 {
     return !(a == b);
 }
-
-/*
-void Player::playByClick()
-{
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*_game.getWindow().get());
-    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-        for (auto card : _hand.getCards()) {
-            if (card.sprite->getGlobalBounds().contains(mousePosition.x, mousePosition.y)) {
-                card.flip();
-                _game.getCurrentTrick()->addCard(card);
-            }
-        }
-    }
-}*/

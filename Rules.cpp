@@ -116,20 +116,20 @@ std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
 
     // first, look wether the player have the demanded suit in his hand
 
-    if (player.getHand().cardsForSuit(demandedSuit).size() != 0) {
+    if (player.cardsForSuit(demandedSuit).size() != 0) {
         piss = false;
-        playableCards = player.getHand().cardsForSuit(demandedSuit);
+        playableCards = player.cardsForSuit(demandedSuit);
     }
 
     // if not, he can still play whatever he wants if his friends is the current master of the trick
 
     else if (isFriendMaster(player, firstCards)) {
-        playableCards = player.getHand().getCards();
+        playableCards = player.getCards();
     }
 
     // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
 
-    else if (player.getHand().cardsForSuit(_asset).size() != 0) {
+    else if (player.cardsForSuit(_asset).size() != 0) {
         piss = false;
         std::vector<Card> assets = cardsForSuit(firstCards, _asset);
         Card max = assets[0];
@@ -138,7 +138,7 @@ std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
                 max = c;
             }
         }
-        for (auto c : player.getHand().cardsForSuit(_asset)) {
+        for (auto c : player.cardsForSuit(_asset)) {
             if (isCardGreater(c, max)) {
                 playableCards.push_back(c);
             }
@@ -148,7 +148,7 @@ std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
     // if the friend isn't master and he hasn't got neither asked suit nor bigger assets, he can play whatever he wants
 
     else {
-        playableCards = playableCards = player.getHand().getCards();
+        playableCards = playableCards = player.getCards();
     }
     return playableCards;
 }

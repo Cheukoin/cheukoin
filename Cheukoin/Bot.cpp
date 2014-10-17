@@ -18,7 +18,7 @@ void Bot::play()
 
 Card Bot::chooseCard()
 {
-    return _hand.getCards()[0];
+    return _cards[0];
 }
 
 void Bot::guessHands() {}

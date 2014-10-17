@@ -4,27 +4,29 @@
 #include <string>
 
 #include "Bid.h"
-#include "Hand.h"
 #include "Card.h"
 #include "Game.h"
 #include "Trick.h"
 #include "Constants.h"
+
+enum Position {
+    Left,
+    Right,
+    Top,
+    Bottom
+};
 
 class Player {
 public:
     Player();
     ~Player();
 
-    void playCard(Card const& card);
     Bid makeBid(int amount, Suit const& asset);
 
     std::string getName() const;
     void setName(std::string name);
 
     Card getPlayedCard();
-
-    Hand getHand() const;
-    void setHand(Hand& hand);
 
     Bid getBid() const;
     void setBid(Bid& bid);
@@ -34,13 +36,26 @@ public:
     bool isDealer();
     void playByClick();
 
+    Position getPosition() const;
+    void setPosition(Position position);
+
+    // Card management
+    void setCards(std::vector<Card>& cards);
+    void playCard(Card const& card);
+    std::vector<Card> getCards() const;
+
+    void drawCards() const;
+
+    std::vector<Card> cardsForSuit(Suit suit);
+
 protected:
     std::string _name;
-    Hand _hand;
     Bid _bid;
     Game& _game = Game::getInstance();
     bool _dealer;
     Card _playedCard;
+    std::vector<Card> _cards;
+    Position _position;
 };
 
 bool operator==(Player const& a, Player const& b);
