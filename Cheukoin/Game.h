@@ -35,7 +35,6 @@ private:
     GameMode const& _mode;
     Bid _bid;
     Lobby& _lobby;
-    std::vector<Player> _players;
     std::vector<Trick> _tricks;
 };
 

@@ -23,10 +23,10 @@ int Trick::getNumber()
 
 void Trick::addCard(Card const& card)
 {
-    _composition.push_back(card);
+    _cards.push_back(card);
 }
 
-vector<Card> Trick::getComposition()
+vector<Card> Trick::getCards()
 {
-    return _composition;
+    return _cards;
 }

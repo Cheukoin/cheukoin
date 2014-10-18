@@ -45,10 +45,10 @@ void Lobby::setName(string const& name)
 vector<Player> Lobby::getPlayers()
 {
     vector<Player> players = {
-        _teams[0].getComposition()[0],
-        _teams[0].getComposition()[1],
-        _teams[1].getComposition()[0],
-        _teams[1].getComposition()[1]
+        _teams[0].getPlayers()[0],
+        _teams[0].getPlayers()[1],
+        _teams[1].getPlayers()[0],
+        _teams[1].getPlayers()[1]
     };
 
     return players;

@@ -14,13 +14,12 @@ public:
 
     void addCard(Card const& Card);
 
-#warning TODO: change name to getCards
-    std::vector<Card> getComposition();
+    std::vector<Card> getCards();
 
 private:
 #warning TODO: see if we can get rid of this
     int _number;
-    std::vector<Card> _composition;
+    std::vector<Card> _cards;
 };
 
 #endif

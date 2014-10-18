@@ -76,10 +76,10 @@ bool Rules::isCardGreater(Card card1, Card card2)
 Card Rules::winningCard(Trick trick)
 {
 #warning TODO: check if we can use a lambda with std::max
-    Card max = trick.getComposition()[0];
-    for (int i = 0; i < trick.getComposition().size(); i++) {
-        if (isCardGreater(trick.getComposition()[i], max)) {
-            max = trick.getComposition()[i];
+    Card max = trick.getCards()[0];
+    for (int i = 0; i < trick.getCards().size(); i++) {
+        if (isCardGreater(trick.getCards()[i], max)) {
+            max = trick.getCards()[i];
         }
     }
     return max;
@@ -87,7 +87,7 @@ Card Rules::winningCard(Trick trick)
 
 bool Rules::isTeamValid(Team team)
 {
-    return (team.getComposition().size() == 2) && (team.getComposition()[0] != team.getComposition()[1]);
+    return (team.getPlayers().size() == 2) && (team.getPlayers()[0] != team.getPlayers()[1]);
 }
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
@@ -156,9 +156,9 @@ std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
 bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
-    Suit demandedSuit = trick.getComposition()[0].getSuit();
+    Suit demandedSuit = trick.getCards()[0].getSuit();
 
-    if (trick.getComposition().size() != 4) {
+    if (trick.getCards().size() != 4) {
         valid = false;
     }
     else {
@@ -170,11 +170,11 @@ bool Rules::isTrickValid(Trick trick)
 void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
 {
     Card best = winningCard(trick);
-    vector<Card> cards = trick.getComposition();
+    vector<Card> cards = trick.getCards();
     std::vector<Player> players = Application::getInstance().getGame()->getLobby().getPlayers();
     for (Player player : players) {
         if (player.getPlayedCard() == best) {
-            if (team1.getComposition()[0] == player || team1.getComposition()[1] == player) {
+            if (team1.getPlayers()[0] == player || team1.getPlayers()[1] == player) {
                 team1.addTrick(trick);
             }
             else {

@@ -47,12 +47,12 @@ int Team::getScore()
     return _score;
 }
 
-vector<Trick> Team::getTricks() 
+vector<Trick> Team::getTricks()
 {
     return _wonTricks;
 }
 
-std::vector<Player> Team::getComposition()
+std::vector<Player> Team::getPlayers()
 {
     return _players;
 }

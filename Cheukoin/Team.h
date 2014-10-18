@@ -17,8 +17,7 @@ public:
     int getScore();
     std::vector<Trick> getTricks();
 
-#warning TODO: change name to getPlayers
-    std::vector<Player> getComposition();
+    std::vector<Player> getPlayers();
     bool isTeamDealing();
 
 private:
