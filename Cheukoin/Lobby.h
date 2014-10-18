@@ -19,6 +19,7 @@ class Lobby {
 
 public:
     Lobby(std::string const& name, std::vector<Team> const& teams = std::vector<Team>());
+    Lobby(){};
     ~Lobby();
 
     // give cards to all players

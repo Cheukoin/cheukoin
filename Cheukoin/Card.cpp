@@ -132,7 +132,7 @@ Suit Card::getSuit() const
 
 void Card::draw() const
 {
-    Game::getInstance().getWindow()->draw(*sprite.get());
+    Application::getInstance().getWindow()->draw(*sprite.get());
 }
 
 vector<Card> Card::getAllCardsShuffled()

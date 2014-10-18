@@ -48,6 +48,7 @@
 		19D2FA5C19F050CB0074B105 /* queen_of_diamonds.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA3C19F050CB0074B105 /* queen_of_diamonds.png */; };
 		19D2FA5D19F050CB0074B105 /* queen_of_hearts.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA3D19F050CB0074B105 /* queen_of_hearts.png */; };
 		19D2FA5E19F050CB0074B105 /* queen_of_spades.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA3E19F050CB0074B105 /* queen_of_spades.png */; };
+		19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
 		19F5852F19EBC77C00C2DC44 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19F5852E19EBC77C00C2DC44 /* main.cpp */; };
 		19F5853519EBF25B00C2DC44 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F5853419EBF25B00C2DC44 /* gtest.framework */; };
@@ -133,6 +134,8 @@
 		19D2FA3C19F050CB0074B105 /* queen_of_diamonds.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_diamonds.png; sourceTree = "<group>"; };
 		19D2FA3D19F050CB0074B105 /* queen_of_hearts.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_hearts.png; sourceTree = "<group>"; };
 		19D2FA3E19F050CB0074B105 /* queen_of_spades.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = queen_of_spades.png; sourceTree = "<group>"; };
+		19E8151D19F2C77E00B2A5F8 /* Application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Application.cpp; sourceTree = "<group>"; };
+		19E8151E19F2C77E00B2A5F8 /* Application.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Application.h; sourceTree = "<group>"; };
 		19EAA46319E2C72C00F23D27 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
@@ -237,6 +240,7 @@
 			isa = PBXGroup;
 			children = (
 				C0B83EA419E2C23C0037C5AE /* main.cpp */,
+				19E8151D19F2C77E00B2A5F8 /* Application.cpp */,
 				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
 				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
 				C0B83E9B19E2C23C0037C5AE /* Card.cpp */,
@@ -248,6 +252,7 @@
 				C0B83EAF19E2C23C0037C5AE /* Score.cpp */,
 				C0B83EB119E2C23C0037C5AE /* Team.cpp */,
 				C0B83EB319E2C23C0037C5AE /* Trick.cpp */,
+				19E8151E19F2C77E00B2A5F8 /* Application.h */,
 				C0B83E9A19E2C23C0037C5AE /* Bid.h */,
 				C0B83EC719E2C95A0037C5AE /* Bot.h */,
 				C0B83E9C19E2C23C0037C5AE /* Card.h */,
@@ -486,6 +491,7 @@
 			files = (
 				C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */,
 				C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */,
+				19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */,
 				C0B83EBE19E2C23C0037C5AE /* Player.cpp in Sources */,
 				C0B83EBA19E2C23C0037C5AE /* Game.cpp in Sources */,
 				C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */,

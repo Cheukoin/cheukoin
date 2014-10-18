@@ -8,13 +8,14 @@
 #include "ResourcePath.h"
 #include "Player.h"
 #include "Lobby.h"
+#include "Bot.h"
 
 using namespace std;
 
 int main()
 {
-    Game& game = Game::getInstance();
-    shared_ptr<sf::RenderWindow> window = game.getWindow();
+    Application& app = Application::getInstance();
+    shared_ptr<sf::RenderWindow> window = app.getWindow();
     window->setFramerateLimit(60);
 
     sf::Vector2i v(1, 1);
@@ -30,7 +31,21 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    game.startGame();
+    Bot bot0;
+    Bot bot1;
+    Bot bot2;
+    Bot bot3;
+
+    Team teamA;
+    teamA.addPlayer(bot0);
+    teamA.addPlayer(bot2);
+
+    Team teamB;
+    teamB.addPlayer(bot1);
+    teamB.addPlayer(bot3);
+
+    Lobby lobby("Test lobby", { teamA, teamB });
+    app.startGame(lobby, GameMode::Online);
 
     // main game loop
     while (window->isOpen()) {
@@ -46,20 +61,20 @@ int main()
 
         window->clear();
         window->draw(bgSprite);
-
-        vector<Player> players = game.getLobby()->getPlayers();
-
-        int count = 0;
-        for (Player player : players) {
-            vector<Card> cards = player.getCards();
-            for (int i = 0; i < cards.size(); i++) {
-                cards[i].flip();
-                cards[i].draw();
-
-                cards[i].moveTo(20 * i, 100 * count);
-            }
-            count++;
-        }
+//
+//        vector<Player> players = app.getGame()->getLobby().getPlayers();
+//
+//        int count = 0;
+//        for (Player player : players) {
+//            vector<Card> cards = player.getCards();
+//            for (int i = 0; i < cards.size(); i++) {
+//                cards[i].flip();
+//                cards[i].draw();
+//
+//                cards[i].moveTo(20 * i, 100 * count);
+//            }
+//            count++;
+//        }
 
         window->display();
     }

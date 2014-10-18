@@ -23,9 +23,9 @@ void Player::playCard(Card const& card)
             }
         }
     }
-    _game.getCurrentTrick()->addCard(card);
+    _game->getCurrentTrick().addCard(card);
     _playedCard = card;
-    if (_game.getMode() == Online) {
+    if (_game->getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
 }

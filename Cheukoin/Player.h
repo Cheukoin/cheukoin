@@ -5,7 +5,7 @@
 
 #include "Bid.h"
 #include "Card.h"
-#include "Game.h"
+#include "Application.h"
 #include "Trick.h"
 #include "Constants.h"
 
@@ -51,7 +51,7 @@ public:
 protected:
     std::string _name;
     Bid _bid;
-    Game& _game = Game::getInstance();
+    std::shared_ptr<Game> _game = Application::getInstance().getGame();
     bool _dealer;
     Card _playedCard;
     std::vector<Card> _cards;
