@@ -12,7 +12,7 @@ Application& Application::getInstance()
     return instance;
 }
 
-void Application::startGame(Lobby lobby, GameMode mode)
+void Application::startGame(Lobby& lobby, GameMode const& mode)
 {
     _game = make_shared<Game>(lobby, mode);
     _game->startGame();

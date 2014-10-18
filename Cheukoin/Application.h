@@ -12,9 +12,7 @@ class Application {
 public:
     static Application& getInstance();
 
-    void startGame(Lobby lobby, GameMode mode);
-    void startGame();
-
+    void startGame(Lobby& lobby, GameMode const& mode);
     std::shared_ptr<Game> getGame();
 
     std::shared_ptr<sf::RenderWindow> getWindow();
@@ -27,7 +25,7 @@ private:
 
     std::shared_ptr<Game> _game;
 
-    std::shared_ptr<sf::RenderWindow> _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(800, 600), "Cheukoin !");
+    std::shared_ptr<sf::RenderWindow> _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Cheukoin !");
 };
 
 #endif

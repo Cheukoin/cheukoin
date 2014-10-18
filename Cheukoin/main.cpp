@@ -44,12 +44,11 @@ int main()
     teamB.addPlayer(bot1);
     teamB.addPlayer(bot3);
 
-    Lobby lobby("Test lobby", { teamA, teamB });
+    Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
     app.startGame(lobby, GameMode::Online);
 
     // main game loop
     while (window->isOpen()) {
-
         event.type = sf::Event::MouseButtonPressed;
         event.mouseButton.button = sf::Mouse::Left;
 
@@ -62,19 +61,19 @@ int main()
         window->clear();
         window->draw(bgSprite);
 
-        //        vector<Player> players = app.getGame()->getLobby().getPlayers();
-        //
-        //        int count = 0;
-        //        for (Player player : players) {
-        //            vector<Card> cards = player.getCards();
-        //            for (int i = 0; i < cards.size(); i++) {
-        //                cards[i].flip();
-        //                cards[i].draw();
-        //
-        //                cards[i].moveTo(20 * i, 100 * count);
-        //            }
-        //            count++;
-        //        }
+        vector<Player> players = app.getGame()->getLobby().getPlayers();
+
+        int count = 0;
+        for (Player player : players) {
+            vector<Card> cards = player.getCards();
+            for (int i = 0; i < cards.size(); i++) {
+                cards[i].flip();
+                cards[i].draw();
+
+                cards[i].moveTo(20 * i, 100 * count);
+            }
+            count++;
+        }
 
         window->display();
     }

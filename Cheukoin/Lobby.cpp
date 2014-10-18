@@ -42,7 +42,7 @@ void Lobby::setName(string const& name)
     _name = name;
 }
 
-vector<Player> Lobby::getPlayers()
+vector<Player> Lobby::getPlayers() const
 {
     vector<Player> players = {
         _teams[0].getPlayers()[0],

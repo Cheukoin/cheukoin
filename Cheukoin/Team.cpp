@@ -52,7 +52,7 @@ vector<Trick> Team::getTricks()
     return _wonTricks;
 }
 
-std::vector<Player> Team::getPlayers()
+std::vector<Player> Team::getPlayers() const
 {
     return _players;
 }
