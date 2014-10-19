@@ -8,7 +8,7 @@
 
 class Bot : public Player {
 public:
-    Bot();
+    using Player::Player;
     ~Bot();
 
     void initialize();

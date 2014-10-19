@@ -18,6 +18,7 @@ enum Position {
 
 class Player {
 public:
+    Player(std::string name);
     Player();
     ~Player();
 

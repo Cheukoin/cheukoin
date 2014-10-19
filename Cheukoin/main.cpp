@@ -31,10 +31,10 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    Bot bot0;
-    Bot bot1;
-    Bot bot2;
-    Bot bot3;
+    Bot bot0("Bot 0");
+    Bot bot1("Bot 1");
+    Bot bot2("Bot 2");
+    Bot bot3("Bot 3");
     std::vector<Bot> bots = { bot0, bot1, bot2, bot3 };
 
     Team teamA;

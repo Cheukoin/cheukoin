@@ -2,10 +2,6 @@
 
 using namespace std;
 
-Bot::Bot()
-{
-}
-
 Bot::~Bot()
 {
 }

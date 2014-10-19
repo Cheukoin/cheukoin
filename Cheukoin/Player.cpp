@@ -2,8 +2,13 @@
 
 using namespace std;
 
+Player::Player(std::string name)
+    : _name(name)
+{
+}
+
 Player::Player()
-    : _name("Player 1")
+    : _name("Default")
 {
 }
 

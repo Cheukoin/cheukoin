@@ -50,7 +50,7 @@ vector<reference_wrapper<Player> > Lobby::getPlayers()
     };
 }
 
-Team Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
+Team& Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
 {
     if (!getEnemyTeam && (_teams[0].getPlayers().at(0) == player || _teams[0].getPlayers().at(1) == player)) {
         return _teams[0];

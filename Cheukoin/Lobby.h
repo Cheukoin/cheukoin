@@ -31,7 +31,7 @@ public:
     std::vector<Team> getTeams();
     std::vector<std::reference_wrapper<Player> > getPlayers();
 
-    Team getTeamForPlayer(Player player, bool getEnemyTeam = false);
+    Team& getTeamForPlayer(Player player, bool getEnemyTeam = false);
 
 private:
     std::string _name;
