@@ -30,8 +30,7 @@ public:
     void draw() const;
 
     void flip();
-    void moveTo(float x, float y);
-    void moveToTrick();
+    void moveTo(sf::Vector2u const& position);
     void move();
 
     static std::vector<Card> getAllCards();

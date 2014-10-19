@@ -48,7 +48,7 @@ std::string Card::_getFilename()
     return values[_value] + "_of_" + suits[_suit] + ".png";
 }
 
-void Card::moveTo(float x, float y)
+void Card::moveTo(sf::Vector2u const& position)
 {
 #warning TODO : animate stuff
     //    auto pos = this->sprite->getPosition();
@@ -75,7 +75,7 @@ void Card::moveTo(float x, float y)
     //        this->sprite->setPosition(pos.x, pos.y);
     //    }
 
-    sprite->setPosition(x, y);
+    sprite->setPosition(position.x, position.y);
 }
 
 sf::Texture Card::getTexture() const
@@ -106,18 +106,6 @@ void Card::move()
     //        c.moveTo(350, 175);
     //    if (_position == Down)
     //        c.moveTo(350, 275);
-}
-
-void Card::moveToTrick()
-{
-    //    if (_position == Left)
-    //        c.sprite->setPosition(300, 225);
-    //    if (_position == Right)
-    //        c.sprite->setPosition(400, 225);
-    //    if (_position == Up)
-    //        c.sprite->setPosition(350, 175);
-    //    if (_position == Down)
-    //        c.sprite->setPosition(350, 275);
 }
 
 Value Card::getValue() const

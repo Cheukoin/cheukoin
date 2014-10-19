@@ -24,6 +24,8 @@ public:
 
     Bid makeBid(int amount, Suit const& asset);
 
+    virtual void play();
+
     std::string getName() const;
     void setName(std::string name);
 
@@ -41,7 +43,7 @@ public:
     void setPosition(Position position);
 
     // Card management
-    void initializeCards();
+    void initialize();
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
@@ -57,6 +59,8 @@ protected:
     Card _playedCard;
     std::vector<Card> _cards;
     Position _position;
+
+    void _moveCardToTrick(Card& card);
 };
 
 bool operator==(Player const& a, Player const& b);

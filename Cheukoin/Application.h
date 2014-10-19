@@ -12,7 +12,7 @@ class Application {
 public:
     static Application& getInstance();
 
-    void startGame(Lobby& lobby, GameMode const& mode, std::vector<Bot> bots);
+    void startGame(Lobby& lobby, GameMode const& mode);
     std::shared_ptr<Game> getGame();
 
     std::shared_ptr<sf::RenderWindow> getWindow();

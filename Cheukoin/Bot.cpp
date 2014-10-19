@@ -13,6 +13,8 @@ Bot::~Bot()
 
 void Bot::initialize()
 {
+    initialize();
+
     _game = Application::getInstance().getGame();
 
     Team team = _game->getLobby().getTeamForPlayer(*this);
@@ -36,12 +38,12 @@ void Bot::initialize()
 void Bot::play()
 {
     Card nextCard = chooseCard();
-    Player::playCard(nextCard);
+    playCard(nextCard);
 }
 
 Card Bot::chooseCard()
 {
-    return _cards[0];
+    return _cards.front();
 }
 
 void Bot::guessHands() {}

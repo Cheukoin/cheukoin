@@ -16,7 +16,7 @@ class Bot;
 
 class Game {
 public:
-    Game(Lobby& lobby, GameMode const& mode, std::vector<Bot> bots);
+    Game(Lobby& lobby, GameMode const& mode);
 
     void startGame();
 
@@ -38,7 +38,8 @@ private:
     Bid _bid;
     Lobby& _lobby;
     std::vector<Trick> _tricks;
-    std::vector<Bot> _bots;
+
+    void _playRound();
 };
 
 #endif

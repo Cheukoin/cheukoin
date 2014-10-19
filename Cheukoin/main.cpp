@@ -46,7 +46,7 @@ int main()
     teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
-    app.startGame(lobby, GameMode::Offline, bots);
+    app.startGame(lobby, GameMode::Offline);
 
     // main game loop
     while (window->isOpen()) {

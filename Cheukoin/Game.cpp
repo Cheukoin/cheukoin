@@ -6,11 +6,10 @@
 
 using namespace std;
 
-Game::Game(Lobby& lobby, GameMode const& mode, vector<Bot> bots)
+Game::Game(Lobby& lobby, GameMode const& mode)
     : _lobby(lobby)
     , _mode(mode)
     , _bid(Bid())
-    , _bots(bots)
 {
 }
 
@@ -19,11 +18,19 @@ void Game::startGame()
     _lobby.deal();
 
     for (auto player : _lobby.getPlayers()) {
-        player.get().initializeCards();
+        player.get().initialize();
     }
 
-    for (Bot& bot : _bots) {
-        bot.initialize();
+    for (int round = 0; round < 8; round++) {
+        cout << "Playing round " << round << endl;
+        _playRound();
+    }
+}
+
+void Game::_playRound()
+{
+    for (auto player : _lobby.getPlayers()) {
+        player.get().play();
     }
 }
 

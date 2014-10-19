@@ -17,11 +17,10 @@ Player::~Player()
 {
 }
 
-void Player::initializeCards()
+void Player::initialize()
 {
     sf::Vector2u pos;
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
 
     switch (_position) {
@@ -43,8 +42,13 @@ void Player::initializeCards()
     }
 
     for (int i = 0; i < _cards.size(); i++) {
-        _cards[i].moveTo(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y);
+        _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
+}
+
+void Player::play()
+{
+    // to be reimplemented
 }
 
 void Player::playCard(Card const& card)
@@ -54,7 +58,7 @@ void Player::playCard(Card const& card)
         for (int i = 0; i < _cards.size(); i++) {
             if (_cards[i] == card) {
                 _cards[i].flip();
-                _cards[i].move();
+                _moveCardToTrick(_cards[i]);
                 _cards.erase(_cards.begin() + i);
             }
         }
@@ -66,6 +70,33 @@ void Player::playCard(Card const& card)
     if (game->getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
+}
+
+void Player::_moveCardToTrick(Card& card)
+{
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    sf::Vector2u cardSize = _cards.front().getGlobalSize();
+    sf::Vector2u pos(winSize.x / 2, winSize.y / 2);
+
+    switch (_position) {
+    case Top:
+        pos += sf::Vector2u(0, -cardSize.y / 2);
+        break;
+    case Bottom:
+        pos += sf::Vector2u(0, cardSize.y / 2);
+        break;
+    case Left:
+        pos += sf::Vector2u(-cardSize.x / 2, 0);
+        break;
+    case Right:
+        pos += sf::Vector2u(cardSize.x / 2, 0);
+        break;
+    default:
+        pos = sf::Vector2u(0, 0);
+        break;
+    }
+
+    card.moveTo(pos);
 }
 
 Bid Player::makeBid(int amount, Suit const& asset)
