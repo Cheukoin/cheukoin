@@ -23,9 +23,10 @@ void Player::playCard(Card const& card)
             }
         }
     }
-    _game->getCurrentTrick().addCard(card);
+    shared_ptr<Game> game = Application::getInstance().getGame();
+    game->getCurrentTrick().addCard(card);
     _playedCard = card;
-    if (_game->getMode() == Online) {
+    if (game->getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
 }

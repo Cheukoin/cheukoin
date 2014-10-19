@@ -12,9 +12,9 @@ Application& Application::getInstance()
     return instance;
 }
 
-void Application::startGame(Lobby& lobby, GameMode const& mode)
+void Application::startGame(Lobby& lobby, GameMode const& mode, std::vector<Bot> bots)
 {
-    _game = make_shared<Game>(lobby, mode);
+    _game = make_shared<Game>(lobby, mode, bots);
     _game->startGame();
 }
 

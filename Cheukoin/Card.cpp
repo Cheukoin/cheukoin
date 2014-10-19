@@ -135,7 +135,7 @@ void Card::draw() const
     Application::getInstance().getWindow()->draw(*sprite.get());
 }
 
-vector<Card> Card::getAllCardsShuffled()
+vector<Card> Card::getAllCards()
 {
     vector<Card> cards;
     for (int suit = 0; suit < 4; suit++) {
@@ -143,6 +143,12 @@ vector<Card> Card::getAllCardsShuffled()
             cards.push_back(Card((Suit)suit, (Value)value));
         }
     }
+    return cards;
+}
+
+vector<Card> Card::getAllCardsShuffled()
+{
+    vector<Card> cards = getAllCards();
 
     // initialize pseudo random number genrator
     unsigned seed = chrono::system_clock::now().time_since_epoch().count();
@@ -163,7 +169,8 @@ bool operator!=(Card const& a, Card const& b)
     return !(a == b);
 }
 
-ostream& operator<<(ostream& os, const Card& card)
+ostream&
+operator<<(ostream& os, const Card& card)
 {
     os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";
     return os;

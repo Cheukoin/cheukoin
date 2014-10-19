@@ -51,7 +51,6 @@ public:
 protected:
     std::string _name;
     Bid _bid;
-    std::shared_ptr<Game> _game = Application::getInstance().getGame();
     bool _dealer;
     Card _playedCard;
     std::vector<Card> _cards;

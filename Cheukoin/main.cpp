@@ -35,6 +35,7 @@ int main()
     Bot bot1;
     Bot bot2;
     Bot bot3;
+    std::vector<Bot> bots = { bot0, bot1, bot2, bot3 };
 
     Team teamA;
     teamA.addPlayer(bot0);
@@ -45,7 +46,7 @@ int main()
     teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
-    app.startGame(lobby, GameMode::Online);
+    app.startGame(lobby, GameMode::Online, bots);
 
     // main game loop
     while (window->isOpen()) {

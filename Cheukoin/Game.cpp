@@ -6,16 +6,21 @@
 
 using namespace std;
 
-Game::Game(Lobby& lobby, GameMode const& mode)
+Game::Game(Lobby& lobby, GameMode const& mode, vector<Bot> bots)
     : _lobby(lobby)
     , _mode(mode)
     , _bid(Bid())
+    , _bots(bots)
 {
 }
 
 void Game::startGame()
 {
     _lobby.deal();
+
+    for (Bot &bot : _bots) {
+        bot.initialize();
+    }
 }
 
 GameMode Game::getMode()

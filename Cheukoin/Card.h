@@ -33,6 +33,7 @@ public:
     void moveToTrick();
     void move();
 
+    static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
 
 private:
