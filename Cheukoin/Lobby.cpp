@@ -21,12 +21,12 @@ void Lobby::deal()
     vector<Card> cards = Card::getAllCardsShuffled();
 
     for (int i = 0; i < cards.size(); i += 4) {
-        _teams[0].getPlayers()->at(0).addCard(cards[i]);
-        _teams[0].getPlayers()->at(1).addCard(cards[i + 1]);
-        _teams[1].getPlayers()->at(0).addCard(cards[i + 2]);
-        _teams[1].getPlayers()->at(1).addCard(cards[i + 3]);
+        _teams[0].getPlayers().at(0).addCard(cards[i]);
+        _teams[0].getPlayers().at(1).addCard(cards[i + 1]);
+        _teams[1].getPlayers().at(0).addCard(cards[i + 2]);
+        _teams[1].getPlayers().at(1).addCard(cards[i + 3]);
     }
-    cout << _teams[0].getPlayers()->at(0).getCards().size() << endl;
+    cout << _teams[0].getPlayers().at(0).getCards().size() << endl;
 }
 
 string Lobby::getName() const
@@ -39,9 +39,19 @@ void Lobby::setName(string const& name)
     _name = name;
 }
 
-std::vector<Team> Lobby::getTeams()
+vector<Team> Lobby::getTeams()
 {
     return _teams;
+}
+
+vector<Player> Lobby::getPlayers()
+{
+    return {
+        _teams[0].getPlayers().at(0),
+        _teams[0].getPlayers().at(1),
+        _teams[1].getPlayers().at(0),
+        _teams[1].getPlayers().at(1)
+    };
 }
 
 Lobby::~Lobby()

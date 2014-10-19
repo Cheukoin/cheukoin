@@ -29,6 +29,7 @@ public:
     void setName(std::string const& name);
 
     std::vector<Team> getTeams();
+    std::vector<Player> getPlayers();
 
 private:
     std::string _name;

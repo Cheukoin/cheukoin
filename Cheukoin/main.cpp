@@ -65,7 +65,7 @@ int main()
 
         int count = 0;
         for (Team team : teams) {
-            for (Player player : *team.getPlayers()) {
+            for (Player player : team.getPlayers()) {
                 vector<Card> cards = player.getCards();
                 for (int i = 0; i < cards.size(); i++) {
                     cards[i].flip();

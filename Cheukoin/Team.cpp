@@ -5,14 +5,14 @@ using namespace std;
 Team::Team()
     : _name("Thomas Mollard")
     , _score(0)
-    , _players(make_shared<vector<Player> >())
+    , _players(vector<Player>())
 {
 }
 
 Team::Team(string name)
     : _name(name)
     , _score(0)
-    , _players(make_shared<vector<Player> >())
+    , _players(vector<Player>())
 {
 }
 
@@ -22,8 +22,8 @@ Team::~Team()
 
 void Team::addPlayer(Player const& player)
 {
-    if (_players->size() < 2) {
-        _players->push_back(player);
+    if (_players.size() < 2) {
+        _players.push_back(player);
     }
 }
 
@@ -52,7 +52,7 @@ vector<Trick> Team::getTricks()
     return _wonTricks;
 }
 
-shared_ptr<vector<Player> > Team::getPlayers()
+vector<Player>& Team::getPlayers()
 {
     return _players;
 }
@@ -60,7 +60,7 @@ shared_ptr<vector<Player> > Team::getPlayers()
 bool Team::isTeamDealing()
 {
     bool dealing = false;
-    for (auto p : *_players) {
+    for (auto p : _players) {
         if (p.isDealer()) {
             dealing = true;
         }

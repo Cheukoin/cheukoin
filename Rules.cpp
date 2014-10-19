@@ -87,7 +87,7 @@ Card Rules::winningCard(Trick trick)
 
 bool Rules::isTeamValid(Team team)
 {
-    return (team.getPlayers()->size() == 2) && (team.getPlayers()->at(0) != team.getPlayers()->at(1));
+    return (team.getPlayers().size() == 2) && (team.getPlayers().at(0) != team.getPlayers().at(1));
 }
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
