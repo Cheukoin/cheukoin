@@ -87,7 +87,7 @@ Card Rules::winningCard(Trick trick)
 
 bool Rules::isTeamValid(Team team)
 {
-    return (team.getPlayers().size() == 2) && (team.getPlayers()[0] != team.getPlayers()[1]);
+    return (team.getPlayers().size() == 2) && (team.getPlayers().at(0) != team.getPlayers().at(1));
 }
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
@@ -171,10 +171,10 @@ void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
 {
     Card best = winningCard(trick);
     vector<Card> cards = trick.getCards();
-    std::vector<Player> players = Application::getInstance().getGame()->getLobby().getPlayers();
-    for (Player player : players) {
-        if (player.getPlayedCard() == best) {
-            if (team1.getPlayers()[0] == player || team1.getPlayers()[1] == player) {
+    std::vector<shared_ptr<Player> > players = Application::getInstance().getGame()->getLobby().getPlayers();
+    for (shared_ptr<Player> player : players) {
+        if (player->getPlayedCard() == best) {
+            if (team1.getPlayers().at(0) == player || team1.getPlayers().at(1) == player) {
                 team1.addTrick(trick);
             }
             else {

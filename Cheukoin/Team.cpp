@@ -52,9 +52,12 @@ vector<Trick> Team::getTricks()
     return _wonTricks;
 }
 
-std::vector<Player> Team::getPlayers()
+vector<shared_ptr<Player> > Team::getPlayers()
 {
-    return _players;
+    return {
+        make_shared<Player>(_players[0]),
+        make_shared<Player>(_players[1])
+    };
 }
 
 bool Team::isTeamDealing()

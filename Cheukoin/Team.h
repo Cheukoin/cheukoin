@@ -2,6 +2,8 @@
 #define __Cheukoin_Team__
 
 #include <string>
+#include <memory>
+
 #include "Trick.h"
 #include "Player.h"
 
@@ -17,7 +19,7 @@ public:
     int getScore();
     std::vector<Trick> getTricks();
 
-    std::vector<Player> getPlayers();
+    std::vector<std::shared_ptr<Player> > getPlayers();
     bool isTeamDealing();
 
 private:

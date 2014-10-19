@@ -22,12 +22,10 @@ void Lobby::deal()
 
     int i = 0;
     for (Card card : cards) {
-        _teams[0].getPlayers()[0].addCard(card);
+        getPlayers()[i % 4]->addCard(card);
         i++;
     }
-    Card card(Suit::Clubs, Value::Eight);
-    _teams[0].getPlayers()[0].addCard(card);
-    cout << _teams[0].getPlayers()[0].getCards().size() << endl;
+    cout << getPlayers()[0]->getCards().size() << endl;
 }
 
 string Lobby::getName() const
@@ -40,15 +38,15 @@ void Lobby::setName(string const& name)
     _name = name;
 }
 
-vector<Player> Lobby::getPlayers()
+vector<shared_ptr<Player>> Lobby::getPlayers()
 {
-    vector<Player> players = {
+    vector<shared_ptr<Player>> players = {
         _teams[0].getPlayers()[0],
         _teams[0].getPlayers()[1],
         _teams[1].getPlayers()[0],
         _teams[1].getPlayers()[1]
     };
-
+    
     return players;
 }
 

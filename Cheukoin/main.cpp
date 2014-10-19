@@ -61,11 +61,11 @@ int main()
         window->clear();
         window->draw(bgSprite);
 
-        vector<Player> players = app.getGame()->getLobby().getPlayers();
+        vector<shared_ptr<Player> > players = app.getGame()->getLobby().getPlayers();
 
         int count = 0;
-        for (Player player : players) {
-            vector<Card> cards = player.getCards();
+        for (shared_ptr<Player> player : players) {
+            vector<Card> cards = player->getCards();
             for (int i = 0; i < cards.size(); i++) {
                 cards[i].flip();
                 cards[i].draw();
