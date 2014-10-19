@@ -17,7 +17,7 @@ public:
     int getScore();
     std::vector<Trick> getTricks();
 
-    std::vector<Player> getPlayers() const;
+    std::vector<Player> getPlayers();
     bool isTeamDealing();
 
 private:

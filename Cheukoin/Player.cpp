@@ -79,9 +79,9 @@ bool Player::isDealer()
 
 // Card management
 
-void Player::setCards(vector<Card>& cards)
+void Player::addCard(Card card)
 {
-    _cards = cards;
+    _cards.push_back(card);
 }
 
 vector<Card> Player::getCards() const

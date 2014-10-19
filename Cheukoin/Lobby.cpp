@@ -21,15 +21,13 @@ void Lobby::deal()
     vector<Card> cards = Card::getAllCardsShuffled();
 
     int i = 0;
-    vector<vector<Card> > hands{ {}, {}, {}, {} };
     for (Card card : cards) {
-        hands[i % 4].push_back(card);
+        _teams[0].getPlayers()[0].addCard(card);
         i++;
     }
-
-    for (int i = 0; i < getPlayers().size(); i++) {
-        getPlayers()[i].setCards(hands[i]);
-    }
+    Card card(Suit::Clubs, Value::Eight);
+    _teams[0].getPlayers()[0].addCard(card);
+    cout << _teams[0].getPlayers()[0].getCards().size() << endl;
 }
 
 string Lobby::getName() const
@@ -42,7 +40,7 @@ void Lobby::setName(string const& name)
     _name = name;
 }
 
-vector<Player> Lobby::getPlayers() const
+vector<Player> Lobby::getPlayers()
 {
     vector<Player> players = {
         _teams[0].getPlayers()[0],

@@ -40,7 +40,7 @@ public:
     void setPosition(Position position);
 
     // Card management
-    void setCards(std::vector<Card>& cards);
+    void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
 
