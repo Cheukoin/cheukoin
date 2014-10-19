@@ -61,18 +61,20 @@ int main()
         window->clear();
         window->draw(bgSprite);
 
-        vector<shared_ptr<Player> > players = app.getGame()->getLobby().getPlayers();
+        vector<Team> teams = app.getGame()->getLobby().getTeams();
 
         int count = 0;
-        for (shared_ptr<Player> player : players) {
-            vector<Card> cards = player->getCards();
-            for (int i = 0; i < cards.size(); i++) {
-                cards[i].flip();
-                cards[i].draw();
+        for (Team team : teams) {
+            for (Player player : *team.getPlayers()) {
+                vector<Card> cards = player.getCards();
+                for (int i = 0; i < cards.size(); i++) {
+                    cards[i].flip();
+                    cards[i].draw();
 
-                cards[i].moveTo(20 * i, 100 * count);
+                    cards[i].moveTo(20 * i, 100 * count);
+                }
+                count++;
             }
-            count++;
         }
 
         window->display();

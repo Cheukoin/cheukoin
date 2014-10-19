@@ -87,7 +87,7 @@ Card Rules::winningCard(Trick trick)
 
 bool Rules::isTeamValid(Team team)
 {
-    return (team.getPlayers().size() == 2) && (team.getPlayers().at(0) != team.getPlayers().at(1));
+    return (team.getPlayers()->size() == 2) && (team.getPlayers()->at(0) != team.getPlayers()->at(1));
 }
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
@@ -167,22 +167,22 @@ bool Rules::isTrickValid(Trick trick)
     return valid;
 }
 
-void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
-{
-    Card best = winningCard(trick);
-    vector<Card> cards = trick.getCards();
-    std::vector<shared_ptr<Player> > players = Application::getInstance().getGame()->getLobby().getPlayers();
-    for (shared_ptr<Player> player : players) {
-        if (player->getPlayedCard() == best) {
-            if (team1.getPlayers().at(0) == player || team1.getPlayers().at(1) == player) {
-                team1.addTrick(trick);
-            }
-            else {
-                team2.addTrick(trick);
-            }
-        }
-    }
-}
+//void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
+//{
+//    Card best = winningCard(trick);
+//    vector<Card> cards = trick.getCards();
+//    std::vector<shared_ptr<Player> > players = Application::getInstance().getGame()->getLobby().getTeams.getPlayers();
+//    for (shared_ptr<Player> player : players) {
+//        if (player->getPlayedCard() == best) {
+//            if (team1.getPlayers()->at(0) == player || team1.getPlayers()->at(1) == player) {
+//                team1.addTrick(trick);
+//            }
+//            else {
+//                team2.addTrick(trick);
+//            }
+//        }
+//    }
+//}
 
 std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
 {

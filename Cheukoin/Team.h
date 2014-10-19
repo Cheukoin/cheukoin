@@ -19,12 +19,12 @@ public:
     int getScore();
     std::vector<Trick> getTricks();
 
-    std::vector<std::shared_ptr<Player> > getPlayers();
+    std::shared_ptr<std::vector<Player> > getPlayers();
     bool isTeamDealing();
 
 private:
     std::string _name;
-    std::vector<Player> _players;
+    std::shared_ptr<std::vector<Player> > _players;
     int _score;
     std::vector<Trick> _wonTricks;
 };
