@@ -75,7 +75,7 @@ void Card::moveTo(float x, float y)
     //        this->sprite->setPosition(pos.x, pos.y);
     //    }
 
-    this->sprite->setPosition(x, y);
+    sprite->setPosition(x, y);
 }
 
 sf::Texture Card::getTexture() const
@@ -128,6 +128,11 @@ Value Card::getValue() const
 Suit Card::getSuit() const
 {
     return _suit;
+}
+
+sf::Vector2u Card::getGlobalSize() const
+{
+    return sf::Vector2u(sprite->getGlobalBounds().width, sprite->getGlobalBounds().height);
 }
 
 void Card::draw() const

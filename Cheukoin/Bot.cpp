@@ -2,6 +2,11 @@
 
 using namespace std;
 
+Bot::Bot(string name, Position position)
+    : Player(name, position)
+{
+}
+
 Bot::~Bot()
 {
 }

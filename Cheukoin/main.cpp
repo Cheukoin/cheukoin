@@ -31,10 +31,10 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    Bot bot0("Bot 0");
-    Bot bot1("Bot 1");
-    Bot bot2("Bot 2");
-    Bot bot3("Bot 3");
+    Bot bot0("Bot 0", Position::Top);
+    Bot bot1("Bot 1", Position::Right);
+    Bot bot2("Bot 2", Position::Bottom);
+    Bot bot3("Bot 3", Position::Left);
     std::vector<Bot> bots = { bot0, bot1, bot2, bot3 };
 
     Team teamA;
@@ -46,7 +46,7 @@ int main()
     teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
-    app.startGame(lobby, GameMode::Online, bots);
+    app.startGame(lobby, GameMode::Offline, bots);
 
     // main game loop
     while (window->isOpen()) {
@@ -62,19 +62,7 @@ int main()
         window->clear();
         window->draw(bgSprite);
 
-        auto players = app.getGame()->getLobby().getPlayers();
-
-        int count = 0;
-        for (auto player : players) {
-            vector<Card> cards = player.get().getCards();
-            for (int i = 0; i < cards.size(); i++) {
-                cards[i].flip();
-                cards[i].draw();
-
-                cards[i].moveTo(20 * i, 100 * count);
-            }
-            count++;
-        }
+        app.getGame()->draw();
 
         window->display();
     }

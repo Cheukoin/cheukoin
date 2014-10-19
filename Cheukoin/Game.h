@@ -31,6 +31,8 @@ public:
     std::vector<Trick> getTricks();
     Trick getCurrentTrick();
 
+    void draw();
+
 private:
     GameMode const& _mode;
     Bid _bid;

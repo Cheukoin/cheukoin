@@ -8,7 +8,7 @@
 
 class Bot : public Player {
 public:
-    using Player::Player;
+    Bot(std::string name, Position position);
     ~Bot();
 
     void initialize();

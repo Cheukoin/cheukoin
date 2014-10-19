@@ -18,7 +18,11 @@ void Game::startGame()
 {
     _lobby.deal();
 
-    for (Bot &bot : _bots) {
+    for (auto player : _lobby.getPlayers()) {
+        player.get().initializeCards();
+    }
+
+    for (Bot& bot : _bots) {
         bot.initialize();
     }
 }
@@ -56,4 +60,16 @@ std::vector<Trick> Game::getTricks()
 Trick Game::getCurrentTrick()
 {
     return _tricks.back();
+}
+
+void Game::draw()
+{
+    int count = 0;
+    for (auto player : _lobby.getPlayers()) {
+        vector<Card> cards = player.get().getCards();
+        for (int i = 0; i < cards.size(); i++) {
+            cards[i].draw();
+        }
+        count++;
+    }
 }

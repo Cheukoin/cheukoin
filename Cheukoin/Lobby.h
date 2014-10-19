@@ -14,6 +14,8 @@
 #include <iostream>
 
 #include "Team.h"
+#include "Player.h"
+#include "Bot.h"
 
 class Lobby {
 
@@ -30,6 +32,7 @@ public:
 
     std::vector<Team> getTeams();
     std::vector<std::reference_wrapper<Player> > getPlayers();
+    std::vector<std::reference_wrapper<Bot> > getBots();
 
     Team& getTeamForPlayer(Player player, bool getEnemyTeam = false);
 

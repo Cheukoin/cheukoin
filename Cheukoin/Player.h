@@ -18,9 +18,9 @@ enum Position {
 
 class Player {
 public:
-    Player(std::string name);
+    Player(std::string name, Position position = Top);
     Player();
-    ~Player();
+    virtual ~Player();
 
     Bid makeBid(int amount, Suit const& asset);
 
@@ -41,6 +41,7 @@ public:
     void setPosition(Position position);
 
     // Card management
+    void initializeCards();
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
