@@ -21,7 +21,7 @@ void Lobby::deal()
     vector<Card> cards = Card::getAllCardsShuffled();
 
     for (int i = 0; i < cards.size(); i++) {
-        getPlayers().at(i % 4).get().addCard(cards[i]);
+        getPlayers().at(i % 4).get()->addCard(cards[i]);
     }
 }
 
@@ -40,7 +40,7 @@ vector<Team> Lobby::getTeams()
     return _teams;
 }
 
-vector<reference_wrapper<Player> > Lobby::getPlayers()
+vector<shared_ptr<Player> > Lobby::getPlayers()
 {
     return {
         _teams[0].getPlayers().at(0),
@@ -52,7 +52,7 @@ vector<reference_wrapper<Player> > Lobby::getPlayers()
 
 Team& Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
 {
-    if (!getEnemyTeam && (_teams[0].getPlayers().at(0) == player || _teams[0].getPlayers().at(1) == player)) {
+    if (!getEnemyTeam && (*_teams[0].getPlayers().at(0) == player || *_teams[0].getPlayers().at(1) == player)) {
         return _teams[0];
     }
     return _teams[1];

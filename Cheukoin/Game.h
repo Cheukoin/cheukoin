@@ -31,6 +31,8 @@ public:
     std::vector<Trick> getTricks();
     Trick getCurrentTrick();
 
+    std::vector<std::shared_ptr<Bot> > getBots();
+
     void draw();
 
 private:
@@ -39,7 +41,7 @@ private:
     Lobby& _lobby;
     std::vector<Trick> _tricks;
 
-    void _playRound();
+    void _playRound(int round);
 };
 
 #endif

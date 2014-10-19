@@ -24,7 +24,7 @@ public:
 
     Bid makeBid(int amount, Suit const& asset);
 
-    virtual void play();
+    void play();
 
     std::string getName() const;
     void setName(std::string name);

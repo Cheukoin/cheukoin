@@ -17,20 +17,23 @@ void Game::startGame()
 {
     _lobby.deal();
 
-    for (auto player : _lobby.getPlayers()) {
-        player.get().initialize();
+    for (auto bot : getBots()) {
+
+        bot->initialize();
     }
 
     for (int round = 0; round < 8; round++) {
         cout << "Playing round " << round << endl;
-        _playRound();
+        _playRound(round);
     }
 }
 
-void Game::_playRound()
+void Game::_playRound(int round)
 {
-    for (auto player : _lobby.getPlayers()) {
-        player.get().play();
+    Trick trick(round);
+    _tricks.push_back(trick);
+    for (auto bot : getBots()) {
+        bot->play();
     }
 }
 
@@ -69,11 +72,24 @@ Trick Game::getCurrentTrick()
     return _tricks.back();
 }
 
+vector<shared_ptr<Bot> > Game::getBots()
+{
+    vector<shared_ptr<Bot> > bots;
+    for (auto player : _lobby.getPlayers()) {
+        shared_ptr<Bot> bot = static_pointer_cast<Bot>(player);
+        if (bot) {
+            bots.push_back(bot);
+        }
+    }
+
+    return bots;
+}
+
 void Game::draw()
 {
     int count = 0;
     for (auto player : _lobby.getPlayers()) {
-        vector<Card> cards = player.get().getCards();
+        vector<Card> cards = player.get()->getCards();
         for (int i = 0; i < cards.size(); i++) {
             cards[i].draw();
         }

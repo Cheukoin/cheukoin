@@ -53,6 +53,7 @@ void Player::play()
 
 void Player::playCard(Card const& card)
 {
+    cout << "-- " << _name << " playing " << card << endl;
 #warning TODO : verify move is valid with rules
     if (_cards.size() != 0) {
         for (int i = 0; i < _cards.size(); i++) {
