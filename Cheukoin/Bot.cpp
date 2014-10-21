@@ -53,7 +53,7 @@ void Bot::update()
             _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
         }
 
-        if (find(_cards.begin(), _cards.end(), card) != _cards.end()) {
+        if (card != _playedCard) {
             _cardProbability[card.getSuit()].erase(card.getValue());
         }
     }
@@ -67,10 +67,4 @@ Card Bot::chooseCard()
 
 void Bot::guessHands()
 {
-    //    cout << endl;
-    //    cout << *this;
-    //    cout << "\n Remaining cards : " << _remainingCardsInGame.size();
-    //    cout << "\n Remaining assets : " << _remainingAssets.size();
-    //    cout << "\n Remaining spades : " << _cardProbability[Spades].size();
-    //    cout << endl;
 }

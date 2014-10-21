@@ -22,6 +22,7 @@ public:
 private:
     std::vector<Card> _remainingCardsInGame;
     std::vector<Card> _remainingAssets;
+
     // probability that a card is in a player's hand ({suit: {value: {player}}})
     std::map<Suit, std::map<Value, std::map<std::string, float> > > _cardProbability;
     std::map<Suit, std::map<Value, Player> > _cardsPlayed;
