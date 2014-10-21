@@ -32,9 +32,9 @@ int main()
     bgSprite.setTexture(bgTexture);
 
     Bot bot0("Bot 0", Position::Top);
-    Bot bot1("Bot 1", Position::Right);
+    Bot bot1("Bot 1", Position::Left);
     Bot bot2("Bot 2", Position::Bottom);
-    Bot bot3("Bot 3", Position::Left);
+    Bot bot3("Bot 3", Position::Right);
     std::vector<Bot> bots = { bot0, bot1, bot2, bot3 };
 
     Team teamA;

@@ -40,10 +40,6 @@ void Game::playRound()
         bot->play();
     }
 
-    for (auto card : _tricks.back().getCards()) {
-        cout << "---- " << card << endl;
-    }
-
     _currentRound++;
 }
 

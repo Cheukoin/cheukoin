@@ -77,21 +77,21 @@ void Player::playCard(Card const& card)
 void Player::_moveCardToCenter(Card& card)
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2u cardSize = _cards.front().getGlobalSize();
-    sf::Vector2u pos(winSize.x / 2, winSize.y / 2);
+    sf::Vector2u cardSize = card.getGlobalSize();
+    sf::Vector2u pos(winSize.x / 2 - cardSize.x / 2, winSize.y / 2 - cardSize.y / 2);
 
     switch (_position) {
     case Top:
-        pos += sf::Vector2u(0, -cardSize.y / 2);
+        pos.y -= cardSize.y / 2;
         break;
     case Bottom:
-        pos += sf::Vector2u(0, cardSize.y / 2);
+        pos.y += cardSize.y / 2;
         break;
     case Left:
-        pos += sf::Vector2u(-cardSize.x / 2, 0);
+        pos.x -= cardSize.x / 2;
         break;
     case Right:
-        pos += sf::Vector2u(cardSize.x / 2, 0);
+        pos.x += cardSize.x / 2;
         break;
     default:
         pos = sf::Vector2u(0, 0);

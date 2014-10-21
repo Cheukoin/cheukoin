@@ -44,8 +44,8 @@ vector<shared_ptr<Player> > Lobby::getPlayers()
 {
     return {
         _teams[0].getPlayers().at(0),
-        _teams[0].getPlayers().at(1),
         _teams[1].getPlayers().at(0),
+        _teams[0].getPlayers().at(1),
         _teams[1].getPlayers().at(1)
     };
 }
