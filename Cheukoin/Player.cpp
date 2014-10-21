@@ -29,7 +29,13 @@ void Player::initialize()
     sf::Vector2u pos;
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
-
+    std::sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
+        if (a.getSuit() == b.getSuit())
+        return (a.getValue() > b.getValue());
+        else {
+            return a.getSuit()> b.getSuit();
+        }
+    });
     switch (_position) {
     case Top:
         pos = sf::Vector2u(winSize.x / 2, 0);
