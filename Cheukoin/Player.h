@@ -24,7 +24,7 @@ public:
 
     Bid makeBid(int amount, Suit const& asset);
 
-    void play();
+    virtual void play();
 
     std::string getName() const;
     void setName(std::string name);
@@ -43,7 +43,7 @@ public:
     void setPosition(Position position);
 
     // Card management
-    void initialize();
+    virtual void initialize();
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;

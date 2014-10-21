@@ -11,9 +11,9 @@ public:
     Bot(std::string name, Position position);
     ~Bot();
 
-    void initialize();
+    virtual void initialize();
 
-    void play();
+    virtual void play();
     Card chooseCard();
     void guessHands();
 

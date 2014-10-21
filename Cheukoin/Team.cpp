@@ -20,10 +20,10 @@ Team::~Team()
 {
 }
 
-void Team::addPlayer(Player const& player)
+void Team::addPlayer(Bot const& player)
 {
     if (_players.size() < 2) {
-        _players.push_back(make_shared<Player>(player));
+        _players.push_back(make_shared<Bot>(player));
     }
 }
 

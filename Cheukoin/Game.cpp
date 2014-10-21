@@ -19,8 +19,7 @@ void Game::startGame()
 {
     _lobby.deal();
 
-    for (auto bot : getBots()) {
-
+    for (shared_ptr<Bot> bot : getBots()) {
         bot->initialize();
     }
 }
