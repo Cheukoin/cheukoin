@@ -2,6 +2,13 @@
 
 using namespace std;
 
+static std::vector<std::string> PositionNames = {
+    "Left",
+    "Right",
+    "Top",
+    "Bottom"
+};
+
 Player::Player(string name, Position position)
     : _name(name)
     , _position(position)
@@ -53,7 +60,7 @@ void Player::play()
 
 void Player::playCard(Card const& card)
 {
-    cout << "-- " << _name << " playing " << card << endl;
+    cout << "-- " << *this << " playing " << card << endl;
 #warning TODO : verify move is valid with rules
 
     if (_cards.size() != 0) {
@@ -197,4 +204,10 @@ bool operator==(Player const& a, Player const& b)
 bool operator!=(Player const& a, Player const& b)
 {
     return !(a == b);
+}
+
+ostream& operator<<(ostream& os, const Player& player)
+{
+    os << "<Player: " << player.getName() << " at " << PositionNames[player.getPosition()] << ">";
+    return os;
 }

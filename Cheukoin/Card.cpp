@@ -163,10 +163,9 @@ bool operator!=(Card const& a, Card const& b)
     return !(a == b);
 }
 
-ostream&
-operator<<(ostream& os, const Card& card)
+ostream& operator<<(ostream& os, const Card& card)
 {
-    os << "<Card "
+    os << "<Card: "
        << Card::ValueNames[card.getValue()]
        << " of "
        << Card::SuitNames[card.getSuit()]

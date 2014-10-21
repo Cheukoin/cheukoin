@@ -52,6 +52,8 @@ public:
 
     std::vector<Card> cardsForSuit(Suit suit);
 
+    static std::vector<std::string> PositionNames;
+
 protected:
     std::string _name;
     Bid _bid;
@@ -65,5 +67,7 @@ protected:
 
 bool operator==(Player const& a, Player const& b);
 bool operator!=(Player const& a, Player const& b);
+
+std::ostream& operator<<(std::ostream& os, const Player& player);
 
 #endif
