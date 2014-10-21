@@ -12,8 +12,8 @@ public:
     ~Bot();
 
     void initialize();
-
     void play();
+
     Card chooseCard();
     void guessHands();
 
