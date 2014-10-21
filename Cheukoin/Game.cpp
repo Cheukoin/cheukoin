@@ -26,7 +26,7 @@ void Game::startGame()
 
 void Game::playRound()
 {
-    if (_currentRound > 8) {
+    if (_currentRound > 7) {
         cout << "Game finished!" << endl;
         return;
     }

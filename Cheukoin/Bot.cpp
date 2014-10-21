@@ -36,7 +36,6 @@ void Bot::initialize()
             _remainingAssets.push_back(card);
         }
     }
-    cout << "lol";
 }
 
 void Bot::play()
