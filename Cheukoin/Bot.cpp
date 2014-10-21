@@ -39,9 +39,25 @@ void Bot::initialize()
 }
 
 void Bot::play()
-{  
+{
     Card nextCard = chooseCard();
     playCard(nextCard);
+}
+
+void Bot::update()
+{
+    for (Card card : _game->getCurrentTrick().getCards()) {
+        _remainingCardsInGame.erase(remove(_remainingCardsInGame.begin(), _remainingCardsInGame.end(), card), _remainingCardsInGame.end());
+
+        if (card.getSuit() == _game->getBid().getSuit()) {
+            _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
+        }
+
+        if (find(_cards.begin(), _cards.end(), card) != _cards.end()) {
+            _cardProbability[card.getSuit()].erase(card.getValue());
+        }
+    }
+    guessHands();
 }
 
 Card Bot::chooseCard()
@@ -49,4 +65,12 @@ Card Bot::chooseCard()
     return _cards.front();
 }
 
-void Bot::guessHands() {}
+void Bot::guessHands()
+{
+    //    cout << endl;
+    //    cout << *this;
+    //    cout << "\n Remaining cards : " << _remainingCardsInGame.size();
+    //    cout << "\n Remaining assets : " << _remainingAssets.size();
+    //    cout << "\n Remaining spades : " << _cardProbability[Spades].size();
+    //    cout << endl;
+}

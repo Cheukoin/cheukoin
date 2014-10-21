@@ -12,6 +12,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _bid(Bid())
     , _currentRound(0)
     , _tricks(vector<Trick>())
+    , _currentPlayer(0)
 {
 }
 
@@ -19,27 +20,37 @@ void Game::startGame()
 {
     _lobby.deal();
 
+#warning FOR TEST PURPOSE
+    _bid.setAmount(120);
+    _bid.setSuit(Spades);
+
     for (shared_ptr<Bot> bot : getBots()) {
         bot->initialize();
     }
 }
 
-void Game::playRound()
+void Game::play()
 {
-    if (_currentRound > 7) {
-        cout << "Game finished!" << endl;
-        return;
+    if (_currentPlayer == 0) {
+        if (_currentRound > 7) {
+            cout << "Game finished!" << endl;
+            return;
+        }
+
+        cout << "Playing round " << _currentRound << endl;
+
+        Trick trick(_currentRound);
+        _tricks.push_back(trick);
+
+        _currentRound++;
     }
+    _lobby.getPlayers()[_currentPlayer]->play();
+    _currentPlayer++;
+    _currentPlayer %= 4;
 
-    cout << "Playing round " << _currentRound << endl;
-
-    Trick trick(_currentRound);
-    _tricks.push_back(trick);
     for (auto bot : getBots()) {
-        bot->play();
+        bot->update();
     }
-
-    _currentRound++;
 }
 
 GameMode Game::getMode()

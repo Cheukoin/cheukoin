@@ -35,7 +35,7 @@ public:
 
     void draw();
 
-    void playRound();
+    void play();
 
 private:
     GameMode const& _mode;
@@ -43,6 +43,7 @@ private:
     Lobby& _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
+    int _currentPlayer;
 };
 
 #endif

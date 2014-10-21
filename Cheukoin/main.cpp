@@ -56,7 +56,7 @@ int main()
                 window->close();
                 break;
             case sf::Event::MouseButtonPressed:
-                app.getGame()->playRound();
+                app.getGame()->play();
                 break;
             default:
                 break;

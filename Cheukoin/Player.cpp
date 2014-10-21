@@ -38,8 +38,7 @@ void Player::initialize()
         pos = sf::Vector2u(winSize.x / 2, winSize.y - cardSize.y);
         break;
     case Left:
-        pos = sf::Vector2u(cardSize.x, winSize.y / 2 - cardSize.y / 2);
-        cout << pos.x << " " << pos.y << endl;
+        pos = sf::Vector2u(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2);
         break;
     case Right:
         pos = sf::Vector2u(winSize.x - cardSize.x, winSize.y / 2 - cardSize.y / 2);
@@ -50,6 +49,7 @@ void Player::initialize()
     }
 
     for (int i = 0; i < _cards.size(); i++) {
+        _cards[i].flip();
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
@@ -72,6 +72,7 @@ void Player::playCard(Card const& card)
     shared_ptr<Game> game = Application::getInstance().getGame();
     game->getCurrentTrick().addCard(card);
     _playedCard = card;
+
     if (game->getMode() == Online) {
 #warning TODO : notify server if multiplayer
     }
