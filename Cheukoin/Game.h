@@ -35,13 +35,14 @@ public:
 
     void draw();
 
+    void playRound();
+
 private:
     GameMode const& _mode;
     Bid _bid;
     Lobby& _lobby;
     std::vector<Trick> _tricks;
-
-    void _playRound(int round);
+    int _currentRound;
 };
 
 #endif

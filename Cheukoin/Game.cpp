@@ -21,16 +21,12 @@ void Game::startGame()
 
         bot->initialize();
     }
-
-    for (int round = 0; round < 8; round++) {
-        cout << "Playing round " << round << endl;
-        _playRound(round);
-    }
 }
 
-void Game::_playRound(int round)
+void Game::playRound()
 {
-    Trick trick(round);
+    cout << "Playing round " << _currentRound << endl;
+    Trick trick(_currentRound);
     _tricks.push_back(trick);
     for (auto bot : getBots()) {
         bot->play();

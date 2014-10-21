@@ -50,12 +50,16 @@ int main()
 
     // main game loop
     while (window->isOpen()) {
-        event.type = sf::Event::MouseButtonPressed;
-        event.mouseButton.button = sf::Mouse::Left;
-
         while (window->pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+            switch (event.type) {
+            case sf::Event::Closed:
                 window->close();
+                break;
+            case sf::Event::MouseButtonPressed:
+                app.getGame()->playRound();
+                break;
+            default:
+                break;
             }
         }
 
