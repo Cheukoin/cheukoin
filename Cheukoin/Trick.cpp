@@ -4,6 +4,7 @@ using namespace std;
 
 Trick::Trick(int number)
     : _number(number)
+    , _cards(vector<Card>())
 {
 }
 
@@ -29,4 +30,11 @@ void Trick::addCard(Card const& card)
 vector<Card> Trick::getCards()
 {
     return _cards;
+}
+
+void Trick::draw()
+{
+    for (auto card : _cards) {
+        card.draw();
+    }
 }

@@ -16,6 +16,8 @@ public:
 
     std::vector<Card> getCards();
 
+    void draw();
+
 private:
 #warning TODO: see if we can get rid of this
     int _number;

@@ -55,11 +55,12 @@ void Player::playCard(Card const& card)
 {
     cout << "-- " << _name << " playing " << card << endl;
 #warning TODO : verify move is valid with rules
+
     if (_cards.size() != 0) {
         for (int i = 0; i < _cards.size(); i++) {
             if (_cards[i] == card) {
                 _cards[i].flip();
-                _moveCardToTrick(_cards[i]);
+                _moveCardToCenter(_cards[i]);
                 _cards.erase(_cards.begin() + i);
             }
         }
@@ -73,7 +74,7 @@ void Player::playCard(Card const& card)
     }
 }
 
-void Player::_moveCardToTrick(Card& card)
+void Player::_moveCardToCenter(Card& card)
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();

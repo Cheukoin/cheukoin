@@ -13,7 +13,7 @@ public:
     Team(std::string name);
     ~Team();
     void addPlayer(Player const& player);
-    void addTrick(Trick const& trick);
+    void addWonTrick(Trick const& trick);
     void setScore(int const& newScore);
     void addPoints(int const& score);
     int getScore();

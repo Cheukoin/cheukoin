@@ -27,7 +27,7 @@ void Team::addPlayer(Player const& player)
     }
 }
 
-void Team::addTrick(Trick const& trick)
+void Team::addWonTrick(Trick const& trick)
 {
     _wonTricks.push_back(trick);
 }

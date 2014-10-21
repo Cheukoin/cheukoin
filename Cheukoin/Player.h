@@ -60,7 +60,7 @@ protected:
     std::vector<Card> _cards;
     Position _position;
 
-    void _moveCardToTrick(Card& card);
+    void _moveCardToCenter(Card& card);
 };
 
 bool operator==(Player const& a, Player const& b);

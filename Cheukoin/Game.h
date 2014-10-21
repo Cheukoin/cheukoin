@@ -28,8 +28,8 @@ public:
     Lobby& getLobby();
 
     void addTrick(Trick const& trick);
-    std::vector<Trick> getTricks();
-    Trick getCurrentTrick();
+
+    Trick& getCurrentTrick();
 
     std::vector<std::shared_ptr<Bot> > getBots();
 
