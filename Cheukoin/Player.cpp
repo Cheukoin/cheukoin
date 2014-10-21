@@ -57,7 +57,7 @@ void Player::initialize()
 void Player::playCard(Card const& card)
 {
     cout << "-- " << *this << " playing " << card << endl;
-#warning TODO : verify move is valid with rules
+// TODO : verify move is valid with rules
 
     if (_cards.size() != 0) {
         for (int i = 0; i < _cards.size(); i++) {
@@ -74,7 +74,7 @@ void Player::playCard(Card const& card)
     _playedCard = card;
 
     if (game->getMode() == Online) {
-#warning TODO : notify server if multiplayer
+// TODO : notify server if multiplayer
     }
 }
 
@@ -183,7 +183,7 @@ void Player::setPosition(Position position)
 
 vector<Card> Player::cardsForSuit(Suit suit)
 {
-#warning TODO : appeler l'equivalent ds rules
+// TODO : appeler l'equivalent ds rules
     std::vector<Card> cardsForSuit;
     for (auto c : _cards) {
         if (c.getSuit() == suit) {

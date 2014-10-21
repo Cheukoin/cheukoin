@@ -26,5 +26,5 @@ void Human::initialize()
 
 void Human::play()
 {
-#warning TODO
+// TODO
 }

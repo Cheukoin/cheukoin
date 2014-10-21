@@ -25,7 +25,7 @@ private:
 
     std::shared_ptr<Game> _game;
 
-    std::shared_ptr<sf::RenderWindow> _window = std::make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Cheukoin !");
+	std::shared_ptr<sf::RenderWindow> _window;
 };
 
 #endif

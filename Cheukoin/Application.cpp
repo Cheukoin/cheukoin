@@ -23,6 +23,11 @@ shared_ptr<sf::RenderWindow> Application::getWindow()
     return _window;
 }
 
+void Application::initWindow()
+{
+	_window = make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Cheukoin !");
+}
+
 std::shared_ptr<Game> Application::getGame()
 {
     return _game;

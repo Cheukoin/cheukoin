@@ -51,7 +51,7 @@ std::string Card::_getFilename()
 
 void Card::moveTo(sf::Vector2u const& position)
 {
-#warning TODO : animate stuff
+// TODO : animate stuff
     //    auto pos = this->sprite->getPosition();
     //    float a = fabs((x - pos.x) / 10);
     //    float b = fabs(y - pos.y) / 10;

@@ -84,31 +84,41 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Image Include="Resources\cardBack.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Application.cpp" />
     <ClCompile Include="Bid.cpp" />
+    <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
-    <ClCompile Include="Hand.cpp" />
+    <ClCompile Include="Human.cpp" />
+    <ClCompile Include="jsoncpp.cpp" />
+    <ClCompile Include="Lobby.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NetworkManager.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Rules.cpp" />
     <ClCompile Include="Score.cpp" />
     <ClCompile Include="Team.cpp" />
     <ClCompile Include="Trick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Application.h" />
     <ClInclude Include="Bid.h" />
+    <ClInclude Include="Bot.h" />
     <ClInclude Include="Card.h" />
+    <ClInclude Include="Constants.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Hand.h" />
+    <ClInclude Include="Human.h" />
+    <ClInclude Include="Lobby.h" />
     <ClInclude Include="NetworkManager.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="ResourcePath.h" />
+    <ClInclude Include="Rules.h" />
     <ClInclude Include="Score.h" />
     <ClInclude Include="Team.h" />
     <ClInclude Include="Trick.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="Resources\cardBack.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

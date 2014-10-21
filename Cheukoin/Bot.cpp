@@ -28,9 +28,9 @@ void Bot::initialize()
     for (Card card : Card::getAllCards()) {
         _remainingCardsInGame.push_back(card);
         if (find(_cards.begin(), _cards.end(), card) == _cards.end()) {
-            _cardProbability[card.getSuit()][card.getValue()][_friend.getName()] = 0.33;
-            _cardProbability[card.getSuit()][card.getValue()][_enemy1.getName()] = 0.33;
-            _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0.33;
+            _cardProbability[card.getSuit()][card.getValue()][_friend.getName()] = 0.33f;
+            _cardProbability[card.getSuit()][card.getValue()][_enemy1.getName()] = 0.33f;
+            _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0.33f;
         }
         if (card.getSuit() == _game->getBid().getSuit()) {
             _remainingAssets.push_back(card);

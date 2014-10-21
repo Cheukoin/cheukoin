@@ -20,7 +20,7 @@ void Game::startGame()
 {
     _lobby.deal();
 
-#warning FOR TEST PURPOSE
+// FOR TEST PURPOSE
     _bid.setAmount(120);
     _bid.setSuit(Spades);
 
