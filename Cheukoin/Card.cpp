@@ -2,6 +2,24 @@
 
 using namespace std;
 
+vector<string> Card::SuitNames = {
+    "clubs",
+    "hearts",
+    "diamonds",
+    "spades"
+};
+
+vector<string> Card::ValueNames = {
+    "ace",
+    "king",
+    "queen",
+    "jack",
+    "10",
+    "9",
+    "8",
+    "7"
+};
+
 Card::Card()
 {
 }
@@ -28,24 +46,7 @@ Card::~Card()
 
 std::string Card::_getFilename()
 {
-    std::vector<std::string> suits = {
-        "clubs",
-        "hearts",
-        "diamonds",
-        "spades"
-    };
-    std::vector<std::string> values = {
-        "ace",
-        "king",
-        "queen",
-        "jack",
-        "10",
-        "9",
-        "8",
-        "7"
-    };
-
-    return values[_value] + "_of_" + suits[_suit] + ".png";
+    return ValueNames[_value] + "_of_" + SuitNames[_suit] + ".png";
 }
 
 void Card::moveTo(sf::Vector2u const& position)
@@ -165,6 +166,11 @@ bool operator!=(Card const& a, Card const& b)
 ostream&
 operator<<(ostream& os, const Card& card)
 {
-    os << "<Card suit: " << card.getSuit() << ", value: " << card.getValue() << ">";
+    os << "<Card "
+       << Card::ValueNames[card.getValue()]
+       << " of "
+       << Card::SuitNames[card.getSuit()]
+       << ">";
+
     return os;
 }

@@ -36,6 +36,9 @@ public:
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
 
+    static std::vector<std::string> SuitNames;
+    static std::vector<std::string> ValueNames;
+
 private:
     Suit _suit;
     Value _value;
