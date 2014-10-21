@@ -76,7 +76,7 @@ vector<shared_ptr<Bot> > Game::getBots()
 {
     vector<shared_ptr<Bot> > bots;
     for (auto player : _lobby.getPlayers()) {
-        shared_ptr<Bot> bot = static_pointer_cast<Bot>(player);
+        auto bot = dynamic_pointer_cast<Bot>(player);
         if (bot) {
             bots.push_back(bot);
         }

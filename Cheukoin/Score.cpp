@@ -2,7 +2,8 @@
 
 using namespace std;
 
-Score::Score()
+Score::Score(Team const& team)
+    : _biddingTeam(team)
 {
 }
 

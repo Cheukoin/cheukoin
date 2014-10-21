@@ -39,6 +39,7 @@ void Player::initialize()
         break;
     case Left:
         pos = sf::Vector2u(cardSize.x, winSize.y / 2 - cardSize.y / 2);
+        cout << pos.x << " " << pos.y << endl;
         break;
     case Right:
         pos = sf::Vector2u(winSize.x - cardSize.x, winSize.y / 2 - cardSize.y / 2);
@@ -51,11 +52,6 @@ void Player::initialize()
     for (int i = 0; i < _cards.size(); i++) {
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
-}
-
-void Player::play()
-{
-    // to be reimplemented
 }
 
 void Player::playCard(Card const& card)

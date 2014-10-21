@@ -6,13 +6,16 @@
 
 #include "Trick.h"
 #include "Bot.h"
+#include "Human.h"
 
 class Team {
 public:
-    Team();
     Team(std::string name);
     ~Team();
-    void addPlayer(Bot const& player);
+
+    void addPlayer(Human const& human);
+    void addPlayer(Bot const& bot);
+
     void addWonTrick(Trick const& trick);
     void setScore(int const& newScore);
     void addPoints(int const& score);

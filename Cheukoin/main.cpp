@@ -37,11 +37,11 @@ int main()
     Bot bot3("Bot 3", Position::Right);
     std::vector<Bot> bots = { bot0, bot1, bot2, bot3 };
 
-    Team teamA;
+    Team teamA("Team A");
     teamA.addPlayer(bot0);
     teamA.addPlayer(bot2);
 
-    Team teamB;
+    Team teamB("Team B");
     teamB.addPlayer(bot1);
     teamB.addPlayer(bot3);
 

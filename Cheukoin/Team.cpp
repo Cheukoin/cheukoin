@@ -2,13 +2,6 @@
 
 using namespace std;
 
-Team::Team()
-    : _name("Thomas Mollard")
-    , _score(0)
-    , _players(vector<shared_ptr<Player> >())
-{
-}
-
 Team::Team(string name)
     : _name(name)
     , _score(0)
@@ -20,10 +13,17 @@ Team::~Team()
 {
 }
 
-void Team::addPlayer(Bot const& player)
+void Team::addPlayer(Bot const& bot)
 {
     if (_players.size() < 2) {
-        _players.push_back(make_shared<Bot>(player));
+        _players.push_back(make_shared<Bot>(bot));
+    }
+}
+
+void Team::addPlayer(Human const& human)
+{
+    if (_players.size() < 2) {
+        _players.push_back(make_shared<Human>(human));
     }
 }
 

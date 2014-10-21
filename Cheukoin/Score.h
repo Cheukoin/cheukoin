@@ -11,7 +11,7 @@ using namespace std;
 
 class Score {
 public:
-    Score();
+    Score(Team const& team);
     ~Score();
     Bid getRetainedBid();
     int computeScore(Trick trick);
