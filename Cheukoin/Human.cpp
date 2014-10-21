@@ -22,9 +22,29 @@ Human::~Human()
 void Human::initialize()
 {
     Player::initialize();
-}
 
+    for (int i = 0; i < _cards.size(); i++) {
+        _cards[i].flip();
+    }
+}
+void Human::update()
+{
+}
+#warning isPlayblaCard missing
 void Human::play()
 {
-// TODO
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+        for (int i = 0; (i < _cards.size()); i++) {
+            sf::IntRect rectref;
+            if (i == (_cards.size() - 1))
+                rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
+            else
+                rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i + 1].sprite->getPosition().x - _cards[i].sprite->getPosition().x, _cards[i].getGlobalSize().y);
+
+            if (rectref.contains(mousePosition.x, mousePosition.y)) {
+                playCard(_cards[i]);
+            }
+        }
+    }
 }

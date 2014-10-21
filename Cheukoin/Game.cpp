@@ -3,6 +3,7 @@
 #include "Team.h"
 #include "Lobby.h"
 #include "Player.h"
+#include "Human.h"
 
 using namespace std;
 
@@ -27,6 +28,9 @@ void Game::startGame()
     for (shared_ptr<Bot> bot : getBots()) {
         bot->initialize();
     }
+    for (auto player : _lobby.getPlayers()) {
+        player->initialize();
+    }
 }
 
 void Game::play()
@@ -41,13 +45,13 @@ void Game::play()
 
         Trick trick(_currentRound);
         _tricks.push_back(trick);
-
         _currentRound++;
     }
     _lobby.getPlayers()[_currentPlayer]->play();
-    _currentPlayer++;
-    _currentPlayer %= 4;
-
+    if (_lobby.getPlayers()[_currentPlayer]->getCards().size() == 8 - _currentRound) {
+        _currentPlayer++;
+        _currentPlayer %= 4;
+    }
     for (auto bot : getBots()) {
         bot->update();
     }

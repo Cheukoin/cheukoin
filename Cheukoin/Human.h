@@ -18,6 +18,10 @@ public:
 
     void initialize();
     void play();
+    void update();
+private:
+    
+
 };
 
 #endif /* defined(__Cheukoin__Human__) */

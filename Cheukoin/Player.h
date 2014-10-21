@@ -44,6 +44,7 @@ public:
 
     // Card management
     virtual void initialize();
+    virtual void update();
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;

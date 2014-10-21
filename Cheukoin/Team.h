@@ -7,6 +7,7 @@
 #include "Trick.h"
 #include "Bot.h"
 #include "Human.h"
+#include "Player.h"
 
 class Team {
 public:

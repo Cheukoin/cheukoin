@@ -12,7 +12,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
-
+#include "Human.h"
 #include "Team.h"
 #include "Player.h"
 #include "Bot.h"
