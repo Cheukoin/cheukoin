@@ -15,6 +15,7 @@ using namespace std;
 int main()
 {
     Application& app = Application::getInstance();
+    app.initWindow();
     shared_ptr<sf::RenderWindow> window = app.getWindow();
     window->setFramerateLimit(60);
 
