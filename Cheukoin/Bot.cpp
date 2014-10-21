@@ -39,7 +39,7 @@ void Bot::initialize()
 }
 
 void Bot::play()
-{
+{  
     Card nextCard = chooseCard();
     playCard(nextCard);
 }
