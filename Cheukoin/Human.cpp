@@ -27,9 +27,6 @@ void Human::initialize()
         _cards[i].flip();
     }
 }
-void Human::update()
-{
-}
 
 void Human::play()
 {
