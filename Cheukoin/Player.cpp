@@ -8,6 +8,26 @@ static std::vector<std::string> PositionNames = {
     "Top",
     "Bottom"
 };
+std::vector<int> Player::ScoreSuitIsBid = {
+    11,
+    4,
+    3,
+    20,
+    10,
+    14,
+    0,
+    0
+};
+std::vector<int> Player::ScoreSuitIsNotBid = {
+    11,
+    4,
+    3,
+    2,
+    10,
+    0,
+    0,
+    0
+};
 
 Player::Player(string name, Position position)
     : _name(name)
@@ -30,11 +50,14 @@ void Player::initialize()
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
     std::sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
-        if (a.getSuit() == b.getSuit())
-        return (a.getValue() > b.getValue());
-        else {
-            return a.getSuit()> b.getSuit();
+        if (a.getSuit() == b.getSuit()){
+            if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
+                return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
+            else
+                return (ScoreSuitIsBid[a.getValue()]<ScoreSuitIsBid[b.getValue()]);
         }
+        else
+            return a.getSuit()> b.getSuit();
     });
     switch (_position) {
     case Top:
@@ -55,7 +78,7 @@ void Player::initialize()
     }
 
     for (int i = 0; i < _cards.size(); i++) {
-        //_cards[i].flip();
+        _cards[i].flip();
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
