@@ -18,6 +18,7 @@ public:
 
     void initialize();
     void play();
+    Card selectCard();
     void update();
 private:
     
