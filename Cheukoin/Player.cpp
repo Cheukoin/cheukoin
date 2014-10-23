@@ -90,9 +90,13 @@ sf::IntRect Player::getGlobalBounds()
         return sf::IntRect(0, 0, 0, 0);
     }
 
+    float right = getCards().back().getGlobalPosition().x
+                  - getCards().front().getGlobalPosition().x
+                  + getCards().back().getGlobalSize().x;
+
     sf::IntRect rect(getCards().front().getGlobalPosition().x,
                      getCards().back().getGlobalPosition().y,
-                     getCards().back().getGlobalPosition().x - getCards().front().getGlobalPosition().x + getCards().back().getGlobalSize().x,
+                     right,
                      getCards().front().getGlobalSize().y);
     return rect;
 }
