@@ -4,6 +4,7 @@
 #include "Lobby.h"
 #include "Player.h"
 #include "Human.h"
+#include "Rules.h"
 
 using namespace std;
 
@@ -15,13 +16,14 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _tricks(vector<Trick>())
     , _currentPlayer(0)
 {
+    _rules = make_shared<Rules>(_bid.getSuit());
 }
 
 void Game::startGame()
 {
     _lobby.deal();
 
-// FOR TEST PURPOSE
+    // FOR TEST PURPOSE
     _bid.setAmount(120);
     _bid.setSuit(Spades);
 
