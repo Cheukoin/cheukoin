@@ -242,6 +242,7 @@
 		19A57CD319E2989E00FE40DD /* Cheukoin */ = {
 			isa = PBXGroup;
 			children = (
+				C0B83EA419E2C23C0037C5AE /* main.cpp */,
 				19E8151D19F2C77E00B2A5F8 /* Application.cpp */,
 				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
 				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
