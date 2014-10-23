@@ -2,14 +2,14 @@
 
 using namespace std;
 
-vector<string> Card::SuitNames = {
+vector<string> const Card::SuitNames = {
     "clubs",
     "hearts",
     "diamonds",
     "spades"
 };
 
-vector<string> Card::ValueNames = {
+vector<string> const Card::ValueNames = {
     "ace",
     "king",
     "queen",
@@ -25,19 +25,19 @@ Card::Card()
 }
 
 Card::Card(Suit suit, Value value)
-    : texture(make_shared<sf::Texture>())
-    , sprite(make_shared<sf::Sprite>())
+    : _texture(make_shared<sf::Texture>())
+    , _sprite(make_shared<sf::Sprite>())
     , _suit(suit)
     , _value(value)
     , _size(sf::Vector2u(500, 726))
 {
-    if (!texture->loadFromFile(resourcePath("cardBack.png"))) {
-        puts("Texture file not loaded");
+    if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
+        puts("_texture file not loaded");
     }
-    texture->setSmooth(true);
-    sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
-    sprite->setTexture(*texture);
-    sprite->setScale(sf::Vector2f(0.3, 0.3));
+    _texture->setSmooth(true);
+    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
+    _sprite->setTexture(*_texture);
+    _sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
 
 Card::~Card()
@@ -51,62 +51,25 @@ std::string Card::_getFilename()
 
 void Card::moveTo(sf::Vector2u const& position)
 {
-// TODO : animate stuff
-    //    auto pos = this->sprite->getPosition();
-    //    float a = fabs((x - pos.x) / 10);
-    //    float b = fabs(y - pos.y) / 10;
-    //
-    //    sf::Vector2i v(a, b);
-    //    if (pos.y > y) {
-    //        if (pos.x > x)
-    //            this->sprite->setPosition(pos.x - v.x, pos.y - v.y);
-    //        if (pos.x < x)
-    //            this->sprite->setPosition(pos.x + v.x, pos.y - v.y);
-    //    }
-    //    else {
-    //        if (pos.x > x)
-    //            this->sprite->setPosition(pos.x - v.x, pos.y + v.y);
-    //        else
-    //            this->sprite->setPosition(pos.x + v.x, pos.y + v.y);
-    //    }
-    //
-    //    if ((pos.x == x) && (pos.y == y)) {
-    //        v.x = 0;
-    //        v.y = 0;
-    //        this->sprite->setPosition(pos.x, pos.y);
-    //    }
-
-    sprite->setPosition(position.x, position.y);
+    _sprite->setPosition(position.x, position.y);
 }
 
 sf::Texture Card::getTexture() const
 {
-    return *texture;
+    return *_texture;
 }
 
 void Card::flip()
 {
     std::string str = _getFilename();
-    if (!texture->loadFromFile(resourcePath(str))) {
-        // handle texture not loaded
-        puts("Texture file not loaded");
+    if (!_texture->loadFromFile(resourcePath(str))) {
+        // handle _texture not loaded
+        puts("_texture file not loaded");
     }
 
-    sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
-    sprite->setTexture(*texture);
-    sprite->setScale(sf::Vector2f(0.3, 0.3));
-}
-
-void Card::move()
-{
-    //    if (_position == Left)
-    //        c.moveTo(300, 225);
-    //    if (_position == Right)
-    //        c.moveTo(400, 225);
-    //    if (_position == Up)
-    //        c.moveTo(350, 175);
-    //    if (_position == Down)
-    //        c.moveTo(350, 275);
+    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
+    _sprite->setTexture(*_texture);
+    _sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
 
 Value Card::getValue() const
@@ -121,12 +84,12 @@ Suit Card::getSuit() const
 
 sf::Vector2u Card::getGlobalSize() const
 {
-    return sf::Vector2u(sprite->getGlobalBounds().width, sprite->getGlobalBounds().height);
+    return sf::Vector2u(_sprite->getGlobalBounds().width, _sprite->getGlobalBounds().height);
 }
 
 void Card::draw() const
 {
-    Application::getInstance().getWindow()->draw(*sprite.get());
+    Application::getInstance().getWindow()->draw(*_sprite.get());
 }
 
 vector<Card> Card::getAllCards()

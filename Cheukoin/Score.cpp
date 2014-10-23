@@ -11,18 +11,13 @@ Score::~Score()
 {
 }
 
-Bid Score::getRetainedBid()
-{
-    return _retainedBid;
-}
-
 int Score::computeScore(Trick trick)
 {
     if (trick.getCards().size() != 4) {
         cout << "Ce n'est pas une pli valide!" << endl;
     }
     else {
-        
+        Bid bid = Application::getInstance().getGame()->getBid();
     }
 
     return -1;

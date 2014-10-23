@@ -2,13 +2,14 @@
 
 using namespace std;
 
-static std::vector<std::string> PositionNames = {
+std::vector<std::string> const PositionNames = {
     "Left",
     "Right",
     "Top",
     "Bottom"
 };
-std::vector<int> Player::ScoreSuitIsBid = {
+
+std::vector<int> const Player::ScoreSuitIsBid = {
     11,
     4,
     3,
@@ -18,7 +19,8 @@ std::vector<int> Player::ScoreSuitIsBid = {
     0,
     0
 };
-std::vector<int> Player::ScoreSuitIsNotBid = {
+
+std::vector<int> const Player::ScoreSuitIsNotBid = {
     11,
     4,
     3,

@@ -5,6 +5,7 @@
 #include "Card.h"
 #include "Team.h"
 #include "Lobby.h"
+#include "Rules.h"
 
 class Bot : public Player {
 public:

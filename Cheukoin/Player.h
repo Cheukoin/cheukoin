@@ -38,8 +38,7 @@ public:
     void changeDealer();
     bool isDealer();
     void playByClick();
-    
-    
+
     Position getPosition() const;
     void setPosition(Position position);
 
@@ -57,6 +56,7 @@ public:
     static std::vector<int> ScoreSuitIsBid;
     static std::vector<int> ScoreSuitIsNotBid;
     Card chooseCard();
+
 protected:
     std::string _name;
     Bid _bid;
