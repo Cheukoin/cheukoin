@@ -8,6 +8,7 @@
 #include "Constants.h"
 #include "Bid.h"
 
+class Rules;
 class Trick;
 class Player;
 class Team;
@@ -44,6 +45,7 @@ private:
     std::vector<Trick> _tricks;
     int _currentRound;
     int _currentPlayer;
+    std::shared_ptr<Rules> _rules;
 };
 
 #endif
