@@ -16,7 +16,6 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _tricks(vector<Trick>())
     , _currentPlayer(0)
 {
-    _rules = make_shared<Rules>(_bid.getSuit());
 }
 
 void Game::startGame()
@@ -26,6 +25,8 @@ void Game::startGame()
     // FOR TEST PURPOSE
     _bid.setAmount(120);
     _bid.setSuit(Spades);
+
+    _rules = make_shared<Rules>(_bid.getSuit());
 
     for (shared_ptr<Bot> bot : getBots()) {
         bot->initialize();
@@ -77,6 +78,11 @@ void Game::setBid(Bid const& bid)
 Bid Game::getBid()
 {
     return _bid;
+}
+
+shared_ptr<Rules> Game::getRules()
+{
+    return _rules;
 }
 
 void Game::addTrick(Trick const& trick)

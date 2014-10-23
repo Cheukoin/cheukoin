@@ -32,6 +32,8 @@ public:
 
     Trick& getCurrentTrick();
 
+    std::shared_ptr<Rules> getRules();
+
     std::vector<std::shared_ptr<Bot> > getBots();
 
     void draw();
