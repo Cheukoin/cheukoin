@@ -30,28 +30,11 @@ void Human::initialize()
 
 void Human::play()
 {
-#warning isPlayblaCard missing
-    //if (selectedCard isplayable) do else (selectCard())
+    // isPlayblaCard missing
+    // if (selectedCard isplayable) do else (selectCard())
     playCard(selectCard());
 }
 Card Human::selectCard()
 {
-    bool cardSelected(false);
-    while (cardSelected == false) {
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            for (int i = 0; (i < _cards.size()); i++) {
-                sf::IntRect rectref;
-                if (i == (_cards.size() - 1))
-                    rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
-                else
-                    rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i + 1].sprite->getPosition().x - _cards[i].sprite->getPosition().x, _cards[i].getGlobalSize().y);
-
-                if (rectref.contains(mousePosition.x, mousePosition.y)) {
-                    return _cards[i];
-                    cardSelected = true;
-                }
-            }
-        }
-    }
+    return Card(Suit(0), Value(0));
 }

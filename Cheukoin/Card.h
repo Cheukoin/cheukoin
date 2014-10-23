@@ -19,9 +19,6 @@ public:
     Card(Suit suit, Value value);
     ~Card();
 
-    std::shared_ptr<sf::Sprite> sprite;
-    std::shared_ptr<sf::Texture> texture;
-
     Value getValue() const;
     Suit getSuit() const;
     sf::Texture getTexture() const;
@@ -31,13 +28,12 @@ public:
 
     void flip();
     void moveTo(sf::Vector2u const& position);
-    void move();
 
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
 
-    static std::vector<std::string> SuitNames;
-    static std::vector<std::string> ValueNames;
+    static const std::vector<std::string> SuitNames;
+    static const std::vector<std::string> ValueNames;
 
 private:
     Suit _suit;
@@ -45,6 +41,9 @@ private:
     sf::Vector2u _size;
 
     std::string _getFilename();
+
+    std::shared_ptr<sf::Sprite> _sprite;
+    std::shared_ptr<sf::Texture> _texture;
 };
 
 bool operator==(Card const& a, Card const& b);

@@ -53,9 +53,9 @@ public:
 
     std::vector<Card> cardsForSuit(Suit suit);
 
-    static std::vector<std::string> PositionNames;
-    static std::vector<int> ScoreSuitIsBid;
-    static std::vector<int> ScoreSuitIsNotBid;
+    static std::vector<std::string> const PositionNames;
+    static std::vector<int> const ScoreSuitIsBid;
+    static std::vector<int> const ScoreSuitIsNotBid;
 
 protected:
     std::string _name;
