@@ -2,14 +2,14 @@
 
 using namespace std;
 
-std::vector<std::string> const PositionNames = {
+vector<string> const PositionNames = {
     "Left",
     "Right",
     "Top",
     "Bottom"
 };
 
-std::vector<int> const Player::ScoreSuitIsBid = {
+vector<int> Player::ScoreSuitIsBid = {
     11,
     4,
     3,
@@ -20,7 +20,7 @@ std::vector<int> const Player::ScoreSuitIsBid = {
     0
 };
 
-std::vector<int> const Player::ScoreSuitIsNotBid = {
+vector<int> Player::ScoreSuitIsNotBid = {
     11,
     4,
     3,
@@ -51,7 +51,7 @@ void Player::initialize()
     sf::Vector2u pos;
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
-    std::sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
+    sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
             if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
                 return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
@@ -86,9 +86,9 @@ void Player::initialize()
 }
 sf::IntRect Player::getGlobalBounds()
 {
-    sf::IntRect rect(getCards().front().sprite->getPosition().x,
-                     getCards().back().sprite->getPosition().y,
-                     getCards().back().sprite->getPosition().x - getCards().front().sprite->getPosition().x + getCards().back().getGlobalSize().x,
+    sf::IntRect rect(getCards().front().getGlobalPosition().x,
+                     getCards().back().getGlobalPosition().y,
+                     getCards().back().getGlobalPosition().x - getCards().front().getGlobalPosition().x + getCards().back().getGlobalSize().x,
                      getCards().front().getGlobalSize().y);
     return rect;
 }
@@ -223,7 +223,7 @@ void Player::setPosition(Position position)
 vector<Card> Player::cardsForSuit(Suit suit)
 {
     // TODO : appeler l'equivalent ds rules
-    std::vector<Card> cardsForSuit;
+    vector<Card> cardsForSuit;
     for (auto c : _cards) {
         if (c.getSuit() == suit) {
             cardsForSuit.push_back(c);

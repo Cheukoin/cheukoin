@@ -40,9 +40,9 @@ Card Human::chooseCard()
     for (int i = 0; (i < _cards.size()); i++) {
         sf::IntRect rectref;
         if (i == (_cards.size() - 1))
-            rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
         else
-            rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i + 1].sprite->getPosition().x - _cards[i].sprite->getPosition().x, _cards[i].getGlobalSize().y);
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
 
         if (rectref.contains(mousePosition)) {
             return _cards[i];

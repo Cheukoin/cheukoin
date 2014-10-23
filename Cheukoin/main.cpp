@@ -44,7 +44,7 @@ int main()
 
     Team teamB("Team B");
     teamB.addPlayer(bot1);
-    teamB.addPlayer(player);
+    teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
     app.startGame(lobby, GameMode::Offline);

@@ -87,6 +87,11 @@ sf::Vector2u Card::getGlobalSize() const
     return sf::Vector2u(_sprite->getGlobalBounds().width, _sprite->getGlobalBounds().height);
 }
 
+sf::Vector2f Card::getGlobalPosition() const
+{
+    return _sprite->getPosition();
+}
+
 void Card::draw() const
 {
     Application::getInstance().getWindow()->draw(*_sprite.get());

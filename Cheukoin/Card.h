@@ -21,6 +21,7 @@ public:
 
     Value getValue() const;
     Suit getSuit() const;
+    sf::Vector2f getGlobalPosition() const;
     sf::Texture getTexture() const;
     sf::Vector2u getGlobalSize() const;
 
