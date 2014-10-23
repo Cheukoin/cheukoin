@@ -35,8 +35,8 @@ int main()
     Bot bot0("Bot 0", Position::Top);
     Bot bot1("Bot 1", Position::Left);
     Bot bot2("Bot 2", Position::Bottom);
-    Human bot3("Bot 3", Position::Right);
-    std::vector<Player> bots = { bot0, bot1, bot2, bot3 };
+    Human player("Player", Position::Right);
+    std::vector<Player> bots = { bot0, bot1, bot2, player };
 
     Team teamA("Team A");
     teamA.addPlayer(bot0);
@@ -44,7 +44,7 @@ int main()
 
     Team teamB("Team B");
     teamB.addPlayer(bot1);
-    teamB.addPlayer(bot3);
+    teamB.addPlayer(player);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
     app.startGame(lobby, GameMode::Offline);
