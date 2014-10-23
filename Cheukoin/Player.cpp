@@ -86,6 +86,10 @@ void Player::initialize()
 }
 sf::IntRect Player::getGlobalBounds()
 {
+    if (_cards.size() == 0) {
+        return sf::IntRect(0, 0, 0, 0);
+    }
+
     sf::IntRect rect(getCards().front().getGlobalPosition().x,
                      getCards().back().getGlobalPosition().y,
                      getCards().back().getGlobalPosition().x - getCards().front().getGlobalPosition().x + getCards().back().getGlobalSize().x,
