@@ -38,14 +38,13 @@ void Game::startGame()
 
 void Game::play()
 {
-    if (_currentPlayer == 0) {
+    if ((_currentPlayer == 0) && (8 - _currentRound == (getCurrentPlayer()->getCards().size()))) {
         if (_currentRound > 7) {
             cout << "Game finished!" << endl;
             return;
         }
 
         cout << "Playing round " << _currentRound << endl;
-
         Trick trick(_currentRound);
         _tricks.push_back(trick);
         _currentRound++;
