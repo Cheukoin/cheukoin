@@ -75,7 +75,7 @@ bool Rules::isCardGreater(Card card1, Card card2)
 
 Card Rules::winningCard(Trick trick)
 {
-// TODO: check if we can use a lambda with std::max
+    // TODO: check if we can use a lambda with std::max
     Card max = trick.getCards()[0];
     for (int i = 0; i < trick.getCards().size(); i++) {
         if (isCardGreater(trick.getCards()[i], max)) {
@@ -109,7 +109,7 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
 
 std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
 {
-// TODO: add comments
+    // TODO: add comments
     Suit demandedSuit = firstCards[0].getSuit();
     std::vector<Card> playableCards;
     bool piss = true;
@@ -162,7 +162,7 @@ bool Rules::isTrickValid(Trick trick)
         valid = false;
     }
     else {
-// au delà de la taille du pli, tout le reste est géré par playableCards, non?
+        // au delà de la taille du pli, tout le reste est géré par playableCards, non?
     }
     return valid;
 }
@@ -194,5 +194,3 @@ std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
     }
     return cardsForSuit;
 }
-
-
