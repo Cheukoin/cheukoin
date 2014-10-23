@@ -34,7 +34,8 @@ void Human::play()
     // if (selectedCard isplayable) do else (selectCard())
     playCard(selectCard());
 }
+
 Card Human::selectCard()
 {
-    return Card(Suit(0), Value(0));
+    return _cards.front();
 }
