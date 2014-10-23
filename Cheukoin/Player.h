@@ -38,7 +38,8 @@ public:
     void changeDealer();
     bool isDealer();
     void playByClick();
-
+    
+    
     Position getPosition() const;
     void setPosition(Position position);
 
@@ -48,15 +49,14 @@ public:
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
-
+    sf::IntRect getGlobalBounds();
     void drawCards() const;
-
     std::vector<Card> cardsForSuit(Suit suit);
 
     static std::vector<std::string> PositionNames;
     static std::vector<int> ScoreSuitIsBid;
     static std::vector<int> ScoreSuitIsNotBid;
-
+    Card chooseCard();
 protected:
     std::string _name;
     Bid _bid;

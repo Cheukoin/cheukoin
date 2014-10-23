@@ -17,6 +17,7 @@ public:
 
     std::shared_ptr<sf::RenderWindow> getWindow();
     void initWindow();
+    void handleClick();
 
 private:
     Application(){};

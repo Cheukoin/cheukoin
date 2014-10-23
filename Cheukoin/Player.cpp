@@ -82,6 +82,14 @@ void Player::initialize()
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
+sf::IntRect Player::getGlobalBounds()
+{
+    sf::IntRect rect(getCards().front().sprite->getPosition().x,
+                     getCards().back().sprite->getPosition().y,
+                     getCards().back().sprite->getPosition().x - getCards().front().sprite->getPosition().x + getCards().back().getGlobalSize().x,
+                     getCards().front().getGlobalSize().y);
+    return rect;
+}
 
 void Player::playCard(Card const& card)
 {
@@ -220,6 +228,10 @@ vector<Card> Player::cardsForSuit(Suit suit)
         }
     }
     return cardsForSuit;
+}
+
+Card Player::chooseCard()
+{
 }
 
 bool operator==(Player const& a, Player const& b)

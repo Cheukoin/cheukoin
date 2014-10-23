@@ -21,7 +21,7 @@ void Game::startGame()
 {
     _lobby.deal();
 
-// FOR TEST PURPOSE
+    // FOR TEST PURPOSE
     _bid.setAmount(120);
     _bid.setSuit(Spades);
 
@@ -47,14 +47,20 @@ void Game::play()
         _tricks.push_back(trick);
         _currentRound++;
     }
-    _lobby.getPlayers()[_currentPlayer]->play();
-    if (_lobby.getPlayers()[_currentPlayer]->getCards().size() == 8 - _currentRound) {
-        _currentPlayer++;
-        _currentPlayer %= 4;
-    }
+
     for (auto bot : getBots()) {
         bot->update();
     }
+}
+void Game::playBot()
+{
+    for (auto bot : _lobby.getPlayers())
+        if (bot->getPosition() != Top)
+            bot->play();
+}
+std::shared_ptr<Player> Game::getCurrentPlayer()
+{
+    return _lobby.getPlayers()[_currentPlayer];
 }
 
 GameMode Game::getMode()

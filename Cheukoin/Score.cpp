@@ -22,6 +22,7 @@ int Score::computeScore(Trick trick)
         cout << "Ce n'est pas une pli valide!" << endl;
     }
     else {
+        
     }
 
     return -1;

@@ -32,10 +32,10 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    Bot bot0("Bot 0", Position::Top);
+    Human bot0("Bot 0", Position::Top);
     Bot bot1("Bot 1", Position::Left);
     Bot bot2("Bot 2", Position::Bottom);
-    Human bot3("Bot 3", Position::Right);
+    Bot bot3("Bot 3", Position::Right);
     std::vector<Player> bots = { bot0, bot1, bot2, bot3 };
 
     Team teamA("Team A");
@@ -57,7 +57,7 @@ int main()
                 window->close();
                 break;
             case sf::Event::MouseButtonPressed:
-                app.getGame()->play();
+                app.handleClick();
                 break;
             default:
                 break;

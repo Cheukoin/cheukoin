@@ -26,13 +26,15 @@ public:
     Bid getBid();
 
     Lobby& getLobby();
-
+    void playBot();
     void addTrick(Trick const& trick);
 
     Trick& getCurrentTrick();
 
     std::vector<std::shared_ptr<Bot> > getBots();
-
+    std::shared_ptr<Player> getCurrentPlayer();
+    int getIndexCurrentPlayer();
+    void setIndexCurrentPlayer(int i);
     void draw();
 
     void play();
