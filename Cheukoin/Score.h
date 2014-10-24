@@ -17,7 +17,7 @@ public:
     ~Score();
     int computeScore(Trick trick);
     Team computeWinner(Trick trick);
-    void addOutcome(string equipe, int score);
+    void addOutcome(Team team, int score);
     std::map<int, std::string> getOutcome();
 
 private:

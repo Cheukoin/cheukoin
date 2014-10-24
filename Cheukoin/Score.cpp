@@ -18,12 +18,13 @@ int Score::computeScore(Trick trick)
     }
     else {
         Bid bid = Application::getInstance().getGame()->getBid();
+        
     }
 
     return -1;
 }
 
-void Score::addOutcome(string equipe, int score)
+void Score::addOutcome(Team team, int score)
 {
 }
 
