@@ -7,6 +7,7 @@
 //
 
 #include "Human.h"
+#include "Rules.h"
 
 using namespace std;
 
@@ -30,28 +31,32 @@ void Human::initialize()
 
 void Human::play()
 {
-#warning isPlayblaCard missing
-    //if (selectedCard isplayable) do else (selectCard())
-    playCard(selectCard());
-}
-Card Human::selectCard()
-{
-    bool cardSelected(false);
-    while (cardSelected == false) {
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-        if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-            for (int i = 0; (i < _cards.size()); i++) {
-                sf::IntRect rectref;
-                if (i == (_cards.size() - 1))
-                    rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
-                else
-                    rectref = sf::IntRect(_cards[i].sprite->getPosition().x, _cards[i].sprite->getPosition().y, _cards[i + 1].sprite->getPosition().x - _cards[i].sprite->getPosition().x, _cards[i].getGlobalSize().y);
+    Card card = chooseCard();
 
-                if (rectref.contains(mousePosition.x, mousePosition.y)) {
-                    return _cards[i];
-                    cardSelected = true;
-                }
-            }
+    // TODO check the cards that are already in the trick
+    vector<Card> playableCards = Application::getInstance().getGame()->getRules()->getPlayableCards(*this);
+    if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
+        playCard(card);
+    }
+}
+
+Card Human::chooseCard()
+{
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+
+    for (int i = 0; (i < _cards.size()); i++) {
+        sf::IntRect rectref;
+        if (i == (_cards.size() - 1)) {
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
+        }
+        else {
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
+        }
+        if (rectref.contains(mousePosition)) {
+            return _cards[i];
         }
     }
+
+    // shouldn't happen, maybe throw an exception?
+    return _cards.front();
 }

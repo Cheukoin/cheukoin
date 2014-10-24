@@ -18,10 +18,9 @@ public:
 
     void initialize();
     void play();
-    Card selectCard();
-private:
-    
+    Card chooseCard();
 
+private:
 };
 
 #endif /* defined(__Cheukoin__Human__) */

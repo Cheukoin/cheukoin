@@ -75,7 +75,7 @@ bool Rules::isCardGreater(Card card1, Card card2)
 
 Card Rules::winningCard(Trick trick)
 {
-// TODO: check if we can use a lambda with std::max
+    // TODO: check if we can use a lambda with std::max
     Card max = trick.getCards()[0];
     for (int i = 0; i < trick.getCards().size(); i++) {
         if (isCardGreater(trick.getCards()[i], max)) {
@@ -92,7 +92,6 @@ bool Rules::isTeamValid(Team team)
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
 {
-    bool master = false;
     int numberPlayedCards = firstCards.size();
     std::vector<Card> enemyCards;
     if (numberPlayedCards > 1) {
@@ -102,67 +101,85 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
                 enemyCards.push_back(c);
             }
         }
-        master = isCardGreater(friendlyCard, enemyCards[0]) && isCardGreater(friendlyCard, enemyCards[1]);
+        switch (enemyCards.size()) {
+        case 0:
+            return true;
+
+        case 1:
+            return isCardGreater(friendlyCard, enemyCards[0]);
+
+        case 2:
+            return isCardGreater(friendlyCard, enemyCards[0]) && isCardGreater(friendlyCard, enemyCards[1]);
+
+        default:
+            return false;
+        }
     }
-    return master;
+    return false;
 }
 
-std::vector<Card> Rules::playableCards(Player player, vector<Card> firstCards)
+std::vector<Card> Rules::getPlayableCards(Player player)
 {
-// TODO: add comments
+    return getPlayableCards(player, Application::getInstance().getGame()->getCurrentTrick().getCards());
+}
+std::vector<Card> Rules::getPlayableCards(Player player, vector<Card> firstCards)
+{
+    if (firstCards.size() == 0) {
+        return player.getCards();
+    }
+
     Suit demandedSuit = firstCards[0].getSuit();
-    std::vector<Card> playableCards;
-    bool piss = true;
 
     // first, look wether the player have the demanded suit in his hand
 
-    if (player.cardsForSuit(demandedSuit).size() != 0) {
-        piss = false;
-        playableCards = player.cardsForSuit(demandedSuit);
+    if (demandedSuit != _asset && player.cardsForSuit(demandedSuit).size() != 0) {
+        return player.cardsForSuit(demandedSuit);
     }
 
     // if not, he can still play whatever he wants if his friends is the current master of the trick
 
-    else if (isFriendMaster(player, firstCards)) {
-        playableCards = player.getCards();
+    else if (demandedSuit != _asset && isFriendMaster(player, firstCards)) {
+        return player.getCards();
     }
 
     // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
 
     else if (player.cardsForSuit(_asset).size() != 0) {
-        piss = false;
+        std::vector<Card> playableCards;
         std::vector<Card> assets = cardsForSuit(firstCards, _asset);
+
+        if (assets.size() == 0) {
+            return player.cardsForSuit(_asset);
+        }
+
         Card max = assets[0];
-        for (auto c : assets) {
-            if (isCardGreater(c, max)) {
-                max = c;
+        for (auto card : assets) {
+            if (isCardGreater(card, max)) {
+                max = card;
             }
         }
-        for (auto c : player.cardsForSuit(_asset)) {
-            if (isCardGreater(c, max)) {
-                playableCards.push_back(c);
+        for (auto card : player.cardsForSuit(_asset)) {
+            if (isCardGreater(card, max)) {
+                playableCards.push_back(card);
             }
         }
+        return (playableCards.size() > 0 ? playableCards : player.cardsForSuit(_asset));
     }
 
     // if the friend isn't master and he hasn't got neither asked suit nor bigger assets, he can play whatever he wants
 
-    else {
-        playableCards = playableCards = player.getCards();
-    }
-    return playableCards;
+    return player.getCards();
 }
 
 bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
-    Suit demandedSuit = trick.getCards()[0].getSuit();
 
     if (trick.getCards().size() != 4) {
         valid = false;
     }
     else {
-// au delà de la taille du pli, tout le reste est géré par playableCards, non?
+        // au delà de la taille du pli, tout le reste est géré par playableCards, non?
     }
     return valid;
 }
@@ -184,15 +201,13 @@ bool Rules::isTrickValid(Trick trick)
 //    }
 //}
 
-std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit)
+vector<Card> cardsForSuit(vector<Card> cards, Suit suit)
 {
-    std::vector<Card> cardsForSuit;
-    for (auto c : cards) {
-        if (c.getSuit() == suit) {
-            cardsForSuit.push_back(c);
+    vector<Card> cardsForSuit;
+    for (Card card : cards) {
+        if (card.getSuit() == suit) {
+            cardsForSuit.push_back(card);
         }
     }
     return cardsForSuit;
 }
-
-

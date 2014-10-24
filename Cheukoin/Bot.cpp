@@ -62,7 +62,8 @@ void Bot::update()
 
 Card Bot::chooseCard()
 {
-    return _cards.front();
+    vector<Card> playableCards = _game->getRules()->getPlayableCards(*this);
+    return playableCards.front();
 }
 
 void Bot::guessHands()

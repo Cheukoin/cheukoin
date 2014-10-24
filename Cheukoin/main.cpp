@@ -32,19 +32,19 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    Bot bot0("Bot 0", Position::Top);
+    Human player("Player", Position::Top);
     Bot bot1("Bot 1", Position::Left);
     Bot bot2("Bot 2", Position::Bottom);
-    Human player("Player", Position::Right);
-    std::vector<Player> bots = { bot0, bot1, bot2, player };
+    Bot bot3("Bot 3", Position::Right);
+    std::vector<Player> bots = { player, bot1, bot2, bot3 };
 
     Team teamA("Team A");
-    teamA.addPlayer(bot0);
+    teamA.addPlayer(player);
     teamA.addPlayer(bot2);
 
     Team teamB("Team B");
     teamB.addPlayer(bot1);
-    teamB.addPlayer(player);
+    teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
     app.startGame(lobby, GameMode::Offline);
@@ -57,7 +57,7 @@ int main()
                 window->close();
                 break;
             case sf::Event::MouseButtonPressed:
-                app.getGame()->play();
+                app.handleClick();
                 break;
             default:
                 break;

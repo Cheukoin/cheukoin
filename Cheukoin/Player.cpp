@@ -2,13 +2,14 @@
 
 using namespace std;
 
-static std::vector<std::string> PositionNames = {
+vector<string> const PositionNames = {
     "Left",
     "Right",
     "Top",
     "Bottom"
 };
-std::vector<int> Player::ScoreSuitIsBid = {
+
+vector<int> Player::ScoreSuitIsBid = {
     11,
     4,
     3,
@@ -18,7 +19,8 @@ std::vector<int> Player::ScoreSuitIsBid = {
     0,
     0
 };
-std::vector<int> Player::ScoreSuitIsNotBid = {
+
+vector<int> Player::ScoreSuitIsNotBid = {
     11,
     4,
     3,
@@ -49,7 +51,7 @@ void Player::initialize()
     sf::Vector2u pos;
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
-    std::sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
+    sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
             if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
                 return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
@@ -81,6 +83,22 @@ void Player::initialize()
         _cards[i].flip();
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
+}
+sf::IntRect Player::getGlobalBounds()
+{
+    if (_cards.size() == 0) {
+        return sf::IntRect(0, 0, 0, 0);
+    }
+
+    float right = getCards().back().getGlobalPosition().x
+                  - getCards().front().getGlobalPosition().x
+                  + getCards().back().getGlobalSize().x;
+
+    sf::IntRect rect(getCards().front().getGlobalPosition().x,
+                     getCards().back().getGlobalPosition().y,
+                     right,
+                     getCards().front().getGlobalSize().y);
+    return rect;
 }
 
 void Player::playCard(Card const& card)
@@ -213,13 +231,17 @@ void Player::setPosition(Position position)
 vector<Card> Player::cardsForSuit(Suit suit)
 {
     // TODO : appeler l'equivalent ds rules
-    std::vector<Card> cardsForSuit;
+    vector<Card> cardsForSuit;
     for (auto c : _cards) {
         if (c.getSuit() == suit) {
             cardsForSuit.push_back(c);
         }
     }
     return cardsForSuit;
+}
+
+Card Player::chooseCard()
+{
 }
 
 bool operator==(Player const& a, Player const& b)

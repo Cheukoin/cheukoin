@@ -17,6 +17,7 @@ public:
 
     std::shared_ptr<sf::RenderWindow> getWindow();
     void initWindow();
+    void handleClick();
 
 private:
     Application(){};
@@ -25,7 +26,7 @@ private:
 
     std::shared_ptr<Game> _game;
 
-	std::shared_ptr<sf::RenderWindow> _window;
+    std::shared_ptr<sf::RenderWindow> _window;
 };
 
 #endif

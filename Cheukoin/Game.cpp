@@ -16,7 +16,6 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _tricks(vector<Trick>())
     , _currentPlayer(0)
 {
-    _rules = make_shared<Rules>(_bid.getSuit());
 }
 
 void Game::startGame()
@@ -26,6 +25,8 @@ void Game::startGame()
     // FOR TEST PURPOSE
     _bid.setAmount(120);
     _bid.setSuit(Spades);
+
+    _rules = make_shared<Rules>(_bid.getSuit());
 
     for (shared_ptr<Bot> bot : getBots()) {
         bot->initialize();
@@ -37,26 +38,31 @@ void Game::startGame()
 
 void Game::play()
 {
-    if (_currentPlayer == 0) {
+    if ((_currentPlayer == 0) && (8 - _currentRound == (getCurrentPlayer()->getCards().size()))) {
         if (_currentRound > 7) {
             cout << "Game finished!" << endl;
             return;
         }
 
         cout << "Playing round " << _currentRound << endl;
-
         Trick trick(_currentRound);
         _tricks.push_back(trick);
         _currentRound++;
     }
-    _lobby.getPlayers()[_currentPlayer]->play();
-    if (_lobby.getPlayers()[_currentPlayer]->getCards().size() == 8 - _currentRound) {
-        _currentPlayer++;
-        _currentPlayer %= 4;
-    }
+
     for (auto bot : getBots()) {
         bot->update();
     }
+}
+void Game::playBot()
+{
+    for (auto bot : _lobby.getPlayers())
+        if (bot->getPosition() != Top)
+            bot->play();
+}
+std::shared_ptr<Player> Game::getCurrentPlayer()
+{
+    return _lobby.getPlayers()[_currentPlayer];
 }
 
 GameMode Game::getMode()
@@ -77,6 +83,11 @@ void Game::setBid(Bid const& bid)
 Bid Game::getBid()
 {
     return _bid;
+}
+
+shared_ptr<Rules> Game::getRules()
+{
+    return _rules;
 }
 
 void Game::addTrick(Trick const& trick)
