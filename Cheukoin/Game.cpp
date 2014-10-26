@@ -14,8 +14,9 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _bid(Bid())
     , _currentRound(0)
     , _tricks(vector<Trick>())
-    , _currentPlayer(lobby.getPlayers().front())
+    , _currentPlayer(0)
 {
+    _initializeRound();
 }
 
 void Game::startGame()
@@ -35,31 +36,57 @@ void Game::startGame()
 
 void Game::play()
 {
-    if (8 - _currentRound == (_currentPlayer->getCards().size())) {
-        if (_currentRound > 7) {
-            cout << "Game finished!" << endl;
-            return;
-        }
+    if (_currentRound > 7) {
+        cout << "Game finished!" << endl;
+        return;
+    }
 
-        cout << "Playing round " << _currentRound << endl;
+    if (getHuman() == getCurrentPlayer()) {
+        cout << "Waiting for player's move" << endl;
+        return;
+    }
 
-        _currentPlayer = _tricks.back().getWinner();
+    getCurrentPlayer()->play();
+    _goToNextPlayer();
 
-        Trick trick(_currentRound);
-        _tricks.push_back(trick);
-        _currentRound++;
+    if (_tricks.back().getCards().size() == 4) {
+        _initializeRound();
     }
 }
-void Game::playBots()
+
+void Game::notifyHumanPlayed()
 {
-    for (auto bot : getBots()) {
-        bot->play();
+    _goToNextPlayer();
+}
+
+void Game::_goToNextPlayer()
+{
+    _currentPlayer = (_currentPlayer + 1) % 4;
+}
+
+void Game::_initializeRound()
+{
+    Trick trick(_currentRound);
+    _tricks.push_back(trick);
+    _currentRound++;
+    cout << "Playing round " << _currentRound << endl;
+}
+
+shared_ptr<Human> Game::getHuman()
+{
+    for (auto player : _lobby.getPlayers()) {
+        auto human = dynamic_pointer_cast<Human>(player);
+        if (human) {
+            return human;
+        }
     }
+
+    return nullptr;
 }
 
 shared_ptr<Player> Game::getCurrentPlayer()
 {
-    return _currentPlayer;
+    return _lobby.getPlayers().at(_currentPlayer);
 }
 
 GameMode Game::getMode()

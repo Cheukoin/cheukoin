@@ -14,6 +14,7 @@ class Player;
 class Team;
 class Lobby;
 class Bot;
+class Human;
 
 class Game {
 public:
@@ -27,7 +28,7 @@ public:
     Bid getBid();
 
     Lobby& getLobby();
-    void playBots();
+
     void addTrick(Trick const& trick);
 
     Trick& getCurrentTrick();
@@ -35,9 +36,11 @@ public:
     std::shared_ptr<Rules> getRules();
 
     std::vector<std::shared_ptr<Bot> > getBots();
+    std::shared_ptr<Human> getHuman();
     std::shared_ptr<Player> getCurrentPlayer();
-    int getIndexCurrentPlayer();
-    void setIndexCurrentPlayer(int i);
+
+    void notifyHumanPlayed();
+
     void draw();
 
     void play();
@@ -48,8 +51,11 @@ private:
     Lobby& _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
-    std::shared_ptr<Player> _currentPlayer;
+    int _currentPlayer;
     std::shared_ptr<Rules> _rules;
+
+    void _initializeRound();
+    void _goToNextPlayer();
 };
 
 #endif

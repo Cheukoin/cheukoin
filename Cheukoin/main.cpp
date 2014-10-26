@@ -32,18 +32,18 @@ int main()
     bgSprite.setTextureRect(sf::IntRect(0, 0, window->getSize().x, window->getSize().y));
     bgSprite.setTexture(bgTexture);
 
-    Human player("Player", Position::Top);
-    Bot bot1("Bot 1", Position::Left);
-    Bot bot2("Bot 2", Position::Bottom);
+    Bot bot1("Bot 1", Position::Top);
+    Bot bot2("Bot 2", Position::Left);
+    Human human("Human", Position::Bottom);
     Bot bot3("Bot 3", Position::Right);
-    std::vector<Player> bots = { player, bot1, bot2, bot3 };
+    std::vector<Player> players = { bot1, bot2, human, bot3 };
 
     Team teamA("Team A");
-    teamA.addPlayer(player);
-    teamA.addPlayer(bot2);
+    teamA.addPlayer(bot1);
+    teamA.addPlayer(human);
 
     Team teamB("Team B");
-    teamB.addPlayer(bot1);
+    teamB.addPlayer(bot2);
     teamB.addPlayer(bot3);
 
     Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });

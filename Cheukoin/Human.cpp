@@ -38,6 +38,8 @@ void Human::play()
     if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
         playCard(card);
     }
+
+    Application::getInstance().getGame()->notifyHumanPlayed();
 }
 
 Card Human::chooseCard()

@@ -16,16 +16,14 @@ void Application::handleClick()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect;
-    _game->play();
-    if (_game->getCurrentPlayer()->getPosition() == Top) {
-        rect = _game->getCurrentPlayer()->getGlobalBounds();
-        if (rect.contains(mousePosition)) {
-            _game->getCurrentPlayer()->play();
-            _game->playBots();
-        }
-        
+
+    rect = _game->getHuman()->getGlobalBounds();
+    if (rect.contains(mousePosition)) {
+        _game->getHuman()->play();
     }
-    
+    else {
+        _game->play();
+    }
 }
 
 void Application::startGame(Lobby& lobby, GameMode const& mode)
