@@ -46,16 +46,15 @@ void Bot::play()
 
 void Bot::update()
 {
-    for (Card card : _game->getCurrentTrick().getCards()) {
-        _remainingCardsInGame.erase(remove(_remainingCardsInGame.begin(), _remainingCardsInGame.end(), card), _remainingCardsInGame.end());
+    Card card = _game->getCurrentTrick().getCards().back();
+    _remainingCardsInGame.erase(remove(_remainingCardsInGame.begin(), _remainingCardsInGame.end(), card), _remainingCardsInGame.end());
 
-        if (card.getSuit() == _game->getBid().getSuit()) {
-            _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
-        }
+    if (card.getSuit() == _game->getBid().getSuit()) {
+        _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
+    }
 
-        if (card != _playedCard) {
-            _cardProbability[card.getSuit()].erase(card.getValue());
-        }
+    if (card != _playedCard) {
+        _cardProbability[card.getSuit()].erase(card.getValue());
     }
     guessHands();
 }
@@ -68,4 +67,16 @@ Card Bot::chooseCard()
 
 void Bot::guessHands()
 {
+    Card card = _game->getCurrentTrick().getCards().back();
+    shared_ptr<Player> player = _game->getCurrentPlayer();
+    Suit demandedSuit = _game->getCurrentTrick().getCards().front().getSuit();
+    Suit asset = _game->getBid().getSuit();
+    cout << player->getName();
+    if (demandedSuit == asset && card.getSuit() != asset) {
+        for (int value = 0; value < 8; ++value) {
+            if (_cardProbability[asset][(Value)value].size() > 0) {
+                _cardProbability[asset][(Value)value][player->getName()] = 0;
+            }
+        }
+    }
 }
