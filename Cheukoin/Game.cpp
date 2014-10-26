@@ -49,10 +49,6 @@ void Game::play()
         _tricks.push_back(trick);
         _currentRound++;
     }
-
-    for (auto bot : getBots()) {
-        bot->update();
-    }
 }
 void Game::playBots()
 {

@@ -9,6 +9,8 @@
 #include "Trick.h"
 #include "Constants.h"
 
+class Bot;
+
 enum Position {
     Left,
     Right,

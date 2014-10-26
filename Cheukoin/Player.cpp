@@ -1,5 +1,7 @@
 #include "Player.h"
 
+#include "Bot.h"
+
 using namespace std;
 
 vector<string> const PositionNames = {
@@ -122,6 +124,10 @@ void Player::playCard(Card const& card)
 
     if (game->getMode() == Online) {
         // TODO : notify server if multiplayer
+    }
+
+    for (auto bot : game->getBots()) {
+        bot->update();
     }
 }
 
