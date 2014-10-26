@@ -21,7 +21,7 @@ void Application::handleClick()
         rect = _game->getCurrentPlayer()->getGlobalBounds();
         if (rect.contains(mousePosition)) {
             _game->getCurrentPlayer()->play();
-            _game->playBot();
+            _game->playBots();
         }
         
     }

@@ -54,12 +54,13 @@ void Game::play()
         bot->update();
     }
 }
-void Game::playBot()
+void Game::playBots()
 {
-    for (auto bot : _lobby.getPlayers())
-        if (bot->getPosition() != Top)
-            bot->play();
+    for (auto bot : getBots()) {
+        bot->play();
+    }
 }
+
 std::shared_ptr<Player> Game::getCurrentPlayer()
 {
     return _lobby.getPlayers()[_currentPlayer];

@@ -27,7 +27,7 @@ public:
     Bid getBid();
 
     Lobby& getLobby();
-    void playBot();
+    void playBots();
     void addTrick(Trick const& trick);
 
     Trick& getCurrentTrick();
