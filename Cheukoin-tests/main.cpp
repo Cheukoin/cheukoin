@@ -1,15 +1,16 @@
-//
-//  main.cpp
-//  Cheukoin-tests
-//
-//  Created by Corentin on 10/13/14.
-//  Copyright (c) 2014 Corentin. All rights reserved.
-//
+#include <stdio.h>
 
-#include <iostream>
+#include "gtest/gtest.h"
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
-    return 0;
+TEST(firstTest, test)
+{
+    EXPECT_EQ(1, 1);
+    EXPECT_EQ(1, 1);
+}
+
+GTEST_API_ int main(int argc, char** argv)
+{
+    printf("Running main() from gtest_main.cc\n");
+    testing::InitGoogleTest(&argc, argv);
+    return RUN_ALL_TESTS();
 }
