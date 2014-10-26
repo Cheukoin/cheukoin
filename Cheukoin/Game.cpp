@@ -14,7 +14,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _bid(Bid())
     , _currentRound(-1)
     , _tricks(vector<Trick>())
-    , _currentPlayer(0)
+    , _currentPlayerIndex(0)
 {
     _initializeRound();
 }
@@ -50,6 +50,7 @@ void Game::play()
     _goToNextPlayer();
 
     if (_tricks.back().getCards().size() == 4) {
+        // TODO: make this check even if the current player is human
         _initializeRound();
     }
 }
@@ -61,12 +62,15 @@ void Game::notifyHumanPlayed()
 
 void Game::_goToNextPlayer()
 {
-    _currentPlayer = (_currentPlayer + 1) % 4;
-    cout << "Current player " << _currentPlayer << endl;
+    _currentPlayerIndex = (_currentPlayerIndex + 1) % 4;
 }
 
 void Game::_initializeRound()
 {
+    if (_currentRound >= 0) {
+        _currentPlayerIndex = _tricks.back().getWinnerCardIndex();
+    }
+
     Trick trick(_currentRound);
     _tricks.push_back(trick);
     _currentRound++;
@@ -87,7 +91,7 @@ shared_ptr<Human> Game::getHuman()
 
 shared_ptr<Player> Game::getCurrentPlayer()
 {
-    return _lobby.getPlayers().at(_currentPlayer);
+    return _lobby.getPlayers().at(_currentPlayerIndex);
 }
 
 GameMode Game::getMode()

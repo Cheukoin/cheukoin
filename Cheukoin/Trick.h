@@ -18,7 +18,7 @@ public:
 
     void draw();
 
-    std::shared_ptr<Player> getWinner();
+    int getWinnerCardIndex();
 
 private:
     // TODO: see if we can get rid of this

@@ -51,7 +51,7 @@ private:
     Lobby& _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
-    int _currentPlayer;
+    int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
 
     void _initializeRound();

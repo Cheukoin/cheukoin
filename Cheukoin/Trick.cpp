@@ -40,7 +40,15 @@ void Trick::draw()
     }
 }
 
-shared_ptr<Player> Trick::getWinner()
+int Trick::getWinnerCardIndex()
 {
-    return Application::getInstance().getGame()->getLobby().getPlayers().front();
+    vector<Card> sortedCards = _cards;
+    sort(sortedCards.begin(), sortedCards.end(), [](Card a, Card b) {
+        return Application::getInstance().getGame()->getRules()->isCardGreater(a, b);
+    });
+
+    auto best = find(_cards.begin(), _cards.end(), sortedCards.front());
+    long bestIndex = best - _cards.begin();
+
+    return (int)bestIndex;
 }
