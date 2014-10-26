@@ -92,7 +92,7 @@ bool Rules::isTeamValid(Team team)
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
 {
-    int numberPlayedCards = firstCards.size();
+    unsigned long numberPlayedCards = firstCards.size();
     std::vector<Card> enemyCards;
     if (numberPlayedCards > 1) {
         Card friendlyCard = firstCards[numberPlayedCards - 2];

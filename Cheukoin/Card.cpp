@@ -113,7 +113,7 @@ vector<Card> Card::getAllCardsShuffled()
     vector<Card> cards = getAllCards();
 
     // initialize pseudo random number genrator
-    unsigned seed = chrono::system_clock::now().time_since_epoch().count();
+    unsigned seed = static_cast<unsigned>(chrono::system_clock::now().time_since_epoch().count());
 
     // actually shuffle the cards
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
