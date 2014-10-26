@@ -48,7 +48,7 @@ private:
     Lobby& _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
-    int _currentPlayer;
+    std::shared_ptr<Player> _currentPlayer;
     std::shared_ptr<Rules> _rules;
 };
 

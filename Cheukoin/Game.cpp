@@ -14,7 +14,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _bid(Bid())
     , _currentRound(0)
     , _tricks(vector<Trick>())
-    , _currentPlayer(0)
+    , _currentPlayer(lobby.getPlayers().front())
 {
 }
 
@@ -35,13 +35,16 @@ void Game::startGame()
 
 void Game::play()
 {
-    if ((_currentPlayer == 0) && (8 - _currentRound == (getCurrentPlayer()->getCards().size()))) {
+    if (8 - _currentRound == (_currentPlayer->getCards().size())) {
         if (_currentRound > 7) {
             cout << "Game finished!" << endl;
             return;
         }
 
         cout << "Playing round " << _currentRound << endl;
+
+        _currentPlayer = _tricks.back().getWinner();
+
         Trick trick(_currentRound);
         _tricks.push_back(trick);
         _currentRound++;
@@ -58,9 +61,9 @@ void Game::playBots()
     }
 }
 
-std::shared_ptr<Player> Game::getCurrentPlayer()
+shared_ptr<Player> Game::getCurrentPlayer()
 {
-    return _lobby.getPlayers()[_currentPlayer];
+    return _currentPlayer;
 }
 
 GameMode Game::getMode()

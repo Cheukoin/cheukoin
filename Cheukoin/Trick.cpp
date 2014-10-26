@@ -1,4 +1,5 @@
 #include "Trick.h"
+#include "Lobby.h"
 
 using namespace std;
 
@@ -37,4 +38,9 @@ void Trick::draw()
     for (auto card : _cards) {
         card.draw();
     }
+}
+
+shared_ptr<Player> Trick::getWinner()
+{
+    return Application::getInstance().getGame()->getLobby().getPlayers().front();
 }

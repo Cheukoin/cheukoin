@@ -18,8 +18,10 @@ public:
 
     void draw();
 
+    std::shared_ptr<Player> getWinner();
+
 private:
-// TODO: see if we can get rid of this
+    // TODO: see if we can get rid of this
     int _number;
     std::vector<Card> _cards;
 };
