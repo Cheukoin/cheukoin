@@ -19,7 +19,9 @@ void Application::handleClick()
 
     rect = _game->getHuman()->getGlobalBounds();
     if (rect.contains(mousePosition)) {
-        _game->getHuman()->play();
+        if (_game->getCurrentPlayer() == _game->getHuman()) {
+            _game->getHuman()->play();
+        }
     }
     else {
         _game->play();

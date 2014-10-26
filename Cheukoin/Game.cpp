@@ -12,7 +12,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     : _lobby(lobby)
     , _mode(mode)
     , _bid(Bid())
-    , _currentRound(0)
+    , _currentRound(-1)
     , _tricks(vector<Trick>())
     , _currentPlayer(0)
 {
@@ -62,6 +62,7 @@ void Game::notifyHumanPlayed()
 void Game::_goToNextPlayer()
 {
     _currentPlayer = (_currentPlayer + 1) % 4;
+    cout << "Current player " << _currentPlayer << endl;
 }
 
 void Game::_initializeRound()
