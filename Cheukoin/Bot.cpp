@@ -71,7 +71,7 @@ void Bot::guessHands()
     shared_ptr<Player> player = _game->getCurrentPlayer();
     Suit demandedSuit = _game->getCurrentTrick().getCards().front().getSuit();
     Suit asset = _game->getBid().getSuit();
-    cout << player->getName();
+
     if (demandedSuit == asset && card.getSuit() != asset) {
         for (int value = 0; value < 8; ++value) {
             if (_cardProbability[asset][(Value)value].size() > 0) {
