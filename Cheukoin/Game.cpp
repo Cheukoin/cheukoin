@@ -28,9 +28,6 @@ void Game::startGame()
 
     _rules = make_shared<Rules>(_bid.getSuit());
 
-    for (shared_ptr<Bot> bot : getBots()) {
-        bot->initialize();
-    }
     for (auto player : _lobby.getPlayers()) {
         player->initialize();
     }
