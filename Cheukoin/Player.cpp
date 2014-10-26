@@ -242,6 +242,8 @@ vector<Card> Player::cardsForSuit(Suit suit)
 
 Card Player::chooseCard()
 {
+    // TODO fix this
+    return Card(Spades, Ace);
 }
 
 bool operator==(Player const& a, Player const& b)

@@ -1,11 +1,16 @@
 #include <stdio.h>
 
 #include "gtest/gtest.h"
+#include "Rules.h"
+#include "Card.h"
 
-TEST(firstTest, test)
+TEST(Rules, isCardGreater)
 {
-    EXPECT_EQ(1, 1);
-    EXPECT_EQ(1, 1);
+    Rules rules(Spades);
+    Card ace(Spades, Ace);
+    Card ten(Spades, Ten);
+    EXPECT_TRUE(rules.isCardGreater(ace, ten));
+    EXPECT_FALSE(rules.isCardGreater(ten, ace));
 }
 
 GTEST_API_ int main(int argc, char** argv)

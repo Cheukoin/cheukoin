@@ -9,6 +9,21 @@
 /* Begin PBXBuildFile section */
 		1948AD2919FD3789000E51BF /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
 		1948AD2A19FD3A86000E51BF /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
+		1948AD2D19FD3CA0000E51BF /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
+		1948AD2E19FD3D4F000E51BF /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
+		1948AD2F19FD3D4F000E51BF /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
+		1948AD3019FD3D4F000E51BF /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
+		1948AD3119FD3D4F000E51BF /* Card.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9B19E2C23C0037C5AE /* Card.cpp */; };
+		1948AD3219FD3D4F000E51BF /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA019E2C23C0037C5AE /* Game.cpp */; };
+		1948AD3319FD3D4F000E51BF /* Human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1984DA6A19F66EBB000FFC73 /* Human.cpp */; };
+		1948AD3419FD3D4F000E51BF /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D2FA1C19F034280074B105 /* Lobby.cpp */; };
+		1948AD3619FD3D4F000E51BF /* NetworkManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */; };
+		1948AD3719FD3D4F000E51BF /* Player.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EA719E2C23C0037C5AE /* Player.cpp */; };
+		1948AD3819FD3D4F000E51BF /* Score.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAF19E2C23C0037C5AE /* Score.cpp */; };
+		1948AD3919FD3D4F000E51BF /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
+		1948AD3A19FD3D4F000E51BF /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
+		1948AD3B19FD3D74000E51BF /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
+		1948AD3C19FD3D89000E51BF /* ResourcePathOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */; };
 		1984DA6C19F66EBB000FFC73 /* Human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1984DA6A19F66EBB000FFC73 /* Human.cpp */; };
 		19A57CF119E298ED00FE40DD /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CE919E298ED00FE40DD /* freetype.framework */; };
 		19A57CF219E298ED00FE40DD /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEA19E298ED00FE40DD /* sfml-audio.framework */; };
@@ -520,6 +535,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				19F5852F19EBC77C00C2DC44 /* main.cpp in Sources */,
+				1948AD3819FD3D4F000E51BF /* Score.cpp in Sources */,
+				1948AD2D19FD3CA0000E51BF /* Rules.cpp in Sources */,
+				1948AD3419FD3D4F000E51BF /* Lobby.cpp in Sources */,
+				1948AD2E19FD3D4F000E51BF /* Application.cpp in Sources */,
+				1948AD3319FD3D4F000E51BF /* Human.cpp in Sources */,
+				1948AD3919FD3D4F000E51BF /* Team.cpp in Sources */,
+				1948AD3119FD3D4F000E51BF /* Card.cpp in Sources */,
+				1948AD3019FD3D4F000E51BF /* Bot.cpp in Sources */,
+				1948AD3B19FD3D74000E51BF /* jsoncpp.cpp in Sources */,
+				1948AD3619FD3D4F000E51BF /* NetworkManager.cpp in Sources */,
+				1948AD3719FD3D4F000E51BF /* Player.cpp in Sources */,
+				1948AD2F19FD3D4F000E51BF /* Bid.cpp in Sources */,
+				1948AD3A19FD3D4F000E51BF /* Trick.cpp in Sources */,
+				1948AD3C19FD3D89000E51BF /* ResourcePathOSX.mm in Sources */,
+				1948AD3219FD3D4F000E51BF /* Game.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,6 +560,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_ANALYZER_OBJC_RETAIN_COUNT = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -596,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ARCHS = "$(NATIVE_ARCH_ACTUAL)";
+				CLANG_ANALYZER_OBJC_RETAIN_COUNT = YES;
 				CLANG_ANALYZER_SECURITY_FLOATLOOPCOUNTER = YES;
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
 				CLANG_CXX_LIBRARY = "libc++";
@@ -700,7 +732,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
@@ -742,7 +774,7 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_ENABLE_MODULES = YES;
-				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
