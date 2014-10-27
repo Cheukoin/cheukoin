@@ -15,6 +15,7 @@ class Team;
 class Lobby;
 class Bot;
 class Human;
+class Score;
 
 class Game {
 public:

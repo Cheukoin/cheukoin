@@ -3,30 +3,23 @@
 using namespace std;
 
 Score::Score()
+    : _texture(make_shared<sf::Texture>())
+    , _sprite(make_shared<sf::Sprite>())
+    , _text1(make_shared<sf::Text>())
+    , _text2(make_shared<sf::Text>())
 {
+    _texture->loadFromFile(resourcePath("scoreBoard.jpg"));
+    _text1->setString("Team 1: ");
+    _text2->setString("Team 2: ");
 }
 
 Score::~Score()
 {
 }
 
-int Score::computeScore(Trick& trick)
+void Score::displayScore(int score1, int score2)
 {
-    if (trick.getCards().size() != 4) {
-        cout << "Ce n'est pas une pli valide!" << endl;
-    }
-    else {
-        int score = 0;
-        Bid bid = Application::getInstance().getGame()->getBid();
-        shared_ptr<Rules> rules = Application::getInstance().getGame()->getRules();
-        for (Card c : trick.getCards()) {
-            if (c.getSuit() == bid.getSuit()) {
-                score += rules->getCardValuesAsset()[c.getValue()];
-            }
-            else {
-                score += rules->getCardValues()[c.getValue()];
-            }
-        };
-        return score;
-    };
+    _sprite->setTexture(*_texture);
+    _sprite->setOrigin(Application::getInstance().getWindow()->getSize().x - 70, 20);
+    Application::getInstance().getWindow()->draw(*_sprite);
 };

@@ -76,6 +76,7 @@ void Application::mainLoop()
                 _window->close();
                 break;
             case sf::Event::MouseButtonPressed:
+
                 _handleClick();
                 break;
             default:
