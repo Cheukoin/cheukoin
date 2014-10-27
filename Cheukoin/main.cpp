@@ -9,6 +9,7 @@
 #include "Player.h"
 #include "Lobby.h"
 #include "Bot.h"
+#include "Score.h"
 
 using namespace std;
 

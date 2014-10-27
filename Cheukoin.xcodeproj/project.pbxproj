@@ -92,6 +92,7 @@
 		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
+		C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C940966E19FED903007F4A21 /* scoreBoard.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -188,6 +189,7 @@
 		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C940966E19FED903007F4A21 /* scoreBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scoreBoard.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -344,6 +346,7 @@
 				19D2FA3119F050CB0074B105 /* ace_of_hearts.png */,
 				19D2FA3219F050CB0074B105 /* ace_of_spades.png */,
 				19D2FA3319F050CB0074B105 /* jack_of_clubs.png */,
+				C940966E19FED903007F4A21 /* scoreBoard.jpg */,
 				19D2FA3419F050CB0074B105 /* jack_of_diamonds.png */,
 				19D2FA3519F050CB0074B105 /* jack_of_hearts.png */,
 				19D2FA3619F050CB0074B105 /* jack_of_spades.png */,
@@ -471,6 +474,7 @@
 				19D2FA4019F050CB0074B105 /* 7_of_diamonds.png in Resources */,
 				19D2FA5719F050CB0074B105 /* king_of_clubs.png in Resources */,
 				19D2FA4919F050CB0074B105 /* 9_of_hearts.png in Resources */,
+				C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */,
 				19D2FA4319F050CB0074B105 /* 8_of_clubs.png in Resources */,
 				19D2FA4219F050CB0074B105 /* 7_of_spades.png in Resources */,
 				19D2FA5819F050CB0074B105 /* king_of_diamonds.png in Resources */,

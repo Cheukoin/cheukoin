@@ -8,6 +8,7 @@
 #include "Bot.h"
 #include "Human.h"
 #include "Player.h"
+#include "Score.h"
 
 class Team {
 public:
@@ -29,7 +30,8 @@ public:
 private:
     std::string _name;
     std::vector<std::shared_ptr<Player> > _players;
-    int _score;
+    int _gameScore;
+    std::vector<int> _totalScore;
     std::vector<Trick> _wonTricks;
 };
 

@@ -4,7 +4,7 @@ using namespace std;
 
 Team::Team(string name)
     : _name(name)
-    , _score(0)
+    , _gameScore(0)
     , _players(vector<shared_ptr<Player> >())
 {
 }
@@ -34,17 +34,17 @@ void Team::addWonTrick(Trick const& trick)
 
 void Team::setScore(int const& newScore)
 {
-    _score = newScore;
+    _gameScore = newScore;
 }
 
 void Team::addPoints(int const& score)
 {
-    _score += score;
+    _gameScore += score;
 }
 
 int Team::getScore()
 {
-    return _score;
+    return _gameScore;
 }
 
 vector<Trick> Team::getTricks()
