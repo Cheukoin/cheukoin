@@ -53,7 +53,6 @@ private:
     int _currentRound;
     int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
-
     void _goToNextPlayer();
 };
 

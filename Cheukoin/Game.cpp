@@ -45,13 +45,22 @@ void Game::play(bool playerIsPlaying)
         cout << "Waiting for player's move" << endl;
         return;
     }
+    if ((playerIsPlaying) && (getCurrentPlayer()->getCards().size() == 7 - _currentRound)) {
+        _goToNextPlayer();
+        if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
+            // be sure last card played is by current player
+            return;
+        }
+    }
 
-    getCurrentPlayer()->play();
+    if (getHuman() != getCurrentPlayer()) {
+        getCurrentPlayer()->play();
+        _goToNextPlayer();
+    }
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
         // be sure last card played is by current player
         return;
     }
-    _goToNextPlayer();
 }
 
 void Game::_goToNextPlayer()

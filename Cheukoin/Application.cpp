@@ -16,14 +16,15 @@ void Application::_handleClick()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
-    bool playerIsPlaying = _game->getCurrentPlayer() == _game->getHuman() && rect.contains(mousePosition);
+    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
 
     if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
         _game->initializeRound();
     }
-    else {
-        _game->play(playerIsPlaying);
+    if (playerIsPlaying) {
+        _game->getCurrentPlayer()->play();
     }
+    _game->play(playerIsPlaying);
 }
 
 void Application::startGame(Lobby& lobby, GameMode const& mode)
