@@ -62,7 +62,7 @@ void Game::_goToNextPlayer()
 void Game::initializeRound()
 {
     if (_currentRound >= 0) {
-        _currentPlayerIndex = _tricks.back().getWinnerCardIndex();
+        _currentPlayerIndex = (_currentPlayerIndex + _tricks.back().getWinnerCardIndex()) % PLAYER_COUNT;
     }
 
     Trick trick(_currentRound);
