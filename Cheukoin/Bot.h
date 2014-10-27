@@ -15,10 +15,7 @@ public:
     void initialize();
     void play();
     void update();
-
     Card chooseCard();
-    void guessHands();
-    void playerPlayedCard(Player player, Card card);
 
 private:
     std::vector<Card> _remainingCardsInGame;
@@ -33,6 +30,9 @@ private:
     Player _enemy2;
 
     std::shared_ptr<Game> _game;
+
+    void _guessHands();
+    void _playerHasNoMore(std::string name, Suit suit);
 };
 
 #endif
