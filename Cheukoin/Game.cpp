@@ -16,7 +16,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
     , _tricks(vector<Trick>())
     , _currentPlayerIndex(0)
 {
-    _initializeRound();
+    initializeRound();
 }
 
 void Game::startGame()
@@ -52,19 +52,14 @@ void Game::play(bool playerIsPlaying)
         return;
     }
     _goToNextPlayer();
-
-    if (_tricks.back().getCards().size() == 4) {
-        // TODO: make this check even if the current player is human
-        _initializeRound();
-    }
 }
 
 void Game::_goToNextPlayer()
 {
-    _currentPlayerIndex = (_currentPlayerIndex + 1) % 4;
+    _currentPlayerIndex = (_currentPlayerIndex + 1) % PLAYER_COUNT;
 }
 
-void Game::_initializeRound()
+void Game::initializeRound()
 {
     if (_currentRound >= 0) {
         _currentPlayerIndex = _tricks.back().getWinnerCardIndex();

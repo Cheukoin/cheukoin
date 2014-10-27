@@ -30,4 +30,6 @@ int Score::computeScore(Trick trick)
         };
         return score;
     };
+
+    return 0;
 };

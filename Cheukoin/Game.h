@@ -43,6 +43,8 @@ public:
 
     void play(bool playerIsPlaying = false);
 
+    void initializeRound();
+
 private:
     GameMode const& _mode;
     Bid _bid;
@@ -52,7 +54,6 @@ private:
     int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
 
-    void _initializeRound();
     void _goToNextPlayer();
 };
 

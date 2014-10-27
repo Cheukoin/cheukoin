@@ -9,6 +9,8 @@
 #ifndef __Cheukoin__Constants__
 #define __Cheukoin__Constants__
 
+#define PLAYER_COUNT 4
+
 enum Suit {
     Clubs,
     Hearts,
