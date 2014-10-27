@@ -37,14 +37,36 @@ void Team::setScore(int const& newScore)
     _gameScore = newScore;
 }
 
-void Team::addPoints(int const& score)
+int Team::computeScore(Trick& trick)
 {
-    _gameScore += score;
-}
+    if (trick.getCards().size() != 4) {
+        cout << "Ce n'est pas une pli valide!" << endl;
+    }
+    else {
+        int score = 0;
+        Bid bid = Application::getInstance().getGame()->getBid();
+        shared_ptr<Rules> rules = Application::getInstance().getGame()->getRules();
+        for (Card c : trick.getCards()) {
+            if (c.getSuit() == bid.getSuit()) {
+                score += rules->getCardValuesAsset()[c.getValue()];
+            }
+            else {
+                score += rules->getCardValues()[c.getValue()];
+            }
+        };
+        return score;
+    };
+};
+
 
 int Team::getScore()
 {
     return _gameScore;
+}
+
+void Team::updateScore()
+{
+    _gameScore += computeScore(_wonTricks.back());
 }
 
 vector<Trick> Team::getTricks()

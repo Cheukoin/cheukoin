@@ -20,9 +20,10 @@ public:
 
     void addWonTrick(Trick const& trick);
     void setScore(int const& newScore);
-    void addPoints(int const& score);
+    void updateScore();
     int getScore();
     std::vector<Trick> getTricks();
+    int computeScore(Trick& trick);
 
     std::vector<std::shared_ptr<Player> > getPlayers();
     bool isTeamDealing();

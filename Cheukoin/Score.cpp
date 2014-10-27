@@ -10,7 +10,7 @@ Score::~Score()
 {
 }
 
-int Score::computeScore(Trick trick)
+int Score::computeScore(Trick& trick)
 {
     if (trick.getCards().size() != 4) {
         cout << "Ce n'est pas une pli valide!" << endl;
@@ -30,6 +30,3 @@ int Score::computeScore(Trick trick)
         return score;
     };
 };
-
-
-

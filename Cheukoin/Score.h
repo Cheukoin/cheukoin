@@ -15,12 +15,10 @@ public:
     Score();
     ~Score();
     std::vector<int> getScores;
-    int computeScore(Trick trick);
-    Team computeWinner(Trick trick);
-    void displayScore();
-    void updateScore();
+    int computeScore(Trick& trick);
 
 private:
+    
 };
 
 #endif
