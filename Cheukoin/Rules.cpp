@@ -51,9 +51,9 @@ std::map<Value, int> Rules::getCardValues()
     return _cardValues;
 };
 
-// true if first arg bigger than second arg
+// true if card1 wins over card2
 
-bool Rules::isCardGreater(Card card1, Card card2)
+bool Rules::isCardGreater(Card card1, Card card2, Suit askedSuit)
 {
     if (card1.getSuit() != _asset && card2.getSuit() == _asset) {
         return false;
@@ -61,38 +61,20 @@ bool Rules::isCardGreater(Card card1, Card card2)
     else if (card1.getSuit() == _asset && card2.getSuit() != _asset) {
         return true;
     }
+    else if (card1.getSuit() != askedSuit && card2.getSuit() == askedSuit) {
+        return false;
+    }
+    else if (card1.getSuit() == askedSuit && card2.getSuit() != askedSuit) {
+        return true;
+    }
+    else if (card1.getSuit() != card2.getSuit()) {
+        return true;
+    }
     else {
-        map<Value, int> order;
-
-        if (card1.getSuit() != card2.getSuit()) {
-            return false;
-        }
-        else if (card1.getSuit() == _asset) {
-            order = _cardValuesAsset;
-        }
-        else {
-            order = _cardValues;
-        }
-
-        if (order[card1.getValue()] > order[card2.getValue()]) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        // 2 cards are from same suit
+        map<Value, int> order = (card1.getSuit() == _asset ? _cardValuesAsset : _cardValues);
+        return order[card1.getValue()] > order[card2.getValue()];
     }
-}
-
-Card Rules::winningCard(Trick trick)
-{
-    // TODO: check if we can use a lambda with std::max
-    Card max = trick.getCards()[0];
-    for (int i = 0; i < trick.getCards().size(); i++) {
-        if (isCardGreater(trick.getCards()[i], max)) {
-            max = trick.getCards()[i];
-        }
-    }
-    return max;
 }
 
 bool Rules::isTeamValid(Team team)
@@ -106,6 +88,7 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
     std::vector<Card> enemyCards;
     if (numberPlayedCards > 1) {
         Card friendlyCard = firstCards[numberPlayedCards - 2];
+        Suit askedSuit = firstCards.front().getSuit();
         for (auto c : firstCards) {
             if (c != friendlyCard) {
                 enemyCards.push_back(c);
@@ -116,10 +99,10 @@ bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
             return true;
 
         case 1:
-            return isCardGreater(friendlyCard, enemyCards[0]);
+            return isCardGreater(friendlyCard, enemyCards[0], askedSuit);
 
         case 2:
-            return isCardGreater(friendlyCard, enemyCards[0]) && isCardGreater(friendlyCard, enemyCards[1]);
+            return isCardGreater(friendlyCard, enemyCards[0], askedSuit) && isCardGreater(friendlyCard, enemyCards[1], askedSuit);
 
         default:
             return false;
@@ -164,12 +147,12 @@ std::vector<Card> Rules::getPlayableCards(Player player, vector<Card> firstCards
 
         Card max = assets[0];
         for (auto card : assets) {
-            if (isCardGreater(card, max)) {
+            if (isCardGreater(card, max, demandedSuit)) {
                 max = card;
             }
         }
         for (auto card : player.cardsForSuit(_asset)) {
-            if (isCardGreater(card, max)) {
+            if (isCardGreater(card, max, demandedSuit)) {
                 playableCards.push_back(card);
             }
         }
