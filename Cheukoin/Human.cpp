@@ -37,7 +37,6 @@ void Human::play()
     vector<Card> playableCards = Application::getInstance().getGame()->getRules()->getPlayableCards(*this);
     if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
         playCard(card);
-        Application::getInstance().getGame()->notifyHumanPlayed();
     }
 }
 

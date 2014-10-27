@@ -20,12 +20,11 @@ void Application::handleClick()
     rect = _game->getHuman()->getGlobalBounds();
     if (rect.contains(mousePosition)) {
         if (_game->getCurrentPlayer() == _game->getHuman()) {
-            _game->getHuman()->play();
+            _game->play(true);
+            return;
         }
     }
-    else {
-        _game->play();
-    }
+    _game->play();
 }
 
 void Application::startGame(Lobby& lobby, GameMode const& mode)

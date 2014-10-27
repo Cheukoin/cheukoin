@@ -39,11 +39,9 @@ public:
     std::shared_ptr<Human> getHuman();
     std::shared_ptr<Player> getCurrentPlayer();
 
-    void notifyHumanPlayed();
-
     void draw();
 
-    void play();
+    void play(bool playerIsPlaying = false);
 
 private:
     GameMode const& _mode;

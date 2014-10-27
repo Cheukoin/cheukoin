@@ -34,30 +34,29 @@ void Game::startGame()
     }
 }
 
-void Game::play()
+void Game::play(bool playerIsPlaying)
 {
     if (_currentRound > 7) {
         cout << "Game finished!" << endl;
         return;
     }
 
-    if (getHuman() == getCurrentPlayer()) {
+    if (getHuman() == getCurrentPlayer() && !playerIsPlaying) {
         cout << "Waiting for player's move" << endl;
         return;
     }
 
     getCurrentPlayer()->play();
+    if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
+        // be sure last card played is by current player
+        return;
+    }
     _goToNextPlayer();
 
     if (_tricks.back().getCards().size() == 4) {
         // TODO: make this check even if the current player is human
         _initializeRound();
     }
-}
-
-void Game::notifyHumanPlayed()
-{
-    _goToNextPlayer();
 }
 
 void Game::_goToNextPlayer()
