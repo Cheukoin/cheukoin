@@ -25,8 +25,7 @@ public:
     ~Rules();
 
     // Returns card1 > card2 for the specified asset
-    bool isCardGreater(Card card1, Card card2);
-    Card winningCard(Trick trick);
+    bool isCardGreater(Card card1, Card card2, Suit askedSuit);
     bool isTrickValid(Trick trick);
     bool isTeamValid(Team team);
 

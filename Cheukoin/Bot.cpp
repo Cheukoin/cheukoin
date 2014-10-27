@@ -54,9 +54,11 @@ void Bot::update()
     }
 
     if (card != _playedCard) {
-        _cardProbability[card.getSuit()].erase(card.getValue());
+        _cardProbability[card.getSuit()][card.getValue()][_friend.getName()] = 0;
+        _cardProbability[card.getSuit()][card.getValue()][_enemy1.getName()] = 0;
+        _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0;
     }
-    guessHands();
+    _guessHands();
 }
 
 Card Bot::chooseCard()
@@ -65,18 +67,21 @@ Card Bot::chooseCard()
     return playableCards.front();
 }
 
-void Bot::guessHands()
+void Bot::_guessHands()
 {
     Card card = _game->getCurrentTrick().getCards().back();
     shared_ptr<Player> player = _game->getCurrentPlayer();
-    Suit demandedSuit = _game->getCurrentTrick().getCards().front().getSuit();
+    Suit askedSuit = _game->getCurrentTrick().getCards().front().getSuit();
     Suit asset = _game->getBid().getSuit();
 
-    if (demandedSuit == asset && card.getSuit() != asset) {
-        for (int value = 0; value < 8; ++value) {
-            if (_cardProbability[asset][(Value)value].size() > 0) {
-                _cardProbability[asset][(Value)value][player->getName()] = 0;
-            }
-        }
+    if (card.getSuit() != askedSuit) {
+        _playerHasNoMore(player->getName(), askedSuit);
+    }
+}
+
+void Bot::_playerHasNoMore(string name, Suit suit)
+{
+    for (int value = 0; value < 8; ++value) {
+        _cardProbability[suit][(Value)value][name] = 0;
     }
 }

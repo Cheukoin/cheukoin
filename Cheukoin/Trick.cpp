@@ -43,12 +43,11 @@ void Trick::draw()
 int Trick::getWinnerCardIndex()
 {
     vector<Card> sortedCards = _cards;
-    sort(sortedCards.begin(), sortedCards.end(), [](Card a, Card b) {
-        return Application::getInstance().getGame()->getRules()->isCardGreater(a, b);
+    sort(sortedCards.begin(), sortedCards.end(), [this](Card a, Card b) {
+        return Application::getInstance().getGame()->getRules()->isCardGreater(a, b, _cards.front().getSuit());
     });
 
     auto best = find(_cards.begin(), _cards.end(), sortedCards.front());
-    long bestIndex = best - _cards.begin();
 
-    return (int)bestIndex;
+    return (int)(best - _cards.begin());
 }

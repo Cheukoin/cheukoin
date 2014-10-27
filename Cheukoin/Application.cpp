@@ -12,7 +12,7 @@ Application& Application::getInstance()
     return instance;
 }
 
-void Application::handleClick()
+void Application::_handleClick()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
@@ -40,6 +40,50 @@ shared_ptr<sf::RenderWindow> Application::getWindow()
 void Application::initWindow()
 {
     _window = make_shared<sf::RenderWindow>(sf::VideoMode(1024, 768), "Cheukoin !");
+    _window->setFramerateLimit(60);
+
+    // init background
+    _backgroundTexture = unique_ptr<sf::Texture>(new sf::Texture);
+    if (!_backgroundTexture.get()->loadFromFile(resourcePath("table.jpeg"))) {
+        puts("Texture table not loaded");
+    }
+    _backgroundTexture.get()->setRepeated(true);
+
+    _backgroundSprite = unique_ptr<sf::Sprite>(new sf::Sprite);
+    _backgroundSprite.get()->setTextureRect(sf::IntRect(0, 0, _window->getSize().x, _window->getSize().y));
+    _backgroundSprite.get()->setTexture(*_backgroundTexture.get());
+}
+
+void Application::_draw()
+{
+    _window->clear();
+
+    _window->draw(*_backgroundSprite.get());
+    _game->draw();
+
+    _window->display();
+}
+
+void Application::mainLoop()
+{
+    sf::Event event;
+
+    while (_window->isOpen()) {
+        while (_window->pollEvent(event)) {
+            switch (event.type) {
+            case sf::Event::Closed:
+                _window->close();
+                break;
+            case sf::Event::MouseButtonPressed:
+                _handleClick();
+                break;
+            default:
+                break;
+            }
+        }
+
+        _draw();
+    }
 }
 
 std::shared_ptr<Game> Application::getGame()
