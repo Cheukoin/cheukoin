@@ -17,18 +17,17 @@ int Score::computeScore(Trick trick)
         cout << "Ce n'est pas une pli valide!" << endl;
     }
     else {
+        int score = 0;
         Bid bid = Application::getInstance().getGame()->getBid();
-        
-    }
-
-    return -1;
-}
-
-void Score::addOutcome(Team team, int score)
-{
-}
-
-map<int, string> Score::getOutcome()
-{
-    return _gameOutcome;
-}
+        shared_ptr<Rules> rules = Application::getInstance().getGame()->getRules();
+        for (Card c : trick.getCards()) {
+            if (c.getSuit() == bid.getSuit()) {
+                score += rules->getCardValuesAsset()[c.getValue()];
+            }
+            else {
+                score += rules->getCardValues()[c.getValue()];
+            }
+        };
+        return score;
+    };
+};

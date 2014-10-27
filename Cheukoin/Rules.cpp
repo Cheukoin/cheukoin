@@ -41,6 +41,16 @@ const map<Value, int> Rules::_cardValuesAsset = {
     { Ace, 11 }
 };
 
+std::map<Value, int> Rules::getCardValuesAsset()
+{
+    return _cardValuesAsset;
+};
+
+std::map<Value, int> Rules::getCardValues()
+{
+    return _cardValues;
+};
+
 // true if first arg bigger than second arg
 
 bool Rules::isCardGreater(Card card1, Card card2)
@@ -201,7 +211,7 @@ bool Rules::isTrickValid(Trick trick)
 //    }
 //}
 
-vector<Card> cardsForSuit(vector<Card> cards, Suit suit)
+vector<Card> Rules::cardsForSuit(vector<Card> cards, Suit suit)
 {
     vector<Card> cardsForSuit;
     for (Card card : cards) {

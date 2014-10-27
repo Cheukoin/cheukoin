@@ -236,14 +236,7 @@ void Player::setPosition(Position position)
 
 vector<Card> Player::cardsForSuit(Suit suit)
 {
-    // TODO : appeler l'equivalent ds rules
-    vector<Card> cardsForSuit;
-    for (auto c : _cards) {
-        if (c.getSuit() == suit) {
-            cardsForSuit.push_back(c);
-        }
-    }
-    return cardsForSuit;
+    return Application::getInstance().getGame()->getRules()->cardsForSuit(_cards, suit);
 }
 
 Card Player::chooseCard()

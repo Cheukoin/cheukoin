@@ -36,6 +36,11 @@ public:
     std::vector<Card> getPlayableCards(Player player, std::vector<Card> firstCards);
     void giveTrickToWinner(Trick& trick, Team& team1, Team& team2);
 
+    std::map<Value, int> getCardValuesAsset();
+    std::map<Value, int> getCardValues();
+
+    static std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
+
 private:
     static const std::map<Value, int> _cardValues;
     static const std::map<Value, int> _cardValuesAsset;
@@ -43,6 +48,5 @@ private:
 };
 
 // TODO : faire methode statique, instancier rules ds Game
-std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
 
 #endif /* defined(__Cheukoin__Rules__) */
