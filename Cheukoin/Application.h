@@ -17,7 +17,8 @@ public:
 
     std::shared_ptr<sf::RenderWindow> getWindow();
     void initWindow();
-    void handleClick();
+
+    void mainLoop();
 
 private:
     Application(){};
@@ -25,8 +26,13 @@ private:
     void operator=(Application const&);
 
     std::shared_ptr<Game> _game;
-
     std::shared_ptr<sf::RenderWindow> _window;
+
+    std::unique_ptr<sf::Sprite> _backgroundSprite;
+    std::unique_ptr<sf::Texture> _backgroundTexture;
+
+    void _draw();
+    void _handleClick();
 };
 
 #endif
