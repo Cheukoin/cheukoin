@@ -13,6 +13,15 @@ TEST(Rules, isCardGreater)
     EXPECT_FALSE(rules.isCardGreater(ten, ace));
 }
 
+TEST(Rules, isCardGreater)
+{
+    Rules rules(Clubs);
+    Card king(Hearts, King);
+    Card queen(Clubs, King);
+    EXPECT_TRUE(rules.isCardGreater(queen, king));
+    EXPECT_FALSE(rules.isCardGreater(king, queen));
+}
+
 GTEST_API_ int main(int argc, char** argv)
 {
     printf("Running main() from gtest_main.cc\n");

@@ -30,6 +30,19 @@ int Score::computeScore(Trick trick)
         };
         return score;
     };
-
-    return 0;
 };
+
+void Score::updateScore()
+{
+    for (int i = 0; i < Application::getInstance().getGame()->getLobby().getTeams().size(); i++) {
+        Team team = Application::getInstance().getGame()->getLobby().getTeams()[i];
+        if (Application::getInstance().getGame()->getCurrentTrick().getNumber() == team.getTricks().back().getNumber()) {
+            int score = computeScore(Application::getInstance().getGame()->getCurrentTrick());
+            _scores[i] += score;
+        }
+    }
+};
+
+void Score::displayScore()
+{
+}

@@ -15,11 +15,16 @@ class Score {
 public:
     Score(Team const& team);
     ~Score();
+    std::vector<int> getScores;
     int computeScore(Trick trick);
     Team computeWinner(Trick trick);
+    void displayScore();
+    void updateScore();
 
 private:
     Team _biddingTeam;
+    std::vector<int> _scores;
+    sf::Sprite _scoreBoard;
 };
 
 #endif
