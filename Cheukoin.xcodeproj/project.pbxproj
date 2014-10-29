@@ -93,6 +93,7 @@
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
 		C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C940966E19FED903007F4A21 /* scoreBoard.jpg */; };
+		C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A8B8F31A01322500459DE6 /* scoreBoard.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -190,6 +191,7 @@
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C940966E19FED903007F4A21 /* scoreBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scoreBoard.jpg; sourceTree = "<group>"; };
+		C9A8B8F31A01322500459DE6 /* scoreBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBoard.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -353,6 +355,7 @@
 				19D2FA3719F050CB0074B105 /* king_of_clubs.png */,
 				19D2FA3819F050CB0074B105 /* king_of_diamonds.png */,
 				19D2FA3919F050CB0074B105 /* king_of_hearts.png */,
+				C9A8B8F31A01322500459DE6 /* scoreBoard.png */,
 				19D2FA3A19F050CB0074B105 /* king_of_spades.png */,
 				19D2FA3B19F050CB0074B105 /* queen_of_clubs.png */,
 				19D2FA3C19F050CB0074B105 /* queen_of_diamonds.png */,
@@ -481,6 +484,7 @@
 				19D2FA5D19F050CB0074B105 /* queen_of_hearts.png in Resources */,
 				19D2FA4419F050CB0074B105 /* 8_of_diamonds.png in Resources */,
 				19D2FA4619F050CB0074B105 /* 8_of_spades.png in Resources */,
+				C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */,
 				19D2FA4819F050CB0074B105 /* 9_of_diamonds.png in Resources */,
 				19D2FA5A19F050CB0074B105 /* king_of_spades.png in Resources */,
 				19D2FA4119F050CB0074B105 /* 7_of_hearts.png in Resources */,

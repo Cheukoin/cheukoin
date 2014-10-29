@@ -7,6 +7,7 @@
 
 #include "Constants.h"
 #include "Bid.h"
+#include "Score.h"
 
 class Rules;
 class Trick;
@@ -55,6 +56,7 @@ private:
     int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
     void _goToNextPlayer();
+    Score _score;
 };
 
 #endif

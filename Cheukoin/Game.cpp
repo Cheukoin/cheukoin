@@ -154,4 +154,5 @@ void Game::draw()
     if (_tricks.size() > 0) {
         _tricks.back().draw();
     }
+    _score.displayScore(100, 10, Application::getInstance().getWindow());
 }
