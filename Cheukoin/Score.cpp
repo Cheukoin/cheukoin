@@ -24,5 +24,22 @@ void Score::displayScore(int score1, int score2, std::shared_ptr<sf::RenderWindo
     sf::Rect<float> v = _sprite->getGlobalBounds();
     //_sprite->setScale(sf::Vector2f(0.1f, 0.1f));
     //_sprite->setPosition(window->getSize().x - 100, 20);
+
+    sf::Font font;
+    if (!font.loadFromFile(resourcePath("sansation.ttf")))
+        puts("_texture file not loaded");
+
+    _text1->setPosition(100, 60);
+    _text1->setFont(font);
+    _text1->setString("Team 1 : " + to_string(score1));
+    _text1->setCharacterSize(30);
+    _text1->setColor(sf::Color::Red);
+    _text2->setPosition(100, 100);
+    _text2->setFont(font);
+    _text2->setString("Team 2 : " + to_string(score2));
+    _text2->setCharacterSize(30);
+    _text2->setColor(sf::Color::Red);
+    window->draw(*_text1);
+    window->draw(*_text2);
     window->draw(*_sprite);
 };
