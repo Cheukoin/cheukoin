@@ -19,6 +19,18 @@ void Application::_handleClick()
     bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
 
     if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
+        Card winCard = _game->getCurrentTrick().getWinningCard();
+
+        for (auto player : _game->getLobby().getPlayers()) {
+            if (player->getPlayedCard() == winCard) {
+                if (_game->getLobby().getTeams()[0].isPlayerInTeam(*player)) {
+                    _game->getLobby().getTeams()[0].addWonTrick(_game->getCurrentTrick());
+                }
+                else {
+                    _game->getLobby().getTeams()[1].addWonTrick(_game->getCurrentTrick());
+                }
+            }
+        }
         _game->initializeRound();
     }
     if (playerIsPlaying) {

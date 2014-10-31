@@ -19,6 +19,8 @@ public:
     void draw();
 
     int getWinnerCardIndex();
+    
+    Card getWinningCard();
 
 private:
     // TODO: see if we can get rid of this

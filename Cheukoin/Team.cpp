@@ -59,9 +59,6 @@ void Team::setScore(int const& newScore)
     _gameScore = newScore;
 }
 
-
-
-
 int Team::getScore()
 {
     return _gameScore;
@@ -91,4 +88,9 @@ bool Team::isTeamDealing()
         }
     }
     return dealing;
+}
+
+bool Team::isPlayerInTeam(Player const& player)
+{
+    return (_players[0]->getName() == player.getName() || _players[1]->getName() == player.getName());
 }

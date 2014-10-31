@@ -28,6 +28,8 @@ public:
     std::vector<std::shared_ptr<Player> > getPlayers();
     bool isTeamDealing();
 
+    bool isPlayerInTeam(Player const& player);
+
 private:
     std::string _name;
     std::vector<std::shared_ptr<Player> > _players;

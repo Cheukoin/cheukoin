@@ -51,3 +51,8 @@ int Trick::getWinnerCardIndex()
 
     return (int)(best - _cards.begin());
 }
+
+Card Trick::getWinningCard()
+{
+    return _cards[getWinnerCardIndex()];
+}

@@ -260,3 +260,5 @@ ostream& operator<<(ostream& os, const Player& player)
     os << "<Player: " << player.getName() << " at " << PositionNames[player.getPosition()] << ">";
     return os;
 }
+
+
