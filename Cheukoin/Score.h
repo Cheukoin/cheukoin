@@ -4,6 +4,7 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
 #include "ResourcePath.h"
+#include <map>
 
 class Score {
 public:
@@ -15,8 +16,7 @@ public:
 private:
     std::shared_ptr<sf::Texture> _texture;
     std::shared_ptr<sf::Sprite> _sprite;
-    std::shared_ptr<sf::Text> _text1;
-    std::shared_ptr<sf::Text> _text2;
+    std::vector<std::shared_ptr<sf::Text>> _text;
 };
 
 #endif

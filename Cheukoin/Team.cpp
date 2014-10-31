@@ -27,16 +27,6 @@ void Team::addPlayer(Human const& human)
     }
 }
 
-void Team::addWonTrick(Trick const& trick)
-{
-    _wonTricks.push_back(trick);
-}
-
-void Team::setScore(int const& newScore)
-{
-    _gameScore = newScore;
-}
-
 int Team::computeScore(Trick& trick)
 {
     if (trick.getCards().size() != 4) {
@@ -57,6 +47,19 @@ int Team::computeScore(Trick& trick)
         return score;
     };
 };
+
+void Team::addWonTrick(Trick const& trick)
+{
+    _wonTricks.push_back(trick);
+    updateScore();
+}
+
+void Team::setScore(int const& newScore)
+{
+    _gameScore = newScore;
+}
+
+
 
 
 int Team::getScore()

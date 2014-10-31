@@ -36,6 +36,7 @@ int main()
 
     app.startGame(lobby, GameMode::Offline);
     app.mainLoop();
+    
 
     return 0;
 }

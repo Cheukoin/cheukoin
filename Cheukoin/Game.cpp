@@ -78,6 +78,7 @@ void Game::initializeRound()
     _tricks.push_back(trick);
     _currentRound++;
     cout << "Playing round " << _currentRound << endl;
+
 }
 
 shared_ptr<Human> Game::getHuman()
@@ -154,5 +155,5 @@ void Game::draw()
     if (_tricks.size() > 0) {
         _tricks.back().draw();
     }
-    _score.displayScore(100, 10, Application::getInstance().getWindow());
+    _score.displayScore(Application::getInstance().getGame()->getLobby().getTeams()[0].getScore(), Application::getInstance().getGame()->getLobby().getTeams()[1].getScore(), Application::getInstance().getWindow());
 }
