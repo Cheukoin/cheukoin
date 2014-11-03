@@ -34,9 +34,7 @@ public:
 
 private:
     std::string _name;
-    Player _player1;
-    Player _player2;
-    std::vector<std::shared_ptr<Player> > _ptr_to_players;
+    std::vector<std::shared_ptr<Player> > _players;
     int _gameScore;
     std::vector<int> _totalScore;
     std::vector<Trick> _wonTricks;
