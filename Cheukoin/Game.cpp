@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Game::Game(Lobby& lobby, GameMode const& mode)
+Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
     : _lobby(lobby)
     , _mode(mode)
     , _bid(Bid())
@@ -21,7 +21,7 @@ Game::Game(Lobby& lobby, GameMode const& mode)
 
 void Game::startGame()
 {
-    _lobby.deal();
+    _lobby->deal();
 
     // FOR TEST PURPOSE
     _bid.setAmount(120);
@@ -29,7 +29,7 @@ void Game::startGame()
 
     _rules = make_shared<Rules>(_bid.getSuit());
 
-    for (auto player : _lobby.getPlayers()) {
+    for (auto player : _lobby->getPlayers()) {
         player->initialize();
     }
 }
@@ -82,7 +82,7 @@ void Game::initializeRound()
 
 shared_ptr<Human> Game::getHuman()
 {
-    for (auto player : _lobby.getPlayers()) {
+    for (auto player : _lobby->getPlayers()) {
         auto human = dynamic_pointer_cast<Human>(player);
         if (human) {
             return human;
@@ -94,7 +94,7 @@ shared_ptr<Human> Game::getHuman()
 
 shared_ptr<Player> Game::getCurrentPlayer()
 {
-    return _lobby.getPlayers().at(_currentPlayerIndex);
+    return _lobby->getPlayers().at(_currentPlayerIndex);
 }
 
 GameMode Game::getMode()
@@ -102,7 +102,7 @@ GameMode Game::getMode()
     return _mode;
 }
 
-Lobby& Game::getLobby()
+shared_ptr<Lobby> Game::getLobby()
 {
     return _lobby;
 }
@@ -135,7 +135,7 @@ Trick& Game::getCurrentTrick()
 vector<shared_ptr<Bot> > Game::getBots()
 {
     vector<shared_ptr<Bot> > bots;
-    for (auto player : _lobby.getPlayers()) {
+    for (auto player : _lobby->getPlayers()) {
         auto bot = dynamic_pointer_cast<Bot>(player);
         if (bot) {
             bots.push_back(bot);
@@ -147,12 +147,12 @@ vector<shared_ptr<Bot> > Game::getBots()
 
 void Game::draw()
 {
-    for (auto player : _lobby.getPlayers()) {
+    for (auto player : _lobby->getPlayers()) {
         player->drawCards();
     }
 
     if (_tricks.size() > 0) {
         _tricks.back().draw();
     }
-    _score.displayScore(Application::getInstance().getGame()->getLobby().getTeams()[0].getScore(), Application::getInstance().getGame()->getLobby().getTeams()[1].getScore(), Application::getInstance().getWindow());
+    _score.displayScore(Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(), Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(), Application::getInstance().getWindow());
 }

@@ -20,8 +20,7 @@
 class Lobby {
 
 public:
-    Lobby(std::string const& name, std::vector<Team> const& teams = std::vector<Team>());
-    Lobby(){};
+    Lobby(std::string const& name, std::shared_ptr<Team> team1, std::shared_ptr<Team> team2);
     ~Lobby();
 
     // give cards to all players
@@ -30,14 +29,14 @@ public:
     std::string getName() const;
     void setName(std::string const& name);
 
-    std::vector<Team> getTeams();
+    std::vector<std::shared_ptr<Team> > getTeams();
     std::vector<std::shared_ptr<Player> > getPlayers();
 
-    Team& getTeamForPlayer(Player player, bool getEnemyTeam = false);
+    std::shared_ptr<Team> getTeamForPlayer(Player player, bool getEnemyTeam = false);
 
 private:
     std::string _name;
-    std::vector<Team> _teams;
+    std::vector<std::shared_ptr<Team> > _teams;
 };
 
 #endif /* defined(__Cheukoin__Lobby__) */

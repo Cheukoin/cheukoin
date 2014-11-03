@@ -26,13 +26,13 @@ void Application::_handleClick()
     if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
         Card winCard = _game->getCurrentTrick().getWinningCard();
 
-        for (auto player : _game->getLobby().getPlayers()) {
+        for (auto player : _game->getLobby()->getPlayers()) {
             if (player->getPlayedCard() == winCard) {
-                if (_game->getLobby().getTeams()[0].isPlayerInTeam(*player)) {
-                    _game->getLobby().getTeams()[0].addWonTrick(_game->getCurrentTrick());
+                if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
+                    _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
                 }
                 else {
-                    _game->getLobby().getTeams()[1].addWonTrick(_game->getCurrentTrick());
+                    _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
                 }
             }
         }
@@ -73,10 +73,10 @@ void Application::_initGame()
     auto human = make_shared<Human>("Human", Position::Bottom);
     auto bot3 = make_shared<Bot>("Bot 3", Position::Right);
 
-    Team teamA("Team A", bot1, human);
-    Team teamB("Team B", bot2, bot3);
+    auto teamA = make_shared<Team>("Team A", bot1, human);
+    auto teamB = make_shared<Team>("Team B", bot2, bot3);
 
-    Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
+    auto lobby = make_shared<Lobby>("Test lobby", teamA, teamB);
 
     _game = make_shared<Game>(lobby, GameMode::Offline);
     _game->startGame();
