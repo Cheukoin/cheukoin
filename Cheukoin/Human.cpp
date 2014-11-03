@@ -69,7 +69,7 @@ Bid Human::chooseBid()
             sf::IntRect rectref;
             Card card = Card();
             card.bidCard();
-            rectref = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x * ((i + 1) / 5), card.getGlobalSize().y * (suit / 4));
+            rectref = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x * ((i + 1) / 5), card.getGlobalSize().y * ((suit + 1) / 4));
 
             if (rectref.contains(mousePosition)) {
                 bid.setAmount(80 + i * 20);
