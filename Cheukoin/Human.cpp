@@ -60,3 +60,15 @@ Card Human::chooseCard()
     // shouldn't happen, maybe throw an exception?
     return _cards.front();
 }
+
+void Human::showLegalCards()
+{
+    // replace all cards at origin position then move to top the legal ones
+    for (Card& card : _cards) {
+        card.moveTo(sf::Vector2u(card.getGlobalPosition().x, Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y));
+    }
+    for (Card& card : Application::getInstance().getGame()->getRules()->getPlayableCards(*this)) {
+        sf::Vector2u newPosition = sf::Vector2u(card.getGlobalPosition().x, card.getGlobalPosition().y - 10);
+        card.moveTo(newPosition);
+    }
+}

@@ -18,6 +18,7 @@ public:
 
     void initialize();
     void play();
+    void showLegalCards();
     Card chooseCard();
 
 private:

@@ -56,6 +56,7 @@ void Game::play(bool playerIsPlaying)
     if (getHuman() != getCurrentPlayer()) {
         getCurrentPlayer()->play();
         _goToNextPlayer();
+        getHuman()->showLegalCards();
     }
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
         // be sure last card played is by current player
