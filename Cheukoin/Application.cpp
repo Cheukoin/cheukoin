@@ -68,12 +68,10 @@ void Application::initWindow()
 
 void Application::_initGame()
 {
-    // init game
-    Bot bot1("Bot 1", Position::Top);
-    Bot bot2("Bot 2", Position::Left);
-    Human human("Human", Position::Bottom);
-    Bot bot3("Bot 3", Position::Right);
-    std::vector<Player> players = { bot1, bot2, human, bot3 };
+    auto bot1 = make_shared<Bot>("Bot 1", Position::Top);
+    auto bot2 = make_shared<Bot>("Bot 2", Position::Left);
+    auto human = make_shared<Human>("Human", Position::Bottom);
+    auto bot3 = make_shared<Bot>("Bot 3", Position::Right);
 
     Team teamA("Team A", bot1, human);
     Team teamB("Team B", bot2, bot3);

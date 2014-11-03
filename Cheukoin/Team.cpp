@@ -2,13 +2,11 @@
 
 using namespace std;
 
-Team::Team(string name, Player player1, Player player2)
+Team::Team(string name, shared_ptr<Player> player1, shared_ptr<Player> player2)
     : _name(name)
     , _gameScore(0)
-    , _players(vector<shared_ptr<Player> >())
+    , _players(vector<shared_ptr<Player> >({ player1, player2 }))
 {
-    _players.push_back(make_shared<Player>(player1));
-    _players.push_back(make_shared<Player>(player2));
 }
 
 Team::~Team()
