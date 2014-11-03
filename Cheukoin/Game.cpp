@@ -25,7 +25,7 @@ void Game::startGame()
 
     // FOR TEST PURPOSE
     _bid.setAmount(120);
-    _bid.setSuit(Spades);
+    _bid.setSuit(Hearts);
 
     _rules = make_shared<Rules>(_bid.getSuit());
 

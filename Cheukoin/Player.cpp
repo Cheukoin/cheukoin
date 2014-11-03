@@ -82,7 +82,6 @@ void Player::initialize()
     }
 
     for (int i = 0; i < _cards.size(); i++) {
-        _cards[i].flip();
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
