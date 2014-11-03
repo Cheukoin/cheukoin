@@ -18,7 +18,7 @@ public:
     Card();
     Card(Suit suit, Value value);
     ~Card();
-
+    void bidCard();
     Value getValue() const;
     Suit getSuit() const;
     sf::Vector2f getGlobalPosition() const;

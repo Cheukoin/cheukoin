@@ -19,9 +19,18 @@ vector<string> const Card::ValueNames = {
     "8",
     "7"
 };
-
 Card::Card()
+    : _texture(make_shared<sf::Texture>())
+    , _sprite(make_shared<sf::Sprite>())
+
 {
+    if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
+        puts("_texture file not loaded");
+    }
+    _texture->setSmooth(true);
+    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
+    _sprite->setTexture(*_texture);
+    _sprite->setScale(sf::Vector2f(0.3, 0.3));
 }
 
 Card::Card(Suit suit, Value value)
@@ -42,6 +51,19 @@ Card::Card(Suit suit, Value value)
 
 Card::~Card()
 {
+}
+
+void Card::bidCard()
+{
+    if (!_texture->loadFromFile(resourcePath("c.png"))) {
+        puts("_texture file not loaded");
+    }
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    _texture->setSmooth(true);
+    _sprite->setTextureRect(sf::IntRect(0, 0, 960, 720));
+    _sprite->setTexture(*_texture);
+    sf::Vector2u pos = sf::Vector2u(winSize.x / 3, winSize.y / 3);
+    _sprite->setPosition(pos.x, pos.y);
 }
 
 std::string Card::_getFilename()

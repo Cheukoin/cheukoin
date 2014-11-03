@@ -1,9 +1,13 @@
 #include "Bid.h"
 
+Bid::Bid(Suit suit, int amount)
+    : _suit(suit)
+    , _amount(amount)
+{
+}
 Bid::Bid()
 {
 }
-
 Bid::~Bid()
 {
 }

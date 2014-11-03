@@ -22,26 +22,31 @@ void Application::_handleClick()
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
     bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
+    if (_game->getBid().getAmount() == 0) {
+        Bid bid = _game->getHuman()->chooseBid();
+        _game->setBid(bid);
+    }
+    if (_game->getBid().getAmount() != 0) {
+        if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
+            Card winCard = _game->getCurrentTrick().getWinningCard();
 
-    if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
-        Card winCard = _game->getCurrentTrick().getWinningCard();
-
-        for (auto player : _game->getLobby()->getPlayers()) {
-            if (player->getPlayedCard() == winCard) {
-                if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
-                    _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
-                }
-                else {
-                    _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
+            for (auto player : _game->getLobby()->getPlayers()) {
+                if (player->getPlayedCard() == winCard) {
+                    if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
+                        _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
+                    }
+                    else {
+                        _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
+                    }
                 }
             }
+            _game->initializeRound();
         }
-        _game->initializeRound();
+        if (playerIsPlaying) {
+            _game->getCurrentPlayer()->play();
+        }
+        _game->play(playerIsPlaying);
     }
-    if (playerIsPlaying) {
-        _game->getCurrentPlayer()->play();
-    }
-    _game->play(playerIsPlaying);
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()

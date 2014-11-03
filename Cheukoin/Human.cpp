@@ -60,7 +60,25 @@ Card Human::chooseCard()
     // shouldn't happen, maybe throw an exception?
     return _cards.front();
 }
+Bid Human::chooseBid()
+{
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+    Bid bid(Spades, 0);
+    for (int i = 0; i < 5; i++) {
+        for (int suit = 0; suit < 4; suit++) {
+            sf::IntRect rectref;
+            Card card = Card();
+            card.bidCard();
+            rectref = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x * ((i + 1) / 5), card.getGlobalSize().y * (suit / 4));
 
+            if (rectref.contains(mousePosition)) {
+                bid.setAmount(80 + i * 20);
+                bid.setSuit(Suit(suit));
+                return bid;
+            }
+        }
+    }
+}
 void Human::showLegalCards()
 {
     // replace all cards at origin position then move to top the legal ones

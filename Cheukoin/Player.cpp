@@ -86,6 +86,8 @@ void Player::initialize()
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
+
+
 sf::IntRect Player::getGlobalBounds()
 {
     if (_cards.size() == 0) {
