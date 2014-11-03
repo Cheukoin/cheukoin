@@ -20,7 +20,7 @@ class Score;
 
 class Game {
 public:
-    Game(Lobby& lobby, GameMode const& mode);
+    Game(std::shared_ptr<Lobby> lobby, GameMode const& mode);
 
     void startGame();
 
@@ -29,7 +29,7 @@ public:
     void setBid(Bid const& bid);
     Bid getBid();
 
-    Lobby& getLobby();
+    std::shared_ptr<Lobby> getLobby();
 
     void addTrick(Trick const& trick);
 
@@ -50,7 +50,7 @@ public:
 private:
     GameMode const& _mode;
     Bid _bid;
-    Lobby& _lobby;
+    std::shared_ptr<Lobby> _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
     int _currentPlayerIndex;

@@ -12,7 +12,7 @@
 
 class Team {
 public:
-    Team(std::string name);
+    Team(std::string name, std::shared_ptr<Player> player1, std::shared_ptr<Player> player2);
     ~Team();
 
     void addPlayer(Human const& human);

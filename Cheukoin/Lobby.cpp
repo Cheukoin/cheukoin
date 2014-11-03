@@ -10,9 +10,9 @@
 
 using namespace std;
 
-Lobby::Lobby(string const& name, vector<Team> const& teams)
+Lobby::Lobby(string const& name, shared_ptr<Team> team1, shared_ptr<Team> team2)
     : _name(name)
-    , _teams(teams)
+    , _teams(vector<shared_ptr<Team> >({ team1, team2 }))
 {
 }
 
@@ -35,7 +35,7 @@ void Lobby::setName(string const& name)
     _name = name;
 }
 
-vector<Team> Lobby::getTeams()
+vector<shared_ptr<Team> > Lobby::getTeams()
 {
     return _teams;
 }
@@ -43,16 +43,16 @@ vector<Team> Lobby::getTeams()
 vector<shared_ptr<Player> > Lobby::getPlayers()
 {
     return {
-        _teams[0].getPlayers().at(0),
-        _teams[1].getPlayers().at(0),
-        _teams[0].getPlayers().at(1),
-        _teams[1].getPlayers().at(1)
+        _teams[0]->getPlayers().at(0),
+        _teams[1]->getPlayers().at(0),
+        _teams[0]->getPlayers().at(1),
+        _teams[1]->getPlayers().at(1)
     };
 }
 
-Team& Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
+shared_ptr<Team> Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
 {
-    if (!getEnemyTeam && (*_teams[0].getPlayers().at(0) == player || *_teams[0].getPlayers().at(1) == player)) {
+    if (!getEnemyTeam && (*_teams[0]->getPlayers().at(0) == player || *_teams[0]->getPlayers().at(1) == player)) {
         return _teams[0];
     }
     return _teams[1];

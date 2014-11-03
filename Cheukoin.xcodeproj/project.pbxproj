@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		193436EA1A07CE020077F31E /* cheukoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 193436E91A07CE020077F31E /* cheukoin.png */; };
 		1948AD2919FD3789000E51BF /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
 		1948AD2A19FD3A86000E51BF /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
 		1948AD2D19FD3CA0000E51BF /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
@@ -110,6 +111,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		193436E91A07CE020077F31E /* cheukoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheukoin.png; sourceTree = "<group>"; };
 		1948AD2819FD3789000E51BF /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = Cheukoin/gtest.framework; sourceTree = "<group>"; };
 		1984DA6A19F66EBB000FFC73 /* Human.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Human.cpp; sourceTree = "<group>"; };
 		1984DA6B19F66EBB000FFC73 /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
@@ -329,6 +331,7 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				193436E91A07CE020077F31E /* cheukoin.png */,
 				9330B4941A02C7450078D1A7 /* sansation.ttf */,
 				19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */,
 				19D2FA2019F050CB0074B105 /* 7_of_diamonds.png */,
@@ -464,6 +467,7 @@
 				19D2FA3F19F050CB0074B105 /* 7_of_clubs.png in Resources */,
 				19D2FA4719F050CB0074B105 /* 9_of_clubs.png in Resources */,
 				C0B1A0D619ED1C3400436C77 /* table.jpeg in Resources */,
+				193436EA1A07CE020077F31E /* cheukoin.png in Resources */,
 				19D2FA5219F050CB0074B105 /* ace_of_spades.png in Resources */,
 				19D2FA5C19F050CB0074B105 /* queen_of_diamonds.png in Resources */,
 				19D2FA4F19F050CB0074B105 /* ace_of_clubs.png in Resources */,

@@ -18,12 +18,12 @@ void Bot::initialize()
 
     _game = Application::getInstance().getGame();
 
-    Team team = _game->getLobby().getTeamForPlayer(*this);
-    Team enemyTeam = _game->getLobby().getTeamForPlayer(*this, true);
+    auto team = _game->getLobby()->getTeamForPlayer(*this);
+    auto enemyTeam = _game->getLobby()->getTeamForPlayer(*this, true);
 
-    _friend = *(*team.getPlayers().at(0) != *this ? team.getPlayers().at(0) : team.getPlayers().at(1));
-    _enemy1 = *enemyTeam.getPlayers().at(0);
-    _enemy2 = *enemyTeam.getPlayers().at(1);
+    _friend = *(*team->getPlayers().at(0) != *this ? team->getPlayers().at(0) : team->getPlayers().at(1));
+    _enemy1 = *enemyTeam->getPlayers().at(0);
+    _enemy2 = *enemyTeam->getPlayers().at(1);
 
     for (Card card : Card::getAllCards()) {
         _remainingCardsInGame.push_back(card);

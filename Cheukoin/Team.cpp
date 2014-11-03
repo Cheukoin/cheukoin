@@ -2,29 +2,15 @@
 
 using namespace std;
 
-Team::Team(string name)
+Team::Team(string name, shared_ptr<Player> player1, shared_ptr<Player> player2)
     : _name(name)
     , _gameScore(0)
-    , _players(vector<shared_ptr<Player> >())
+    , _players(vector<shared_ptr<Player> >({ player1, player2 }))
 {
 }
 
 Team::~Team()
 {
-}
-
-void Team::addPlayer(Bot const& bot)
-{
-    if (_players.size() < 2) {
-        _players.push_back(make_shared<Bot>(bot));
-    }
-}
-
-void Team::addPlayer(Human const& human)
-{
-    if (_players.size() < 2) {
-        _players.push_back(make_shared<Human>(human));
-    }
 }
 
 int Team::computeScore(Trick& trick)
@@ -48,9 +34,10 @@ int Team::computeScore(Trick& trick)
     };
 };
 
-bool Team::isTeamWinning(Trick& trick){
+bool Team::isTeamWinning(Trick& trick)
+{
     Card winningcard = trick.getWinningCard();
-    return (_players[0]->getPlayedCard() == winningcard || _players[1]->getPlayedCard() == winningcard);
+    return (_players.front()->getPlayedCard() == winningcard || _players.back()->getPlayedCard() == winningcard);
 }
 
 void Team::addWonTrick(Trick const& trick)
@@ -87,7 +74,7 @@ vector<shared_ptr<Player> > Team::getPlayers()
 bool Team::isTeamDealing()
 {
     bool dealing = false;
-    for (auto p : _players) {
+    for (auto p : getPlayers()) {
         if (p->isDealer()) {
             dealing = true;
         }
@@ -97,5 +84,5 @@ bool Team::isTeamDealing()
 
 bool Team::isPlayerInTeam(Player const& player)
 {
-    return (_players[0]->getName() == player.getName() || _players[1]->getName() == player.getName());
+    return (_players.front()->getName() == player.getName() || _players.back()->getName() == player.getName());
 }
