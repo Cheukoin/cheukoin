@@ -33,6 +33,7 @@ private:
 
     void _guessHands();
     void _playerHasNoMore(std::string name, Suit suit);
+    int _playerCountThatMayHave(Suit suit, Value value);
 };
 
 #endif

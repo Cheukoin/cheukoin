@@ -67,6 +67,19 @@ Card Bot::chooseCard()
     return playableCards.front();
 }
 
+int Bot::_playerCountThatMayHave(Suit suit, Value value)
+{
+}
+
+void Bot::_playerHasNoMore(string name, Suit suit)
+{
+    for (int value = 0; value < 8; ++value) {
+        float previousProba = _cardProbability[suit][(Value)value][name];
+        _cardProbability[suit][(Value)value][name] = 0;
+        int playerCount = _playerCountThatMayHave(suit, (Value)value);
+    }
+}
+
 void Bot::_guessHands()
 {
     Card card = _game->getCurrentTrick().getCards().back();
@@ -76,12 +89,5 @@ void Bot::_guessHands()
 
     if (card.getSuit() != askedSuit) {
         _playerHasNoMore(player->getName(), askedSuit);
-    }
-}
-
-void Bot::_playerHasNoMore(string name, Suit suit)
-{
-    for (int value = 0; value < 8; ++value) {
-        _cardProbability[suit][(Value)value][name] = 0;
     }
 }
