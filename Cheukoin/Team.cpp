@@ -48,6 +48,11 @@ int Team::computeScore(Trick& trick)
     };
 };
 
+bool Team::isTeamWinning(Trick& trick){
+    Card winningcard = trick.getWinningCard();
+    return (_players[0]->getPlayedCard() == winningcard || _players[1]->getPlayedCard() == winningcard);
+}
+
 void Team::addWonTrick(Trick const& trick)
 {
     _wonTricks.push_back(trick);

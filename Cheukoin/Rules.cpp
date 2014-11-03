@@ -177,23 +177,6 @@ bool Rules::isTrickValid(Trick trick)
     return valid;
 }
 
-//void Rules::giveTrickToWinner(Trick& trick, Team& team1, Team& team2)
-//{
-//    Card best = winningCard(trick);
-//    vector<Card> cards = trick.getCards();
-//    std::vector<shared_ptr<Player> > players = Application::getInstance().getGame()->getLobby().getTeams.getPlayers();
-//    for (shared_ptr<Player> player : players) {
-//        if (player->getPlayedCard() == best) {
-//            if (team1.getPlayers()->at(0) == player || team1.getPlayers()->at(1) == player) {
-//                team1.addTrick(trick);
-//            }
-//            else {
-//                team2.addTrick(trick);
-//            }
-//        }
-//    }
-//}
-
 vector<Card> Rules::cardsForSuit(vector<Card> cards, Suit suit)
 {
     vector<Card> cardsForSuit;

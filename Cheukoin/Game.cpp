@@ -78,7 +78,6 @@ void Game::initializeRound()
     _tricks.push_back(trick);
     _currentRound++;
     cout << "Playing round " << _currentRound << endl;
-
 }
 
 shared_ptr<Human> Game::getHuman()

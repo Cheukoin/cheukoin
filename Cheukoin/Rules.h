@@ -33,7 +33,6 @@ public:
     bool isFriendMaster(Player player, std::vector<Card> firstCards);
     std::vector<Card> getPlayableCards(Player player);
     std::vector<Card> getPlayableCards(Player player, std::vector<Card> firstCards);
-    void giveTrickToWinner(Trick& trick, Team& team1, Team& team2);
 
     std::map<Value, int> getCardValuesAsset();
     std::map<Value, int> getCardValues();

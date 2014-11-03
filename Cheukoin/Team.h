@@ -30,6 +30,8 @@ public:
 
     bool isPlayerInTeam(Player const& player);
 
+    bool isTeamWinning(Trick& trick);
+
 private:
     std::string _name;
     std::vector<std::shared_ptr<Player> > _players;
