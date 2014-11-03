@@ -12,7 +12,7 @@
 
 class Team {
 public:
-    Team(std::string name);
+    Team(std::string name, Player player1, Player player2);
     ~Team();
 
     void addPlayer(Human const& human);
@@ -34,7 +34,9 @@ public:
 
 private:
     std::string _name;
-    std::vector<std::shared_ptr<Player> > _players;
+    Player _player1;
+    Player _player2;
+    std::vector<std::shared_ptr<Player> > _ptr_to_players;
     int _gameScore;
     std::vector<int> _totalScore;
     std::vector<Trick> _wonTricks;

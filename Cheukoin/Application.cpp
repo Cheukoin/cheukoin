@@ -14,6 +14,11 @@ Application& Application::getInstance()
 
 void Application::_handleClick()
 {
+    if (!_game) {
+        _initGame();
+        return;
+    }
+
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
     bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
@@ -39,12 +44,6 @@ void Application::_handleClick()
     _game->play(playerIsPlaying);
 }
 
-void Application::startGame(Lobby& lobby, GameMode const& mode)
-{
-    _game = make_shared<Game>(lobby, mode);
-    _game->startGame();
-}
-
 shared_ptr<sf::RenderWindow> Application::getWindow()
 {
     return _window;
@@ -67,12 +66,49 @@ void Application::initWindow()
     _backgroundSprite.get()->setTexture(*_backgroundTexture.get());
 }
 
+void Application::_initGame()
+{
+    // init game
+    Bot bot1("Bot 1", Position::Top);
+    Bot bot2("Bot 2", Position::Left);
+    Human human("Human", Position::Bottom);
+    Bot bot3("Bot 3", Position::Right);
+    std::vector<Player> players = { bot1, bot2, human, bot3 };
+
+    Team teamA("Team A", bot1, human);
+    Team teamB("Team B", bot2, bot3);
+
+    Lobby lobby("Test lobby", vector<Team>{ teamA, teamB });
+
+    _game = make_shared<Game>(lobby, GameMode::Offline);
+    _game->startGame();
+}
+
 void Application::_draw()
 {
     _window->clear();
 
     _window->draw(*_backgroundSprite.get());
-    _game->draw();
+
+    if (_game) {
+        _game->draw();
+    }
+    else {
+        // TODO Corentin: clean up this mess
+        auto cheukoin = new sf::Sprite();
+        auto texture = new sf::Texture();
+        if (!texture->loadFromFile(resourcePath("cheukoin.png"))) {
+            puts("_texture file not loaded");
+        }
+        texture->setSmooth(true);
+        cheukoin->setTexture(*texture);
+        cheukoin->setScale(sf::Vector2f(0.3, 0.3));
+        cheukoin->setPosition(
+            _window->getSize().x / 2 - cheukoin->getGlobalBounds().width / 2,
+            _window->getSize().y / 2 - cheukoin->getGlobalBounds().height / 2);
+
+        _window->draw(*cheukoin);
+    }
 
     _window->display();
 }
@@ -88,7 +124,6 @@ void Application::mainLoop()
                 _window->close();
                 break;
             case sf::Event::MouseButtonPressed:
-
                 _handleClick();
                 break;
             default:

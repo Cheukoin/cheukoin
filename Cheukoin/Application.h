@@ -8,18 +8,14 @@
 #include "Constants.h"
 #include "Game.h"
 
-
-
 class Application {
 public:
     static Application& getInstance();
 
-    void startGame(Lobby& lobby, GameMode const& mode);
     std::shared_ptr<Game> getGame();
-
     std::shared_ptr<sf::RenderWindow> getWindow();
-    void initWindow();
 
+    void initWindow();
     void mainLoop();
 
 private:
@@ -35,6 +31,7 @@ private:
 
     void _draw();
     void _handleClick();
+    void _initGame();
 };
 
 #endif
