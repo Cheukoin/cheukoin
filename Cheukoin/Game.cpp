@@ -114,6 +114,7 @@ shared_ptr<Lobby> Game::getLobby()
 void Game::setBid(Bid const& bid)
 {
     _bid = bid;
+    cout << "Current bid is " << _bid.getAmount() << " " << _bid.getSuit() << endl;
 }
 
 Bid Game::getBid()
