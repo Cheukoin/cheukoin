@@ -67,6 +67,11 @@ void Application::initWindow()
     _backgroundSprite.get()->setTexture(*_backgroundTexture.get());
 }
 
+void Application::forceWindowRefresh()
+{
+    _draw();
+}
+
 void Application::_draw()
 {
     _window->clear();

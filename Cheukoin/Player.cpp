@@ -155,7 +155,13 @@ void Player::_moveCardToCenter(Card& card)
         break;
     }
 
-    card.moveTo(pos);
+    sf::Vector2f currentPosition = card.getGlobalPosition();
+    while (abs(pos.y - currentPosition.y) + abs(pos.x - currentPosition.x) > 5) {
+        currentPosition.y += (pos.y - currentPosition.y) / 2;
+        currentPosition.x += (pos.x - currentPosition.x) / 2;
+        card.moveTo(sf::Vector2u(currentPosition.x, currentPosition.y));
+        Application::getInstance().forceWindowRefresh();
+    }
 }
 
 Bid Player::makeBid(int amount, Suit const& asset)
@@ -260,5 +266,3 @@ ostream& operator<<(ostream& os, const Player& player)
     os << "<Player: " << player.getName() << " at " << PositionNames[player.getPosition()] << ">";
     return os;
 }
-
-

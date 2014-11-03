@@ -8,8 +8,6 @@
 #include "Constants.h"
 #include "Game.h"
 
-
-
 class Application {
 public:
     static Application& getInstance();
@@ -19,6 +17,7 @@ public:
 
     std::shared_ptr<sf::RenderWindow> getWindow();
     void initWindow();
+    void forceWindowRefresh();
 
     void mainLoop();
 
