@@ -16,6 +16,8 @@ public:
     Human(std::string name, Position position);
     ~Human();
 
+    Bid chooseBid();
+
     void initialize();
     void play();
     void showLegalCards();

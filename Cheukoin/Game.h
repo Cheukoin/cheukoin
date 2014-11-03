@@ -28,6 +28,7 @@ public:
 
     void setBid(Bid const& bid);
     Bid getBid();
+    
 
     std::shared_ptr<Lobby> getLobby();
 

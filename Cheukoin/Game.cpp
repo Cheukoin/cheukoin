@@ -24,7 +24,7 @@ void Game::startGame()
     _lobby->deal();
 
     // FOR TEST PURPOSE
-    _bid.setAmount(120);
+    _bid.setAmount(0);
     _bid.setSuit(Hearts);
 
     _rules = make_shared<Rules>(_bid.getSuit());
@@ -151,6 +151,10 @@ vector<shared_ptr<Bot> > Game::getBots()
 
 void Game::draw()
 {
+    Card card = Card();
+    card.bidCard();
+    if (_bid.getAmount() == 0)
+        card.draw();
     for (auto player : _lobby->getPlayers()) {
         player->drawCards();
     }
