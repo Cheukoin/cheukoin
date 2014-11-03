@@ -67,8 +67,16 @@ Card Bot::chooseCard()
     return playableCards.front();
 }
 
-int Bot::_playerCountThatMayHave(Suit suit, Value value)
+vector<Player> Bot::_playersThatMayHave(Suit suit, Value value)
 {
+    vector<Player> players = { _friend, _enemy1, _enemy2 };
+    vector<Player> result;
+    for (Player& player : players) {
+        if (_cardProbability[suit][value][player.getName()] != 0) {
+            result.push_back(player);
+        }
+    }
+    return result;
 }
 
 void Bot::_playerHasNoMore(string name, Suit suit)
@@ -76,7 +84,10 @@ void Bot::_playerHasNoMore(string name, Suit suit)
     for (int value = 0; value < 8; ++value) {
         float previousProba = _cardProbability[suit][(Value)value][name];
         _cardProbability[suit][(Value)value][name] = 0;
-        int playerCount = _playerCountThatMayHave(suit, (Value)value);
+        vector<Player> playersToAdjust = _playersThatMayHave(suit, (Value)value);
+        for (Player& player : playersToAdjust) {
+            _cardProbability[suit][(Value)value][player.getName()] += previousProba / playersToAdjust.size();
+        }
     }
 }
 
