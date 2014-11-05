@@ -48,6 +48,20 @@ Player::~Player()
 {
 }
 
+void Player::sortCards()
+{
+    sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
+        if (a.getSuit() == b.getSuit()){
+            if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
+                return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
+            else
+                return (ScoreSuitIsBid[a.getValue()]<ScoreSuitIsBid[b.getValue()]);
+        }
+        else
+            return a.getSuit()> b.getSuit();
+    });
+}
+
 void Player::initialize()
 {
     sf::Vector2u pos;
@@ -55,10 +69,7 @@ void Player::initialize()
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
     sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
-            if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
-                return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
-            else
-                return (ScoreSuitIsBid[a.getValue()]<ScoreSuitIsBid[b.getValue()]);
+            return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
         }
         else
             return a.getSuit()> b.getSuit();
@@ -85,7 +96,6 @@ void Player::initialize()
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
 }
-
 
 sf::IntRect Player::getGlobalBounds()
 {

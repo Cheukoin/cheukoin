@@ -42,7 +42,7 @@ public:
     std::shared_ptr<Player> getCurrentPlayer();
 
     void draw();
-
+    void sortCards();
     void play(bool playerIsPlaying = false);
 
     void initializeRound();

@@ -21,10 +21,15 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
+    Card card = Card();
+    card.bidCard();
+    sf::IntRect rect2 = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x, card.getGlobalSize().y);
     bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
-    if (_game->getBid().getAmount() == 0) {
+    if ((_game->getBid().getAmount() == 0) && rect2.contains(mousePosition)) {
         Bid bid = _game->getHuman()->chooseBid();
         _game->setBid(bid);
+        _game->getHuman()->sortCards();
+        _game->getRules()->setAsset(bid.getSuit());
     }
     if (_game->getBid().getAmount() != 0) {
         if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
