@@ -33,7 +33,7 @@ void Bot::initialize()
             _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0.33f;
         }
         if (card.getSuit() == _game->getBid()->getSuit()) {
-            _remainingAssets.push_back(card);
+            _remainingAssets.push_back(card.getValue());
         }
     }
 }
@@ -50,7 +50,7 @@ void Bot::update()
     _remainingCardsInGame.erase(remove(_remainingCardsInGame.begin(), _remainingCardsInGame.end(), card), _remainingCardsInGame.end());
 
     if (card.getSuit() == _game->getBid()->getSuit()) {
-        _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
+        _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card.getValue()), _remainingAssets.end());
     }
 
     if (card != _playedCard) {
