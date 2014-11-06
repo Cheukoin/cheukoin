@@ -46,7 +46,6 @@ public:
 
     // Card management
     virtual void initialize();
-    Bid chooseBid();
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
@@ -55,8 +54,6 @@ public:
     std::vector<Card> cardsForSuit(Suit suit);
 
     static std::vector<std::string> PositionNames;
-    static std::vector<int> ScoreSuitIsBid;
-    static std::vector<int> ScoreSuitIsNotBid;
     Card chooseCard();
 
 protected:

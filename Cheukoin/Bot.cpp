@@ -32,7 +32,7 @@ void Bot::initialize()
             _cardProbability[card.getSuit()][card.getValue()][_enemy1.getName()] = 0.33f;
             _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0.33f;
         }
-        if (card.getSuit() == _game->getBid().getSuit()) {
+        if (card.getSuit() == _game->getBid()->getSuit()) {
             _remainingAssets.push_back(card);
         }
     }
@@ -49,7 +49,7 @@ void Bot::update()
     Card card = _game->getCurrentTrick().getCards().back();
     _remainingCardsInGame.erase(remove(_remainingCardsInGame.begin(), _remainingCardsInGame.end(), card), _remainingCardsInGame.end());
 
-    if (card.getSuit() == _game->getBid().getSuit()) {
+    if (card.getSuit() == _game->getBid()->getSuit()) {
         _remainingAssets.erase(remove(_remainingAssets.begin(), _remainingAssets.end(), card), _remainingAssets.end());
     }
 
@@ -64,7 +64,42 @@ void Bot::update()
 Card Bot::chooseCard()
 {
     vector<Card> playableCards = _game->getRules()->getPlayableCards(*this);
+
+    if (_game->getCurrentTrick().getCards().size() == 0) {
+        // the bot is the first player
+        cout << "remaining assets : " << _remainingAssets.size() << endl;
+        if (_remainingAssets.size() == 0) {
+            // no more asset in game : we return the first card which is master at its suit, if exists
+            for (Card card : playableCards) {
+                if (_isCardMaster(card)) {
+                    return card;
+                }
+            }
+        }
+        else if (_remainingAssets.size() == Rules::cardsForSuit(_cards, _game->getBid()->getSuit()).size()) {
+            // bot is the only one with assets
+        }
+        else {
+            // somebody else has assets
+        }
+    }
+    else {
+        // there are cards in the trick
+    }
+
     return playableCards.front();
+}
+
+bool Bot::_isCardMaster(Card card)
+{
+    for (int i = 0; i < (int)card.getValue(); ++i) {
+        if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
+            cout << card << " is not master" << endl;
+            return false;
+        }
+    }
+    cout << card << " is master" << endl;
+    return true;
 }
 
 vector<Player> Bot::_playersThatMayHave(Suit suit, Value value)
@@ -96,7 +131,6 @@ void Bot::_guessHands()
     Card card = _game->getCurrentTrick().getCards().back();
     shared_ptr<Player> player = _game->getCurrentPlayer();
     Suit askedSuit = _game->getCurrentTrick().getCards().front().getSuit();
-    Suit asset = _game->getBid().getSuit();
 
     if (card.getSuit() != askedSuit) {
         _playerHasNoMore(player->getName(), askedSuit);

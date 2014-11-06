@@ -11,28 +11,6 @@ vector<string> const PositionNames = {
     "Bottom"
 };
 
-vector<int> Player::ScoreSuitIsBid = {
-    11,
-    4,
-    3,
-    20,
-    10,
-    14,
-    0,
-    0
-};
-
-vector<int> Player::ScoreSuitIsNotBid = {
-    11,
-    4,
-    3,
-    2,
-    10,
-    0,
-    0,
-    0
-};
-
 Player::Player(string name, Position position)
     : _name(name)
     , _position(position)
@@ -50,30 +28,18 @@ Player::~Player()
 
 void Player::sortCards()
 {
-    sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
-        if (a.getSuit() == b.getSuit()){
-            if (a.getSuit()!= Application::getInstance().getGame()->getBid().getSuit())
-                return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
-            else
-                return (ScoreSuitIsBid[a.getValue()]<ScoreSuitIsBid[b.getValue()]);
-        }
-        else
-            return a.getSuit()> b.getSuit();
-    });
-}
-
-void Player::initialize()
-{
     sf::Vector2u pos;
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     sf::Vector2u cardSize = _cards.front().getGlobalSize();
+
     sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
-            return (ScoreSuitIsNotBid[a.getValue()]<ScoreSuitIsNotBid[b.getValue()]);
+            return Application::getInstance().getGame()->getRules()->isCardGreater(b, a, a.getSuit());
         }
         else
             return a.getSuit()> b.getSuit();
     });
+
     switch (_position) {
     case Top:
         pos = sf::Vector2u(winSize.x / 2, 0);
@@ -95,6 +61,11 @@ void Player::initialize()
     for (int i = 0; i < _cards.size(); i++) {
         _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
     }
+}
+
+void Player::initialize()
+{
+    sortCards();
 }
 
 sf::IntRect Player::getGlobalBounds()

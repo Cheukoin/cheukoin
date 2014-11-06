@@ -33,6 +33,7 @@ private:
 
     void _guessHands();
     void _playerHasNoMore(std::string name, Suit suit);
+    bool _isCardMaster(Card card);
     std::vector<Player> _playersThatMayHave(Suit suit, Value value);
 };
 

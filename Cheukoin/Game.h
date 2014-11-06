@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "Constants.h"
-#include "Bid.h"
 #include "Score.h"
 
 class Rules;
@@ -15,6 +14,7 @@ class Player;
 class Team;
 class Lobby;
 class Bot;
+class Bid;
 class Human;
 class Score;
 
@@ -26,8 +26,8 @@ public:
 
     GameMode getMode();
 
-    void setBid(Bid const& bid);
-    Bid getBid();
+    void setBid(std::shared_ptr<Bid> bid);
+    std::shared_ptr<Bid> getBid();
 
     std::shared_ptr<Lobby> getLobby();
 
@@ -49,7 +49,7 @@ public:
 
 private:
     GameMode const& _mode;
-    Bid _bid;
+    std::shared_ptr<Bid> _bid;
     std::shared_ptr<Lobby> _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;

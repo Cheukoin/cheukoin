@@ -60,10 +60,9 @@ Card Human::chooseCard()
     // shouldn't happen, maybe throw an exception?
     return _cards.front();
 }
-Bid Human::chooseBid()
+shared_ptr<Bid> Human::chooseBid()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-    Bid bid;
     for (int i = 0; i < 5; i++) {
         for (int suit = 0; suit < 4; suit++) {
             sf::IntRect rectref;
@@ -72,13 +71,11 @@ Bid Human::chooseBid()
             rectref = sf::IntRect(card.getGlobalPosition().x + card.getGlobalSize().x * i / 5, card.getGlobalPosition().y + card.getGlobalSize().y * suit / 4, card.getGlobalSize().x / 5, card.getGlobalSize().y / 4);
 
             if (rectref.contains(mousePosition)) {
-                bid.setAmount(80 + i * 20);
-                bid.setSuit(Suit(suit));
-                return bid;
+                return make_shared<Bid>(Suit(suit), 80 + i * 20);
             }
         }
     }
-    return bid;
+    return make_shared<Bid>();
 }
 void Human::showLegalCards()
 {
