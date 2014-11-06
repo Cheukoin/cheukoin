@@ -38,6 +38,7 @@ public:
     std::map<Value, int> getCardValues();
 
     static std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
+    void setAsset(Suit asset);
 
 private:
     static const std::map<Value, int> _cardValues;

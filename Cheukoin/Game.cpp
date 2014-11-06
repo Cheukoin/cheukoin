@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Bid.h"
 #include "Bot.h"
 #include "Team.h"
 #include "Lobby.h"
@@ -11,23 +12,19 @@ using namespace std;
 Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
     : _lobby(lobby)
     , _mode(mode)
-    , _bid(Bid())
     , _currentRound(-1)
     , _tricks(vector<Trick>())
     , _currentPlayerIndex(0)
 {
     initializeRound();
+
+    _bid = make_shared<Bid>(Spades, 0);
+    _rules = make_shared<Rules>(Spades);
 }
 
 void Game::startGame()
 {
     _lobby->deal();
-
-    // FOR TEST PURPOSE
-    _bid.setAmount(120);
-    _bid.setSuit(Spades);
-
-    _rules = make_shared<Rules>(_bid.getSuit());
 
     for (auto player : _lobby->getPlayers()) {
         player->initialize();
@@ -111,12 +108,19 @@ shared_ptr<Lobby> Game::getLobby()
     return _lobby;
 }
 
-void Game::setBid(Bid const& bid)
+void Game::setBid(shared_ptr<Bid> bid)
 {
     _bid = bid;
+    _rules = make_shared<Rules>(_bid->getSuit());
+
+    for (auto& player : _lobby->getPlayers()) {
+        player->sortCards();
+    }
+
+    cout << "Current bid is " << _bid->getAmount() << " " << _bid->getSuit() << endl;
 }
 
-Bid Game::getBid()
+shared_ptr<Bid> Game::getBid()
 {
     return _bid;
 }
@@ -151,6 +155,10 @@ vector<shared_ptr<Bot> > Game::getBots()
 
 void Game::draw()
 {
+    Card card = Card();
+    card.bidCard();
+    if (_bid->getAmount() == 0)
+        card.draw();
     for (auto player : _lobby->getPlayers()) {
         player->drawCards();
     }

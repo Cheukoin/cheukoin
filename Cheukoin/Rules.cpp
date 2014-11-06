@@ -50,6 +50,10 @@ std::map<Value, int> Rules::getCardValues()
 {
     return _cardValues;
 };
+void Rules::setAsset(Suit asset)
+{
+    _asset = asset;
+}
 
 // true if card1 wins over card2
 

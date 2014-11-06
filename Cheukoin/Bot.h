@@ -19,7 +19,7 @@ public:
 
 private:
     std::vector<Card> _remainingCardsInGame;
-    std::vector<Card> _remainingAssets;
+    std::vector<Value> _remainingAssets;
 
     // probability that a card is in a player's hand ({suit: {value: {player}}})
     std::map<Suit, std::map<Value, std::map<std::string, float> > > _cardProbability;
@@ -33,6 +33,7 @@ private:
 
     void _guessHands();
     void _playerHasNoMore(std::string name, Suit suit);
+    bool _isCardMaster(Card card);
     std::vector<Player> _playersThatMayHave(Suit suit, Value value);
 };
 

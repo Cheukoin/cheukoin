@@ -79,6 +79,7 @@
 		19F5853E19EBFA1A00C2DC44 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
 		19F5853F19EBFA1A00C2DC44 /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
 		9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
+		937DD0841A080C690074FB73 /* c.png in Resources */ = {isa = PBXBuildFile; fileRef = 937DD0831A080C680074FB73 /* c.png */; };
 		93F833CE19F6F6D40022011F /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
 		C0B1A0CE19ED13F700436C77 /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = C0B1A0CD19ED13F700436C77 /* cardBack.png */; };
 		C0B1A0D619ED1C3400436C77 /* table.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C0B1A0D519ED1C3400436C77 /* table.jpeg */; };
@@ -167,6 +168,7 @@
 		19F5852C19EBC77C00C2DC44 /* Cheukoin-tests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "Cheukoin-tests"; sourceTree = BUILT_PRODUCTS_DIR; };
 		19F5852E19EBC77C00C2DC44 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		9330B4941A02C7450078D1A7 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
+		937DD0831A080C680074FB73 /* c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c.png; sourceTree = "<group>"; };
 		93F833CD19F6F6D40022011F /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
 		93F833CF19F6F7A20022011F /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 		C0B1A0CD19ED13F700436C77 /* cardBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cardBack.png; sourceTree = "<group>"; };
@@ -331,6 +333,7 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				937DD0831A080C680074FB73 /* c.png */,
 				193436E91A07CE020077F31E /* cheukoin.png */,
 				9330B4941A02C7450078D1A7 /* sansation.ttf */,
 				19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */,
@@ -481,6 +484,7 @@
 				C0B1A0CE19ED13F700436C77 /* cardBack.png in Resources */,
 				19D2FA5B19F050CB0074B105 /* queen_of_clubs.png in Resources */,
 				19D2FA5519F050CB0074B105 /* jack_of_hearts.png in Resources */,
+				937DD0841A080C690074FB73 /* c.png in Resources */,
 				19D2FA4019F050CB0074B105 /* 7_of_diamonds.png in Resources */,
 				19D2FA5719F050CB0074B105 /* king_of_clubs.png in Resources */,
 				19D2FA4919F050CB0074B105 /* 9_of_hearts.png in Resources */,

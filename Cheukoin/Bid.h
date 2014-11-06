@@ -7,6 +7,7 @@
 
 class Bid {
 public:
+    Bid(Suit suit, int amount);
     Bid();
     ~Bid();
     int getAmount();
