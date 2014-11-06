@@ -98,6 +98,14 @@ Card Bot::chooseCard()
     }
     else {
         // there are cards in the trick
+
+        // TODO : check de pas se faire couper, check des impasses
+
+        for (Card card : playableCards) {
+            if (_isCardMaster(card) && !_playerCutsFor(_enemy1, card.getSuit()) && !_playerCutsFor(_enemy2, card.getSuit())) {
+                return card;
+            }
+        }
     }
 
     return playableCards.front();
@@ -107,6 +115,16 @@ bool Bot::_isCardMaster(Card card)
 {
     for (int i = 0; i <= 8; ++i) {
         if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
+            return false;
+        }
+    }
+    return true;
+}
+
+bool Bot::_playerCutsFor(Player player, Suit suit)
+{
+    for (int i = 0; i <= 8; ++i) {
+        if (_cardProbability[suit][(Value)i][player.getName()] != 0) {
             return false;
         }
     }

@@ -88,30 +88,22 @@ bool Rules::isTeamValid(Team team)
 
 bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
 {
-    unsigned long numberPlayedCards = firstCards.size();
-    std::vector<Card> enemyCards;
+    int numberPlayedCards = (int)firstCards.size();
+    vector<Card> enemyCards;
+
     if (numberPlayedCards > 1) {
         Card friendlyCard = firstCards[numberPlayedCards - 2];
         Suit askedSuit = firstCards.front().getSuit();
-        for (auto c : firstCards) {
+
+        for (Card c : firstCards) {
             if (c != friendlyCard) {
                 enemyCards.push_back(c);
             }
         }
-        switch (enemyCards.size()) {
-        case 0:
-            return true;
 
-        case 1:
-            return isCardGreater(friendlyCard, enemyCards[0], askedSuit);
-
-        case 2:
-            return isCardGreater(friendlyCard, enemyCards[0], askedSuit) && isCardGreater(friendlyCard, enemyCards[1], askedSuit);
-
-        default:
-            return false;
-        }
+        return isCardGreater(friendlyCard, enemyCards[0], askedSuit) && (enemyCards.size() > 1 ? isCardGreater(friendlyCard, enemyCards[1], askedSuit) : true);
     }
+
     return false;
 }
 

@@ -15,6 +15,7 @@ public:
     void initialize();
     void play();
     void update();
+
     Card chooseCard();
 
 private:
@@ -34,6 +35,7 @@ private:
     void _guessHands();
     void _playerHasNoMore(std::string name, Suit suit);
     bool _isCardMaster(Card card);
+    bool _playerCutsFor(Player player, Suit suit);
     std::vector<Player> _playersThatMayHave(Suit suit, Value value);
 };
 
