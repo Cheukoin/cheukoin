@@ -35,6 +35,7 @@ void Game::play(bool playerIsPlaying)
 {
     if (_currentRound > 7) {
         cout << "Game finished!" << endl;
+        displayNextButton();
         return;
     }
 
@@ -167,4 +168,22 @@ void Game::draw()
         _tricks.back().draw();
     }
     _score.displayScore(Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(), Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(), Application::getInstance().getWindow());
+}
+
+void Game::displayNextButton()
+{
+
+    shared_ptr<sf::Texture> texture = make_shared<sf::Texture>();
+    shared_ptr<sf::Sprite> sprite = make_shared<sf::Sprite>();
+    if (!texture->loadFromFile(resourcePath("next-button@2x.png"))) {
+        puts("_texture file not loaded");
+    }
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+
+    texture->setSmooth(true);
+    sprite->setTextureRect(sf::IntRect(0, 0, 960, 720));
+    sprite->setTexture(*texture);
+    sprite->setScale(0.3, 0.3);
+    sf::Vector2u pos = sf::Vector2u(winSize.x / 3, winSize.y / 3);
+    sprite->setPosition(pos.x, pos.y);
 }

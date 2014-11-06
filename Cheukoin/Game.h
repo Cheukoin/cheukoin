@@ -46,6 +46,8 @@ public:
     void play(bool playerIsPlaying = false);
 
     void initializeRound();
+    
+    void displayNextButton();
 
 private:
     GameMode const& _mode;
