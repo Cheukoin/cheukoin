@@ -64,23 +64,36 @@ void Bot::update()
 Card Bot::chooseCard()
 {
     vector<Card> playableCards = _game->getRules()->getPlayableCards(*this);
+    Suit asset = _game->getBid()->getSuit();
 
     if (_game->getCurrentTrick().getCards().size() == 0) {
         // the bot is the first player
-        cout << "remaining assets : " << _remainingAssets.size() << endl;
-        if (_remainingAssets.size() == 0) {
-            // no more asset in game : we return the first card which is master at its suit, if exists
+        if (_remainingAssets.size() == 0 || _remainingAssets.size() == Rules::cardsForSuit(_cards, asset).size()) {
+            // no more asset for other players
+
+            if (_remainingAssets.size() == _cards.size()) {
+                // bot only has assets : play them
+                return playableCards.front();
+            }
+
             for (Card card : playableCards) {
-                if (_isCardMaster(card)) {
+                // play the first master card not asset
+                if (card.getSuit() != asset && _isCardMaster(card)) {
+                    return card;
+                }
+            }
+
+            for (Card card : playableCards) {
+                // bot has no master card except asset, play a not asset random one
+                if (card.getSuit() != asset) {
                     return card;
                 }
             }
         }
-        else if (_remainingAssets.size() == Rules::cardsForSuit(_cards, _game->getBid()->getSuit()).size()) {
-            // bot is the only one with assets
-        }
         else {
             // somebody else has assets
+
+            // TODO : faire couper les autres, chercher ou son coequipier est maitre
         }
     }
     else {
@@ -92,13 +105,11 @@ Card Bot::chooseCard()
 
 bool Bot::_isCardMaster(Card card)
 {
-    for (int i = 0; i < (int)card.getValue(); ++i) {
+    for (int i = 0; i <= 8; ++i) {
         if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
-            cout << card << " is not master" << endl;
             return false;
         }
     }
-    cout << card << " is master" << endl;
     return true;
 }
 
