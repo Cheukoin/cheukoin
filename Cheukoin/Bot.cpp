@@ -64,9 +64,10 @@ void Bot::update()
 Card Bot::chooseCard()
 {
     vector<Card> playableCards = _game->getRules()->getPlayableCards(*this);
+    vector<Card> firstCards = _game->getCurrentTrick().getCards();
     Suit asset = _game->getBid()->getSuit();
 
-    if (_game->getCurrentTrick().getCards().size() == 0) {
+    if (firstCards.size() == 0) {
         // the bot is the first player
         if (_remainingAssets.size() == 0 || _remainingAssets.size() == Rules::cardsForSuit(_cards, asset).size()) {
             // no more asset for other players
@@ -102,7 +103,7 @@ Card Bot::chooseCard()
         // TODO : check de pas se faire couper, check des impasses
 
         for (Card card : playableCards) {
-            if (_isCardMaster(card) && !_playerCutsFor(_enemy1, card.getSuit()) && !_playerCutsFor(_enemy2, card.getSuit())) {
+            if (card.getSuit() == firstCards.front().getSuit() && _isCardMaster(card) && !_playerCutsFor(_enemy1, card.getSuit()) && !_playerCutsFor(_enemy2, card.getSuit()) && !_game->getRules()->isFriendMaster(*this, firstCards)) {
                 return card;
             }
         }
@@ -113,8 +114,13 @@ Card Bot::chooseCard()
 
 bool Bot::_isCardMaster(Card card)
 {
+    vector<Card> firstCards = _game->getCurrentTrick().getCards();
+
     for (int i = 0; i <= 8; ++i) {
-        if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
+        if (_game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && find(firstCards.begin(), firstCards.end(), card) != firstCards.end()) {
+            return false;
+        }
+        else if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
             return false;
         }
     }
