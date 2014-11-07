@@ -95,6 +95,8 @@ void Application::_initGame()
 
     _game = make_shared<Game>(lobby, GameMode::Offline);
     _game->startGame();
+    //Test bot1
+    cout << bot1->chooseBid()->getAmount() << "tt" << bot1->chooseBid()->getSuit() << endl;
 }
 
 void Application::_draw()

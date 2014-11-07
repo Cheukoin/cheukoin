@@ -171,3 +171,45 @@ void Bot::_guessHands()
         _playerHasNoMore(player->getName(), askedSuit);
     }
 }
+
+shared_ptr<Bid> Bot::chooseBid()
+{
+    std::vector<Card> cards = getCards();
+    std::map<Suit, std::vector<Card> > a;
+
+    for (auto c : cards) {
+        Suit i = c.getSuit();
+        a[i].push_back(c);
+    }
+
+    int max = 0;
+    Suit asset;
+    for (int suit = 0; suit < 4; suit++) {
+        int amount = 0;
+        Suit s = Suit(suit);
+        if (a[s].size() == 3) {
+            if (containsValue(a[s], Jack) || containsValue(a[s], Nine))
+                amount = 80;
+            if (containsValue(a[s], Jack) && containsValue(a[s], Nine))
+                amount = 90;
+            if (amount != 0 && (containsValue(cards, Ten) || containsValue(cards, Ace)))
+                amount = amount + 10;
+        }
+        if (a[s].size() > 3 && containsValue(a[s], Jack) && containsValue(a[s], Nine) && ((containsValue(a[s], Ace) || containsValue(a[s], Ten))))
+            amount = 100;
+        if (max < amount) {
+            max = amount;
+            asset = s;
+        }
+    }
+    return make_shared<Bid>(asset, max);
+}
+
+bool Bot::containsValue(std::vector<Card> vect, Value value)
+{
+    bool res = false;
+    for (auto c : vect)
+        if (c.getValue() == value)
+            res = true;
+    return res;
+}

@@ -97,7 +97,6 @@
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
 		C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C940966E19FED903007F4A21 /* scoreBoard.jpg */; };
 		C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A8B8F31A01322500459DE6 /* scoreBoard.png */; };
-		C9C0C29A1A0C2AD500171D15 /* next-button@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C9C0C2991A0C2AD500171D15 /* next-button@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -199,7 +198,6 @@
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
 		C940966E19FED903007F4A21 /* scoreBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scoreBoard.jpg; sourceTree = "<group>"; };
 		C9A8B8F31A01322500459DE6 /* scoreBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBoard.png; sourceTree = "<group>"; };
-		C9C0C2991A0C2AD500171D15 /* next-button@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next-button@2x.png"; path = "../../../Downloads/next-button@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -335,7 +333,6 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				C9C0C2991A0C2AD500171D15 /* next-button@2x.png */,
 				937DD0831A080C680074FB73 /* c.png */,
 				193436E91A07CE020077F31E /* cheukoin.png */,
 				9330B4941A02C7450078D1A7 /* sansation.ttf */,
@@ -483,7 +480,6 @@
 				19D2FA5119F050CB0074B105 /* ace_of_hearts.png in Resources */,
 				19D2FA5019F050CB0074B105 /* ace_of_diamonds.png in Resources */,
 				19D2FA4A19F050CB0074B105 /* 9_of_spades.png in Resources */,
-				C9C0C29A1A0C2AD500171D15 /* next-button@2x.png in Resources */,
 				C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */,
 				C0B1A0CE19ED13F700436C77 /* cardBack.png in Resources */,
 				19D2FA5B19F050CB0074B105 /* queen_of_clubs.png in Resources */,
