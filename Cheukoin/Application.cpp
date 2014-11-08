@@ -21,16 +21,37 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
-    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
-    
     Card card = Card();
     card.bidCard();
     sf::IntRect rect2 = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x, card.getGlobalSize().y);
-    bool playerIsmakingBid = (_game->getBid()->getAmount() == 0) && rect2.contains(mousePosition);
-    
-    _game->makeBid(playerIsmakingBid);
+    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
+    if ((_game->getBid()->getAmount() == 0) && rect2.contains(mousePosition)) {
+        shared_ptr<Bid> bid = _game->getHuman()->chooseBid();
+        _game->setBid(bid);
+        _game->getHuman()->sortCards();
+        _game->getRules()->setAsset(bid->getSuit());
+    }
+    if (_game->getBid()->getAmount() != 0) {
+        if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
+            Card winCard = _game->getCurrentTrick().getWinningCard();
 
-    _game->playAGame(playerIsPlaying);
+            for (auto player : _game->getLobby()->getPlayers()) {
+                if (player->getPlayedCard() == winCard) {
+                    if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
+                        _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
+                    }
+                    else {
+                        _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
+                    }
+                }
+            }
+            _game->initializeRound();
+        }
+        if (playerIsPlaying) {
+            _game->getCurrentPlayer()->play();
+        }
+        _game->play(playerIsPlaying);
+    }
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()
