@@ -19,10 +19,9 @@ vector<string> const Card::ValueNames = {
     "8",
     "7"
 };
-Card::Card()
-    : _texture(make_shared<sf::Texture>())
-    , _sprite(make_shared<sf::Sprite>())
 
+Card::Card()
+    : AnimatedObject()
 {
     if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
         puts("_texture file not loaded");
@@ -31,14 +30,14 @@ Card::Card()
     _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
     _sprite->setTexture(*_texture);
     _sprite->setScale(sf::Vector2f(0.3, 0.3));
+
+    _size = sf::Vector2f(500, 726);
 }
 
 Card::Card(Suit suit, Value value)
-    : _texture(make_shared<sf::Texture>())
-    , _sprite(make_shared<sf::Sprite>())
+    : AnimatedObject()
     , _suit(suit)
     , _value(value)
-    , _size(sf::Vector2u(500, 726))
 {
     if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
         puts("_texture file not loaded");
@@ -47,6 +46,8 @@ Card::Card(Suit suit, Value value)
     _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
     _sprite->setTexture(*_texture);
     _sprite->setScale(sf::Vector2f(0.3, 0.3));
+
+    _size = sf::Vector2f(500, 726);
 }
 
 Card::~Card()
@@ -71,16 +72,6 @@ std::string Card::_getFilename()
     return ValueNames[_value] + "_of_" + SuitNames[_suit] + ".png";
 }
 
-void Card::moveTo(sf::Vector2u const& position)
-{
-    _sprite->setPosition(position.x, position.y);
-}
-
-sf::Texture Card::getTexture() const
-{
-    return *_texture;
-}
-
 void Card::flip()
 {
     std::string str = _getFilename();
@@ -102,26 +93,6 @@ Value Card::getValue() const
 Suit Card::getSuit() const
 {
     return _suit;
-}
-
-sf::Vector2u Card::getGlobalSize() const
-{
-    return sf::Vector2u(_sprite->getGlobalBounds().width, _sprite->getGlobalBounds().height);
-}
-
-sf::Vector2f Card::getGlobalPosition() const
-{
-    return _sprite->getPosition();
-}
-
-void Card::draw() const
-{
-    Application::getInstance().getWindow()->draw(*_sprite.get());
-}
-
-void Card::update(sf::Time elapsed)
-{
-    // TODO update position
 }
 
 vector<Card> Card::getAllCards()

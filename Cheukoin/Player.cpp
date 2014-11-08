@@ -28,9 +28,9 @@ Player::~Player()
 
 void Player::sortCards()
 {
-    sf::Vector2u pos;
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2u cardSize = _cards.front().getGlobalSize();
+    sf::Vector2f pos;
+    sf::Vector2f winSize = (sf::Vector2f)Application::getInstance().getWindow()->getSize();
+    sf::Vector2f cardSize = _cards.front().getGlobalSize();
 
     sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
@@ -42,24 +42,25 @@ void Player::sortCards()
 
     switch (_position) {
     case Top:
-        pos = sf::Vector2u(winSize.x / 2, 0);
+        pos = sf::Vector2f(winSize.x / 2, 0);
         break;
     case Bottom:
-        pos = sf::Vector2u(winSize.x / 2, winSize.y - cardSize.y);
+        pos = sf::Vector2f(winSize.x / 2, winSize.y - cardSize.y);
         break;
     case Left:
-        pos = sf::Vector2u(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2);
+        pos = sf::Vector2f(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2);
         break;
     case Right:
-        pos = sf::Vector2u(winSize.x - cardSize.x, winSize.y / 2 - cardSize.y / 2);
+        pos = sf::Vector2f(winSize.x - cardSize.x, winSize.y / 2 - cardSize.y / 2);
         break;
     default:
-        pos = sf::Vector2u(0, 0);
+        pos = sf::Vector2f(0, 0);
         break;
     }
 
     for (int i = 0; i < _cards.size(); i++) {
-        _cards[i].moveTo(sf::Vector2u(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y));
+        sf::Vector2f cardPosition(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y);
+        _cards[i].setPosition(cardPosition);
     }
 }
 
@@ -116,8 +117,8 @@ void Player::playCard(Card const& card)
 void Player::_moveCardToCenter(Card& card)
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2u cardSize = card.getGlobalSize();
-    sf::Vector2u pos(winSize.x / 2 - cardSize.x / 2, winSize.y / 2 - cardSize.y / 2);
+    sf::Vector2f cardSize = card.getGlobalSize();
+    sf::Vector2f pos(winSize.x / 2 - cardSize.x / 2, winSize.y / 2 - cardSize.y / 2);
 
     switch (_position) {
     case Top:
@@ -133,17 +134,11 @@ void Player::_moveCardToCenter(Card& card)
         pos.x += cardSize.x / 2;
         break;
     default:
-        pos = sf::Vector2u(0, 0);
+        pos = sf::Vector2f(0, 0);
         break;
     }
 
-    sf::Vector2f currentPosition = card.getGlobalPosition();
-    while (abs(pos.y - currentPosition.y) + abs(pos.x - currentPosition.x) > 5) {
-        currentPosition.y += (pos.y - currentPosition.y) / 2;
-        currentPosition.x += (pos.x - currentPosition.x) / 2;
-        card.moveTo(sf::Vector2u(currentPosition.x, currentPosition.y));
-        Application::getInstance().forceWindowRefresh();
-    }
+    card.moveTo(pos, sf::seconds(10));
 }
 
 Bid Player::makeBid(int amount, Suit const& asset)
