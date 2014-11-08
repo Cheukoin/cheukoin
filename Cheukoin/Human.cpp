@@ -60,6 +60,7 @@ Card Human::chooseCard()
     // shouldn't happen, maybe throw an exception?
     return _cards.front();
 }
+
 shared_ptr<Bid> Human::chooseBid()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
@@ -77,14 +78,18 @@ shared_ptr<Bid> Human::chooseBid()
     }
     return make_shared<Bid>();
 }
+
 void Human::showLegalCards()
 {
     // replace all cards at origin position then move to top the legal ones
     for (Card& card : _cards) {
-        card.moveTo(sf::Vector2u(card.getGlobalPosition().x, Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y));
+        card.setPosition(sf::Vector2f(card.getGlobalPosition().x,
+                                      Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y));
     }
+
     for (Card& card : Application::getInstance().getGame()->getRules()->getPlayableCards(*this)) {
-        sf::Vector2u newPosition = sf::Vector2u(card.getGlobalPosition().x, card.getGlobalPosition().y - 10);
-        card.moveTo(newPosition);
+        sf::Vector2f newPosition = sf::Vector2f(card.getGlobalPosition().x,
+                                                card.getGlobalPosition().y - 10);
+        card.moveTo(newPosition, sf::milliseconds(100));
     }
 }

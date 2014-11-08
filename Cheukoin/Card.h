@@ -12,24 +12,19 @@
 #include "Constants.h"
 #include "Application.h"
 #include "ResourcePath.h"
+#include "AnimatedObject.h"
 
-class Card {
+class Card : public AnimatedObject {
 public:
     Card();
     Card(Suit suit, Value value);
-    ~Card();
+    virtual ~Card();
+
     void bidCard();
     Value getValue() const;
     Suit getSuit() const;
-    sf::Vector2f getGlobalPosition() const;
-    sf::Texture getTexture() const;
-    sf::Vector2u getGlobalSize() const;
-
-    void draw() const;
-    void update(sf::Time elapsed);
 
     void flip();
-    void moveTo(sf::Vector2u const& position);
 
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
@@ -40,12 +35,8 @@ public:
 private:
     Suit _suit;
     Value _value;
-    sf::Vector2u _size;
 
     std::string _getFilename();
-
-    std::shared_ptr<sf::Sprite> _sprite;
-    std::shared_ptr<sf::Texture> _texture;
 };
 
 bool operator==(Card const& a, Card const& b);

@@ -34,6 +34,7 @@
 		19A57CF619E298ED00FE40DD /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEE19E298ED00FE40DD /* sfml-window.framework */; };
 		19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
 		19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
+		19C390BE1A0E3BCD00C857C0 /* AnimatedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */; };
 		19D2FA1E19F034280074B105 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D2FA1C19F034280074B105 /* Lobby.cpp */; };
 		19D2FA3F19F050CB0074B105 /* 7_of_clubs.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */; };
 		19D2FA4019F050CB0074B105 /* 7_of_diamonds.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA2019F050CB0074B105 /* 7_of_diamonds.png */; };
@@ -126,6 +127,8 @@
 		19A57CEE19E298ED00FE40DD /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "../../../../Library/Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
 		19A57CEF19E298ED00FE40DD /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = ../../../../Library/Frameworks/SFML.framework; sourceTree = "<group>"; };
 		19A57CF019E298ED00FE40DD /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sndfile.framework; path = ../../../../Library/Frameworks/sndfile.framework; sourceTree = "<group>"; };
+		19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedObject.cpp; sourceTree = "<group>"; };
+		19C390BD1A0E3BCD00C857C0 /* AnimatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedObject.h; sourceTree = "<group>"; };
 		19D2FA1C19F034280074B105 /* Lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
 		19D2FA1D19F034280074B105 /* Lobby.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Lobby.h; sourceTree = "<group>"; };
 		19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 7_of_clubs.png; sourceTree = "<group>"; };
@@ -179,7 +182,7 @@
 		C0B83E9C19E2C23C0037C5AE /* Card.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Card.h; sourceTree = "<group>"; };
 		C0B83EA019E2C23C0037C5AE /* Game.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
 		C0B83EA119E2C23C0037C5AE /* Game.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
-		C0B83EA419E2C23C0037C5AE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		C0B83EA419E2C23C0037C5AE /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = Cheukoin/main.cpp; sourceTree = "<group>"; };
 		C0B83EA519E2C23C0037C5AE /* NetworkManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NetworkManager.cpp; sourceTree = "<group>"; };
 		C0B83EA619E2C23C0037C5AE /* NetworkManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkManager.h; sourceTree = "<group>"; };
 		C0B83EA719E2C23C0037C5AE /* Player.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Player.cpp; sourceTree = "<group>"; };
@@ -248,6 +251,7 @@
 				19A57CEE19E298ED00FE40DD /* sfml-window.framework */,
 				19A57CEF19E298ED00FE40DD /* SFML.framework */,
 				19A57CF019E298ED00FE40DD /* sndfile.framework */,
+				C0B83EA419E2C23C0037C5AE /* main.cpp */,
 				19A57CD319E2989E00FE40DD /* Cheukoin */,
 				19F5852D19EBC77C00C2DC44 /* Cheukoin-tests */,
 				19A57CD219E2989E00FE40DD /* Products */,
@@ -269,7 +273,7 @@
 		19A57CD319E2989E00FE40DD /* Cheukoin */ = {
 			isa = PBXGroup;
 			children = (
-				C0B83EA419E2C23C0037C5AE /* main.cpp */,
+				19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */,
 				19E8151D19F2C77E00B2A5F8 /* Application.cpp */,
 				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
 				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
@@ -283,6 +287,7 @@
 				C0B83EAF19E2C23C0037C5AE /* Score.cpp */,
 				C0B83EB119E2C23C0037C5AE /* Team.cpp */,
 				C0B83EB319E2C23C0037C5AE /* Trick.cpp */,
+				19C390BD1A0E3BCD00C857C0 /* AnimatedObject.h */,
 				19E8151E19F2C77E00B2A5F8 /* Application.h */,
 				C0B83E9A19E2C23C0037C5AE /* Bid.h */,
 				C0B83EC719E2C95A0037C5AE /* Bot.h */,
@@ -546,6 +551,7 @@
 				19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */,
 				C0B83EBD19E2C23C0037C5AE /* NetworkManager.cpp in Sources */,
 				C0B83EB619E2C23C0037C5AE /* Card.cpp in Sources */,
+				19C390BE1A0E3BCD00C857C0 /* AnimatedObject.cpp in Sources */,
 				19D2FA1E19F034280074B105 /* Lobby.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
