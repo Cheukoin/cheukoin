@@ -131,8 +131,16 @@ void Application::_draw()
 void Application::mainLoop()
 {
     sf::Event event;
+    sf::Clock clock;
+    sf::Time elapsed = clock.restart();
 
     while (_window->isOpen()) {
+        elapsed = clock.restart();
+
+        if (_game) {
+            _game->update(elapsed);
+        }
+
         while (_window->pollEvent(event)) {
             switch (event.type) {
             case sf::Event::Closed:

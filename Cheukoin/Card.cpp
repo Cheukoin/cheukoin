@@ -119,6 +119,11 @@ void Card::draw() const
     Application::getInstance().getWindow()->draw(*_sprite.get());
 }
 
+void Card::update(sf::Time elapsed)
+{
+    // TODO update position
+}
+
 vector<Card> Card::getAllCards()
 {
     vector<Card> cards;

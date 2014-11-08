@@ -41,12 +41,22 @@ public:
     std::shared_ptr<Human> getHuman();
     std::shared_ptr<Player> getCurrentPlayer();
 
+    /**
+     * Draw all game entities to the main window
+     */
     void draw();
+
+    /**
+     * Update all game entities based on elapsed time since the last main loop iteration
+     */
+    void update(sf::Time elapsed);
+
     void sortCards();
+
     void play(bool playerIsPlaying = false);
 
     void initializeRound();
-    
+
     void displayNextButton();
 
 private:

@@ -233,6 +233,13 @@ Card Player::chooseCard()
     return Card(Spades, Ace);
 }
 
+void Player::update(sf::Time elapsed)
+{
+    for (auto& card : _cards) {
+        card.update(elapsed);
+    }
+}
+
 bool operator==(Player const& a, Player const& b)
 {
     return a.getName() == b.getName();

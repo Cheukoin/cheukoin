@@ -26,6 +26,7 @@ public:
     sf::Vector2u getGlobalSize() const;
 
     void draw() const;
+    void update(sf::Time elapsed);
 
     void flip();
     void moveTo(sf::Vector2u const& position);

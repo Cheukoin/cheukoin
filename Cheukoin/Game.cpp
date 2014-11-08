@@ -62,6 +62,13 @@ void Game::play(bool playerIsPlaying)
     }
 }
 
+void Game::update(sf::Time elapsed)
+{
+    for (auto player : _lobby->getPlayers()) {
+        player->update(elapsed);
+    }
+}
+
 void Game::_goToNextPlayer()
 {
     _currentPlayerIndex = (_currentPlayerIndex + 1) % PLAYER_COUNT;
@@ -158,8 +165,10 @@ void Game::draw()
 {
     Card card = Card();
     card.bidCard();
-    if (_bid->getAmount() == 0)
+    if (_bid->getAmount() == 0) {
         card.draw();
+    }
+
     for (auto player : _lobby->getPlayers()) {
         player->drawCards();
     }
@@ -167,7 +176,11 @@ void Game::draw()
     if (_tricks.size() > 0) {
         _tricks.back().draw();
     }
-    _score.displayScore(Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(), Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(), Application::getInstance().getWindow());
+
+    _score.displayScore(
+        Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(),
+        Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(),
+        Application::getInstance().getWindow());
 }
 
 void Game::displayNextButton()

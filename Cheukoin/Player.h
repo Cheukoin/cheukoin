@@ -46,6 +46,7 @@ public:
 
     // Card management
     virtual void initialize();
+    void update(sf::Time elapsed);
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
