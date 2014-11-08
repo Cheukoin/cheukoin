@@ -58,7 +58,7 @@ public:
     Card chooseCard();
 
     bool isFriendMaster();
-    std::vector<Card> getPlayableCards(Trick tricks);
+    std::vector<Card> getPlayableCards();
 
 protected:
     std::string _name;

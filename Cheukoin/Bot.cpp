@@ -63,7 +63,7 @@ void Bot::update()
 
 Card Bot::chooseCard()
 {
-    vector<Card> playableCards = _game->getRules()->getPlayableCards(*this);
+    vector<Card> playableCards = getPlayableCards();
     vector<Card> firstCards = _game->getCurrentTrick().getCards();
     Suit asset = _game->getBid()->getSuit();
 

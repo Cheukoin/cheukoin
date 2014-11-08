@@ -83,13 +83,15 @@ void Game::initializeRound()
     if (_currentRound >= 0) {
         _currentPlayerIndex = (_currentPlayerIndex + _tricks.back().getWinnerCardIndex()) % PLAYER_COUNT;
     }
-    if (getHuman()->getCards().size()) {
-        getHuman()->showLegalCards();
-    }
 
     Trick trick(_currentRound);
     _tricks.push_back(trick);
     _currentRound++;
+
+    if (getHuman()->getCards().size()) {
+        getHuman()->showLegalCards();
+    }
+
     cout << "Playing round " << _currentRound << endl;
 }
 

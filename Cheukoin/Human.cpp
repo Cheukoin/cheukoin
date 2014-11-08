@@ -34,7 +34,7 @@ void Human::play()
     Card card = chooseCard();
 
     // TODO check the cards that are already in the trick
-    vector<Card> playableCards = Application::getInstance().getGame()->getRules()->getPlayableCards(*this);
+    vector<Card> playableCards = getPlayableCards();
     if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
         playCard(card);
     }
@@ -82,14 +82,19 @@ shared_ptr<Bid> Human::chooseBid()
 void Human::showLegalCards()
 {
     // replace all cards at origin position then move to top the legal ones
-    for (Card& card : _cards) {
-        card.setPosition(sf::Vector2f(card.getGlobalPosition().x,
-                                      Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y));
-    }
+    vector<Card> playableCards = getPlayableCards();
+    sf::Vector2f position;
 
-    for (Card& card : Application::getInstance().getGame()->getRules()->getPlayableCards(*this)) {
-        sf::Vector2f newPosition = sf::Vector2f(card.getGlobalPosition().x,
-                                                card.getGlobalPosition().y - 10);
-        card.moveTo(newPosition, sf::milliseconds(100));
+    for (Card& card : _cards) {
+        if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
+            position = sf::Vector2f(card.getGlobalPosition().x,
+                                    Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y - 30);
+        }
+        else {
+            position = sf::Vector2f(card.getGlobalPosition().x,
+                                    Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y);
+        }
+
+        card.moveTo(position, sf::milliseconds(100));
     }
 }

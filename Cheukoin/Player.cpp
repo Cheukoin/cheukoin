@@ -258,14 +258,17 @@ bool Player::isFriendMaster()
     return false;
 }
 
-std::vector<Card> Player::getPlayableCards(Trick trick)
+std::vector<Card> Player::getPlayableCards()
 {
     Suit asset = Application::getInstance().getGame()->getRules()->getAsset();
-    if (trick.getCards().size() == 0) {
+    vector<Card> trickCards = Application::getInstance().getGame()->getCurrentTrick().getCards();
+
+    // all cards are playable if the player is first to play
+    if (trickCards.size() == 0) {
         return _cards;
     }
 
-    Suit demandedSuit = trick.getCards().front().getSuit();
+    Suit demandedSuit = trickCards.front().getSuit();
 
     // first, check whether the player has the asked suit in his hand
     if (demandedSuit != asset && cardsForSuit(demandedSuit).size() != 0) {

@@ -27,8 +27,6 @@ public:
     bool isTrickValid(Trick trick);
     bool isTeamValid(Team team);
 
-    std::vector<Card> getPlayableCards(Player player);
-
     static std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
     inline Suit getAsset() { return _asset; };
     void setAsset(Suit asset);

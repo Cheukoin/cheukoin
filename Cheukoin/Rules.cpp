@@ -51,11 +51,6 @@ bool Rules::isTeamValid(Team team)
     return (team.getPlayers().size() == 2) && (team.getPlayers().at(0) != team.getPlayers().at(1));
 }
 
-std::vector<Card> Rules::getPlayableCards(Player player)
-{
-    return player.getPlayableCards(Application::getInstance().getGame()->getCurrentTrick());
-}
-
 bool Rules::isTrickValid(Trick trick)
 {
     bool valid = true;
