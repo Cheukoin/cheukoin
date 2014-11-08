@@ -90,20 +90,21 @@ void Player::playCard(Card const& card)
 {
     cout << "-- " << *this << " playing " << card << endl;
     // TODO : verify move is valid with rules
+    int i = 0;
 
-    if (_cards.size() != 0) {
-        for (int i = 0; i < _cards.size(); i++) {
-            if (_cards[i] == card) {
-                _cards[i].flip();
-                _moveCardToCenter(_cards[i]);
-                _cards.erase(_cards.begin() + i);
-            }
+    for (i = 0; i < _cards.size(); i++) {
+        if (_cards[i] == card) {
+            _cards[i].flip();
+            _moveCardToCenter(_cards[i]);
+            break;
         }
     }
 
     shared_ptr<Game> game = Application::getInstance().getGame();
-    game->getCurrentTrick().addCard(card);
-    _playedCard = card;
+    game->getCurrentTrick().addCard(_cards[i]);
+    _playedCard = _cards[i];
+
+    _cards.erase(_cards.begin() + i);
 
     if (game->getMode() == Online) {
         // TODO : notify server if multiplayer
@@ -138,7 +139,7 @@ void Player::_moveCardToCenter(Card& card)
         break;
     }
 
-    card.moveTo(pos, sf::seconds(10));
+    card.moveTo(pos, sf::milliseconds(200));
 }
 
 Bid Player::makeBid(int amount, Suit const& asset)

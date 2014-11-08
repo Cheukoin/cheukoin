@@ -136,7 +136,6 @@ void Application::mainLoop()
 
     while (_window->isOpen()) {
         elapsed = clock.restart();
-
         if (_game) {
             _game->update(elapsed);
         }

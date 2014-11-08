@@ -67,6 +67,10 @@ void Game::update(sf::Time elapsed)
     for (auto player : _lobby->getPlayers()) {
         player->update(elapsed);
     }
+
+    for (auto card : getCurrentTrick().getCards()) {
+        card.update(elapsed);
+    }
 }
 
 void Game::_goToNextPlayer()

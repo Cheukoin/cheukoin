@@ -37,6 +37,9 @@ public:
 
 protected:
     sf::Vector2f _size;
+    sf::Vector2f _targetPosition;
+    sf::Time _transitionTime;
+    sf::Time _elapsedTime;
     std::shared_ptr<sf::Sprite> _sprite;
     std::shared_ptr<sf::Texture> _texture;
 };
