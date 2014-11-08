@@ -17,18 +17,12 @@ class Bot;
 class Bid;
 class Human;
 class Score;
-class Card;
 
 class Game {
 public:
     Game(std::shared_ptr<Lobby> lobby, GameMode const& mode);
 
     void startGame();
-    void makeBid(bool playerIsMakingBid);
-    void playAGame(bool playerIsPlaying);
-    void addTrickToWinner(Card winCard);
-    void play(bool playerIsPlaying = false);
-    void initializeRound();
 
     GameMode getMode();
 
@@ -49,6 +43,10 @@ public:
 
     void draw();
     void sortCards();
+    void play(bool playerIsPlaying = false);
+
+    void initializeRound();
+    
     void displayNextButton();
 
 private:

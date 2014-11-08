@@ -31,46 +31,6 @@ void Game::startGame()
     }
 }
 
-void Game::makeBid(bool playerIsMakingBid)
-{
-    // A modifier pour introduire les bots
-    if (playerIsMakingBid) {
-        shared_ptr<Bid> bid = getHuman()->chooseBid();
-        setBid(bid);
-        getHuman()->sortCards();
-        getRules()->setAsset(bid->getSuit());
-    }
-}
-void Game::playAGame(bool playerIsPlaying)
-{
-    if (getBid()->getAmount() != 0) {
-        if (getCurrentTrick().getCards().size() == PLAYER_COUNT) {
-            Card winCard = getCurrentTrick().getWinningCard();
-            addTrickToWinner(winCard);
-        }
-        initializeRound();
-
-        if (playerIsPlaying) {
-            getCurrentPlayer()->play();
-        }
-        play(playerIsPlaying);
-    }
-}
-
-void Game::addTrickToWinner(Card winCard)
-{
-    for (auto player : getLobby()->getPlayers()) {
-        if (player->getPlayedCard() == winCard) {
-            if (getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
-                getLobby()->getTeams()[0]->addWonTrick(getCurrentTrick());
-            }
-            else {
-                getLobby()->getTeams()[1]->addWonTrick(getCurrentTrick());
-            }
-        }
-    }
-}
-
 void Game::play(bool playerIsPlaying)
 {
     if (_currentRound > 7) {
