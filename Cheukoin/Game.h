@@ -24,6 +24,9 @@ public:
 
     void startGame();
 
+    void play(bool playerIsPlaying);
+    void initializeRound();
+
     GameMode getMode();
 
     void setBid(std::shared_ptr<Bid> bid);

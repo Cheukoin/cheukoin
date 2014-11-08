@@ -57,6 +57,9 @@ public:
     static std::vector<std::string> PositionNames;
     Card chooseCard();
 
+    bool isFriendMaster();
+    std::vector<Card> getPlayableCards(Trick tricks);
+
 protected:
     std::string _name;
     Bid _bid;

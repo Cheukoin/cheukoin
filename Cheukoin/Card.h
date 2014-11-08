@@ -29,6 +29,8 @@ public:
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
 
+    bool isGreaterThan(Card other, Suit askedSuit) const;
+
     static const std::vector<std::string> SuitNames;
     static const std::vector<std::string> ValueNames;
 

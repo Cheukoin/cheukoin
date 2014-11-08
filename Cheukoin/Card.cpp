@@ -1,4 +1,5 @@
 #include "Card.h"
+#include "Rules.h"
 
 using namespace std;
 
@@ -117,6 +118,31 @@ vector<Card> Card::getAllCardsShuffled()
     shuffle(cards.begin(), cards.end(), default_random_engine(seed));
 
     return cards;
+}
+
+bool Card::isGreaterThan(Card other, Suit askedSuit) const
+{
+    Suit asset = Application::getInstance().getGame()->getRules()->getAsset();
+    if (_suit != asset && other.getSuit() == asset) {
+        return false;
+    }
+    else if (_suit == asset && other.getSuit() != asset) {
+        return true;
+    }
+    else if (_suit != askedSuit && other.getSuit() == askedSuit) {
+        return false;
+    }
+    else if (_suit == askedSuit && other.getSuit() != askedSuit) {
+        return true;
+    }
+    else if (_suit != other.getSuit()) {
+        return true;
+    }
+    else {
+        // 2 cards are from same suit
+        map<Value, int> order = _suit == asset ? Rules::CardValuesAsset : Rules::CardValues;
+        return order[_value] > order[other.getValue()];
+    }
 }
 
 bool operator==(Card const& a, Card const& b)

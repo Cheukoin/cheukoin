@@ -44,7 +44,7 @@ int Trick::getWinnerCardIndex()
 {
     vector<Card> sortedCards = _cards;
     sort(sortedCards.begin(), sortedCards.end(), [this](Card a, Card b) {
-        return Application::getInstance().getGame()->getRules()->isCardGreater(a, b, _cards.front().getSuit());
+        return a.isGreaterThan(b, _cards.front().getSuit());
     });
 
     auto best = find(_cards.begin(), _cards.end(), sortedCards.front());

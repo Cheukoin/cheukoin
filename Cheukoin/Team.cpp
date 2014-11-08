@@ -20,14 +20,13 @@ int Team::computeScore(Trick& trick)
     }
     else {
         int score = 0;
-        shared_ptr<Bid> bid = Application::getInstance().getGame()->getBid();
         shared_ptr<Rules> rules = Application::getInstance().getGame()->getRules();
         for (Card c : trick.getCards()) {
-            if (c.getSuit() == bid->getSuit()) {
-                score += rules->getCardValuesAsset()[c.getValue()];
+            if (c.getSuit() == rules->getAsset()) {
+                score += Rules::CardValuesAsset.at(c.getValue());
             }
             else {
-                score += rules->getCardValues()[c.getValue()];
+                score += Rules::CardValues.at(c.getValue());
             }
         };
         return score;

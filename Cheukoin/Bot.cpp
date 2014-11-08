@@ -103,7 +103,7 @@ Card Bot::chooseCard()
         // TODO : check de pas se faire couper, check des impasses
 
         for (Card card : playableCards) {
-            if (card.getSuit() == firstCards.front().getSuit() && _isCardMaster(card) && !_playerCutsFor(_enemy1, card.getSuit()) && !_playerCutsFor(_enemy2, card.getSuit()) && !_game->getRules()->isFriendMaster(*this, firstCards)) {
+            if (card.getSuit() == firstCards.front().getSuit() && _isCardMaster(card) && !_playerCutsFor(_enemy1, card.getSuit()) && !_playerCutsFor(_enemy2, card.getSuit()) && !isFriendMaster()) {
                 return card;
             }
         }
@@ -117,10 +117,13 @@ bool Bot::_isCardMaster(Card card)
     vector<Card> firstCards = _game->getCurrentTrick().getCards();
 
     for (int i = 0; i <= 8; ++i) {
-        if (_game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && find(firstCards.begin(), firstCards.end(), card) != firstCards.end()) {
+        if (Card(card.getSuit(), (Value)i).isGreaterThan(card, card.getSuit())
+            && find(firstCards.begin(), firstCards.end(), card) != firstCards.end()) {
             return false;
         }
-        else if (i != (int)card.getValue() && _game->getRules()->isCardGreater(Card(card.getSuit(), (Value)i), card, card.getSuit()) && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
+        else if (i != (int)card.getValue()
+                 && Card(card.getSuit(), (Value)i).isGreaterThan(card, card.getSuit())
+                 && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
             return false;
         }
     }

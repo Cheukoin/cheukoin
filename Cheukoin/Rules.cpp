@@ -19,7 +19,7 @@ Rules::~Rules()
 {
 }
 
-const map<Value, int> Rules::_cardValues = {
+const map<Value, int> Rules::CardValues = {
     { Seven, 0 },
     { Eight, 0 },
     { Nine, 0 },
@@ -30,7 +30,7 @@ const map<Value, int> Rules::_cardValues = {
     { Ace, 11 }
 };
 
-const map<Value, int> Rules::_cardValuesAsset = {
+const map<Value, int> Rules::CardValuesAsset = {
     { Seven, 0 },
     { Eight, 0 },
     { Nine, 14 },
@@ -41,44 +41,9 @@ const map<Value, int> Rules::_cardValuesAsset = {
     { Ace, 11 }
 };
 
-std::map<Value, int> Rules::getCardValuesAsset()
-{
-    return _cardValuesAsset;
-};
-
-std::map<Value, int> Rules::getCardValues()
-{
-    return _cardValues;
-};
 void Rules::setAsset(Suit asset)
 {
     _asset = asset;
-}
-
-// true if card1 wins over card2
-
-bool Rules::isCardGreater(Card card1, Card card2, Suit askedSuit)
-{
-    if (card1.getSuit() != _asset && card2.getSuit() == _asset) {
-        return false;
-    }
-    else if (card1.getSuit() == _asset && card2.getSuit() != _asset) {
-        return true;
-    }
-    else if (card1.getSuit() != askedSuit && card2.getSuit() == askedSuit) {
-        return false;
-    }
-    else if (card1.getSuit() == askedSuit && card2.getSuit() != askedSuit) {
-        return true;
-    }
-    else if (card1.getSuit() != card2.getSuit()) {
-        return true;
-    }
-    else {
-        // 2 cards are from same suit
-        map<Value, int> order = (card1.getSuit() == _asset ? _cardValuesAsset : _cardValues);
-        return order[card1.getValue()] > order[card2.getValue()];
-    }
 }
 
 bool Rules::isTeamValid(Team team)
@@ -86,75 +51,9 @@ bool Rules::isTeamValid(Team team)
     return (team.getPlayers().size() == 2) && (team.getPlayers().at(0) != team.getPlayers().at(1));
 }
 
-bool Rules::isFriendMaster(Player player, vector<Card> firstCards)
-{
-    int numberPlayedCards = (int)firstCards.size();
-    vector<Card> enemyCards;
-
-    if (numberPlayedCards > 1) {
-        Card friendlyCard = firstCards[numberPlayedCards - 2];
-        Suit askedSuit = firstCards.front().getSuit();
-
-        for (Card c : firstCards) {
-            if (c != friendlyCard) {
-                enemyCards.push_back(c);
-            }
-        }
-
-        return isCardGreater(friendlyCard, enemyCards[0], askedSuit) && (enemyCards.size() > 1 ? isCardGreater(friendlyCard, enemyCards[1], askedSuit) : true);
-    }
-
-    return false;
-}
-
 std::vector<Card> Rules::getPlayableCards(Player player)
 {
-    return getPlayableCards(player, Application::getInstance().getGame()->getCurrentTrick().getCards());
-}
-
-std::vector<Card> Rules::getPlayableCards(Player player, vector<Card> firstCards)
-{
-    if (firstCards.size() == 0) {
-        return player.getCards();
-    }
-
-    Suit demandedSuit = firstCards[0].getSuit();
-
-    // first, check whether the player has the asked suit in his hand
-    if (demandedSuit != _asset && player.cardsForSuit(demandedSuit).size() != 0) {
-        return player.cardsForSuit(demandedSuit);
-    }
-
-    // if not, he can still play whatever he wants if his friend is the current master of the trick
-    else if (demandedSuit != _asset && isFriendMaster(player, firstCards)) {
-        return player.getCards();
-    }
-
-    // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
-    else if (player.cardsForSuit(_asset).size() != 0) {
-        std::vector<Card> playableCards;
-        std::vector<Card> assets = cardsForSuit(firstCards, _asset);
-
-        if (assets.size() == 0) {
-            return player.cardsForSuit(_asset);
-        }
-
-        Card max = assets[0];
-        for (auto card : assets) {
-            if (isCardGreater(card, max, demandedSuit)) {
-                max = card;
-            }
-        }
-        for (auto card : player.cardsForSuit(_asset)) {
-            if (isCardGreater(card, max, demandedSuit)) {
-                playableCards.push_back(card);
-            }
-        }
-        return (playableCards.size() > 0 ? playableCards : player.cardsForSuit(_asset));
-    }
-
-    // if the friend isn't master and he has no cards of the asked suit nor bigger assets, he can play whatever he wants
-    return player.getCards();
+    return player.getPlayableCards(Application::getInstance().getGame()->getCurrentTrick());
 }
 
 bool Rules::isTrickValid(Trick trick)

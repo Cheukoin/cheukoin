@@ -34,7 +34,7 @@ void Player::sortCards()
 
     sort(_cards.begin(), _cards.end(), [](const Card& a, const Card& b) {
         if (a.getSuit() == b.getSuit()){
-            return Application::getInstance().getGame()->getRules()->isCardGreater(b, a, a.getSuit());
+            return b.isGreaterThan(a, a.getSuit());
         }
         else
             return a.getSuit()> b.getSuit();
@@ -234,6 +234,74 @@ void Player::update(sf::Time elapsed)
     for (auto& card : _cards) {
         card.update(elapsed);
     }
+}
+
+bool Player::isFriendMaster()
+{
+    vector<Card> trickCards = Application::getInstance().getGame()->getCurrentTrick().getCards();
+    int numberPlayedCards = (int)trickCards.size();
+    vector<Card> enemyCards;
+
+    if (numberPlayedCards > 1) {
+        Card friendlyCard = trickCards[numberPlayedCards - 2];
+        Suit askedSuit = trickCards.front().getSuit();
+
+        for (Card c : trickCards) {
+            if (c != friendlyCard) {
+                enemyCards.push_back(c);
+            }
+        }
+
+        return friendlyCard.isGreaterThan(enemyCards[0], askedSuit) && (enemyCards.size() > 1 ? friendlyCard.isGreaterThan(enemyCards[1], askedSuit) : true);
+    }
+
+    return false;
+}
+
+std::vector<Card> Player::getPlayableCards(Trick trick)
+{
+    Suit asset = Application::getInstance().getGame()->getRules()->getAsset();
+    if (trick.getCards().size() == 0) {
+        return _cards;
+    }
+
+    Suit demandedSuit = trick.getCards().front().getSuit();
+
+    // first, check whether the player has the asked suit in his hand
+    if (demandedSuit != asset && cardsForSuit(demandedSuit).size() != 0) {
+        return cardsForSuit(demandedSuit);
+    }
+
+    // if not, he can still play whatever he wants if his friend is the current master of the trick
+    else if (demandedSuit != asset && isFriendMaster()) {
+        return getCards();
+    }
+
+    // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
+    else if (cardsForSuit(asset).size() != 0) {
+        std::vector<Card> playableCards;
+        std::vector<Card> assets = cardsForSuit(asset);
+
+        if (assets.size() == 0) {
+            return cardsForSuit(asset);
+        }
+
+        Card max = assets[0];
+        for (auto card : assets) {
+            if (card.isGreaterThan(max, demandedSuit)) {
+                max = card;
+            }
+        }
+        for (auto card : cardsForSuit(asset)) {
+            if (card.isGreaterThan(max, demandedSuit)) {
+                playableCards.push_back(card);
+            }
+        }
+        return (playableCards.size() > 0 ? playableCards : cardsForSuit(asset));
+    }
+
+    // if the friend isn't master and he has no cards of the asked suit nor bigger assets, he can play whatever he wants
+    return _cards;
 }
 
 bool operator==(Player const& a, Player const& b)
