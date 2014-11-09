@@ -18,7 +18,7 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
 {
     initializeRound();
 
-    _bid = make_shared<Bid>(Spades, 10);
+    _bid = make_shared<Bid>(Spades, 0);
     _rules = make_shared<Rules>(Spades);
 }
 
@@ -46,7 +46,7 @@ void Game::play(bool playerIsPlaying)
     if ((playerIsPlaying) && (getCurrentPlayer()->getCards().size() == 7 - _currentRound)) {
         _goToNextPlayer();
         if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
-            // be sure last card played is by current player
+            // make sure last card played is by current player
             return;
         }
     }
@@ -57,7 +57,7 @@ void Game::play(bool playerIsPlaying)
         getHuman()->showLegalCards();
     }
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
-        // be sure last card played is by current player
+        // make sure last card played is by current player
         return;
     }
 }
@@ -170,9 +170,10 @@ vector<shared_ptr<Bot> > Game::getBots()
 void Game::draw()
 {
     if (_bid->getAmount() == 0) {
-        Card card = Card();
-        card.bidCard();
-        card.draw();
+        AnimatedObject bids("c.png", sf::Vector2f(320, 240));
+        bids.setPosition(Application::getInstance().getWindow()->getSize().x / 3,
+                         Application::getInstance().getWindow()->getSize().y / 3);
+        bids.draw();
     }
 
     for (auto player : _lobby->getPlayers()) {

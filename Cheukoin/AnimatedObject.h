@@ -29,6 +29,7 @@ public:
 
     void update(sf::Time elapsed);
 
+    void setPosition(float x, float y);
     void setPosition(sf::Vector2f const& position);
 
     sf::Vector2f getGlobalPosition() const;
