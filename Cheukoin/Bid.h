@@ -15,7 +15,7 @@ public:
     void setSuit(Suit suit);
     Suit getSuit();
     bool isBidValid(Bid previousBid);
-    
+
     void displayNextButton();
 
 private:

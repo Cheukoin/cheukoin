@@ -3,6 +3,7 @@
 #include "Team.h"
 #include "Lobby.h"
 #include "Player.h"
+#include "AnimatedObject.h"
 
 using namespace std;
 
@@ -109,12 +110,7 @@ void Application::_draw()
         _game->draw();
     }
     else {
-        auto cheukoin = AnimatedObject("cheukoin.png", sf::Vector2f(700, 700));
-        cheukoin.setPosition(sf::Vector2f(
-            _window->getSize().x / 2 - cheukoin.getGlobalSize().x / 2,
-            _window->getSize().y / 2 - cheukoin.getGlobalSize().y / 2));
-
-        cheukoin.draw();
+        _cheukoin->draw();
     }
 
     _window->display();
@@ -125,6 +121,11 @@ void Application::mainLoop()
     sf::Event event;
     sf::Clock clock;
     sf::Time elapsed = clock.restart();
+
+    _cheukoin = unique_ptr<AnimatedObject>(new AnimatedObject("cheukoin.png", sf::Vector2f(700, 700)));
+    _cheukoin->setPosition(sf::Vector2f(
+        _window->getSize().x / 2 - _cheukoin->getGlobalSize().x / 2,
+        _window->getSize().y / 2 - _cheukoin->getGlobalSize().y / 2));
 
     while (_window->isOpen()) {
         elapsed = clock.restart();

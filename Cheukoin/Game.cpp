@@ -18,7 +18,7 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
 {
     initializeRound();
 
-    _bid = make_shared<Bid>(Spades, 0);
+    _bid = make_shared<Bid>(Spades, 10);
     _rules = make_shared<Rules>(Spades);
 }
 
@@ -169,9 +169,9 @@ vector<shared_ptr<Bot> > Game::getBots()
 
 void Game::draw()
 {
-    Card card = Card();
-    card.bidCard();
     if (_bid->getAmount() == 0) {
+        Card card = Card();
+        card.bidCard();
         card.draw();
     }
 
