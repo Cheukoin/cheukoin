@@ -22,6 +22,7 @@ public:
     void play();
     void showLegalCards();
     Card chooseCard();
+    void playCard(const Card& card);
 
 private:
 };

@@ -8,6 +8,7 @@
 
 #include "Human.h"
 #include "Rules.h"
+#include "NetworkManager.h"
 
 using namespace std;
 
@@ -59,6 +60,17 @@ Card Human::chooseCard()
 
     // shouldn't happen, maybe throw an exception?
     return _cards.front();
+}
+
+void Human::playCard(const Card& card)
+{
+    if (Application::getInstance().getGame()->getMode() == Online) {
+        // TODO : notify server if multiplayer
+    }
+
+    NetworkManager::sendTurn(*Application::getInstance().getGame()->getLobby(), card);
+
+    Player::playCard(card);
 }
 
 shared_ptr<Bid> Human::chooseBid()

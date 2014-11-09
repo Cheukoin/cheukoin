@@ -7,6 +7,7 @@
 //
 
 #include "NetworkManager.h"
+#include <sstream>
 
 #define LOGGING_ENABLED
 
@@ -22,6 +23,22 @@ void NetworkManager::createLobby(const string& name)
 void NetworkManager::listLobbies()
 {
     Json::Value response = get("/lobby/");
+    cout << response.toStyledString();
+}
+
+void NetworkManager::sendTurn(Lobby const& lobby, Card const& card)
+{
+    stringstream params;
+    params << "lobby="
+           << lobby.getName()
+           << "&player="
+           << "player_id"
+           << "&card_suit="
+           << card.getSuit()
+           << "&card_value="
+           << card.getValue();
+
+    Json::Value response = post("/turn/", params.str());
     cout << response.toStyledString();
 }
 
