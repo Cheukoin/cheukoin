@@ -109,7 +109,7 @@ void Application::_draw()
         _game->draw();
     }
     else {
-        auto cheukoin = AnimatedObject("cheukoin.png", sf::Vector2f(400, 400));
+        auto cheukoin = AnimatedObject("cheukoin.png", sf::Vector2f(700, 700));
         cheukoin.setPosition(sf::Vector2f(
             _window->getSize().x / 2 - cheukoin.getGlobalSize().x / 2,
             _window->getSize().y / 2 - cheukoin.getGlobalSize().y / 2));

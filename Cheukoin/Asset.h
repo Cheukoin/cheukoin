@@ -10,5 +10,12 @@
 #define __Cheukoin__Asset__
 
 #include <stdio.h>
+#include <SFML/Graphics.hpp>
+#include "AnimatedObject.h"
+
+class Asset : public AnimatedObject {
+public:
+    Asset(Suit asset);
+};
 
 #endif /* defined(__Cheukoin__Asset__) */
