@@ -22,33 +22,17 @@ vector<string> const Card::ValueNames = {
 };
 
 Card::Card()
-    : AnimatedObject()
+    : AnimatedObject("cardBack.png", sf::Vector2f(150, 218))
+    , _shown(false)
 {
-    if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
-        puts("_texture file not loaded");
-    }
-    _texture->setSmooth(true);
-    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
-    _sprite->setTexture(*_texture);
-    _sprite->setScale(sf::Vector2f(0.3, 0.3));
-
-    _size = sf::Vector2f(500, 726);
 }
 
 Card::Card(Suit suit, Value value)
-    : AnimatedObject()
+    : AnimatedObject("cardBack.png", sf::Vector2f(150, 218))
     , _suit(suit)
     , _value(value)
+    , _shown(false)
 {
-    if (!_texture->loadFromFile(resourcePath("cardBack.png"))) {
-        puts("_texture file not loaded");
-    }
-    _texture->setSmooth(true);
-    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
-    _sprite->setTexture(*_texture);
-    _sprite->setScale(sf::Vector2f(0.3, 0.3));
-
-    _size = sf::Vector2f(500, 726);
 }
 
 Card::~Card()
@@ -73,17 +57,20 @@ std::string Card::_getFilename()
     return ValueNames[_value] + "_of_" + SuitNames[_suit] + ".png";
 }
 
-void Card::flip()
+void Card::show()
 {
+    if (_shown) {
+        return;
+    }
+
     std::string str = _getFilename();
     if (!_texture->loadFromFile(resourcePath(str))) {
         // handle _texture not loaded
         puts("_texture file not loaded");
     }
-
-    _sprite->setTextureRect(sf::IntRect(0, 0, _size.x, _size.y));
     _sprite->setTexture(*_texture);
-    _sprite->setScale(sf::Vector2f(0.3, 0.3));
+
+    _shown = true;
 }
 
 Value Card::getValue() const

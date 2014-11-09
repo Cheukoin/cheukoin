@@ -11,13 +11,20 @@
 
 using namespace std;
 
-AnimatedObject::AnimatedObject()
+AnimatedObject::AnimatedObject(string spriteName, sf::Vector2f size)
     : _sprite(make_shared<sf::Sprite>())
     , _texture(make_shared<sf::Texture>())
-    , _size(0, 0)
+    , _size(size)
     , _targetPosition(0, 0)
     , _transitionTime(sf::seconds(0))
 {
+    if (!_texture->loadFromFile(resourcePath(spriteName))) {
+        cout << "texture file " << resourcePath(spriteName) << " not loaded";
+    }
+    _texture->setSmooth(true);
+    _sprite->setTexture(*_texture);
+    _sprite->setScale(_size.x / _texture->getSize().x,
+                      _size.y / _texture->getSize().y);
 }
 
 AnimatedObject::~AnimatedObject()

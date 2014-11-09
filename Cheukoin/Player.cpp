@@ -94,7 +94,7 @@ void Player::playCard(Card const& card)
 
     for (i = 0; i < _cards.size(); i++) {
         if (_cards[i] == card) {
-            _cards[i].flip();
+            _cards[i].show();
             _moveCardToCenter(_cards[i]);
             break;
         }

@@ -25,7 +25,7 @@ void Human::initialize()
     Player::initialize();
 
     for (int i = 0; i < _cards.size(); i++) {
-        _cards[i].flip();
+        _cards[i].show();
     }
 }
 

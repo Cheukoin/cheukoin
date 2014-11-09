@@ -24,7 +24,7 @@ public:
     Value getValue() const;
     Suit getSuit() const;
 
-    void flip();
+    void show();
 
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();
@@ -37,6 +37,7 @@ public:
 private:
     Suit _suit;
     Value _value;
+    bool _shown;
 
     std::string _getFilename();
 };

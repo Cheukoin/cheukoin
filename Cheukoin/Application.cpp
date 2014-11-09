@@ -109,20 +109,12 @@ void Application::_draw()
         _game->draw();
     }
     else {
-        // TODO Corentin: clean up this mess
-        auto cheukoin = new sf::Sprite();
-        auto texture = new sf::Texture();
-        if (!texture->loadFromFile(resourcePath("cheukoin.png"))) {
-            puts("_texture file not loaded");
-        }
-        texture->setSmooth(true);
-        cheukoin->setTexture(*texture);
-        cheukoin->setScale(sf::Vector2f(0.3, 0.3));
-        cheukoin->setPosition(
-            _window->getSize().x / 2 - cheukoin->getGlobalBounds().width / 2,
-            _window->getSize().y / 2 - cheukoin->getGlobalBounds().height / 2);
+        auto cheukoin = AnimatedObject("cheukoin.png", sf::Vector2f(400, 400));
+        cheukoin.setPosition(sf::Vector2f(
+            _window->getSize().x / 2 - cheukoin.getGlobalSize().x / 2,
+            _window->getSize().y / 2 - cheukoin.getGlobalSize().y / 2));
 
-        _window->draw(*cheukoin);
+        cheukoin.draw();
     }
 
     _window->display();

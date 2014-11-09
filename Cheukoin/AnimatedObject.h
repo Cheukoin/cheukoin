@@ -16,7 +16,7 @@
 
 class AnimatedObject {
 public:
-    AnimatedObject();
+    AnimatedObject(std::string spriteName, sf::Vector2f size);
 
     virtual ~AnimatedObject();
 
