@@ -1,25 +1,31 @@
-#pragma once
-#include <vector>
-#include <map>
-#include "Card.h"
+#ifndef __Cheukoin_Trick__
+#define __Cheukoin_Trick__
 
-class Trick
-{
+#include "Card.h"
+#include "Constants.h"
+
+class Trick {
 public:
-	Trick();
     Trick(int number);
-	~Trick();
-    void setNumber(int number);
+    ~Trick();
+
     int getNumber();
+    void setNumber(int number);
+
     void addCard(Card const& Card);
-    std::vector<Card> getComposition();
-    Card winningCard(Suit const& suit);
-    bool isGreater(Card card1, Card card2, Suit suit) const;
+
+    std::vector<Card> getCards();
+
+    void draw();
+
+    int getWinnerCardIndex();
     
+    Card getWinningCard();
+
 private:
+    // TODO: see if we can get rid of this
     int _number;
-    std::vector<Card> _composition;
-    std::map<Value, int> _cardValues;
-    std::map<Value, int> _cardValuesAsset;
+    std::vector<Card> _cards;
 };
 
+#endif

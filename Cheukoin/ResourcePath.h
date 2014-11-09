@@ -14,7 +14,7 @@
 #ifdef __APPLE__
 #include "ResourcePathOSX.hpp"
 #else
-std::string resourcePath(std::string fileName) {
+inline std::string resourcePath(std::string fileName) {
     return "Resources/" + fileName;
 }
 #endif

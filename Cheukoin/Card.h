@@ -1,46 +1,49 @@
-#pragma once
+#ifndef __Cheukoin_Card__
+#define __Cheukoin_Card__
 
-#include <string>
+#include <math.h>
+#include <iostream> // std::cout
+#include <algorithm> // std::shuffle
+#include <random> // std::default_random_engine
+#include <chrono> // std::chrono::system_clock
+
 #include <SFML/Graphics.hpp>
 #include <iostream>
-#include <memory>
-#include <iostream>
+#include "Constants.h"
+#include "Application.h"
+#include "ResourcePath.h"
+#include "AnimatedObject.h"
 
-enum Suit {
-    Clubs,
-    Hearts,
-    Diamonds,
-    Spades
-};
-
-enum Value {
-    Ace,
-    King,
-    Queen,
-    Jack,
-    Ten,
-    Nine,
-    Eight,
-    Seven
-};
-
-class Card {
+class Card : public AnimatedObject {
 public:
-    bool isEqual(Card const& a) const;
-    sf::Sprite sprite;
-    std::shared_ptr<sf::Texture> textureBack;
+    Card();
+    Card(Suit suit, Value value);
+    virtual ~Card();
 
+    void bidCard();
     Value getValue() const;
     Suit getSuit() const;
 
-    Card(Suit suit, Value value);
-    ~Card();
+    void flip();
+
+    static std::vector<Card> getAllCards();
+    static std::vector<Card> getAllCardsShuffled();
+
+    bool isGreaterThan(Card other, Suit askedSuit) const;
+
+    static const std::vector<std::string> SuitNames;
+    static const std::vector<std::string> ValueNames;
 
 private:
     Suit _suit;
     Value _value;
+
+    std::string _getFilename();
 };
 
 bool operator==(Card const& a, Card const& b);
+bool operator!=(Card const& a, Card const& b);
 
 std::ostream& operator<<(std::ostream& os, const Card& card);
+
+#endif

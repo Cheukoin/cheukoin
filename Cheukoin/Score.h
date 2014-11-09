@@ -1,26 +1,22 @@
-#pragma once
-#include "Trick.h"
-#include "Team.h"
-#include <vector>
-#include <string>
-#include <map>
+#ifndef __Cheuckoin_Score__
+#define __Cheuckoin_Score__
 
-using namespace std;
+#include <iostream>
+#include <SFML/Graphics.hpp>
+#include "ResourcePath.h"
+#include <map>
 
 class Score {
 public:
-
-	Score();
-	~Score();
-	Bid getRetainedBid();
-	int computeScore(Trick trick);
-    Team computeWinner(Trick trick);
-	void addOutcome(string equipe, int score);
-    std::map<int, std::string> getOutcome();
+    Score();
+    ~Score();
+    std::vector<int> getScores;
+    void displayScore(int score1, int score2, std::shared_ptr<sf::RenderWindow> window);
 
 private:
-	Bid _retainedBid;
-    Team _biddingTeam;
-    std::map<int, std::string> _gameOutcome; // ensemble des pairs de pairs {équipe, score}
-
+    std::shared_ptr<sf::Texture> _texture;
+    std::shared_ptr<sf::Sprite> _sprite;
+    std::vector<std::shared_ptr<sf::Text>> _text;
 };
+
+#endif

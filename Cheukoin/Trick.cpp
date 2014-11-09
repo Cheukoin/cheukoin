@@ -1,14 +1,12 @@
 #include "Trick.h"
+#include "Lobby.h"
+
 using namespace std;
 
-Trick::Trick(): _cardValuesAsset({{Seven, 0}, {Eight, 0}, {Nine, 14}, {Ten, 10}, {Jack, 20}, {Queen, 3}, {King, 4}, {Ace, 11}}), _cardValues({{Seven,0},{Eight,0},{Nine,0},{Ten,10},{Jack,2},{Queen,3},{King,4},{Ace,11}})
+Trick::Trick(int number)
+    : _number(number)
+    , _cards(vector<Card>())
 {
-    
-}
-
-Trick::Trick(int number): _number(number)
-{
-    
 }
 
 Trick::~Trick()
@@ -17,7 +15,7 @@ Trick::~Trick()
 
 void Trick::setNumber(int number)
 {
-    _number=number;
+    _number = number;
 }
 
 int Trick::getNumber()
@@ -27,60 +25,34 @@ int Trick::getNumber()
 
 void Trick::addCard(Card const& card)
 {
-    _composition.push_back(card);
+    _cards.push_back(card);
 }
 
-vector<Card> Trick::getComposition()
+vector<Card> Trick::getCards()
 {
-    return _composition;
+    return _cards;
 }
 
-bool Trick::isGreater(Card card1, Card card2, Suit suit) const //greater meaning beats (takes asset's cut into account)
+void Trick::draw()
 {
-    
-    
-    if (card1.getSuit() != suit && card2.getSuit() == suit)
-    {
-        return false;
-    }
-    else if (card1.getSuit() == suit && card2.getSuit() != suit)
-    {
-        return true;
-    }
-    else
-    {
-        map <Value, int> order;
-        
-        if (card1.getSuit() == suit)
-        {
-            order = _cardValuesAsset;
-        }
-        else
-        {
-            order = _cardValues;
-        }
-        
-        if (card1.getValue() > card2.getValue())
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
+    for (auto card : _cards) {
+        card.draw();
     }
 }
 
-
-Card Trick::winningCard(Suit const& suit)
+int Trick::getWinnerCardIndex()
 {
-    Card max = _composition[0];
-    for (int i = 0; i < _composition.size(); i++)
-    {
-        if (isGreater(_composition[i], max, suit))
-        {
-            max = _composition[i];
-        }
-    }
-    return max;
+    vector<Card> sortedCards = _cards;
+    sort(sortedCards.begin(), sortedCards.end(), [this](Card a, Card b) {
+        return a.isGreaterThan(b, _cards.front().getSuit());
+    });
+
+    auto best = find(_cards.begin(), _cards.end(), sortedCards.front());
+
+    return (int)(best - _cards.begin());
+}
+
+Card Trick::getWinningCard()
+{
+    return _cards[getWinnerCardIndex()];
 }
