@@ -44,6 +44,8 @@ public:
     std::shared_ptr<Human> getHuman();
     std::shared_ptr<Player> getCurrentPlayer();
 
+    void moveToNextGame();
+
     /**
      * Draw all game entities to the main window
      */
@@ -57,6 +59,8 @@ public:
     void sortCards();
 
     void displayNextButton();
+
+    void setCurrentRound(int const& round);
 
 private:
     GameMode const& _mode;

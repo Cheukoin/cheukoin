@@ -98,6 +98,7 @@
 		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
+		C937996C1A100577002EFF71 /* next-arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = C937996B1A100577002EFF71 /* next-arrow.png */; };
 		C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C940966E19FED903007F4A21 /* scoreBoard.jpg */; };
 		C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A8B8F31A01322500459DE6 /* scoreBoard.png */; };
 /* End PBXBuildFile section */
@@ -204,6 +205,7 @@
 		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C937996B1A100577002EFF71 /* next-arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "next-arrow.png"; path = "../../../Downloads/iPad-Vista/Gutenberg/next-arrow.png"; sourceTree = "<group>"; };
 		C940966E19FED903007F4A21 /* scoreBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scoreBoard.jpg; sourceTree = "<group>"; };
 		C9A8B8F31A01322500459DE6 /* scoreBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBoard.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -375,6 +377,7 @@
 				19D2FA3519F050CB0074B105 /* jack_of_hearts.png */,
 				19D2FA3619F050CB0074B105 /* jack_of_spades.png */,
 				19D2FA3719F050CB0074B105 /* king_of_clubs.png */,
+				C937996B1A100577002EFF71 /* next-arrow.png */,
 				19D2FA3819F050CB0074B105 /* king_of_diamonds.png */,
 				19D2FA3919F050CB0074B105 /* king_of_hearts.png */,
 				C9A8B8F31A01322500459DE6 /* scoreBoard.png */,
@@ -487,6 +490,7 @@
 				19D2FA5219F050CB0074B105 /* ace_of_spades.png in Resources */,
 				19D2FA5C19F050CB0074B105 /* queen_of_diamonds.png in Resources */,
 				19D2FA4F19F050CB0074B105 /* ace_of_clubs.png in Resources */,
+				C937996C1A100577002EFF71 /* next-arrow.png in Resources */,
 				19D2FA4E19F050CB0074B105 /* 10_of_spades.png in Resources */,
 				19D2FA5619F050CB0074B105 /* jack_of_spades.png in Resources */,
 				19D2FA4D19F050CB0074B105 /* 10_of_hearts.png in Resources */,

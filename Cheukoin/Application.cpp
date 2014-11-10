@@ -153,3 +153,4 @@ std::shared_ptr<Game> Application::getGame()
 {
     return _game;
 }
+

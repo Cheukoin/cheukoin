@@ -86,3 +86,8 @@ bool Team::isPlayerInTeam(Player const& player)
 {
     return (_players.front()->getName() == player.getName() || _players.back()->getName() == player.getName());
 }
+
+void Team::updateTotalScore(int finalScore)
+{
+    _totalScore.push_back(finalScore);
+}

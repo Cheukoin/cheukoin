@@ -22,6 +22,10 @@ public:
     void setScore(int const& newScore);
     void updateScore();
     int getScore();
+
+    void updateTotalScore(int finalScore);
+    std::vector<int> getTotalScore();
+
     std::vector<Trick> getTricks();
     int computeScore(Trick& trick);
 

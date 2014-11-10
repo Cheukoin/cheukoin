@@ -10,6 +10,8 @@
 	<string>Cheukoin</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
+		<key>AE4747F50AA5AEABCCD2939F7F5C511B5F0C738E</key>
+		<string>github.com:Gutenberg-Technology/iPad.git</string>
 		<key>B43E967EA06AA4A45D59D5100F4CC9A416C9FA07</key>
 		<string>https://github.com/klorophyl/cheukoin.git</string>
 	</dict>
@@ -17,6 +19,8 @@
 	<string>Cheukoin.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
+		<key>AE4747F50AA5AEABCCD2939F7F5C511B5F0C738E</key>
+		<string>../../../Downloads/iPad-Vista</string>
 		<key>B43E967EA06AA4A45D59D5100F4CC9A416C9FA07</key>
 		<string>../..</string>
 	</dict>
@@ -35,6 +39,14 @@
 			<string>B43E967EA06AA4A45D59D5100F4CC9A416C9FA07</string>
 			<key>IDESourceControlWCCName</key>
 			<string>cheukoin</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>AE4747F50AA5AEABCCD2939F7F5C511B5F0C738E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>iPad-Vista</string>
 		</dict>
 	</array>
 </dict>
