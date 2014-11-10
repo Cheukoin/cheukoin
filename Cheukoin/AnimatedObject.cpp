@@ -57,6 +57,11 @@ void AnimatedObject::update(sf::Time elapsed)
     }
 }
 
+void AnimatedObject::setPosition(float x, float y)
+{
+    setPosition(sf::Vector2f(x, y));
+}
+
 void AnimatedObject::setPosition(sf::Vector2f const& position)
 {
     _sprite->setPosition(position);

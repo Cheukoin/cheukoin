@@ -39,19 +39,6 @@ Card::~Card()
 {
 }
 
-void Card::bidCard()
-{
-    if (!_texture->loadFromFile(resourcePath("c.png"))) {
-        puts("_texture file not loaded");
-    }
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    _texture->setSmooth(true);
-    _sprite->setTextureRect(sf::IntRect(0, 0, 960, 720));
-    _sprite->setTexture(*_texture);
-    sf::Vector2u pos = sf::Vector2u(winSize.x / 3, winSize.y / 3);
-    _sprite->setPosition(pos.x, pos.y);
-}
-
 std::string Card::_getFilename()
 {
     return ValueNames[_value] + "_of_" + SuitNames[_suit] + ".png";

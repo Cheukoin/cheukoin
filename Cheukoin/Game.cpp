@@ -47,7 +47,7 @@ void Game::play(bool playerIsPlaying)
     if ((playerIsPlaying) && (getCurrentPlayer()->getCards().size() == 7 - _currentRound)) {
         _goToNextPlayer();
         if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
-            // be sure last card played is by current player
+            // make sure last card played is by current player
             return;
         }
     }
@@ -58,7 +58,7 @@ void Game::play(bool playerIsPlaying)
         getHuman()->showLegalCards();
     }
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
-        // be sure last card played is by current player
+        // make sure last card played is by current player
         return;
     }
 }
@@ -170,10 +170,11 @@ vector<shared_ptr<Bot> > Game::getBots()
 
 void Game::draw()
 {
-    Card card = Card();
-    card.bidCard();
     if (_bid->getAmount() == 0) {
-        card.draw();
+        AnimatedObject bids("c.png", sf::Vector2f(320, 240));
+        bids.setPosition(Application::getInstance().getWindow()->getSize().x / 3,
+                         Application::getInstance().getWindow()->getSize().y / 3);
+        bids.draw();
     }
 
     for (auto player : _lobby->getPlayers()) {

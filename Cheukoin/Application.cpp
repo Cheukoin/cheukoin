@@ -3,6 +3,7 @@
 #include "Team.h"
 #include "Lobby.h"
 #include "Player.h"
+#include "AnimatedObject.h"
 
 using namespace std;
 
@@ -21,16 +22,27 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect rect = _game->getHuman()->getGlobalBounds();
-    Card card = Card();
-    card.bidCard();
-    sf::IntRect rect2 = sf::IntRect(card.getGlobalPosition().x, card.getGlobalPosition().y, card.getGlobalSize().x, card.getGlobalSize().y);
-    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman()) && (rect.contains(mousePosition));
+
+    AnimatedObject bids("c.png", sf::Vector2f(320, 240));
+    bids.setPosition(Application::getInstance().getWindow()->getSize().x / 3,
+                     Application::getInstance().getWindow()->getSize().y / 3);
+
+    sf::IntRect rect2 = sf::IntRect(
+        bids.getGlobalPosition().x,
+        bids.getGlobalPosition().y,
+        bids.getGlobalSize().x,
+        bids.getGlobalSize().y);
+
+    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman())
+                           && (rect.contains(mousePosition));
+
     if ((_game->getBid()->getAmount() == 0) && rect2.contains(mousePosition)) {
         shared_ptr<Bid> bid = _game->getHuman()->chooseBid();
         _game->setBid(bid);
         _game->getHuman()->sortCards();
         _game->getRules()->setAsset(bid->getSuit());
     }
+
     if (_game->getBid()->getAmount() != 0) {
         if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
             Card winCard = _game->getCurrentTrick().getWinningCard();
@@ -95,8 +107,6 @@ void Application::_initGame()
 
     _game = make_shared<Game>(lobby, GameMode::Offline);
     _game->startGame();
-    //Test bot1
-    cout << bot1->chooseBid()->getAmount() << "tt" << bot1->chooseBid()->getSuit() << endl;
 }
 
 void Application::_draw()
@@ -109,12 +119,7 @@ void Application::_draw()
         _game->draw();
     }
     else {
-        auto cheukoin = AnimatedObject("cheukoin.png", sf::Vector2f(700, 700));
-        cheukoin.setPosition(sf::Vector2f(
-            _window->getSize().x / 2 - cheukoin.getGlobalSize().x / 2,
-            _window->getSize().y / 2 - cheukoin.getGlobalSize().y / 2));
-
-        cheukoin.draw();
+        _cheukoin->draw();
     }
 
     _window->display();
@@ -125,6 +130,11 @@ void Application::mainLoop()
     sf::Event event;
     sf::Clock clock;
     sf::Time elapsed = clock.restart();
+
+    _cheukoin = unique_ptr<AnimatedObject>(new AnimatedObject("cheukoin.png", sf::Vector2f(700, 700)));
+    _cheukoin->setPosition(sf::Vector2f(
+        _window->getSize().x / 2 - _cheukoin->getGlobalSize().x / 2,
+        _window->getSize().y / 2 - _cheukoin->getGlobalSize().y / 2));
 
     while (_window->isOpen()) {
         elapsed = clock.restart();

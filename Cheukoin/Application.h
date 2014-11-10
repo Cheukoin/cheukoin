@@ -7,6 +7,7 @@
 
 #include "Constants.h"
 #include "Game.h"
+class AnimatedObject;
 
 class Application {
 public:
@@ -23,6 +24,8 @@ private:
     Application(){};
     Application(Application const&);
     void operator=(Application const&);
+
+    std::unique_ptr<AnimatedObject> _cheukoin;
 
     std::shared_ptr<Game> _game;
     std::shared_ptr<sf::RenderWindow> _window;

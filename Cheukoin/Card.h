@@ -20,7 +20,6 @@ public:
     Card(Suit suit, Value value);
     virtual ~Card();
 
-    void bidCard();
     Value getValue() const;
     Suit getSuit() const;
 
