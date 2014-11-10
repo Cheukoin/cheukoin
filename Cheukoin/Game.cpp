@@ -133,6 +133,8 @@ void Game::setBid(shared_ptr<Bid> bid)
     }
 
     cout << "Current bid is " << _bid->getAmount() << " " << _bid->getSuit() << endl;
+    AnimatedObject bidDisplay("scoreBoard.png", sf::Vector2f(100, 100));
+    bidDisplay.draw();
 }
 
 shared_ptr<Bid> Game::getBid()
@@ -216,9 +218,12 @@ void Game::setCurrentRound(int const& round)
 
 void Game::moveToNextGame()
 {
+    int k = 0;
     for (auto t : getLobby()->getTeams()) {
         t->updateTotalScore(t->getScore());
         t->setScore(0);
+        k++;
+        cout << "Team " << k << " has " << t->computeTotalScore() << " points" << endl;
     }
     setCurrentRound(0);
     startGame();

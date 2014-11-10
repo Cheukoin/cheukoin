@@ -91,3 +91,12 @@ void Team::updateTotalScore(int finalScore)
 {
     _totalScore.push_back(finalScore);
 }
+
+int Team::computeTotalScore()
+{
+    int score(0);
+    for (auto sc : _totalScore) {
+        score += sc;
+    }
+    return score;
+}
