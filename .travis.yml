@@ -27,4 +27,4 @@ install:
 
 script:
   - $CXX --version
-  - $CXX -stdlib=libc++ Cheukoin/main.cpp
+  - $CXX -stdlib=libc++ ./Cheukoin/main.cpp
