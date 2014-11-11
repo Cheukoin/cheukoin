@@ -16,7 +16,7 @@ Application& Application::getInstance()
 void Application::_handleClick()
 {
     if (!_game) {
-        _initGame();
+        initGame();
         return;
     }
 
@@ -93,7 +93,7 @@ void Application::forceWindowRefresh()
     _draw();
 }
 
-void Application::_initGame()
+void Application::initGame()
 {
     auto bot1 = make_shared<Bot>("Bot 1", Position::Top);
     auto bot2 = make_shared<Bot>("Bot 2", Position::Left);
@@ -163,4 +163,3 @@ std::shared_ptr<Game> Application::getGame()
 {
     return _game;
 }
-

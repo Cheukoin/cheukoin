@@ -18,6 +18,7 @@ public:
 
     void forceWindowRefresh();
     void initWindow();
+    void initGame();
     void mainLoop();
 
 private:
@@ -35,7 +36,6 @@ private:
 
     void _draw();
     void _handleClick();
-    void _initGame();
 };
 
 #endif

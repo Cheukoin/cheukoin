@@ -1,7 +1,8 @@
 language: cpp
 
 script:
-  - if [ $TRAVIS_OS_NAME == osx ]; then xcodebuild; fi
+    - xcodebuild
+    - ./runtests
 
 os:
   - osx

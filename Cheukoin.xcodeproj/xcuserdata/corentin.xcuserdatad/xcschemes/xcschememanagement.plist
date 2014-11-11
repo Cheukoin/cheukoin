@@ -14,9 +14,29 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>CheukoinTests.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>197B23251A12512200E3DD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>197B233A1A12512200E3DD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>197B234B1A1251AC00E3DD3D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>19A57CD019E2989E00FE40DD</key>
 		<dict>
 			<key>primary</key>

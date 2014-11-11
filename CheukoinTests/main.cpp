@@ -4,27 +4,30 @@
 #include "Rules.h"
 #include "Card.h"
 
-TEST(Rules, isCardGreater)
+TEST(Card, isCardGreater1)
 {
-    Rules rules(Spades);
     Card ace(Spades, Ace);
     Card ten(Spades, Ten);
-    EXPECT_TRUE(rules.isCardGreater(ace, ten));
-    EXPECT_FALSE(rules.isCardGreater(ten, ace));
+    EXPECT_TRUE(ace.isGreaterThan(ten, Spades));
+    EXPECT_FALSE(ten.isGreaterThan(ace, Spades));
 }
 
-TEST(Rules, isCardGreater)
+TEST(Card, isCardGreater2)
 {
-    Rules rules(Clubs);
     Card king(Hearts, King);
     Card queen(Clubs, King);
-    EXPECT_TRUE(rules.isCardGreater(queen, king));
-    EXPECT_FALSE(rules.isCardGreater(king, queen));
+    EXPECT_TRUE(king.isGreaterThan(queen, Hearts));
+    EXPECT_FALSE(king.isGreaterThan(queen, Clubs));
 }
 
 GTEST_API_ int main(int argc, char** argv)
 {
     printf("Running main() from gtest_main.cc\n");
     testing::InitGoogleTest(&argc, argv);
+
+    Application& app = Application::getInstance();
+    app.initWindow();
+    app.initGame();
+
     return RUN_ALL_TESTS();
 }

@@ -1,0 +1,5 @@
+#!/bin/bash
+
+rm -r build
+xcodebuild -target CheukoinTests
+./build/Release/CheukoinTests && rm -r build
