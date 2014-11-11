@@ -1,8 +1,9 @@
 language: cpp
 
-script:
-    - xcodebuild
-    - ./runtests
-
 os:
   - osx
+  - linux
+
+script:
+  - if [ $TRAVIS_OS_NAME == osx ]; then xcodebuild; ./runtests; fi
+  - if [ $TRAVIS_OS_NAME == linux ]; then CXX --version; fi
