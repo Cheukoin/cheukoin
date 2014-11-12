@@ -1576,7 +1576,7 @@ public:
    * \deprecated Use getFormattedErrorMessages() instead (typo fix).
    */
     JSONCPP_DEPRECATED("Use getFormattedErrorMessages instead")
-    std::string getFormatedErrorMessages() const __AVAILABILITY_INTERNAL_DEPRECATED;
+    std::string getFormatedErrorMessages() const;
 
     /** \brief Returns a user friendly string that list errors in the parsed
    * document.
