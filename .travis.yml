@@ -29,6 +29,7 @@ install:
   - make all
   - sudo make install
   - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
+
 script:
   - cd $TRAVIS_BUILD_DIR
-  - $CXX -o cheukoin Cheukoin/*.cpp -std=c++11 -stdlib=libc++ -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio -lsfml-network
+  - make
