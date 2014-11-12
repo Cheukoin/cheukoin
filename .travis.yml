@@ -27,7 +27,7 @@ install:
   - cd SFML/
   - cmake .
   - make all
-  - make install
+  - sudo make install
 script:
   - cd $TRAVIS_BUILD_DIR
   - $CXX -c Cheukoin/main.cpp -std=c++11 -stdlib=libc++
