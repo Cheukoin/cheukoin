@@ -6,3 +6,4 @@ Cheukoin/Debug/*
 *.xcuserstate
 .DS_Store
 Cheukoin.xcodeproj/xcuserdata/*
+build/*
