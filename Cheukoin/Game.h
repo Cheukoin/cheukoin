@@ -7,6 +7,7 @@
 
 #include "Constants.h"
 
+class AnimatedObject;
 class Rules;
 class Trick;
 class Player;
@@ -14,6 +15,7 @@ class Team;
 class Lobby;
 class Bot;
 class Bid;
+class BidMaker;
 class Human;
 class Score;
 class Asset;
@@ -31,6 +33,8 @@ public:
 
     void setBid(std::shared_ptr<Bid> bid);
     std::shared_ptr<Bid> getBid();
+
+    std::shared_ptr<BidMaker> getBidMaker();
 
     std::shared_ptr<Lobby> getLobby();
 
@@ -62,15 +66,20 @@ public:
     void displayAsset(Suit asset);
     void setCurrentRound(int const& round);
 
+    void goToNextBiddingPlayer();
+    std::shared_ptr<Player> getCurrentBiddingPlayer();
+
 private:
     GameMode const& _mode;
+    std::shared_ptr<BidMaker> _bidMaker;
     std::shared_ptr<Bid> _bid;
     std::shared_ptr<Asset> _asset;
     std::shared_ptr<Lobby> _lobby;
     std::shared_ptr<Score> _score;
     std::vector<Trick> _tricks;
     int _currentRound;
-    unsigned int _currentPlayerIndex;
+    int _currentPlayerIndex;
+    int _currentBiddingPlayerIndex;
     std::shared_ptr<Rules> _rules;
     void _goToNextPlayer();
 };

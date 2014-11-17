@@ -16,7 +16,7 @@ public:
     Human(std::string name, Position position);
     ~Human();
 
-    std::shared_ptr<Bid> chooseBid();
+    void chooseBid();
 
     void initialize();
     void play();

@@ -7,6 +7,7 @@
 
 #include "Constants.h"
 #include "Game.h"
+
 class AnimatedObject;
 
 class Application {

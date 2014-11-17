@@ -7,20 +7,22 @@
 
 class Bid {
 public:
-    Bid(Suit suit, int amount);
+    Bid(Suit suit, int amount, std::string playerName);
     Bid();
     ~Bid();
-    int getAmount();
+
     void setAmount(int amount);
+    int getAmount();
+
     void setSuit(Suit suit);
     Suit getSuit();
-    bool isBidValid(Bid previousBid);
 
-    void displayNextButton();
+    std::string getPlayerName();
 
 private:
     int _amount;
     Suit _suit;
+    std::string _playerName;
 };
 
 #endif

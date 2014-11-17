@@ -21,49 +21,30 @@ void Application::_handleClick()
     }
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
-    sf::IntRect rect = _game->getHuman()->getGlobalBounds();
-
-    AnimatedObject bids("c.png", sf::Vector2f(320, 240));
-    bids.setPosition(Application::getInstance().getWindow()->getSize().x / 3,
-                     Application::getInstance().getWindow()->getSize().y / 3);
-
-    sf::IntRect rect2 = sf::IntRect(
-        bids.getGlobalPosition().x,
-        bids.getGlobalPosition().y,
-        bids.getGlobalSize().x,
-        bids.getGlobalSize().y);
+    sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
 
     bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman())
-                           && (rect.contains(mousePosition));
+                           && (humanBounds.contains(mousePosition));
 
-    if ((_game->getBid()->getAmount() == 0) && rect2.contains(mousePosition)) {
-        shared_ptr<Bid> bid = _game->getHuman()->chooseBid();
-        _game->setBid(bid);
-        _game->getHuman()->sortCards();
-        _game->getRules()->setAsset(bid->getSuit());
-    }
+    if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
+        Card winCard = _game->getCurrentTrick().getWinningCard();
 
-    if (_game->getBid()->getAmount() != 0) {
-        if (_game->getCurrentTrick().getCards().size() == PLAYER_COUNT) {
-            Card winCard = _game->getCurrentTrick().getWinningCard();
-
-            for (auto player : _game->getLobby()->getPlayers()) {
-                if (player->getPlayedCard() == winCard) {
-                    if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
-                        _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
-                    }
-                    else {
-                        _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
-                    }
+        for (auto player : _game->getLobby()->getPlayers()) {
+            if (player->getPlayedCard() == winCard) {
+                if (_game->getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
+                    _game->getLobby()->getTeams()[0]->addWonTrick(_game->getCurrentTrick());
+                }
+                else {
+                    _game->getLobby()->getTeams()[1]->addWonTrick(_game->getCurrentTrick());
                 }
             }
-            _game->initializeRound();
         }
-        if (playerIsPlaying) {
-            _game->getCurrentPlayer()->play();
-        }
-        _game->play(playerIsPlaying);
+        _game->initializeRound();
     }
+    if (playerIsPlaying) {
+        _game->getCurrentPlayer()->play();
+    }
+    _game->play(playerIsPlaying);
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()

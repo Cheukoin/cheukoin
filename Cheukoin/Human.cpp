@@ -73,26 +73,10 @@ void Human::playCard(const Card& card)
     Player::playCard(card);
 }
 
-shared_ptr<Bid> Human::chooseBid()
+void Human::chooseBid()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-    for (int i = 0; i < 5; i++) {
-        for (int suit = 0; suit < 4; suit++) {
-            sf::IntRect rectref;
-            AnimatedObject bids("c.png", sf::Vector2f(960, 720));
-            bids.draw();
-            rectref = sf::IntRect(
-                bids.getGlobalPosition().x + bids.getGlobalSize().x * i / 5,
-                bids.getGlobalPosition().y + bids.getGlobalSize().y * suit / 4,
-                bids.getGlobalSize().x / 5,
-                bids.getGlobalSize().y / 4);
-
-            if (rectref.contains(mousePosition)) {
-                return make_shared<Bid>(Suit(suit), 80 + i * 20);
-            }
-        }
-    }
-    return make_shared<Bid>();
+    Application::getInstance().getGame()->getBidMaker()->handleClickAtPosition(mousePosition);
 }
 
 void Human::showLegalCards()

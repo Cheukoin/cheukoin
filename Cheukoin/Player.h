@@ -8,6 +8,7 @@
 #include "Application.h"
 #include "Trick.h"
 #include "Constants.h"
+#include "BidMaker.h"
 
 class Bot;
 
@@ -35,6 +36,7 @@ public:
 
     Bid getBid() const;
     void setBid(Bid& bid);
+    virtual void chooseBid(){};
 
     void makeDealer();
     void changeDealer();
@@ -47,12 +49,15 @@ public:
     // Card management
     virtual void initialize();
     void update(sf::Time elapsed);
+
     void addCard(Card card);
     void playCard(Card const& card);
     std::vector<Card> getCards() const;
+
     sf::IntRect getGlobalBounds();
     void drawCards() const;
     std::vector<Card> cardsForSuit(Suit suit);
+    bool hasCard(Card card);
 
     static std::vector<std::string> PositionNames;
     Card chooseCard();

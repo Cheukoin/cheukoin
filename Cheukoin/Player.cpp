@@ -218,6 +218,14 @@ vector<Card> Player::cardsForSuit(Suit suit)
     return Application::getInstance().getGame()->getRules()->cardsForSuit(_cards, suit);
 }
 
+bool Player::hasCard(Card card)
+{
+    for (auto cardTemp : _cards)
+        if (card == cardTemp)
+            return true;
+    return false;
+}
+
 Card Player::chooseCard()
 {
     // TODO fix this

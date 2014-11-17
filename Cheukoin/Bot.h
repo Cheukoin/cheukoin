@@ -18,7 +18,7 @@ public:
 
     Card chooseCard();
     bool containsValue(std::vector<Card> vect, Value value);
-    std::shared_ptr<Bid> chooseBid();
+    void chooseBid();
 
 private:
     std::vector<Card> _remainingCardsInGame;

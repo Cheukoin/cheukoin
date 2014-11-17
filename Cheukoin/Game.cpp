@@ -1,5 +1,7 @@
 #include "Game.h"
+#include "AnimatedObject.h"
 #include "Bid.h"
+#include "BidMaker.h"
 #include "Bot.h"
 #include "Team.h"
 #include "Lobby.h"
@@ -19,11 +21,13 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
     , _currentPlayerIndex(0)
     , _asset(make_shared<Asset>())
     , _score(make_shared<Score>())
+    , _currentBiddingPlayerIndex(0)
 {
     initializeRound();
 
-    _bid = make_shared<Bid>(Spades, 0);
+    _bid = make_shared<Bid>(Spades, 0, "");
     _rules = make_shared<Rules>(Spades);
+    _bidMaker = make_shared<BidMaker>("bidsTable.png", sf::Vector2f(320, 240));
 }
 
 void Game::startGame()
@@ -37,6 +41,12 @@ void Game::startGame()
 
 void Game::play(bool playerIsPlaying)
 {
+    if (_bid->getAmount() == 0) {
+        cout << "Waiting for bid from " << getCurrentBiddingPlayer()->getName() << endl;
+        getCurrentBiddingPlayer()->chooseBid();
+        return;
+    }
+
     if (_currentRound > 7) {
         cout << "Game finished!" << endl;
         displayNextButton();
@@ -48,6 +58,7 @@ void Game::play(bool playerIsPlaying)
         cout << "Waiting for player's move" << endl;
         return;
     }
+
     if ((playerIsPlaying)
         && (getCurrentPlayer()->getCards().size()
             == static_cast<unsigned>(7 - _currentRound))) {
@@ -63,6 +74,7 @@ void Game::play(bool playerIsPlaying)
         _goToNextPlayer();
         getHuman()->showLegalCards();
     }
+
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
         // make sure last card played is by current player
         return;
@@ -83,6 +95,11 @@ void Game::update(sf::Time elapsed)
 void Game::_goToNextPlayer()
 {
     _currentPlayerIndex = (_currentPlayerIndex + 1) % PLAYER_COUNT;
+}
+
+void Game::goToNextBiddingPlayer()
+{
+    _currentBiddingPlayerIndex = (_currentBiddingPlayerIndex + 1) % PLAYER_COUNT;
 }
 
 void Game::initializeRound()
@@ -120,7 +137,12 @@ shared_ptr<Human> Game::getHuman()
 
 shared_ptr<Player> Game::getCurrentPlayer()
 {
-    return _lobby->getPlayers().at(_currentPlayerIndex);
+    return _lobby->getPlayers().at((unsigned long)_currentPlayerIndex);
+}
+
+shared_ptr<Player> Game::getCurrentBiddingPlayer()
+{
+    return _lobby->getPlayers().at((unsigned long)_currentBiddingPlayerIndex);
 }
 
 GameMode Game::getMode()
@@ -150,6 +172,11 @@ void Game::setBid(shared_ptr<Bid> bid)
 shared_ptr<Bid> Game::getBid()
 {
     return _bid;
+}
+
+shared_ptr<BidMaker> Game::getBidMaker()
+{
+    return _bidMaker;
 }
 
 shared_ptr<Rules> Game::getRules()
@@ -183,10 +210,7 @@ vector<shared_ptr<Bot> > Game::getBots()
 void Game::draw()
 {
     if (_bid->getAmount() == 0) {
-        AnimatedObject bids("c.png", sf::Vector2f(320, 240));
-        bids.setPosition(Application::getInstance().getWindow()->getSize().x / 3,
-                         Application::getInstance().getWindow()->getSize().y / 3);
-        bids.draw();
+        _bidMaker->draw();
     }
 
     for (auto player : _lobby->getPlayers()) {

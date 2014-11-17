@@ -175,44 +175,47 @@ void Bot::_guessHands()
     }
 }
 
-shared_ptr<Bid> Bot::chooseBid()
+void Bot::chooseBid()
 {
-    std::vector<Card> cards = getCards();
-    std::map<Suit, std::vector<Card> > a;
-
-    for (auto c : cards) {
-        Suit i = c.getSuit();
-        a[i].push_back(c);
-    }
-
-    int max = 0;
     Suit asset;
+    int value, amount;
+
+    vector<Card> cards = getCards();
+    map<Suit, vector<Card> > cardsPerSuit;
+
+    for (auto card : cards) {
+        cardsPerSuit[card.getSuit()].push_back(card);
+    }
+
     for (int suit = 0; suit < 4; suit++) {
-        int amount = 0;
-        Suit s = Suit(suit);
-        if (a[s].size() == 3) {
-            if (containsValue(a[s], Jack) || containsValue(a[s], Nine))
-                amount = 80;
-            if (containsValue(a[s], Jack) && containsValue(a[s], Nine))
-                amount = 90;
-            if (amount != 0 && (containsValue(cards, Ten) || containsValue(cards, Ace)))
-                amount = amount + 10;
+        amount = 0;
+
+        if (hasCard(Card((Suit)suit, Jack)) && hasCard(Card((Suit)suit, Nine))) {
+            amount = 90;
         }
-        if (a[s].size() > 3 && containsValue(a[s], Jack) && containsValue(a[s], Nine) && ((containsValue(a[s], Ace) || containsValue(a[s], Ten))))
-            amount = 100;
-        if (max < amount) {
-            max = amount;
-            asset = s;
+        else if (hasCard(Card((Suit)suit, Jack)) || hasCard(Card((Suit)suit, Nine))) {
+            amount = 80;
+        }
+
+        if (amount >= 80) {
+            for (int suitBis = 0; suitBis < 4; suitBis++) {
+                if (suitBis != suit && hasCard(Card((Suit)suit, Ace))) {
+                    amount += 10;
+                }
+            }
+        }
+
+        if (cardsPerSuit[(Suit)suit].size() > 3) {
+            amount += (cardsPerSuit[(Suit)suit].size() - 4) * 10;
+        }
+
+        if (amount > value) {
+            value = amount;
+            asset = (Suit)suit;
         }
     }
-    return make_shared<Bid>(asset, max);
-}
 
-bool Bot::containsValue(std::vector<Card> vect, Value value)
-{
-    bool res = false;
-    for (auto c : vect)
-        if (c.getValue() == value)
-            res = true;
-    return res;
+    amount = (amount > 180 ? 180 : amount);
+
+    Application::getInstance().getGame()->getBidMaker()->setBid(asset, value);
 }

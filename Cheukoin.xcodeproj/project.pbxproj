@@ -38,7 +38,6 @@
 		197B23711A12538300E3DD3D /* ResourcePathOSX.mm in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EAB19E2C23C0037C5AE /* ResourcePathOSX.mm */; };
 		197B23731A12553A00E3DD3D /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 197B22CE1A1248EB00E3DD3D /* cardBack.png */; };
 		197B23741A12553A00E3DD3D /* suits.png in Resources */ = {isa = PBXBuildFile; fileRef = 19E3F86E1A0FB1DC00F236E1 /* suits.png */; };
-		197B23751A12553A00E3DD3D /* c.png in Resources */ = {isa = PBXBuildFile; fileRef = 937DD0831A080C680074FB73 /* c.png */; };
 		197B23761A12553A00E3DD3D /* cheukoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 193436E91A07CE020077F31E /* cheukoin.png */; };
 		197B23771A12553A00E3DD3D /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
 		197B23781A12553A00E3DD3D /* 7_of_clubs.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */; };
@@ -124,7 +123,6 @@
 		19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
 		9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
-		937DD0841A080C690074FB73 /* c.png in Resources */ = {isa = PBXBuildFile; fileRef = 937DD0831A080C680074FB73 /* c.png */; };
 		93F833CE19F6F6D40022011F /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
 		C0B1A0D619ED1C3400436C77 /* table.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C0B1A0D519ED1C3400436C77 /* table.jpeg */; };
 		C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
@@ -139,6 +137,8 @@
 		C0B83EC319E2C23C0037C5AE /* Team.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB119E2C23C0037C5AE /* Team.cpp */; };
 		C0B83EC419E2C23C0037C5AE /* Trick.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EB319E2C23C0037C5AE /* Trick.cpp */; };
 		C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83EC619E2C95A0037C5AE /* Bot.cpp */; };
+		C0FBD6281A1A64DD00E9E754 /* BidMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FBD6261A1A64DD00E9E754 /* BidMaker.cpp */; };
+		C0FBD62A1A1AA09100E9E754 /* bidsTable.png in Resources */ = {isa = PBXBuildFile; fileRef = C0FBD6291A1AA09100E9E754 /* bidsTable.png */; };
 		C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */ = {isa = PBXBuildFile; fileRef = C940966E19FED903007F4A21 /* scoreBoard.jpg */; };
 		C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */ = {isa = PBXBuildFile; fileRef = C9A8B8F31A01322500459DE6 /* scoreBoard.png */; };
 /* End PBXBuildFile section */
@@ -206,7 +206,6 @@
 		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
 		9330B4941A02C7450078D1A7 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
-		937DD0831A080C680074FB73 /* c.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = c.png; sourceTree = "<group>"; };
 		93F833CD19F6F6D40022011F /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
 		93F833CF19F6F7A20022011F /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 		C0B1A0D519ED1C3400436C77 /* table.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = table.jpeg; sourceTree = "<group>"; };
@@ -233,6 +232,9 @@
 		C0B83EC619E2C95A0037C5AE /* Bot.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Bot.cpp; sourceTree = "<group>"; };
 		C0B83EC719E2C95A0037C5AE /* Bot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bot.h; sourceTree = "<group>"; };
 		C0C093BE19E81BD900023F27 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		C0FBD6261A1A64DD00E9E754 /* BidMaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BidMaker.cpp; sourceTree = "<group>"; };
+		C0FBD6271A1A64DD00E9E754 /* BidMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BidMaker.h; sourceTree = "<group>"; };
+		C0FBD6291A1AA09100E9E754 /* bidsTable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bidsTable.png; sourceTree = "<group>"; };
 		C940966E19FED903007F4A21 /* scoreBoard.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = scoreBoard.jpg; sourceTree = "<group>"; };
 		C9A8B8F31A01322500459DE6 /* scoreBoard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scoreBoard.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -309,6 +311,7 @@
 				19E8151D19F2C77E00B2A5F8 /* Application.cpp */,
 				19E3F8701A0FB24E00F236E1 /* Asset.cpp */,
 				C0B83E9919E2C23C0037C5AE /* Bid.cpp */,
+				C0FBD6261A1A64DD00E9E754 /* BidMaker.cpp */,
 				C0B83EC619E2C95A0037C5AE /* Bot.cpp */,
 				C0B83E9B19E2C23C0037C5AE /* Card.cpp */,
 				C0B83EA019E2C23C0037C5AE /* Game.cpp */,
@@ -324,6 +327,7 @@
 				19E8151E19F2C77E00B2A5F8 /* Application.h */,
 				19E3F8711A0FB24E00F236E1 /* Asset.h */,
 				C0B83E9A19E2C23C0037C5AE /* Bid.h */,
+				C0FBD6271A1A64DD00E9E754 /* BidMaker.h */,
 				C0B83EC719E2C95A0037C5AE /* Bot.h */,
 				C0B83E9C19E2C23C0037C5AE /* Card.h */,
 				C0C093BE19E81BD900023F27 /* Constants.h */,
@@ -364,11 +368,6 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				197B22CE1A1248EB00E3DD3D /* cardBack.png */,
-				19E3F86E1A0FB1DC00F236E1 /* suits.png */,
-				937DD0831A080C680074FB73 /* c.png */,
-				193436E91A07CE020077F31E /* cheukoin.png */,
-				9330B4941A02C7450078D1A7 /* sansation.ttf */,
 				19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */,
 				19D2FA2019F050CB0074B105 /* 7_of_diamonds.png */,
 				19D2FA2119F050CB0074B105 /* 7_of_hearts.png */,
@@ -389,20 +388,25 @@
 				19D2FA3019F050CB0074B105 /* ace_of_diamonds.png */,
 				19D2FA3119F050CB0074B105 /* ace_of_hearts.png */,
 				19D2FA3219F050CB0074B105 /* ace_of_spades.png */,
+				C0FBD6291A1AA09100E9E754 /* bidsTable.png */,
+				197B22CE1A1248EB00E3DD3D /* cardBack.png */,
+				193436E91A07CE020077F31E /* cheukoin.png */,
 				19D2FA3319F050CB0074B105 /* jack_of_clubs.png */,
-				C940966E19FED903007F4A21 /* scoreBoard.jpg */,
 				19D2FA3419F050CB0074B105 /* jack_of_diamonds.png */,
 				19D2FA3519F050CB0074B105 /* jack_of_hearts.png */,
 				19D2FA3619F050CB0074B105 /* jack_of_spades.png */,
 				19D2FA3719F050CB0074B105 /* king_of_clubs.png */,
 				19D2FA3819F050CB0074B105 /* king_of_diamonds.png */,
 				19D2FA3919F050CB0074B105 /* king_of_hearts.png */,
-				C9A8B8F31A01322500459DE6 /* scoreBoard.png */,
 				19D2FA3A19F050CB0074B105 /* king_of_spades.png */,
 				19D2FA3B19F050CB0074B105 /* queen_of_clubs.png */,
 				19D2FA3C19F050CB0074B105 /* queen_of_diamonds.png */,
 				19D2FA3D19F050CB0074B105 /* queen_of_hearts.png */,
 				19D2FA3E19F050CB0074B105 /* queen_of_spades.png */,
+				9330B4941A02C7450078D1A7 /* sansation.ttf */,
+				C940966E19FED903007F4A21 /* scoreBoard.jpg */,
+				C9A8B8F31A01322500459DE6 /* scoreBoard.png */,
+				19E3F86E1A0FB1DC00F236E1 /* suits.png */,
 				C0B1A0D519ED1C3400436C77 /* table.jpeg */,
 				C0B83EAE19E2C23C0037C5AE /* Thumbs.db */,
 			);
@@ -509,7 +513,6 @@
 			files = (
 				197B23731A12553A00E3DD3D /* cardBack.png in Resources */,
 				197B23741A12553A00E3DD3D /* suits.png in Resources */,
-				197B23751A12553A00E3DD3D /* c.png in Resources */,
 				197B23761A12553A00E3DD3D /* cheukoin.png in Resources */,
 				197B23771A12553A00E3DD3D /* sansation.ttf in Resources */,
 				197B23781A12553A00E3DD3D /* 7_of_clubs.png in Resources */,
@@ -572,11 +575,11 @@
 				C0B83EC119E2C23C0037C5AE /* Thumbs.db in Resources */,
 				19D2FA5B19F050CB0074B105 /* queen_of_clubs.png in Resources */,
 				19D2FA5519F050CB0074B105 /* jack_of_hearts.png in Resources */,
-				937DD0841A080C690074FB73 /* c.png in Resources */,
 				19D2FA4019F050CB0074B105 /* 7_of_diamonds.png in Resources */,
 				19D2FA5719F050CB0074B105 /* king_of_clubs.png in Resources */,
 				19D2FA4919F050CB0074B105 /* 9_of_hearts.png in Resources */,
 				C940966F19FED903007F4A21 /* scoreBoard.jpg in Resources */,
+				C0FBD62A1A1AA09100E9E754 /* bidsTable.png in Resources */,
 				19D2FA4319F050CB0074B105 /* 8_of_clubs.png in Resources */,
 				19D2FA4219F050CB0074B105 /* 7_of_spades.png in Resources */,
 				19D2FA5819F050CB0074B105 /* king_of_diamonds.png in Resources */,
@@ -647,6 +650,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C0B83EC819E2C95A0037C5AE /* Bot.cpp in Sources */,
+				C0FBD6281A1A64DD00E9E754 /* BidMaker.cpp in Sources */,
 				C0B83EBF19E2C23C0037C5AE /* ResourcePathOSX.mm in Sources */,
 				19E3F8721A0FB24E00F236E1 /* Asset.cpp in Sources */,
 				19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */,

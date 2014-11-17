@@ -1,8 +1,11 @@
 #include "Bid.h"
 
-Bid::Bid(Suit suit, int amount)
+using namespace std;
+
+Bid::Bid(Suit suit, int amount, string playerName)
     : _suit(suit)
     , _amount(amount)
+    , _playerName(playerName)
 {
 }
 Bid::Bid()
@@ -32,11 +35,7 @@ Suit Bid::getSuit()
     return _suit;
 }
 
-bool Bid::isBidValid(Bid previousBid)
+string Bid::getPlayerName()
 {
-    return false;
-}
-
-void Bid::displayNextButton()
-{
+    return _playerName;
 }
