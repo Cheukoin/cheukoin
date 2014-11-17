@@ -17,6 +17,7 @@ class Bot;
 class Bid;
 class Human;
 class Score;
+class Asset;
 
 class Game {
 public:
@@ -59,16 +60,17 @@ public:
     void sortCards();
 
     void displayNextButton();
-
+    void displayAsset(Suit asset);
     void setCurrentRound(int const& round);
 
 private:
     GameMode const& _mode;
     std::shared_ptr<Bid> _bid;
+    std::shared_ptr<Asset> _asset;
     std::shared_ptr<Lobby> _lobby;
     std::vector<Trick> _tricks;
     int _currentRound;
-    int _currentPlayerIndex;
+    unsigned int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
     void _goToNextPlayer();
     Score _score;

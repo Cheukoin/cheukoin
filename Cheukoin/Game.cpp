@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Human.h"
 #include "Rules.h"
+#include "Asset.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
     , _currentRound(-1)
     , _tricks(vector<Trick>())
     , _currentPlayerIndex(0)
+    , _asset(make_shared<Asset>())
 {
     initializeRound();
 
@@ -132,7 +134,7 @@ void Game::setBid(shared_ptr<Bid> bid)
         player->sortCards();
     }
 
-    cout << "Current bid is " << _bid->getAmount() << " " << _bid->getSuit() << endl;
+    cout << "Current bid is " << _bid->getAmount() << " " << SuitNames.at(_bid->getSuit()) << endl;
     AnimatedObject bidDisplay("scoreBoard.png", sf::Vector2f(100, 100));
     bidDisplay.draw();
 }
@@ -187,6 +189,10 @@ void Game::draw()
         _tricks.back().draw();
     }
 
+    if (_asset->isSet()) {
+        _asset->draw();
+    }
+
     _score.displayScore(
         Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(),
         Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(),
@@ -209,6 +215,12 @@ void Game::displayNextButton()
     sprite->setScale(0.3, 0.3);
     sf::Vector2u pos = sf::Vector2u(winSize.x / 3, winSize.y / 3);
     sprite->setPosition(pos.x, pos.y);
+}
+
+void Game::displayAsset(Suit asset)
+{
+    _asset->setSuit(asset);
+    _asset->setPosition(10, 10);
 }
 
 void Game::setCurrentRound(int const& round)

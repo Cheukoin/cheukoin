@@ -30,9 +30,6 @@ public:
 
     bool isGreaterThan(Card other, Suit askedSuit) const;
 
-    static const std::vector<std::string> SuitNames;
-    static const std::vector<std::string> ValueNames;
-
 private:
     Suit _suit;
     Value _value;

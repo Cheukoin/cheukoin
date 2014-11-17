@@ -33,7 +33,6 @@ public:
     void setPosition(sf::Vector2f const& position);
 
     sf::Vector2f getGlobalPosition() const;
-
     sf::Vector2f getGlobalSize() const;
 
 protected:

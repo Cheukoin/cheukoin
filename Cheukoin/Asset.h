@@ -9,13 +9,19 @@
 #ifndef __Cheukoin__Asset__
 #define __Cheukoin__Asset__
 
-#include <stdio.h>
-#include <SFML/Graphics.hpp>
 #include "AnimatedObject.h"
+#include "Card.h"
 
 class Asset : public AnimatedObject {
 public:
-    Asset(Suit asset);
+    Asset();
+
+    void setSuit(Suit suit);
+    bool isSet();
+
+private:
+    Suit _suit;
+    bool _isSet;
 };
 
 #endif /* defined(__Cheukoin__Asset__) */

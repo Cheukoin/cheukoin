@@ -3,24 +3,6 @@
 
 using namespace std;
 
-vector<string> const Card::SuitNames = {
-    "clubs",
-    "hearts",
-    "diamonds",
-    "spades"
-};
-
-vector<string> const Card::ValueNames = {
-    "ace",
-    "king",
-    "queen",
-    "jack",
-    "10",
-    "9",
-    "8",
-    "7"
-};
-
 Card::Card()
     : AnimatedObject("cardBack.png", sf::Vector2f(150, 218))
     , _shown(false)
@@ -41,7 +23,7 @@ Card::~Card()
 
 std::string Card::_getFilename()
 {
-    return ValueNames[_value] + "_of_" + SuitNames[_suit] + ".png";
+    return ValueNames.at(_value) + "_of_" + SuitNames.at(_suit) + ".png";
 }
 
 void Card::show()
@@ -132,9 +114,9 @@ bool operator!=(Card const& a, Card const& b)
 ostream& operator<<(ostream& os, const Card& card)
 {
     os << "<Card: "
-       << Card::ValueNames[card.getValue()]
+       << ValueNames.at(card.getValue())
        << " of "
-       << Card::SuitNames[card.getSuit()]
+       << SuitNames.at(card.getSuit())
        << ">";
 
     return os;

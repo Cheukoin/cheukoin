@@ -44,6 +44,7 @@ const map<Value, int> Rules::CardValuesAsset = {
 void Rules::setAsset(Suit asset)
 {
     _asset = asset;
+    Application::getInstance().getGame()->displayAsset(asset);
 }
 
 bool Rules::isTeamValid(Team team)
