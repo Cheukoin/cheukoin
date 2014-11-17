@@ -1,5 +1,4 @@
 #include "Player.h"
-
 #include "Bot.h"
 
 using namespace std;
@@ -105,10 +104,6 @@ void Player::playCard(Card const& card)
     _playedCard = _cards[i];
 
     _cards.erase(_cards.begin() + i);
-
-    if (game->getMode() == Online) {
-        // TODO : notify server if multiplayer
-    }
 
     for (auto bot : game->getBots()) {
         bot->update();
