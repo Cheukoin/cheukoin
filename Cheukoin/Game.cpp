@@ -7,6 +7,7 @@
 #include "Human.h"
 #include "Rules.h"
 #include "Asset.h"
+#include "Score.h"
 
 using namespace std;
 
@@ -17,6 +18,7 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
     , _tricks(vector<Trick>())
     , _currentPlayerIndex(0)
     , _asset(make_shared<Asset>())
+    , _score(make_shared<Score>())
 {
     initializeRound();
 
@@ -96,6 +98,10 @@ void Game::initializeRound()
     if (getHuman()->getCards().size()) {
         getHuman()->showLegalCards();
     }
+
+    _score->setScore(
+        _lobby->getTeams()[0]->getScore(),
+        _lobby->getTeams()[1]->getScore());
 
     cout << "Playing round " << _currentRound << endl;
 }
@@ -195,10 +201,9 @@ void Game::draw()
         _asset->draw();
     }
 
-    _score.displayScore(
-        Application::getInstance().getGame()->getLobby()->getTeams()[0]->getScore(),
-        Application::getInstance().getGame()->getLobby()->getTeams()[1]->getScore(),
-        Application::getInstance().getWindow());
+    if (_score) {
+        _score->draw();
+    }
 }
 
 void Game::displayNextButton()
@@ -232,12 +237,10 @@ void Game::setCurrentRound(int const& round)
 
 void Game::moveToNextGame()
 {
-    int k = 0;
-    for (auto t : getLobby()->getTeams()) {
-        t->updateTotalScore(t->getScore());
-        t->setScore(0);
-        k++;
-        cout << "Team " << k << " has " << t->computeTotalScore() << " points" << endl;
+    for (auto team : getLobby()->getTeams()) {
+        team->updateTotalScore(team->getScore());
+        team->setScore(0);
+        cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
     setCurrentRound(0);
     startGame();

@@ -6,7 +6,6 @@
 #include <SFML/Graphics.hpp>
 
 #include "Constants.h"
-#include "Score.h"
 
 class Rules;
 class Trick;
@@ -68,12 +67,12 @@ private:
     std::shared_ptr<Bid> _bid;
     std::shared_ptr<Asset> _asset;
     std::shared_ptr<Lobby> _lobby;
+    std::shared_ptr<Score> _score;
     std::vector<Trick> _tricks;
     int _currentRound;
     unsigned int _currentPlayerIndex;
     std::shared_ptr<Rules> _rules;
     void _goToNextPlayer();
-    Score _score;
 };
 
 #endif

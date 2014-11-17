@@ -66,6 +66,11 @@ vector<Trick> Team::getTricks()
     return _wonTricks;
 }
 
+string Team::getName()
+{
+    return _name;
+}
+
 vector<shared_ptr<Player> > Team::getPlayers()
 {
     return _players;

@@ -9,9 +9,11 @@
 #ifndef __Cheukoin__AnimatedSprite__
 #define __Cheukoin__AnimatedSprite__
 
-#include <stdio.h>
+#include <iostream>
 #include <memory.h>
 #include <SFML/Graphics.hpp>
+
+#include "ResourcePath.h"
 #include "Application.h"
 
 class AnimatedObject {
