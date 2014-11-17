@@ -24,7 +24,7 @@ void Human::initialize()
 {
     Player::initialize();
 
-    for (int i = 0; i < _cards.size(); i++) {
+    for (unsigned i = 0; i < _cards.size(); i++) {
         _cards[i].show();
     }
 }
@@ -44,7 +44,7 @@ Card Human::chooseCard()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
 
-    for (int i = 0; (i < _cards.size()); i++) {
+    for (unsigned i = 0; i < _cards.size(); i++) {
         sf::IntRect rectref;
         if (i == (_cards.size() - 1)) {
             rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);

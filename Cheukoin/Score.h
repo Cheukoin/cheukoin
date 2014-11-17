@@ -16,7 +16,7 @@ public:
 private:
     std::shared_ptr<sf::Texture> _texture;
     std::shared_ptr<sf::Sprite> _sprite;
-    std::vector<std::shared_ptr<sf::Text>> _text;
+    std::vector<std::shared_ptr<sf::Text> > _text;
 };
 
 #endif
