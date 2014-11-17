@@ -159,6 +159,7 @@ void Game::setBid(shared_ptr<Bid> bid)
 {
     _bid = bid;
     _rules = make_shared<Rules>(_bid->getSuit());
+    displayAsset(_bid->getSuit());
 
     for (auto& player : _lobby->getPlayers()) {
         player->sortCards();

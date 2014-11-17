@@ -45,7 +45,7 @@ void BidMaker::setBid(Suit asset, int value)
 
         if (value > _currentBid.getAmount()) {
             _currentBid = Bid(asset, value, currentBiddingPlayerName);
-            cout << currentBiddingPlayerName << " bids " << asset << " " << value << endl;
+            cout << currentBiddingPlayerName << " bids " << SuitNames.at(asset) << " " << value << endl;
         }
         else {
             cout << currentBiddingPlayerName << " skips" << endl;
