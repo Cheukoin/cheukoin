@@ -37,7 +37,6 @@ bool Bid::isBidValid(Bid previousBid)
     return false;
 }
 
-
-void Bid::displayNextButton(){
-    
+void Bid::displayNextButton()
+{
 }
