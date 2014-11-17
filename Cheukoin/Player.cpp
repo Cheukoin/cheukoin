@@ -57,7 +57,7 @@ void Player::sortCards()
         break;
     }
 
-    for (unsigned i = 0; i < _cards.size(); i++) {
+    for (int i = 0; i < (int)_cards.size(); i++) {
         sf::Vector2f cardPosition(pos.x + 20 * (i - 4) - cardSize.x / 2, pos.y);
         _cards[i].setPosition(cardPosition);
     }
@@ -89,7 +89,7 @@ void Player::playCard(Card const& card)
 {
     cout << "-- " << *this << " playing " << card << endl;
     // TODO : verify move is valid with rules
-    unsigned i = 0;
+    unsigned int i = 0;
 
     for (i = 0; i < _cards.size(); i++) {
         if (_cards[i] == card) {
