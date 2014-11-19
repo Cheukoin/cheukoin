@@ -212,6 +212,7 @@ void Game::draw()
 {
     if (_bid->getAmount() == 0) {
         _bidMaker->draw();
+        Application::getInstance().getWindow()->draw(_bidMaker->getText());
     }
 
     for (auto player : _lobby->getPlayers()) {

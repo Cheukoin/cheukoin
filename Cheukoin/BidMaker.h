@@ -22,11 +22,13 @@ public:
 
     void handleClickAtPosition(sf::Vector2i position);
     void setBid(Suit asset, int value);
-
+    sf::Text getText();
     Bid getCurrentBid();
 
 private:
     Bid _currentBid;
+    std::shared_ptr<sf::Text> _text;
+    sf::Font _font;
 
     bool _shouldStartGame();
 };
