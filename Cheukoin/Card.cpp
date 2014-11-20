@@ -97,6 +97,9 @@ bool Card::isGreaterThan(Card other, Suit askedSuit) const
     else {
         // 2 cards are from same suit
         map<Value, int> order = _suit == asset ? Rules::CardValuesAsset : Rules::CardValues;
+        if (order[_value] == order[other.getValue()]) {
+            return _value < other.getValue();
+        }
         return order[_value] > order[other.getValue()];
     }
 }

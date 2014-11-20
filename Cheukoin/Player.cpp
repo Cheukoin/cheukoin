@@ -286,14 +286,14 @@ std::vector<Card> Player::getPlayableCards()
     // if his friend isn't, and he has assets, he has to play them, and they must be bigger than assets already played
     else if (cardsForSuit(asset).size() != 0) {
         std::vector<Card> playableCards;
-        std::vector<Card> assets = cardsForSuit(asset);
+        std::vector<Card> assetsInTrick = Application::getInstance().getGame()->getRules()->cardsForSuit(trickCards, asset);
 
-        if (assets.size() == 0) {
+        if (assetsInTrick.size() == 0) {
             return cardsForSuit(asset);
         }
 
-        Card max = assets[0];
-        for (auto card : assets) {
+        Card max = assetsInTrick[0];
+        for (auto card : assetsInTrick) {
             if (card.isGreaterThan(max, demandedSuit)) {
                 max = card;
             }
