@@ -230,24 +230,18 @@ void Game::draw()
     if (_score) {
         _score->draw();
     }
+    if (_currentRound == 8) {
+        displayNextButton().draw();
+    }
 }
 
-void Game::displayNextButton()
+AnimatedObject Game::displayNextButton()
 {
-
-    shared_ptr<sf::Texture> texture = make_shared<sf::Texture>();
-    shared_ptr<sf::Sprite> sprite = make_shared<sf::Sprite>();
-    if (!texture->loadFromFile(resourcePath("next-arrow.png"))) {
-        puts("texture file not loaded");
-    }
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-
-    texture->setSmooth(true);
-    sprite->setTextureRect(sf::IntRect(0, 0, 960, 720));
-    sprite->setTexture(*texture);
-    sprite->setScale(0.3, 0.3);
-    sf::Vector2u pos = sf::Vector2u(winSize.x / 3, winSize.y / 3);
-    sprite->setPosition(pos.x, pos.y);
+    sf::Vector2f pos = sf::Vector2f(winSize.x / 3, winSize.y / 3);
+    AnimatedObject button = AnimatedObject("nextButton.png", pos);
+    button.setPosition(winSize.x / 3, winSize.y / 3);
+    return button;
 }
 
 void Game::displayAsset(Suit asset)
@@ -268,6 +262,11 @@ void Game::moveToNextGame()
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
-    setCurrentRound(0);
-    startGame();
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+    sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
+
+    if (rect.contains(mousePosition)) {
+        setCurrentRound(0);
+        startGame();
+    }
 }

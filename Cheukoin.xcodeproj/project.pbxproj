@@ -123,6 +123,7 @@
 		19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
 		9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
+		9366BA341A1E9C6700A824F5 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9366BA331A1E9C6700A824F5 /* nextButton.png */; };
 		93F833CE19F6F6D40022011F /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
 		C0B1A0D619ED1C3400436C77 /* table.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C0B1A0D519ED1C3400436C77 /* table.jpeg */; };
 		C0B83EB519E2C23C0037C5AE /* Bid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0B83E9919E2C23C0037C5AE /* Bid.cpp */; };
@@ -206,6 +207,7 @@
 		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
 		9330B4941A02C7450078D1A7 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
+		9366BA331A1E9C6700A824F5 /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
 		93F833CD19F6F6D40022011F /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
 		93F833CF19F6F7A20022011F /* Rules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rules.h; sourceTree = "<group>"; };
 		C0B1A0D519ED1C3400436C77 /* table.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = table.jpeg; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		C0B83EAC19E2C23C0037C5AE /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				9366BA331A1E9C6700A824F5 /* nextButton.png */,
 				19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */,
 				19D2FA2019F050CB0074B105 /* 7_of_diamonds.png */,
 				19D2FA2119F050CB0074B105 /* 7_of_hearts.png */,
@@ -587,6 +590,7 @@
 				19D2FA4419F050CB0074B105 /* 8_of_diamonds.png in Resources */,
 				19D2FA4619F050CB0074B105 /* 8_of_spades.png in Resources */,
 				C9A8B8F41A01322500459DE6 /* scoreBoard.png in Resources */,
+				9366BA341A1E9C6700A824F5 /* nextButton.png in Resources */,
 				9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */,
 				19D2FA4819F050CB0074B105 /* 9_of_diamonds.png in Resources */,
 				19D2FA5A19F050CB0074B105 /* king_of_spades.png in Resources */,

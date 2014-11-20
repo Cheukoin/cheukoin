@@ -62,7 +62,7 @@ public:
 
     void sortCards();
 
-    void displayNextButton();
+    AnimatedObject displayNextButton();
     void displayAsset(Suit asset);
     void setCurrentRound(int const& round);
 
