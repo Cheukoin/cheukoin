@@ -52,6 +52,7 @@ void BidMaker::handleClickAtPosition(sf::Vector2i position)
         }
     }
 }
+
 void BidMaker::setBid(Suit asset, int value)
 {
     if (!_shouldStartGame()) {
@@ -60,8 +61,17 @@ void BidMaker::setBid(Suit asset, int value)
 
         if (value > _currentBid.getAmount()) {
             _currentBid = Bid(asset, value, currentBiddingPlayerName);
-            cout << currentBiddingPlayerName << " bids " << SuitNames.at(asset) << " " << value << endl;
-            _text->setString(_text->getString() + "\n" + currentBiddingPlayerName + " bids " + SuitNames.at(asset) + " " + to_string(value));
+            cout << currentBiddingPlayerName
+                 << " bids "
+                 << SuitNames.at(asset)
+                 << " "
+                 << value
+                 << endl;
+
+            _text->setString(_text->getString()
+                             + "\n" + currentBiddingPlayerName
+                             + " bids " + SuitNames.at(asset)
+                             + " " + to_string(value));
         }
 
         else {

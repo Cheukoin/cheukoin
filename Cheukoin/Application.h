@@ -17,7 +17,6 @@ public:
     std::shared_ptr<Game> getGame();
     std::shared_ptr<sf::RenderWindow> getWindow();
 
-    void forceWindowRefresh();
     void initWindow();
     void initGame();
     void mainLoop();

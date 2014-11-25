@@ -3,24 +3,13 @@
 
 using namespace std;
 
-Trick::Trick(int number)
-    : _number(number)
-    , _cards(vector<Card>())
+Trick::Trick()
+    : _cards(vector<Card>())
 {
 }
 
 Trick::~Trick()
 {
-}
-
-void Trick::setNumber(int number)
-{
-    _number = number;
-}
-
-int Trick::getNumber()
-{
-    return _number;
 }
 
 void Trick::addCard(Card const& card)

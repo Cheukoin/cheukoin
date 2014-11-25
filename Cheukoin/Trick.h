@@ -6,11 +6,8 @@
 
 class Trick {
 public:
-    Trick(int number);
+    Trick();
     ~Trick();
-
-    int getNumber();
-    void setNumber(int number);
 
     void addCard(Card const& Card);
 
@@ -19,12 +16,10 @@ public:
     void draw();
 
     int getWinnerCardIndex();
-    
+
     Card getWinningCard();
 
 private:
-    // TODO: see if we can get rid of this
-    int _number;
     std::vector<Card> _cards;
 };
 

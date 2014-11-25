@@ -71,7 +71,6 @@ Card Bot::chooseCard()
         // the bot is the first player
         if (_remainingAssets.size() == 0 || _remainingAssets.size() == Rules::cardsForSuit(_cards, asset).size()) {
             // no more asset for other players
-
             if (_remainingAssets.size() == _cards.size()) {
                 // bot only has assets : play them
                 return playableCards.front();

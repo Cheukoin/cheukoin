@@ -34,7 +34,6 @@ void Human::play()
 {
     Card card = chooseCard();
 
-    // TODO check the cards that are already in the trick
     vector<Card> playableCards = getPlayableCards();
     if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
         playCard(card);

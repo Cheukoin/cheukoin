@@ -108,7 +108,7 @@ void Game::initializeRound()
         _currentPlayerIndex = (_currentPlayerIndex + _tricks.back().getWinnerCardIndex()) % PLAYER_COUNT;
     }
 
-    Trick trick(_currentRound);
+    Trick trick;
     _tricks.push_back(trick);
     _currentRound++;
 

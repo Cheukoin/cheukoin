@@ -69,11 +69,6 @@ void Application::initWindow()
     _backgroundSprite.get()->setTexture(*_backgroundTexture.get());
 }
 
-void Application::forceWindowRefresh()
-{
-    _draw();
-}
-
 void Application::initGame()
 {
     auto bot1 = make_shared<Bot>("Bot 1", Position::Top);
