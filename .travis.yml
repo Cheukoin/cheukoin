@@ -1,5 +1,8 @@
 language: objective-c
 
+install:
+    - sudo cp -R Frameworks/* /Library/Frameworks/
+
 script:
     - xcodebuild
     - ./runtests
