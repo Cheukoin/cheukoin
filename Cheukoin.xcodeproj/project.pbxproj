@@ -8,17 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		193436EA1A07CE020077F31E /* cheukoin.png in Resources */ = {isa = PBXBuildFile; fileRef = 193436E91A07CE020077F31E /* cheukoin.png */; };
-		1948AD2919FD3789000E51BF /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
 		197B22CF1A1248EB00E3DD3D /* cardBack.png in Resources */ = {isa = PBXBuildFile; fileRef = 197B22CE1A1248EB00E3DD3D /* cardBack.png */; };
 		197B234F1A1251AC00E3DD3D /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 197B234E1A1251AC00E3DD3D /* main.cpp */; };
-		197B23581A1252D400E3DD3D /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1948AD2819FD3789000E51BF /* gtest.framework */; };
-		197B235A1A12533C00E3DD3D /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CE919E298ED00FE40DD /* freetype.framework */; };
-		197B235B1A12533C00E3DD3D /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEA19E298ED00FE40DD /* sfml-audio.framework */; };
-		197B235C1A12533C00E3DD3D /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */; };
-		197B235D1A12533C00E3DD3D /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEC19E298ED00FE40DD /* sfml-network.framework */; };
-		197B235E1A12533C00E3DD3D /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CED19E298ED00FE40DD /* sfml-system.framework */; };
-		197B235F1A12533C00E3DD3D /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEE19E298ED00FE40DD /* sfml-window.framework */; };
-		197B23601A12533C00E3DD3D /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
 		197B23611A12535400E3DD3D /* AnimatedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */; };
 		197B23621A12535400E3DD3D /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
 		197B23631A12535400E3DD3D /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E3F8701A0FB24E00F236E1 /* Asset.cpp */; };
@@ -76,14 +67,6 @@
 		197B23991A12553A00E3DD3D /* queen_of_spades.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA3E19F050CB0074B105 /* queen_of_spades.png */; };
 		197B239A1A12553A00E3DD3D /* table.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = C0B1A0D519ED1C3400436C77 /* table.jpeg */; };
 		1984DA6C19F66EBB000FFC73 /* Human.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1984DA6A19F66EBB000FFC73 /* Human.cpp */; };
-		19A57CF119E298ED00FE40DD /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CE919E298ED00FE40DD /* freetype.framework */; };
-		19A57CF219E298ED00FE40DD /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEA19E298ED00FE40DD /* sfml-audio.framework */; };
-		19A57CF319E298ED00FE40DD /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */; };
-		19A57CF419E298ED00FE40DD /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEC19E298ED00FE40DD /* sfml-network.framework */; };
-		19A57CF519E298ED00FE40DD /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CED19E298ED00FE40DD /* sfml-system.framework */; };
-		19A57CF619E298ED00FE40DD /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEE19E298ED00FE40DD /* sfml-window.framework */; };
-		19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CEF19E298ED00FE40DD /* SFML.framework */; };
-		19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19A57CF019E298ED00FE40DD /* sndfile.framework */; };
 		19C390BE1A0E3BCD00C857C0 /* AnimatedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */; };
 		19D2FA1E19F034280074B105 /* Lobby.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19D2FA1C19F034280074B105 /* Lobby.cpp */; };
 		19D2FA3F19F050CB0074B105 /* 7_of_clubs.png in Resources */ = {isa = PBXBuildFile; fileRef = 19D2FA1F19F050CB0074B105 /* 7_of_clubs.png */; };
@@ -122,6 +105,15 @@
 		19E3F8721A0FB24E00F236E1 /* Asset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E3F8701A0FB24E00F236E1 /* Asset.cpp */; };
 		19E8151F19F2C77E00B2A5F8 /* Application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19E8151D19F2C77E00B2A5F8 /* Application.cpp */; };
 		19EAA46619E2C72C00F23D27 /* jsoncpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */; };
+		19EE70B01A2B469A0057D778 /* freetype.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE709E1A2B465A0057D778 /* freetype.framework */; };
+		19EE70B11A2B469E0057D778 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE709F1A2B465A0057D778 /* gtest.framework */; };
+		19EE70B21A2B469E0057D778 /* sfml-audio.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A01A2B465A0057D778 /* sfml-audio.framework */; };
+		19EE70B31A2B469E0057D778 /* sfml-graphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A11A2B465A0057D778 /* sfml-graphics.framework */; };
+		19EE70B41A2B469E0057D778 /* sfml-network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A21A2B465A0057D778 /* sfml-network.framework */; };
+		19EE70B51A2B469E0057D778 /* sfml-system.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A31A2B465A0057D778 /* sfml-system.framework */; };
+		19EE70B61A2B469E0057D778 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A41A2B465A0057D778 /* sfml-window.framework */; };
+		19EE70B71A2B469E0057D778 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A51A2B465A0057D778 /* SFML.framework */; };
+		19EE70B81A2B469E0057D778 /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A61A2B465A0057D778 /* sndfile.framework */; };
 		9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
 		9366BA341A1E9C6700A824F5 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9366BA331A1E9C6700A824F5 /* nextButton.png */; };
 		93F833CE19F6F6D40022011F /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
@@ -146,7 +138,6 @@
 
 /* Begin PBXFileReference section */
 		193436E91A07CE020077F31E /* cheukoin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cheukoin.png; sourceTree = "<group>"; };
-		1948AD2819FD3789000E51BF /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = Cheukoin/gtest.framework; sourceTree = "<group>"; };
 		197B22CE1A1248EB00E3DD3D /* cardBack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = cardBack.png; path = Cheukoin/Resources/cardBack.png; sourceTree = SOURCE_ROOT; };
 		197B234C1A1251AC00E3DD3D /* CheukoinTests */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CheukoinTests; sourceTree = BUILT_PRODUCTS_DIR; };
 		197B234E1A1251AC00E3DD3D /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -154,14 +145,6 @@
 		1984DA6B19F66EBB000FFC73 /* Human.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Human.h; sourceTree = "<group>"; };
 		19A57CD119E2989E00FE40DD /* Cheukoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cheukoin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		19A57CD519E2989E00FE40DD /* Cheukoin-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Cheukoin-Info.plist"; sourceTree = "<group>"; };
-		19A57CE919E298ED00FE40DD /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = /Library/Frameworks/freetype.framework; sourceTree = "<absolute>"; };
-		19A57CEA19E298ED00FE40DD /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "/Library/Frameworks/sfml-audio.framework"; sourceTree = "<absolute>"; };
-		19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "/Library/Frameworks/sfml-graphics.framework"; sourceTree = "<absolute>"; };
-		19A57CEC19E298ED00FE40DD /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "/Library/Frameworks/sfml-network.framework"; sourceTree = "<absolute>"; };
-		19A57CED19E298ED00FE40DD /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "/Library/Frameworks/sfml-system.framework"; sourceTree = "<absolute>"; };
-		19A57CEE19E298ED00FE40DD /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "/Library/Frameworks/sfml-window.framework"; sourceTree = "<absolute>"; };
-		19A57CEF19E298ED00FE40DD /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = /Library/Frameworks/SFML.framework; sourceTree = "<absolute>"; };
-		19A57CF019E298ED00FE40DD /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sndfile.framework; path = /Library/Frameworks/sndfile.framework; sourceTree = "<absolute>"; };
 		19C390BC1A0E3BCD00C857C0 /* AnimatedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AnimatedObject.cpp; sourceTree = "<group>"; };
 		19C390BD1A0E3BCD00C857C0 /* AnimatedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnimatedObject.h; sourceTree = "<group>"; };
 		19D2FA1C19F034280074B105 /* Lobby.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Lobby.cpp; sourceTree = "<group>"; };
@@ -206,6 +189,15 @@
 		19EAA46319E2C72C00F23D27 /* json-forwards.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "json-forwards.h"; sourceTree = "<group>"; };
 		19EAA46419E2C72C00F23D27 /* json.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = json.h; sourceTree = "<group>"; };
 		19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = jsoncpp.cpp; path = Cheukoin/jsoncpp.cpp; sourceTree = "<group>"; };
+		19EE709E1A2B465A0057D778 /* freetype.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = freetype.framework; path = Frameworks/freetype.framework; sourceTree = "<group>"; };
+		19EE709F1A2B465A0057D778 /* gtest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = gtest.framework; path = Frameworks/gtest.framework; sourceTree = "<group>"; };
+		19EE70A01A2B465A0057D778 /* sfml-audio.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-audio.framework"; path = "Frameworks/sfml-audio.framework"; sourceTree = "<group>"; };
+		19EE70A11A2B465A0057D778 /* sfml-graphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-graphics.framework"; path = "Frameworks/sfml-graphics.framework"; sourceTree = "<group>"; };
+		19EE70A21A2B465A0057D778 /* sfml-network.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-network.framework"; path = "Frameworks/sfml-network.framework"; sourceTree = "<group>"; };
+		19EE70A31A2B465A0057D778 /* sfml-system.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-system.framework"; path = "Frameworks/sfml-system.framework"; sourceTree = "<group>"; };
+		19EE70A41A2B465A0057D778 /* sfml-window.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = "sfml-window.framework"; path = "Frameworks/sfml-window.framework"; sourceTree = "<group>"; };
+		19EE70A51A2B465A0057D778 /* SFML.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SFML.framework; path = Frameworks/SFML.framework; sourceTree = "<group>"; };
+		19EE70A61A2B465A0057D778 /* sndfile.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = sndfile.framework; path = Frameworks/sndfile.framework; sourceTree = "<group>"; };
 		9330B4941A02C7450078D1A7 /* sansation.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = sansation.ttf; sourceTree = "<group>"; };
 		9366BA331A1E9C6700A824F5 /* nextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = nextButton.png; sourceTree = "<group>"; };
 		93F833CD19F6F6D40022011F /* Rules.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Rules.cpp; sourceTree = "<group>"; };
@@ -246,14 +238,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				197B235A1A12533C00E3DD3D /* freetype.framework in Frameworks */,
-				197B235B1A12533C00E3DD3D /* sfml-audio.framework in Frameworks */,
-				197B235C1A12533C00E3DD3D /* sfml-graphics.framework in Frameworks */,
-				197B235D1A12533C00E3DD3D /* sfml-network.framework in Frameworks */,
-				197B235E1A12533C00E3DD3D /* sfml-system.framework in Frameworks */,
-				197B235F1A12533C00E3DD3D /* sfml-window.framework in Frameworks */,
-				197B23601A12533C00E3DD3D /* sndfile.framework in Frameworks */,
-				197B23581A1252D400E3DD3D /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,15 +245,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				19A57CF119E298ED00FE40DD /* freetype.framework in Frameworks */,
-				1948AD2919FD3789000E51BF /* gtest.framework in Frameworks */,
-				19A57CF219E298ED00FE40DD /* sfml-audio.framework in Frameworks */,
-				19A57CF319E298ED00FE40DD /* sfml-graphics.framework in Frameworks */,
-				19A57CF419E298ED00FE40DD /* sfml-network.framework in Frameworks */,
-				19A57CF519E298ED00FE40DD /* sfml-system.framework in Frameworks */,
-				19A57CF619E298ED00FE40DD /* sfml-window.framework in Frameworks */,
-				19A57CF719E298ED00FE40DD /* SFML.framework in Frameworks */,
-				19A57CF819E298ED00FE40DD /* sndfile.framework in Frameworks */,
+				19EE70B01A2B469A0057D778 /* freetype.framework in Frameworks */,
+				19EE70B11A2B469E0057D778 /* gtest.framework in Frameworks */,
+				19EE70B21A2B469E0057D778 /* sfml-audio.framework in Frameworks */,
+				19EE70B31A2B469E0057D778 /* sfml-graphics.framework in Frameworks */,
+				19EE70B41A2B469E0057D778 /* sfml-network.framework in Frameworks */,
+				19EE70B51A2B469E0057D778 /* sfml-system.framework in Frameworks */,
+				19EE70B61A2B469E0057D778 /* sfml-window.framework in Frameworks */,
+				19EE70B71A2B469E0057D778 /* SFML.framework in Frameworks */,
+				19EE70B81A2B469E0057D778 /* sndfile.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -420,15 +404,15 @@
 		C0B83EC519E2C89A0037C5AE /* vendor */ = {
 			isa = PBXGroup;
 			children = (
-				1948AD2819FD3789000E51BF /* gtest.framework */,
-				19A57CE919E298ED00FE40DD /* freetype.framework */,
-				19A57CEA19E298ED00FE40DD /* sfml-audio.framework */,
-				19A57CEB19E298ED00FE40DD /* sfml-graphics.framework */,
-				19A57CEC19E298ED00FE40DD /* sfml-network.framework */,
-				19A57CED19E298ED00FE40DD /* sfml-system.framework */,
-				19A57CEE19E298ED00FE40DD /* sfml-window.framework */,
-				19A57CEF19E298ED00FE40DD /* SFML.framework */,
-				19A57CF019E298ED00FE40DD /* sndfile.framework */,
+				19EE709E1A2B465A0057D778 /* freetype.framework */,
+				19EE709F1A2B465A0057D778 /* gtest.framework */,
+				19EE70A01A2B465A0057D778 /* sfml-audio.framework */,
+				19EE70A11A2B465A0057D778 /* sfml-graphics.framework */,
+				19EE70A21A2B465A0057D778 /* sfml-network.framework */,
+				19EE70A31A2B465A0057D778 /* sfml-system.framework */,
+				19EE70A41A2B465A0057D778 /* sfml-window.framework */,
+				19EE70A51A2B465A0057D778 /* SFML.framework */,
+				19EE70A61A2B465A0057D778 /* sndfile.framework */,
 				19EAA46219E2C72C00F23D27 /* json */,
 				19EAA46519E2C72C00F23D27 /* jsoncpp.cpp */,
 			);
@@ -940,6 +924,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Cheukoin",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Cheukoin/Cheukoin-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -960,6 +945,7 @@
 					"$(inherited)",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
 					"$(PROJECT_DIR)/Cheukoin",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				INFOPLIST_FILE = "Cheukoin/Cheukoin-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
