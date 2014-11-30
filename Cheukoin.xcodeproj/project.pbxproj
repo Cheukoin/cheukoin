@@ -114,6 +114,8 @@
 		19EE70B61A2B469E0057D778 /* sfml-window.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A41A2B465A0057D778 /* sfml-window.framework */; };
 		19EE70B71A2B469E0057D778 /* SFML.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A51A2B465A0057D778 /* SFML.framework */; };
 		19EE70B81A2B469E0057D778 /* sndfile.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE70A61A2B465A0057D778 /* sndfile.framework */; };
+		19EE70B91A2B4A5E0057D778 /* gtest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19EE709F1A2B465A0057D778 /* gtest.framework */; };
+		19EE70BA1A2B4A7F0057D778 /* BidMaker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C0FBD6261A1A64DD00E9E754 /* BidMaker.cpp */; };
 		9330B4951A02C7450078D1A7 /* sansation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9330B4941A02C7450078D1A7 /* sansation.ttf */; };
 		9366BA341A1E9C6700A824F5 /* nextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = 9366BA331A1E9C6700A824F5 /* nextButton.png */; };
 		93F833CE19F6F6D40022011F /* Rules.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 93F833CD19F6F6D40022011F /* Rules.cpp */; };
@@ -238,6 +240,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19EE70B91A2B4A5E0057D778 /* gtest.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -613,6 +616,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				197B236C1A12535400E3DD3D /* Rules.cpp in Sources */,
+				19EE70BA1A2B4A7F0057D778 /* BidMaker.cpp in Sources */,
 				197B234F1A1251AC00E3DD3D /* main.cpp in Sources */,
 				197B23641A12535400E3DD3D /* Bid.cpp in Sources */,
 				197B23611A12535400E3DD3D /* AnimatedObject.cpp in Sources */,
@@ -671,6 +675,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Cheukoin",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -719,7 +724,9 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Cheukoin",
 					"$(LOCAL_LIBRARY_DIR)/Frameworks",
+					"$(PROJECT_DIR)/Frameworks",
 				);
+				GCC_OPTIMIZATION_LEVEL = 3;
 				HEADER_SEARCH_PATHS = (
 					/usr/local/include/,
 					"$(inherited)",
