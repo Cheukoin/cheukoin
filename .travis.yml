@@ -6,3 +6,5 @@ script:
 
 os:
   - osx
+
+osx_image: xcode61
