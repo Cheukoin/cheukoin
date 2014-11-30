@@ -1,35 +1,8 @@
 language: cpp
 
-compiler:
-  - clang
-
-before_install:
-  # clang 3.4
-  - sudo add-apt-repository -y ppa:h-rayflood/llvm
-  - sudo apt-get update -qq
-
-install:
-  # clang 3.4 and libc++
-  - sudo apt-get install --allow-unauthenticated -qq clang-3.4
-  - svn co --quiet http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
-  - export CXXFLAGS="-std=c++0x -stdlib=libc++"
-  - cd libcxx/lib && bash buildit
-  - sudo cp ./libc++.so.1.0 /usr/lib/
-  - sudo mkdir /usr/include/c++/v1
-  - cd .. && sudo cp -r include/* /usr/include/c++/v1/
-  - cd /usr/lib && sudo ln -sf libc++.so.1.0 libc++.so
-  - sudo ln -sf libc++.so.1.0 libc++.so.1 && cd $cwd
-  - export CXX="clang++-3.4"
-  # sfml
-  - sudo apt-get build-dep libsfml-dev
-  - sudo apt-get install -y libudev-dev
-  - git clone https://github.com/LaurentGomila/SFML.git
-  - cd SFML/
-  - cmake .
-  - make all
-  - sudo make install
-  - export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/
-
 script:
-  - cd $TRAVIS_BUILD_DIR
-  - make
+    - xcodebuild
+    - ./runtests
+
+os:
+  - osx
