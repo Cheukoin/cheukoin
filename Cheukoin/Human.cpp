@@ -43,16 +43,20 @@ void Human::play()
 Card Human::chooseCard()
 {
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-
+    vector<Card> playableCards = getPlayableCards();
     for (unsigned i = 0; i < _cards.size(); i++) {
         sf::IntRect rectref;
+        sf::IntRect rectref2;
         if (i == (_cards.size() - 1)) {
             rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y);
         }
         else {
-            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - 30, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
         }
-        if (rectref.contains(mousePosition)) {
+        if (_cards[i].getSuit() != _cards[i + 1].getSuit() && i != (_cards.size() - 1)) {
+            rectref2 = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - 30, _cards[i].getGlobalSize().x, 30);
+            }
+        if (rectref.contains(mousePosition) || rectref2.contains(mousePosition)) {
             return _cards[i];
         }
     }

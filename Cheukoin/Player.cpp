@@ -79,7 +79,7 @@ sf::IntRect Player::getGlobalBounds()
                   + getCards().back().getGlobalSize().x;
 
     sf::IntRect rect(getCards().front().getGlobalPosition().x,
-                     getCards().back().getGlobalPosition().y,
+                     getCards().back().getGlobalPosition().y-30,
                      right,
                      getCards().front().getGlobalSize().y);
     return rect;
