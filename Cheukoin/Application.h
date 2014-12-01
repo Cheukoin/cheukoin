@@ -20,6 +20,10 @@ public:
     void initWindow();
     void initGame();
     void mainLoop();
+    
+    AnimatedObject displayNextButton();
+    void moveToNextGame();
+    
 
 private:
     Application(){};

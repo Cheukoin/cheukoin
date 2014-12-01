@@ -49,8 +49,8 @@ void Game::play(bool playerIsPlaying)
 
     if (_currentRound > 7) {
         cout << "Game finished!" << endl;
-        displayNextButton();
-        moveToNextGame();
+        Application::getInstance().displayNextButton();
+        Application::getInstance().moveToNextGame();
         return;
     }
 
@@ -231,17 +231,8 @@ void Game::draw()
         _score->draw();
     }
     if (_currentRound == 8) {
-        displayNextButton().draw();
+        Application::getInstance().displayNextButton().draw();
     }
-}
-
-AnimatedObject Game::displayNextButton()
-{
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2f pos = sf::Vector2f(winSize.x / 3, winSize.y / 3);
-    AnimatedObject button = AnimatedObject("nextButton.png", pos);
-    button.setPosition(winSize.x / 3, winSize.y / 3);
-    return button;
 }
 
 void Game::displayAsset(Suit asset)
@@ -253,20 +244,4 @@ void Game::displayAsset(Suit asset)
 void Game::setCurrentRound(int const& round)
 {
     _currentRound = round;
-}
-
-void Game::moveToNextGame()
-{
-    for (auto team : getLobby()->getTeams()) {
-        team->updateTotalScore(team->getScore());
-        team->setScore(0);
-        cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
-    }
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-    sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
-
-    if (rect.contains(mousePosition)) {
-        setCurrentRound(0);
-        startGame();
-    }
 }

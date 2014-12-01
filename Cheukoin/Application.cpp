@@ -139,3 +139,30 @@ std::shared_ptr<Game> Application::getGame()
 {
     return _game;
 }
+
+AnimatedObject Application::displayNextButton()
+{
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    sf::Vector2f pos = sf::Vector2f(winSize.x / 3, winSize.y / 3);
+    AnimatedObject button = AnimatedObject("nextButton.png", pos);
+    button.setPosition(winSize.x / 3, winSize.y / 3);
+    return button;
+}
+
+void Application::moveToNextGame()
+{
+    for (auto team : _game->getLobby()->getTeams()) {
+        team->updateTotalScore(team->getScore());
+        team->setScore(0);
+        cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
+    }
+    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+    sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
+
+    if (rect.contains(mousePosition)) {
+        _game->setCurrentRound(0);
+        shared_ptr<Bid> bidZero = make_shared<Bid>();
+        _game->setBid(bidZero);
+        _game->startGame();
+    }
+}
