@@ -160,9 +160,8 @@ void Application::moveToNextGame()
     sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
     if (rect.contains(mousePosition)) {
-        _game->setCurrentRound(0);
-        shared_ptr<Bid> bidZero = make_shared<Bid>();
-        _game->setBid(bidZero);
+        shared_ptr<Lobby> lobby = _game->getLobby();
+        _game = make_shared<Game>(lobby, Offline);
         _game->startGame();
     }
 }
