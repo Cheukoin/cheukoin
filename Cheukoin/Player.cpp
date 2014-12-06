@@ -79,7 +79,7 @@ sf::IntRect Player::getGlobalBounds()
                   + getCards().back().getGlobalSize().x;
 
     sf::IntRect rect(getCards().front().getGlobalPosition().x,
-                     getCards().back().getGlobalPosition().y-30,
+                     getCards().back().getGlobalPosition().y - 30,
                      right,
                      getCards().front().getGlobalSize().y);
     return rect;
@@ -249,9 +249,9 @@ bool Player::isFriendMaster()
         Card friendlyCard = trickCards[numberPlayedCards - 2];
         Suit askedSuit = trickCards.front().getSuit();
 
-        for (Card c : trickCards) {
-            if (c != friendlyCard) {
-                enemyCards.push_back(c);
+        for (Card card : trickCards) {
+            if (card != friendlyCard) {
+                enemyCards.push_back(card);
             }
         }
 

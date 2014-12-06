@@ -27,6 +27,8 @@ public:
     void startGame();
 
     void play(bool playerIsPlaying);
+
+    void addTrickToWinnerTeam();
     void initializeRound();
 
     GameMode getMode();

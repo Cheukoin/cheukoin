@@ -79,6 +79,7 @@ void Game::play(bool playerIsPlaying)
         // make sure last card played is by current player
         return;
     }
+    
 }
 
 void Game::update(sf::Time elapsed)
@@ -100,6 +101,26 @@ void Game::_goToNextPlayer()
 void Game::goToNextBiddingPlayer()
 {
     _currentBiddingPlayerIndex = (_currentBiddingPlayerIndex + 1) % PLAYER_COUNT;
+}
+
+void Game::addTrickToWinnerTeam()
+{
+    if (getCurrentTrick().getCards().size() == PLAYER_COUNT) {
+        Card winCard = getCurrentTrick().getWinningCard();
+
+        for (auto player : getLobby()->getPlayers()) {
+            if (player->getPlayedCard() == winCard) {
+                if (getLobby()->getTeams()[0]->isPlayerInTeam(*player)) {
+                    getLobby()->getTeams()[0]->addWonTrick(getCurrentTrick());
+                }
+                else {
+                    getLobby()->getTeams()[1]->addWonTrick(getCurrentTrick());
+                }
+            }
+        }
+
+        initializeRound();
+    }
 }
 
 void Game::initializeRound()

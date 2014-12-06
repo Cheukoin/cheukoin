@@ -21,12 +21,12 @@ int Team::computeScore(Trick& trick)
     else {
         int score = 0;
         shared_ptr<Rules> rules = Application::getInstance().getGame()->getRules();
-        for (Card c : trick.getCards()) {
-            if (c.getSuit() == rules->getAsset()) {
-                score += Rules::CardValuesAsset.at(c.getValue());
+        for (Card card : trick.getCards()) {
+            if (card.getSuit() == rules->getAsset()) {
+                score += Rules::CardValuesAsset.at(card.getValue());
             }
             else {
-                score += Rules::CardValues.at(c.getValue());
+                score += Rules::CardValues.at(card.getValue());
             }
         };
         return score;
@@ -79,8 +79,8 @@ vector<shared_ptr<Player> > Team::getPlayers()
 bool Team::isTeamDealing()
 {
     bool dealing = false;
-    for (auto p : getPlayers()) {
-        if (p->isDealer()) {
+    for (auto player : getPlayers()) {
+        if (player->isDealer()) {
             dealing = true;
         }
     }

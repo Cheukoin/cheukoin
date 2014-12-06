@@ -54,8 +54,8 @@ void AnimatedObject::update(sf::Time elapsed)
         _sprite->setPosition(_targetPosition);
     }
     else {
-        float t = (float)_elapsedTime.asMilliseconds() / (float)_transitionTime.asMilliseconds();
-        _sprite->setPosition((1.0f - t) * position + t * _targetPosition);
+        float time = (float)_elapsedTime.asMilliseconds() / (float)_transitionTime.asMilliseconds();
+        _sprite->setPosition((1.0f - time) * position + time * _targetPosition);
     }
 }
 
