@@ -39,18 +39,17 @@ void Game::startGame()
     }
 }
 
+void Game::makeBid()
+{
+    cout << "Waiting for bid from " << getCurrentBiddingPlayer()->getName() << endl;
+    getCurrentBiddingPlayer()->chooseBid();
+    return;
+}
+
 void Game::play(bool playerIsPlaying)
 {
-    if (_bid->getAmount() == 0) {
-        cout << "Waiting for bid from " << getCurrentBiddingPlayer()->getName() << endl;
-        getCurrentBiddingPlayer()->chooseBid();
-        return;
-    }
 
-    if (_currentRound > 7) {
-        cout << "Game finished!" << endl;
-        Application::getInstance().displayNextButton();
-        Application::getInstance().moveToNextGame();
+    if (getCurrentRound() > 7){
         return;
     }
 
@@ -58,28 +57,26 @@ void Game::play(bool playerIsPlaying)
         cout << "Waiting for player's move" << endl;
         return;
     }
-
+    
     if ((playerIsPlaying)
         && (getCurrentPlayer()->getCards().size()
             == static_cast<unsigned>(7 - _currentRound))) {
         _goToNextPlayer();
-        if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
-            // make sure last card played is by current player
-            return;
-        }
+        return;
     }
 
     if (getHuman() != getCurrentPlayer()) {
         getCurrentPlayer()->play();
         _goToNextPlayer();
         getHuman()->showLegalCards();
+        return;
     }
-
+    
+    
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
         // make sure last card played is by current player
         return;
     }
-    
 }
 
 void Game::update(sf::Time elapsed)
@@ -265,4 +262,9 @@ void Game::displayAsset(Suit asset)
 void Game::setCurrentRound(int const& round)
 {
     _currentRound = round;
+}
+
+int Game::getCurrentRound()
+{
+    return _currentRound;
 }

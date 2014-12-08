@@ -25,9 +25,10 @@ public:
     Game(std::shared_ptr<Lobby> lobby, GameMode const& mode);
 
     void startGame();
+    void makeBid();
 
     void play(bool playerIsPlaying);
-
+   
     void addTrickToWinnerTeam();
     void initializeRound();
 
@@ -69,6 +70,7 @@ public:
 
     void goToNextBiddingPlayer();
     std::shared_ptr<Player> getCurrentBiddingPlayer();
+    int getCurrentRound();
 
 private:
     GameMode const& _mode;

@@ -19,17 +19,26 @@ void Application::_handleClick()
         initGame();
         return;
     }
+    if (_game->getBid()->getAmount() == 0) {
+        _game->makeBid();
+        return;
+    }
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
 
     _game->addTrickToWinnerTeam();
-    bool playerIsPlaying = (_game->getCurrentPlayer() == _game->getHuman() && humanBounds.contains(mousePosition));
+    bool playerIsPlaying = (_game->getCurrentRound() != 8) && (_game->getBid()->getAmount() != 0) && (_game->getCurrentPlayer() == _game->getHuman() && humanBounds.contains(mousePosition));
 
     if (playerIsPlaying) {
         _game->getCurrentPlayer()->play();
     }
     _game->play(playerIsPlaying);
+
+    if (_game->getCurrentRound() > 7) {
+        startNewGame();
+        return;
+    }
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()
@@ -149,4 +158,11 @@ void Application::moveToNextGame()
         _game = make_shared<Game>(lobby, Offline);
         _game->startGame();
     }
+}
+void Application::startNewGame()
+{
+    cout << "Game finished!" << endl;
+    displayNextButton();
+    moveToNextGame();
+    return;
 }
