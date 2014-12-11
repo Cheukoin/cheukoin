@@ -143,10 +143,20 @@ AnimatedObject Application::displayNextButton()
     return button;
 }
 
+AnimatedObject Application::displayScores()
+{
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    sf::Vector2f pos = sf::Vector2f(winSize.x / 2, winSize.y / 2);
+    AnimatedObject table = AnimatedObject("", pos);
+    return table;
+}
+
 void Application::moveToNextGame()
 {
+    computeGameScore();
     for (auto team : _game->getLobby()->getTeams()) {
-        team->updateTotalScore(team->getScore());
+
+        //team->updateTotalScore(team->getScore());
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
@@ -165,4 +175,21 @@ void Application::startNewGame()
     displayNextButton();
     moveToNextGame();
     return;
+}
+
+void Application::computeGameScore()
+{
+
+    shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*(_game->getCurrentBiddingPlayer()));
+    shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*(_game->getCurrentBiddingPlayer()), true);
+    if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
+        cout << biddingTeam->getName() + " has won" << endl;
+        biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());
+        otherTeam->updateTotalScore(otherTeam->getScore());
+    }
+    else {
+        cout << biddingTeam->getName() + " has lost" << endl;
+        biddingTeam->updateTotalScore(0);
+        otherTeam->updateTotalScore(_game->getBid()->getAmount() + otherTeam->getScore());
+    }
 }

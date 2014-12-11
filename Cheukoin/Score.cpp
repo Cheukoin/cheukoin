@@ -34,3 +34,4 @@ void Score::setScore(int score1, int score2)
 {
     _text.setString("Team 1: " + to_string(score1) + "\nTeam 2: " + to_string(score2));
 };
+
