@@ -32,6 +32,7 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
 
 void Game::startGame()
 {
+    Application::getInstance().setNewGameLaunched(false);
     _lobby->deal();
 
     for (auto player : _lobby->getPlayers()) {

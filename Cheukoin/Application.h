@@ -26,6 +26,7 @@ public:
     void computeGameScore();
     void moveToNextGame();
     void startNewGame();
+    void setNewGameLaunched(bool boolean);
 
 private:
     Application(){};
@@ -42,6 +43,7 @@ private:
 
     void _draw();
     void _handleClick();
+    bool _newGameLaunched;
 };
 
 #endif

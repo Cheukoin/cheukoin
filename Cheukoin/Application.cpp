@@ -35,10 +35,26 @@ void Application::_handleClick()
     }
     _game->play(playerIsPlaying);
 
-    if (_game->getCurrentRound() > 7) {
-        startNewGame();
+    if (_game->getCurrentRound() > 7 && _newGameLaunched == false) {
+        moveToNextGame();
+        _newGameLaunched = true;
         return;
     }
+    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true) {
+        sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+        sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
+
+        if (rect.contains(mousePosition)) {
+            shared_ptr<Lobby> lobby = _game->getLobby();
+            _game = make_shared<Game>(lobby, Offline);
+            _game->startGame();
+        }
+    }
+}
+
+void Application::setNewGameLaunched(bool boolean)
+{
+    _newGameLaunched = boolean;
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()
@@ -153,6 +169,7 @@ AnimatedObject Application::displayScores()
 
 void Application::moveToNextGame()
 {
+    cout << "Game finished!" << endl;
     computeGameScore();
     for (auto team : _game->getLobby()->getTeams()) {
 
@@ -160,14 +177,14 @@ void Application::moveToNextGame()
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
-    sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+    /*sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
     sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
     if (rect.contains(mousePosition)) {
         shared_ptr<Lobby> lobby = _game->getLobby();
         _game = make_shared<Game>(lobby, Offline);
         _game->startGame();
-    }
+    }*/
 }
 void Application::startNewGame()
 {
