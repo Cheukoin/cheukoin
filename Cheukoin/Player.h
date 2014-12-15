@@ -64,6 +64,7 @@ public:
 
     bool isFriendMaster();
     std::vector<Card> getPlayableCards();
+    float positionBottomy;
 
 protected:
     std::string _name;

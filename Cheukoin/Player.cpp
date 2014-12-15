@@ -45,6 +45,7 @@ void Player::sortCards()
         break;
     case Bottom:
         pos = sf::Vector2f(winSize.x / 2, winSize.y - cardSize.y);
+        positionBottomy = winSize.y - cardSize.y;
         break;
     case Left:
         pos = sf::Vector2f(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2);
@@ -79,7 +80,7 @@ sf::IntRect Player::getGlobalBounds()
                   + getCards().back().getGlobalSize().x;
 
     sf::IntRect rect(getCards().front().getGlobalPosition().x,
-                     getCards().back().getGlobalPosition().y - 30,
+                     getCards().back().getGlobalPosition().y * 0.9,
                      right,
                      getCards().front().getGlobalSize().y);
     return rect;

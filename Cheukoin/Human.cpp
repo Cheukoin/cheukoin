@@ -51,14 +51,14 @@ Card Human::chooseCard()
             rectref2 = rectref;
         }
         else {
-            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - 30, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
+            rectref = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - _cards[i].getGlobalSize().y * 0.1, _cards[i + 1].getGlobalPosition().x - _cards[i].getGlobalPosition().x, _cards[i].getGlobalSize().y);
             rectref2 = rectref;
             // rectref2 ne marche pas ..
             if (_cards[i + 1].getSuit() != _cards[i].getSuit()) {
-                rectref2 = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - 30, _cards[i].getGlobalSize().x, 30);
+                rectref2 = sf::IntRect(_cards[i].getGlobalPosition().x, _cards[i].getGlobalPosition().y - _cards[i].getGlobalSize().y * 0.1, _cards[i].getGlobalSize().x, _cards[i].getGlobalSize().y * 0.1);
             }
         }
-        if (rectref.contains(mousePosition) ) {
+        if (rectref.contains(mousePosition)) {
             return _cards[i];
         }
     }
@@ -89,15 +89,14 @@ void Human::showLegalCards()
     // replace all cards at origin position then move to top the legal ones
     vector<Card> playableCards = getPlayableCards();
     sf::Vector2f position;
-
     for (Card& card : _cards) {
         if (find(playableCards.begin(), playableCards.end(), card) != playableCards.end()) {
             position = sf::Vector2f(card.getGlobalPosition().x,
-                                    Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y - 30);
+                                    positionBottomy - card.getGlobalSize().y * 0.1);
         }
         else {
             position = sf::Vector2f(card.getGlobalPosition().x,
-                                    Application::getInstance().getWindow()->getSize().y - card.getGlobalSize().y);
+                                    positionBottomy);
         }
 
         card.moveTo(position, sf::milliseconds(100));
