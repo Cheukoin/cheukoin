@@ -53,10 +53,10 @@ vector<shared_ptr<Player> > Lobby::getPlayers()
 
 shared_ptr<Team> Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
 {
-    if (!getEnemyTeam && (*_teams[0]->getPlayers().at(0) == player || *_teams[0]->getPlayers().at(1) == player)) {
-        return _teams[0];
+    if (!getEnemyTeam ^ (*_teams[0]->getPlayers().at(0) == player || *_teams[0]->getPlayers().at(1) == player)) {
+        return _teams[1];
     }
-    return _teams[1];
+    return _teams[0];
 }
 
 Lobby::~Lobby()
