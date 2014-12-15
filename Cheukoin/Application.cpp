@@ -45,6 +45,7 @@ void Application::_handleClick()
         sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
         if (rect.contains(mousePosition)) {
+            cout << "next button clicked!" << endl;
             shared_ptr<Lobby> lobby = _game->getLobby();
             _game = make_shared<Game>(lobby, Offline);
             _game->startGame();
@@ -177,14 +178,6 @@ void Application::moveToNextGame()
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
-    /*sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-    sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
-
-    if (rect.contains(mousePosition)) {
-        shared_ptr<Lobby> lobby = _game->getLobby();
-        _game = make_shared<Game>(lobby, Offline);
-        _game->startGame();
-    }*/
 }
 void Application::startNewGame()
 {
@@ -197,16 +190,23 @@ void Application::startNewGame()
 void Application::computeGameScore()
 {
 
-    shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*(_game->getCurrentBiddingPlayer()));
-    shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*(_game->getCurrentBiddingPlayer()), true);
+    shared_ptr<Player> biddingPlayer = _game->getCurrentBiddingPlayer();
+    cout << "Bidder was " << biddingPlayer->getName() << endl;
+    shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer);
+    cout << "Bidding team is " << biddingTeam->getName()<<endl;
+    shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer, true);
+    cout << "the other team is " << otherTeam->getName()<< endl;
     if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
-        cout << biddingTeam->getName() + " has won" << endl;
+        cout << biddingTeam->getName() + " has won and adds" << _game->getBid()->getAmount() << " points to its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());
+        cout << otherTeam->getName() << " keeps its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(otherTeam->getScore());
     }
     else {
         cout << biddingTeam->getName() + " has lost" << endl;
+        cout << biddingTeam->getName() << " loses its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(0);
+        cout << otherTeam->getName() << " has won the bet and adds " << _game->getBid()->getAmount() << "points to its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(_game->getBid()->getAmount() + otherTeam->getScore());
     }
 }
