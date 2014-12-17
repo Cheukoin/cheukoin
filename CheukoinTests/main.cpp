@@ -38,8 +38,6 @@ TEST(Rules, isTrickValid)
 
 TEST(Team, computeScore)
 {
-    Application& application = Application::getInstance();
-    application.initGame();
     Rules hearts(Hearts);
     Application::getInstance().getGame()->setRules(hearts);
     Team team("team1", Application::getInstance().getGame()->getHuman(), Application::getInstance().getGame()->getHuman());

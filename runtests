@@ -2,4 +2,5 @@
 
 rm -r build
 xcodebuild -target CheukoinTests
+cp Cheukoin/Resources/* build/Release/
 ./build/Release/CheukoinTests && rm -r build
