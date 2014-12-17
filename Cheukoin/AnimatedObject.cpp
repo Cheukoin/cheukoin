@@ -18,11 +18,9 @@ AnimatedObject::AnimatedObject(string spriteName, sf::Vector2f size)
     , _targetPosition(0, 0)
     , _transitionTime(sf::seconds(0))
 {
-#ifndef TESTS
     if (!_texture->loadFromFile(resourcePath(spriteName))) {
         cout << "texture file " << resourcePath(spriteName) << " not loaded";
     }
-#endif
     _texture->setSmooth(true);
     _sprite->setTexture(*_texture);
     _sprite->setScale(_size.x / _texture->getSize().x,

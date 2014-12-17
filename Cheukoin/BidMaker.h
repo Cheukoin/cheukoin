@@ -18,7 +18,7 @@
 
 class BidMaker : public AnimatedObject {
 public:
-    BidMaker(std::string spriteName, sf::Vector2f size);
+    BidMaker(std::string spriteName);
 
     void handleClickAtPosition(sf::Vector2i position);
     void setBid(Suit asset, int value);

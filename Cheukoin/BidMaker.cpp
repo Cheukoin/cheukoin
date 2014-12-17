@@ -10,24 +10,25 @@
 
 using namespace std;
 
-BidMaker::BidMaker(string spriteName, sf::Vector2f size)
-    : AnimatedObject(spriteName, size)
+BidMaker::BidMaker(string spriteName)
+    : AnimatedObject(spriteName, sf::Vector2f(320, 163))
     , _currentBid(Bid(Spades, 0, ""))
     , _text(make_shared<sf::Text>())
     , _font(sf::Font())
-
 {
     if (!_font.loadFromFile(resourcePath("sansation.ttf"))) {
         puts("Font file not loaded");
     }
     _text->setString("");
     _text->setFont(_font);
-    _text->setCharacterSize(25);
+    _text->setCharacterSize(20);
     _text->setColor(sf::Color::White);
-    _text->setPosition(0, 0);
+    _text->setPosition(20, 0);
     Application& app = Application::getInstance();
-    setPosition(app.getWindow()->getSize().x / 3, app.getWindow()->getSize().y / 3);
+    setPosition(app.getWindow()->getSize().x / 2 - getGlobalSize().x / 2,
+                app.getWindow()->getSize().y / 2 - getGlobalSize().y / 2);
 }
+
 sf::Text BidMaker::getText()
 {
     return *_text;
@@ -70,13 +71,13 @@ void BidMaker::setBid(Suit asset, int value)
 
             _text->setString(_text->getString()
                              + "\n" + currentBiddingPlayerName
-                             + " bids " + SuitNames.at(asset)
-                             + " " + to_string(value));
+                             + " bids " + to_string(value)
+                             + " " + SuitNames.at(asset));
         }
 
         else {
             cout << currentBiddingPlayerName << " skips" << endl;
-            _text->setString(_text->getString() + "\n" + currentBiddingPlayerName + "skips ");
+            _text->setString(_text->getString() + "\n" + currentBiddingPlayerName + " skips ");
         }
         Application::getInstance().getGame()->goToNextBiddingPlayer();
     }

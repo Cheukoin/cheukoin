@@ -41,7 +41,7 @@ void Application::_handleClick()
         return;
     }
     else if (_game->getCurrentRound() > 7 && _newGameLaunched == true) {
-        sf::Vector2i mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
+        mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
         sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
         if (rect.contains(mousePosition)) {
@@ -193,9 +193,9 @@ void Application::computeGameScore()
     shared_ptr<Player> biddingPlayer = _game->getCurrentBiddingPlayer();
     cout << "Bidder was " << biddingPlayer->getName() << endl;
     shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer);
-    cout << "Bidding team is " << biddingTeam->getName()<<endl;
+    cout << "Bidding team is " << biddingTeam->getName() << endl;
     shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer, true);
-    cout << "the other team is " << otherTeam->getName()<< endl;
+    cout << "the other team is " << otherTeam->getName() << endl;
     if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
         cout << biddingTeam->getName() + " has won and adds" << _game->getBid()->getAmount() << " points to its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());
