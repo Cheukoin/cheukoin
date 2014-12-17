@@ -43,12 +43,18 @@ TEST(Team, computeScore)
     Rules hearts(Hearts);
     Application::getInstance().getGame()->setRules(hearts);
     Team team("team1", Application::getInstance().getGame()->getHuman(), Application::getInstance().getGame()->getHuman());
-    Card king(Hearts, King);
-    Card queen(Clubs, King);
+    Card card1(Hearts, King);
+    Card card2(Clubs, King);
+    Card card3(Hearts, Nine);
+    Card card4(Hearts, Eight);
     Trick trick;
-    trick.addCard(queen);
-    trick.addCard(king);
+    trick.addCard(card1);
+    trick.addCard(card2);
     int expectedScore = 0;
+    EXPECT_EQ(expectedScore, team.computeScore(trick));
+    trick.addCard(card3);
+    trick.addCard(card4);
+    expectedScore = 22;
     EXPECT_EQ(expectedScore, team.computeScore(trick));
 }
 
