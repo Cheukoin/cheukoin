@@ -62,7 +62,7 @@ TEST(Player, getPlaybaleCards)
     Rules hearts(Hearts);
     Trick trick;
     Application::getInstance().getGame()->setRules(hearts);
-    Application::getInstance().getGame()->addTrick( trick );
+    Application::getInstance().getGame()->addTrick(trick);
     std::shared_ptr<Player> human = Application::getInstance().getGame()->getHuman();
     Card card1(Hearts, King);
     Card card2(Clubs, King);
@@ -70,9 +70,15 @@ TEST(Player, getPlaybaleCards)
     Card card4(Hearts, Eight);
     std::vector<Card> cards = { card1, card2, card3, card4 };
     human->setCards(cards);
-    std::vector<Card> expectedCards = { card1, card3, card4 };
+    std::vector<Card> expectedCards = cards;
+    EXPECT_EQ(expectedCards, human->getPlayableCards());
+    trick.addCard(card1);
+    Application::getInstance().getGame()->addTrick(trick);
+    cards.erase(cards.begin());
+    expectedCards = { card3 };
     EXPECT_EQ(expectedCards, human->getPlayableCards());
 }
+
 GTEST_API_ int main(int argc, char** argv)
 {
     printf("Running main() from gtest_main.cc\n");
