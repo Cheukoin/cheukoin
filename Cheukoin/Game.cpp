@@ -50,7 +50,7 @@ void Game::makeBid()
 void Game::play(bool playerIsPlaying)
 {
 
-    if (getCurrentRound() > 7){
+    if (getCurrentRound() > 7) {
         return;
     }
 
@@ -58,7 +58,7 @@ void Game::play(bool playerIsPlaying)
         cout << "Waiting for player's move" << endl;
         return;
     }
-    
+
     if ((playerIsPlaying)
         && (getCurrentPlayer()->getCards().size()
             == static_cast<unsigned>(7 - _currentRound))) {
@@ -72,8 +72,7 @@ void Game::play(bool playerIsPlaying)
         getHuman()->showLegalCards();
         return;
     }
-    
-    
+
     if (_tricks.back().getCards().back() != getCurrentPlayer()->getPlayedCard()) {
         // make sure last card played is by current player
         return;
@@ -206,7 +205,7 @@ shared_ptr<Rules> Game::getRules()
 
 void Game::setRules(Rules rules)
 {
-    *_rules=rules;
+    *_rules = rules;
 }
 
 void Game::addTrick(Trick const& trick)

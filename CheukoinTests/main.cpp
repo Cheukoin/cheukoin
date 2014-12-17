@@ -4,6 +4,7 @@
 #include "Rules.h"
 #include "Card.h"
 #include "Application.h"
+#include "Player.h"
 
 TEST(Card, isCardGreater1)
 {
@@ -38,8 +39,6 @@ TEST(Rules, isTrickValid)
 
 TEST(Team, computeScore)
 {
-    Application& application = Application::getInstance();
-    application.initGame();
     Rules hearts(Hearts);
     Application::getInstance().getGame()->setRules(hearts);
     Team team("team1", Application::getInstance().getGame()->getHuman(), Application::getInstance().getGame()->getHuman());
@@ -58,6 +57,22 @@ TEST(Team, computeScore)
     EXPECT_EQ(expectedScore, team.computeScore(trick));
 }
 
+TEST(Player, getPlaybaleCards)
+{
+    Rules hearts(Hearts);
+    Trick trick;
+    Application::getInstance().getGame()->setRules(hearts);
+    Application::getInstance().getGame()->addTrick( trick );
+    std::shared_ptr<Player> human = Application::getInstance().getGame()->getHuman();
+    Card card1(Hearts, King);
+    Card card2(Clubs, King);
+    Card card3(Hearts, Nine);
+    Card card4(Hearts, Eight);
+    std::vector<Card> cards = { card1, card2, card3, card4 };
+    human->setCards(cards);
+    std::vector<Card> expectedCards = { card1, card3, card4 };
+    EXPECT_EQ(expectedCards, human->getPlayableCards());
+}
 GTEST_API_ int main(int argc, char** argv)
 {
     printf("Running main() from gtest_main.cc\n");
