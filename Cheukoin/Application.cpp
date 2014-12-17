@@ -154,9 +154,9 @@ std::shared_ptr<Game> Application::getGame()
 AnimatedObject Application::displayNextButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2f pos = sf::Vector2f(winSize.x / 3, winSize.y / 3);
-    AnimatedObject button = AnimatedObject("nextButton.png", pos);
-    button.setPosition(winSize.x / 3, winSize.y / 3);
+    AnimatedObject button = AnimatedObject("nextButton.png", sf::Vector2f(530, 152));
+    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
+                       winSize.y / 2 - button.getGlobalSize().y / 2);
     return button;
 }
 
