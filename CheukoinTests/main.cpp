@@ -77,6 +77,39 @@ TEST(Player, getPlaybaleCards)
     cards.erase(cards.begin());
     expectedCards = { card3 };
     EXPECT_EQ(expectedCards, human->getPlayableCards());
+    Trick trick2;
+    trick2.addCard(card4);
+    Application::getInstance().getGame()->addTrick(trick2);
+    cards = { card1, card2, card3 };
+    expectedCards = { card1, card3 };
+    EXPECT_EQ(expectedCards, human->getPlayableCards());
+}
+
+TEST(Player, getGlobalBounds )
+{
+    std::shared_ptr<Player> human = Application::getInstance().getGame()->getHuman();
+    Card card1(Hearts, King);
+    Card card2(Clubs, King);
+    card1.setPosition(0, 100);
+    card2.setPosition(0, 120);
+    human->setCards({card1,card2});
+    sf::IntRect expectedRect(card1.getGlobalPosition().x,card2.getGlobalPosition().y*0.9,20+card1.getGlobalSize().x,card1.getGlobalSize().y);
+    EXPECT_EQ(expectedRect,human->getGlobalBounds());
+}
+
+TEST(Player,getCards)
+{
+    Trick trick;
+    Application::getInstance().getGame()->setRules(Rules (Hearts));
+    Application::getInstance().getGame()->addTrick(trick);
+    std::shared_ptr<Player> human = Application::getInstance().getGame()->getHuman();
+    Card card1(Hearts, King);
+    Card card2(Clubs, King);
+    Card card3(Hearts, Nine);
+    human->setCards({card1,card2});
+    std::vector<Card> cards={card1,card2};
+    human->playCard(card3);
+    EXPECT_EQ(cards, human->getCards());
 }
 
 GTEST_API_ int main(int argc, char** argv)

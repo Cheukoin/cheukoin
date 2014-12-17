@@ -91,12 +91,14 @@ void Player::playCard(Card const& card)
     cout << "-- " << *this << " playing " << card << endl;
     // TODO : verify move is valid with rules
     unsigned int i = 0;
-
     for (i = 0; i < _cards.size(); i++) {
         if (_cards[i] == card) {
             _cards[i].show();
             _moveCardToCenter(_cards[i]);
             break;
+        }
+        if (i== _cards.size()-1){
+            return;
         }
     }
 
