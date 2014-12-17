@@ -196,6 +196,10 @@ vector<Card> Player::getCards() const
 {
     return _cards;
 }
+void Player::setCards(vector<Card> cards)
+{
+    _cards = cards;
+}
 
 void Player::drawCards() const
 {

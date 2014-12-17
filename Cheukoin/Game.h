@@ -28,7 +28,7 @@ public:
     void makeBid();
 
     void play(bool playerIsPlaying);
-   
+
     void addTrickToWinnerTeam();
     void initializeRound();
 
@@ -46,6 +46,7 @@ public:
     Trick& getCurrentTrick();
 
     std::shared_ptr<Rules> getRules();
+    void setRules(Rules rules);
 
     std::vector<std::shared_ptr<Bot> > getBots();
     std::shared_ptr<Human> getHuman();

@@ -3,6 +3,7 @@
 #include "gtest/gtest.h"
 #include "Rules.h"
 #include "Card.h"
+#include "Application.h"
 
 TEST(Card, isCardGreater1)
 {
@@ -18,6 +19,37 @@ TEST(Card, isCardGreater2)
     Card queen(Clubs, King);
     EXPECT_TRUE(king.isGreaterThan(queen, Hearts));
     EXPECT_FALSE(king.isGreaterThan(queen, Clubs));
+}
+
+TEST(Rules, isTrickValid)
+{
+    Rules hearts(Hearts);
+    Rules clubs(Clubs);
+    Card king(Hearts, King);
+    Card queen(Clubs, King);
+    Trick trick;
+    trick.addCard(queen);
+    trick.addCard(king);
+    trick.addCard(queen);
+    EXPECT_FALSE(hearts.isTrickValid(trick));
+    trick.addCard(king);
+    EXPECT_TRUE(hearts.isTrickValid(trick));
+}
+
+TEST(Team, computeScore)
+{
+    Application& application = Application::getInstance();
+    application.initGame();
+    Rules hearts(Hearts);
+    Application::getInstance().getGame()->setRules(hearts);
+    Team team("team1", Application::getInstance().getGame()->getHuman(), Application::getInstance().getGame()->getHuman());
+    Card king(Hearts, King);
+    Card queen(Clubs, King);
+    Trick trick;
+    trick.addCard(queen);
+    trick.addCard(king);
+    int expectedScore = 0;
+    EXPECT_EQ(expectedScore, team.computeScore(trick));
 }
 
 GTEST_API_ int main(int argc, char** argv)

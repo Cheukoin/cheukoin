@@ -43,6 +43,7 @@ public:
     bool isDealer();
     void playByClick();
 
+    void setCards(std::vector<Card> cards);
     Position getPosition() const;
     void setPosition(Position position);
 

@@ -204,6 +204,11 @@ shared_ptr<Rules> Game::getRules()
     return _rules;
 }
 
+void Game::setRules(Rules rules)
+{
+    *_rules=rules;
+}
+
 void Game::addTrick(Trick const& trick)
 {
     _tricks.push_back(trick);
