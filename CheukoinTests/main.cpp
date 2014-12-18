@@ -14,7 +14,7 @@ std::vector<Card> cards()
     Card card4(Hearts, Eight);
     Card card5(Spades, Ace);
     Card card6(Spades, Ten);
-    std::vector<Card> cards = { card1, card2, card3, card4, card5, card6};
+    std::vector<Card> cards = { card1, card2, card3, card4, card5, card6 };
     return cards;
 }
 TEST(Card, isCardGreater1)
@@ -95,7 +95,7 @@ TEST(Player, getGlobalBounds)
     cards()[0].setPosition(0, 100);
     cards()[1].setPosition(0, 120);
     human->setCards({ cards()[0], cards()[1] });
-    sf::IntRect expectedRect(cards()[0].getGlobalPosition().x, cards()[1].getGlobalPosition().y * 0.9, 20 + cards()[0].getGlobalSize().x, cards()[0].getGlobalSize().y);
+    sf::IntRect expectedRect(cards()[0].getGlobalPosition().x, cards()[1].getGlobalPosition().y * 0.9, cards()[0].getGlobalSize().x, cards()[0].getGlobalSize().y);
     EXPECT_EQ(expectedRect, human->getGlobalBounds());
 }
 
@@ -130,6 +130,18 @@ TEST(Player, hasCard)
     human->setCards(card);
     EXPECT_TRUE(human->hasCard(cards()[0]));
     EXPECT_FALSE(human->hasCard(cards()[1]));
+}
+
+TEST(Team, getPlayers)
+{
+    std::shared_ptr<Player> player1;
+    std::shared_ptr<Player> player2;
+    std::shared_ptr<Player> player3;
+    std::shared_ptr<Player> player4;
+    Team team1("Team1", player1, player2);
+    Team team2("Team2", player3, player4);
+    std::vector<std::shared_ptr<Player> > expectedPlayers = { player1, player2 };
+    EXPECT_EQ(expectedPlayers, team1.getPlayers());
 }
 
 

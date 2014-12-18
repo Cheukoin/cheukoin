@@ -30,9 +30,9 @@ public:
     std::vector<Trick> getTricks();
     int computeScore(Trick& trick);
 
-    std::string getName();
+    std::string getName() ;
 
-    std::vector<std::shared_ptr<Player> > getPlayers();
+    std::vector<std::shared_ptr<Player> > getPlayers() ;
     bool isTeamDealing();
 
     bool isPlayerInTeam(Player const& player);
