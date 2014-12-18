@@ -15,6 +15,7 @@ Application& Application::getInstance()
 
 void Application::_handleClick()
 {
+    
     if (!_game) {
         initGame();
         return;
@@ -26,7 +27,7 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
-
+    bool gameIsOver= (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000 || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
     _game->addTrickToWinnerTeam();
     bool playerIsPlaying = (_game->getCurrentRound() != 8) && (_game->getBid()->getAmount() != 0) && (_game->getCurrentPlayer() == _game->getHuman() && humanBounds.contains(mousePosition));
 
@@ -40,7 +41,7 @@ void Application::_handleClick()
         _newGameLaunched = true;
         return;
     }
-    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true) {
+    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true && gameIsOver==false) {
         mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
         sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
@@ -49,6 +50,14 @@ void Application::_handleClick()
             shared_ptr<Lobby> lobby = _game->getLobby();
             _game = make_shared<Game>(lobby, Offline);
             _game->startGame();
+        }
+    }
+    if (gameIsOver) {
+        sf::IntRect rect2 = sf::IntRect(displayEndButton().getGlobalPosition().x, displayEndButton().getGlobalPosition().y, displayEndButton().getGlobalSize().x, displayEndButton().getGlobalSize().y);
+
+        if (rect2.contains(mousePosition)) {
+            cout << "game over" << endl;
+            //qu'est-ce q'il faut faire ici?
         }
     }
 }
@@ -155,6 +164,14 @@ AnimatedObject Application::displayNextButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
     AnimatedObject button = AnimatedObject("nextButton.png", sf::Vector2f(530, 152));
+    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
+                       winSize.y / 2 - button.getGlobalSize().y / 2);
+    return button;
+}
+AnimatedObject Application::displayEndButton()
+{
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    AnimatedObject button = AnimatedObject("endButton.png", sf::Vector2f(396 , 231));
     button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
                        winSize.y / 2 - button.getGlobalSize().y / 2);
     return button;

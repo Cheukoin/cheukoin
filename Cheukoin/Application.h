@@ -23,6 +23,7 @@ public:
 
     AnimatedObject displayNextButton();
     AnimatedObject displayScores();
+    AnimatedObject displayEndButton();
     void computeGameScore();
     void moveToNextGame();
     void startNewGame();

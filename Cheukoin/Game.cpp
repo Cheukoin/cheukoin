@@ -253,8 +253,13 @@ void Game::draw()
     if (_score) {
         _score->draw();
     }
-    if (_currentRound == 8) {
+     bool gameIsOver=(_lobby->getTeams()[0]->computeTotalScore()>1000)|| (_lobby->getTeams()[1]->computeTotalScore() >1000);
+    if ((_currentRound == 8)&& gameIsOver==false) {
         Application::getInstance().displayNextButton().draw();
+    }
+    if (gameIsOver){
+        Application::getInstance().displayEndButton().draw();
+    
     }
 }
 
