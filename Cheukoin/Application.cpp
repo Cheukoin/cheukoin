@@ -15,7 +15,7 @@ Application& Application::getInstance()
 
 void Application::_handleClick()
 {
-    
+
     if (!_game) {
         initGame();
         return;
@@ -27,7 +27,7 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
-    bool gameIsOver= (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000 || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
+    bool gameIsOver = (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000 || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
     _game->addTrickToWinnerTeam();
     bool playerIsPlaying = (_game->getCurrentRound() != 8) && (_game->getBid()->getAmount() != 0) && (_game->getCurrentPlayer() == _game->getHuman() && humanBounds.contains(mousePosition));
 
@@ -41,7 +41,7 @@ void Application::_handleClick()
         _newGameLaunched = true;
         return;
     }
-    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true && gameIsOver==false) {
+    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true && gameIsOver == false) {
         mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
         sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
 
@@ -171,19 +171,12 @@ AnimatedObject Application::displayNextButton()
 AnimatedObject Application::displayEndButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    AnimatedObject button = AnimatedObject("endButton.png", sf::Vector2f(396 , 231));
+    AnimatedObject button = AnimatedObject("endButton.png", sf::Vector2f(396, 231));
     button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
                        winSize.y / 2 - button.getGlobalSize().y / 2);
     return button;
 }
 
-AnimatedObject Application::displayScores()
-{
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    sf::Vector2f pos = sf::Vector2f(winSize.x / 2, winSize.y / 2);
-    AnimatedObject table = AnimatedObject("", pos);
-    return table;
-}
 
 void Application::moveToNextGame()
 {
@@ -214,7 +207,7 @@ void Application::computeGameScore()
     shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer, true);
     cout << "the other team is " << otherTeam->getName() << endl;
     if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
-        cout << biddingTeam->getName() + " has won and adds" << _game->getBid()->getAmount() << " points to its " << biddingTeam->getScore() << " points" << endl;
+        cout << biddingTeam->getName() + " has won and adds " << _game->getBid()->getAmount() << " points to its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());
         cout << otherTeam->getName() << " keeps its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(otherTeam->getScore());
@@ -223,7 +216,7 @@ void Application::computeGameScore()
         cout << biddingTeam->getName() + " has lost" << endl;
         cout << biddingTeam->getName() << " loses its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(0);
-        cout << otherTeam->getName() << " has won the bet and adds " << _game->getBid()->getAmount() << "points to its " << otherTeam->getScore() << " points" << endl;
+        cout << otherTeam->getName() << " has won the bet and adds " << _game->getBid()->getAmount() << " points to its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(_game->getBid()->getAmount() + otherTeam->getScore());
     }
 }

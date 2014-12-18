@@ -53,6 +53,10 @@ vector<shared_ptr<Player> > Lobby::getPlayers()
 
 shared_ptr<Team> Lobby::getTeamForPlayer(Player player, bool getEnemyTeam)
 {
+    //returns team 1 in 2 cases:
+    //player is in it and we want its team (first and second statements true)
+    //or he is not in team 1 but we want its enemy team, thus team 1 (first and second statements
+    //are false,
     if (!getEnemyTeam ^ (*_teams[0]->getPlayers().at(0) == player || *_teams[0]->getPlayers().at(1) == player)) {
         return _teams[1];
     }

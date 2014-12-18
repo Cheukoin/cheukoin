@@ -144,6 +144,20 @@ TEST(Team, getPlayers)
     EXPECT_EQ(expectedPlayers, team1.getPlayers());
 }
 
+TEST(Lobby, getTeamForPlayer)
+{
+    std::shared_ptr<Player> player1 = std::make_shared<Player>("one", Top);
+    std::shared_ptr<Player> player2 = std::make_shared<Player>("two", Left);
+    std::shared_ptr<Player> player3 = std::make_shared<Player>("three", Bottom);
+    std::shared_ptr<Player> player4 = std::make_shared<Player>("four", Right);
+    Team team1("Team1", player1, player2);
+    Team team2("Team2", player3, player4);
+    std::shared_ptr<Team> team11 = std::make_shared<Team>(team1);
+    std::shared_ptr<Team> team12 = std::make_shared<Team>(team2);
+    Lobby lobby("lobby", team11, team12);
+    std::shared_ptr<Team> expectedTeam = team11;
+    EXPECT_EQ(expectedTeam, lobby.getTeamForPlayer(*player1, false));
+}
 
 GTEST_API_ int main(int argc, char** argv)
 {

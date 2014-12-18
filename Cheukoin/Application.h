@@ -22,7 +22,6 @@ public:
     void mainLoop();
 
     AnimatedObject displayNextButton();
-    AnimatedObject displayScores();
     AnimatedObject displayEndButton();
     void computeGameScore();
     void moveToNextGame();
