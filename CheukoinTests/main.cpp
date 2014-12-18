@@ -122,6 +122,17 @@ TEST(Player, cardsForSuit)
     EXPECT_NE(expectedCards, human->cardsForSuit(Hearts));
 }
 
+TEST(Player, hasCard)
+{
+    Application::getInstance().getGame()->setRules(Hearts);
+    std::shared_ptr<Player> human = Application::getInstance().getGame()->getHuman();
+    std::vector<Card> card = { cards()[0], cards()[2], cards()[3] };
+    human->setCards(card);
+    EXPECT_TRUE(human->hasCard(cards()[0]));
+    EXPECT_FALSE(human->hasCard(cards()[1]));
+}
+
+
 GTEST_API_ int main(int argc, char** argv)
 {
     printf("Running main() from gtest_main.cc\n");
