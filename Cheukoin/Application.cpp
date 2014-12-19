@@ -12,6 +12,14 @@ Application& Application::getInstance()
     static Application instance;
     return instance;
 }
+std::shared_ptr<AnimatedObject> Application::getNextButton()
+{
+    return _nextButton;
+}
+std::shared_ptr<AnimatedObject> Application::getEndButton()
+{
+    return _endButton;
+}
 
 void Application::_handleClick()
 {
@@ -50,9 +58,7 @@ void Application::_handleClick()
     else if (_game->getCurrentRound() > 7 && _newGameLaunched) {
         mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
 
-        AnimatedObject button = displayNextButton();
-
-        sf::IntRect rect = button.getGlobalBounds();
+        sf::IntRect rect = _nextButton->getGlobalButton();
 
         if (rect.contains(mousePosition)) {
             cout << "next button clicked!" << endl;
@@ -64,9 +70,7 @@ void Application::_handleClick()
 
     if (gameIsOver) {
 
-        AnimatedObject button = displayEndButton();
-
-        sf::IntRect rect2 = button.getGlobalBounds();
+        sf::IntRect rect2 = _endButton->getGlobalButton();
 
         if (rect2.contains(mousePosition)) {
             cout << "game over" << endl;
@@ -138,12 +142,18 @@ void Application::mainLoop()
     sf::Event event;
     sf::Clock clock;
     sf::Time elapsed = clock.restart();
+    sf::Vector2f position = sf::Vector2f(
+                                         _window->getSize().x / 2,
+                                         _window->getSize().y / 2);
 
     _cheukoin = unique_ptr<AnimatedObject>(new AnimatedObject("cheukoin.png", sf::Vector2f(700, 700)));
-    _cheukoin->setPosition(sf::Vector2f(
-        _window->getSize().x / 2 - _cheukoin->getGlobalSize().x / 2,
-        _window->getSize().y / 2 - _cheukoin->getGlobalSize().y / 2));
+    _cheukoin->setPosition(position-sf::Vector2f(_cheukoin->getGlobalSize().x / 2,_cheukoin->getGlobalSize().y/2));
+    
+    _nextButton = shared_ptr<AnimatedObject>(new AnimatedObject("nextButton.png", sf::Vector2f(530, 152)));
+    _nextButton->setPosition(position-sf::Vector2f(_nextButton->getGlobalSize().x / 2,_nextButton->getGlobalSize().y/2));
 
+    _endButton = shared_ptr<AnimatedObject>(new AnimatedObject("endButton.png", sf::Vector2f(396, 231)));
+    _endButton->setPosition(position-sf::Vector2f(_endButton->getGlobalSize().x / 2,_endButton->getGlobalSize().y/2));
     while (_window->isOpen()) {
         elapsed = clock.restart();
         if (_game) {
@@ -172,24 +182,6 @@ std::shared_ptr<Game> Application::getGame()
     return _game;
 }
 
-AnimatedObject Application::displayNextButton()
-{
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    AnimatedObject button = AnimatedObject("nextButton.png", sf::Vector2f(530, 152));
-    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
-                       winSize.y / 2 - button.getGlobalSize().y / 2);
-    return button;
-}
-
-AnimatedObject Application::displayEndButton()
-{
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    AnimatedObject button = AnimatedObject("endButton.png", sf::Vector2f(396, 231));
-    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
-                       winSize.y / 2 - button.getGlobalSize().y / 2);
-    return button;
-}
-
 void Application::moveToNextGame()
 {
     cout << "Game finished!" << endl;
@@ -204,7 +196,6 @@ void Application::moveToNextGame()
 void Application::startNewGame()
 {
     cout << "Game finished!" << endl;
-    displayNextButton();
     moveToNextGame();
     return;
 }
