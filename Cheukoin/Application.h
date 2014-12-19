@@ -16,13 +16,13 @@ public:
 
     std::shared_ptr<Game> getGame();
     std::shared_ptr<sf::RenderWindow> getWindow();
-    std::shared_ptr<AnimatedObject> getNextButton();
-    std::shared_ptr<AnimatedObject> getEndButton();
-    
+
     void initWindow();
     void initGame();
     void mainLoop();
 
+    AnimatedObject displayNextButton();
+    AnimatedObject displayEndButton();
     void computeGameScore();
     void moveToNextGame();
     void startNewGame();
@@ -34,8 +34,6 @@ private:
     void operator=(Application const&);
 
     std::unique_ptr<AnimatedObject> _cheukoin;
-    std::shared_ptr<AnimatedObject> _nextButton;
-    std::shared_ptr<AnimatedObject> _endButton;
 
     std::shared_ptr<Game> _game;
     std::shared_ptr<sf::RenderWindow> _window;
