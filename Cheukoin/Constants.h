@@ -14,6 +14,7 @@
 #include <string>
 
 #define PLAYER_COUNT 4
+#define END_GAME_SCORE 1000
 
 enum Suit {
     Clubs,

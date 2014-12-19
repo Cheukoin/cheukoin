@@ -75,19 +75,23 @@ public:
 
 private:
     GameMode const& _mode;
+
     std::shared_ptr<BidMaker> _bidMaker;
     std::shared_ptr<Bid> _bid;
     std::shared_ptr<Asset> _asset;
     std::shared_ptr<Lobby> _lobby;
     std::shared_ptr<Score> _score;
+    std::shared_ptr<Rules> _rules;
 
     std::vector<Trick> _tricks;
+
     int _currentRound;
     int _currentPlayerIndex;
     int _currentBiddingPlayerIndex;
-    std::shared_ptr<Rules> _rules;
+
     void _goToNextPlayer();
     void _endGame();
+    void _updateScore();
 };
 
 #endif

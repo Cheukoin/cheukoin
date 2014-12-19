@@ -133,13 +133,18 @@ void Game::initializeRound()
         getHuman()->showLegalCards();
     }
 
+    _updateScore();
+
+    cout << "Playing round " << _currentRound << endl;
+}
+
+void Game::_updateScore()
+{
     _score->setScore(
         _lobby->getTeams()[0]->getScore(),
         _lobby->getTeams()[0]->computeTotalScore(),
         _lobby->getTeams()[1]->getScore(),
         _lobby->getTeams()[1]->computeTotalScore());
-
-    cout << "Playing round " << _currentRound << endl;
 }
 
 shared_ptr<Human> Game::getHuman()
@@ -265,12 +270,14 @@ void Game::_endGame()
     if (isOver()) {
         Application::getInstance().displayEndButton();
     }
+
+    _updateScore();
 }
 
 bool Game::isOver()
 {
-    return (_lobby->getTeams()[0]->computeTotalScore() > 1000)
-           || (_lobby->getTeams()[1]->computeTotalScore() > 1000);
+    return (_lobby->getTeams()[0]->computeTotalScore() > END_GAME_SCORE)
+           || (_lobby->getTeams()[1]->computeTotalScore() > END_GAME_SCORE);
 }
 
 void Game::displayAsset(Suit asset)

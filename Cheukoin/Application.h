@@ -49,6 +49,7 @@ private:
     void _handleClick();
     void _startNewGame();
     void _computeGameScore();
+    void _showGameOver();
 };
 
 #endif

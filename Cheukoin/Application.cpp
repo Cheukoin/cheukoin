@@ -45,7 +45,9 @@ void Application::_handleClick()
 
     if (_game->isOver()) {
         if (_endButton->getGlobalBounds().contains(mousePosition)) {
-            cout << "game over" << endl;
+            cout << "Game over!" << endl;
+            initWindow();
+            initGame();
         }
     }
 }
@@ -229,4 +231,8 @@ void Application::displayNextButton()
 void Application::displayEndButton()
 {
     _nextGameButton->show();
+}
+
+void Application::_showGameOver()
+{
 }
