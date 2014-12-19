@@ -21,7 +21,6 @@ void Lobby::deal()
     vector<Card> cards = Card::getAllCardsShuffled();
 
     for (unsigned i = 0; i < cards.size(); i++) {
-        cards[i].show();
         getPlayers().at(i % 4).get()->addCard(cards[i]);
     }
 }

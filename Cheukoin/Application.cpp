@@ -41,18 +41,8 @@ void Application::_handleClick()
     }
     _game->play(playerIsPlaying);
 
-    if (_game->getCurrentRound() > 7 && !_newGameLaunched) {
+    if (_game->getCurrentRound() > 7 && _nextGameButton->getGlobalBounds().contains(mousePosition)) {
         _startNewGame();
-        _newGameLaunched = true;
-        return;
-    }
-
-    else if (_game->getCurrentRound() > 7 && _newGameLaunched) {
-        if (_nextGameButton->getGlobalBounds().contains(mousePosition)) {
-            shared_ptr<Lobby> lobby = _game->getLobby();
-            _game = make_shared<Game>(lobby, Offline);
-            _game->startGame();
-        }
     }
 
     if (gameIsOver) {
@@ -140,9 +130,6 @@ void Application::mainLoop()
         _window->getSize().x / 2 - _cheukoin->getGlobalSize().x / 2,
         _window->getSize().y / 2 - _cheukoin->getGlobalSize().y / 2));
 
-    _nextGameButton->show();
-    _endButton->show();
-
     while (_window->isOpen()) {
         elapsed = clock.restart();
         if (_game) {
@@ -199,18 +186,22 @@ void Application::_startNewGame()
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
+
+    shared_ptr<Lobby> lobby = _game->getLobby();
+    _game = make_shared<Game>(lobby, Offline);
+
+    _game->startGame();
 }
 
 void Application::_computeGameScore()
 {
-
     shared_ptr<Player> biddingPlayer = _game->getCurrentBiddingPlayer();
     shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer);
     shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer, true);
 
     cout << "Bidder was " << biddingPlayer->getName() << endl
-         << "Bidding team is " << biddingTeam->getName() << endl
-         << "the other team is " << otherTeam->getName() << endl;
+         << "Bidding team is " << biddingTeam->getName()
+         << ", the other team is " << otherTeam->getName() << endl;
 
     if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
         biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());

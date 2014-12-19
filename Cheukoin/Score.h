@@ -12,7 +12,7 @@ public:
 
     void draw();
 
-    void setScore(int score1, int score2);
+    void setScore(int score1, int totalScore1, int score2, int totalScore2);
 
 private:
     sf::Text _text;

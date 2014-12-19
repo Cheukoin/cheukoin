@@ -32,7 +32,6 @@ Game::Game(shared_ptr<Lobby> lobby, GameMode const& mode)
 
 void Game::startGame()
 {
-    Application::getInstance().setNewGameLaunched(false);
     _lobby->deal();
 
     for (auto player : _lobby->getPlayers()) {
@@ -51,7 +50,6 @@ void Game::play(bool playerIsPlaying)
 {
 
     if (getCurrentRound() > 7) {
-        _endGame();
         return;
     }
 
@@ -136,7 +134,9 @@ void Game::initializeRound()
 
     _score->setScore(
         _lobby->getTeams()[0]->getScore(),
-        _lobby->getTeams()[1]->getScore());
+        _lobby->getTeams()[0]->computeTotalScore(),
+        _lobby->getTeams()[1]->getScore(),
+        _lobby->getTeams()[1]->computeTotalScore());
 
     cout << "Playing round " << _currentRound << endl;
 }
