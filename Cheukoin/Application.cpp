@@ -15,7 +15,6 @@ Application& Application::getInstance()
 
 void Application::_handleClick()
 {
-
     if (!_game) {
         initGame();
         return;
@@ -27,9 +26,15 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
-    bool gameIsOver = (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000 || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
+    bool gameIsOver = (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000
+                       || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
+
     _game->addTrickToWinnerTeam();
-    bool playerIsPlaying = (_game->getCurrentRound() != 8) && (_game->getBid()->getAmount() != 0) && (_game->getCurrentPlayer() == _game->getHuman() && humanBounds.contains(mousePosition));
+
+    bool playerIsPlaying = (_game->getCurrentRound() != 8)
+                           && (_game->getBid()->getAmount() != 0)
+                           && (_game->getCurrentPlayer() == _game->getHuman()
+                               && humanBounds.contains(mousePosition));
 
     if (playerIsPlaying) {
         _game->getCurrentPlayer()->play();
@@ -41,9 +46,14 @@ void Application::_handleClick()
         _newGameLaunched = true;
         return;
     }
+
     else if (_game->getCurrentRound() > 7 && _newGameLaunched == true && gameIsOver == false) {
         mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-        sf::IntRect rect = sf::IntRect(displayNextButton().getGlobalPosition().x, displayNextButton().getGlobalPosition().y, displayNextButton().getGlobalSize().x, displayNextButton().getGlobalSize().y);
+        AnimatedObject button = displayNextButton();
+        sf::IntRect rect = sf::IntRect(button.getGlobalPosition().x,
+                                       button.getGlobalPosition().y,
+                                       button.getGlobalSize().x,
+                                       button.getGlobalSize().y);
 
         if (rect.contains(mousePosition)) {
             cout << "next button clicked!" << endl;
@@ -52,8 +62,13 @@ void Application::_handleClick()
             _game->startGame();
         }
     }
+
     if (gameIsOver) {
-        sf::IntRect rect2 = sf::IntRect(displayEndButton().getGlobalPosition().x, displayEndButton().getGlobalPosition().y, displayEndButton().getGlobalSize().x, displayEndButton().getGlobalSize().y);
+        AnimatedObject button = displayEndButton();
+        sf::IntRect rect2 = sf::IntRect(button.getGlobalPosition().x,
+                                        button.getGlobalPosition().y,
+                                        button.getGlobalSize().x,
+                                        button.getGlobalSize().y);
 
         if (rect2.contains(mousePosition)) {
             cout << "game over" << endl;
@@ -168,6 +183,7 @@ AnimatedObject Application::displayNextButton()
                        winSize.y / 2 - button.getGlobalSize().y / 2);
     return button;
 }
+
 AnimatedObject Application::displayEndButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
@@ -176,7 +192,6 @@ AnimatedObject Application::displayEndButton()
                        winSize.y / 2 - button.getGlobalSize().y / 2);
     return button;
 }
-
 
 void Application::moveToNextGame()
 {
