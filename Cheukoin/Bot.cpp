@@ -176,8 +176,8 @@ void Bot::_guessHands()
 
 void Bot::chooseBid()
 {
-    Suit asset;
-    int value, amount;
+    Suit asset = Clubs;
+    int value = 0, amount;
 
     vector<Card> cards = getCards();
     map<Suit, vector<Card> > cardsPerSuit;

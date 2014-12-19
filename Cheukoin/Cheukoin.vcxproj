@@ -87,8 +87,11 @@
     <Image Include="Resources\cardBack.png" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="AnimatedObject.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="Asset.cpp" />
     <ClCompile Include="Bid.cpp" />
+    <ClCompile Include="BidMaker.cpp" />
     <ClCompile Include="Bot.cpp" />
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -104,8 +107,11 @@
     <ClCompile Include="Trick.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AnimatedObject.h" />
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Asset.h" />
     <ClInclude Include="Bid.h" />
+    <ClInclude Include="BidMaker.h" />
     <ClInclude Include="Bot.h" />
     <ClInclude Include="Card.h" />
     <ClInclude Include="Constants.h" />
