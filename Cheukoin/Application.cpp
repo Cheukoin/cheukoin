@@ -42,20 +42,13 @@ void Application::_handleClick()
     _game->play(playerIsPlaying);
 
     if (_game->getCurrentRound() > 7 && !_newGameLaunched) {
-        moveToNextGame();
+        _startNewGame();
         _newGameLaunched = true;
         return;
     }
 
     else if (_game->getCurrentRound() > 7 && _newGameLaunched) {
-        mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
-
-        AnimatedObject button = displayNextButton();
-
-        sf::IntRect rect = button.getGlobalBounds();
-
-        if (rect.contains(mousePosition)) {
-            cout << "next button clicked!" << endl;
+        if (_nextGameButton->getGlobalBounds().contains(mousePosition)) {
             shared_ptr<Lobby> lobby = _game->getLobby();
             _game = make_shared<Game>(lobby, Offline);
             _game->startGame();
@@ -63,20 +56,15 @@ void Application::_handleClick()
     }
 
     if (gameIsOver) {
-
-        AnimatedObject button = displayEndButton();
-
-        sf::IntRect rect2 = button.getGlobalBounds();
-
-        if (rect2.contains(mousePosition)) {
+        if (_endButton->getGlobalBounds().contains(mousePosition)) {
             cout << "game over" << endl;
         }
     }
 }
 
-void Application::setNewGameLaunched(bool boolean)
+void Application::setNewGameLaunched(bool launched)
 {
-    _newGameLaunched = boolean;
+    _newGameLaunched = launched;
 }
 
 shared_ptr<sf::RenderWindow> Application::getWindow()
@@ -99,6 +87,9 @@ void Application::initWindow()
     _backgroundSprite = unique_ptr<sf::Sprite>(new sf::Sprite);
     _backgroundSprite.get()->setTextureRect(sf::IntRect(0, 0, _window->getSize().x, _window->getSize().y));
     _backgroundSprite.get()->setTexture(*_backgroundTexture.get());
+
+    _makeEndButton();
+    _makeNextButton();
 }
 
 void Application::initGame()
@@ -115,6 +106,9 @@ void Application::initGame()
 
     _game = make_shared<Game>(lobby, GameMode::Offline);
     _game->startGame();
+
+    _nextGameButton->hide();
+    _endButton->hide();
 }
 
 void Application::_draw()
@@ -125,6 +119,8 @@ void Application::_draw()
 
     if (_game) {
         _game->draw();
+        _nextGameButton->draw();
+        _endButton->draw();
     }
     else {
         _cheukoin->draw();
@@ -143,6 +139,9 @@ void Application::mainLoop()
     _cheukoin->setPosition(sf::Vector2f(
         _window->getSize().x / 2 - _cheukoin->getGlobalSize().x / 2,
         _window->getSize().y / 2 - _cheukoin->getGlobalSize().y / 2));
+
+    _nextGameButton->show();
+    _endButton->show();
 
     while (_window->isOpen()) {
         elapsed = clock.restart();
@@ -172,63 +171,73 @@ std::shared_ptr<Game> Application::getGame()
     return _game;
 }
 
-AnimatedObject Application::displayNextButton()
+void Application::_makeNextButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    AnimatedObject button = AnimatedObject("nextButton.png", sf::Vector2f(530, 152));
-    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
-                       winSize.y / 2 - button.getGlobalSize().y / 2);
-    return button;
+    _nextGameButton = unique_ptr<AnimatedObject>(new AnimatedObject("nextButton.png", sf::Vector2f(530, 152)));
+    _nextGameButton->setPosition(winSize.x / 2 - _nextGameButton->getGlobalSize().x / 2,
+                                 winSize.y / 2 - _nextGameButton->getGlobalSize().y / 2);
 }
 
-AnimatedObject Application::displayEndButton()
+void Application::_makeEndButton()
 {
     sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
-    AnimatedObject button = AnimatedObject("endButton.png", sf::Vector2f(396, 231));
-    button.setPosition(winSize.x / 2 - button.getGlobalSize().x / 2,
-                       winSize.y / 2 - button.getGlobalSize().y / 2);
-    return button;
+    _endButton = unique_ptr<AnimatedObject>(new AnimatedObject("endButton.png", sf::Vector2f(396, 231)));
+    _endButton->setPosition(winSize.x / 2 - _endButton->getGlobalSize().x / 2,
+                            winSize.y / 2 - _endButton->getGlobalSize().y / 2);
 }
 
-void Application::moveToNextGame()
+void Application::_startNewGame()
 {
     cout << "Game finished!" << endl;
-    computeGameScore();
-    for (auto team : _game->getLobby()->getTeams()) {
 
-        //team->updateTotalScore(team->getScore());
+    _nextGameButton->hide();
+    _endButton->hide();
+
+    _computeGameScore();
+    for (auto team : _game->getLobby()->getTeams()) {
         team->setScore(0);
         cout << team->getName() << " has " << team->computeTotalScore() << " points" << endl;
     }
 }
-void Application::startNewGame()
-{
-    cout << "Game finished!" << endl;
-    displayNextButton();
-    moveToNextGame();
-    return;
-}
 
-void Application::computeGameScore()
+void Application::_computeGameScore()
 {
 
     shared_ptr<Player> biddingPlayer = _game->getCurrentBiddingPlayer();
-    cout << "Bidder was " << biddingPlayer->getName() << endl;
     shared_ptr<Team> biddingTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer);
-    cout << "Bidding team is " << biddingTeam->getName() << endl;
     shared_ptr<Team> otherTeam = _game->getLobby()->getTeamForPlayer(*biddingPlayer, true);
-    cout << "the other team is " << otherTeam->getName() << endl;
+
+    cout << "Bidder was " << biddingPlayer->getName() << endl
+         << "Bidding team is " << biddingTeam->getName() << endl
+         << "the other team is " << otherTeam->getName() << endl;
+
     if (biddingTeam->getScore() >= _game->getBid()->getAmount()) {
-        cout << biddingTeam->getName() + " has won and adds " << _game->getBid()->getAmount() << " points to its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(_game->getBid()->getAmount() + biddingTeam->getScore());
-        cout << otherTeam->getName() << " keeps its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(otherTeam->getScore());
+
+        cout << biddingTeam->getName() + " has won and adds " << _game->getBid()->getAmount()
+             << " points to its " << biddingTeam->getScore() << " points" << endl
+             << otherTeam->getName() << " keeps its " << otherTeam->getScore() << " points" << endl;
     }
     else {
-        cout << biddingTeam->getName() + " has lost" << endl;
-        cout << biddingTeam->getName() << " loses its " << biddingTeam->getScore() << " points" << endl;
         biddingTeam->updateTotalScore(0);
-        cout << otherTeam->getName() << " has won the bet and adds " << _game->getBid()->getAmount() << " points to its " << otherTeam->getScore() << " points" << endl;
         otherTeam->updateTotalScore(_game->getBid()->getAmount() + otherTeam->getScore());
+
+        cout << biddingTeam->getName() + " has lost" << endl
+             << biddingTeam->getName() << " loses its " << biddingTeam->getScore() << " points" << endl
+             << otherTeam->getName() << " has won the bet and adds "
+             << _game->getBid()->getAmount() << " points to its "
+             << otherTeam->getScore() << " points" << endl;
     }
+}
+
+void Application::displayNextButton()
+{
+    _nextGameButton->show();
+}
+
+void Application::displayEndButton()
+{
+    _nextGameButton->show();
 }

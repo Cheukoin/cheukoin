@@ -12,11 +12,13 @@
 using namespace std;
 
 AnimatedObject::AnimatedObject(string spriteName, sf::Vector2f size)
-    : _sprite(make_shared<sf::Sprite>())
+    : _visible(true)
+    , _sprite(make_shared<sf::Sprite>())
     , _texture(make_shared<sf::Texture>())
     , _size(size)
     , _targetPosition(0, 0)
     , _transitionTime(sf::seconds(0))
+
 {
     if (!_texture->loadFromFile(resourcePath(spriteName))) {
         cout << "texture file " << resourcePath(spriteName) << " not loaded";
@@ -33,7 +35,9 @@ AnimatedObject::~AnimatedObject()
 
 void AnimatedObject::draw() const
 {
-    Application::getInstance().getWindow()->draw(*_sprite.get());
+    if (_visible) {
+        Application::getInstance().getWindow()->draw(*_sprite.get());
+    }
 }
 
 void AnimatedObject::moveTo(sf::Vector2f const& position, sf::Time transitionTime)
@@ -68,6 +72,21 @@ void AnimatedObject::setPosition(sf::Vector2f const& position)
     _targetPosition = position;
     _transitionTime = sf::seconds(0);
     _elapsedTime = sf::seconds(0);
+}
+
+void AnimatedObject::show()
+{
+    _visible = true;
+}
+
+void AnimatedObject::hide()
+{
+    _visible = false;
+}
+
+bool AnimatedObject::isVisible()
+{
+    return _visible;
 }
 
 sf::Vector2f AnimatedObject::getGlobalPosition() const

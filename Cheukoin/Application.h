@@ -20,20 +20,24 @@ public:
     void initWindow();
     void initGame();
     void mainLoop();
+    void setNewGameLaunched(bool launched);
 
-    AnimatedObject displayNextButton();
-    AnimatedObject displayEndButton();
-    void computeGameScore();
-    void moveToNextGame();
-    void startNewGame();
-    void setNewGameLaunched(bool boolean);
+    void displayNextButton();
+    void displayEndButton();
 
 private:
     Application(){};
     Application(Application const&);
     void operator=(Application const&);
 
+    bool _newGameLaunched;
+
     std::unique_ptr<AnimatedObject> _cheukoin;
+    std::unique_ptr<AnimatedObject> _nextGameButton;
+    std::unique_ptr<AnimatedObject> _endButton;
+
+    void _makeNextButton();
+    void _makeEndButton();
 
     std::shared_ptr<Game> _game;
     std::shared_ptr<sf::RenderWindow> _window;
@@ -43,7 +47,8 @@ private:
 
     void _draw();
     void _handleClick();
-    bool _newGameLaunched;
+    void _startNewGame();
+    void _computeGameScore();
 };
 
 #endif

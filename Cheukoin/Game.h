@@ -52,8 +52,6 @@ public:
     std::shared_ptr<Human> getHuman();
     std::shared_ptr<Player> getCurrentPlayer();
 
-    void moveToNextGame();
-
     /**
      * Draw all game entities to the main window
      */
@@ -80,12 +78,14 @@ private:
     std::shared_ptr<Asset> _asset;
     std::shared_ptr<Lobby> _lobby;
     std::shared_ptr<Score> _score;
+
     std::vector<Trick> _tricks;
     int _currentRound;
     int _currentPlayerIndex;
     int _currentBiddingPlayerIndex;
     std::shared_ptr<Rules> _rules;
     void _goToNextPlayer();
+    void _endGame();
 };
 
 #endif

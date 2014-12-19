@@ -34,11 +34,16 @@ public:
     void setPosition(float x, float y);
     void setPosition(sf::Vector2f const& position);
 
+    void show();
+    void hide();
+    bool isVisible();
+
     sf::Vector2f getGlobalPosition() const;
     sf::Vector2f getGlobalSize() const;
     sf::IntRect getGlobalBounds() const;
 
 protected:
+    bool _visible;
     sf::Vector2f _size;
     sf::Vector2f _targetPosition;
     sf::Time _transitionTime;

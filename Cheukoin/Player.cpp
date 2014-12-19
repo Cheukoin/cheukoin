@@ -97,7 +97,7 @@ void Player::playCard(Card const& card)
             _moveCardToCenter(_cards[i]);
             break;
         }
-        if (i== _cards.size()-1){
+        if (i == _cards.size() - 1) {
             return;
         }
     }
