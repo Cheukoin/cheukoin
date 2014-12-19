@@ -41,13 +41,13 @@ void Application::_handleClick()
     }
     _game->play(playerIsPlaying);
 
-    if (_game->getCurrentRound() > 7 && _newGameLaunched == false) {
+    if (_game->getCurrentRound() > 7 && !_newGameLaunched) {
         moveToNextGame();
         _newGameLaunched = true;
         return;
     }
 
-    else if (_game->getCurrentRound() > 7 && _newGameLaunched == true && gameIsOver == false) {
+    else if (_game->getCurrentRound() > 7 && _newGameLaunched) {
         mousePosition = sf::Mouse::getPosition(*Application::getInstance().getWindow());
         AnimatedObject button = displayNextButton();
         sf::IntRect rect = sf::IntRect(button.getGlobalPosition().x,
@@ -72,7 +72,6 @@ void Application::_handleClick()
 
         if (rect2.contains(mousePosition)) {
             cout << "game over" << endl;
-            //qu'est-ce q'il faut faire ici?
         }
     }
 }
