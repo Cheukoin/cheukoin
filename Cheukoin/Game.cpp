@@ -50,6 +50,7 @@ void Game::play(bool playerIsPlaying)
 {
 
     if (getCurrentRound() > 7) {
+        _endGame();
         return;
     }
 
@@ -257,14 +258,19 @@ void Game::draw()
 
 void Game::_endGame()
 {
-    bool gameIsOver = (_lobby->getTeams()[0]->computeTotalScore() > 1000)
-                      || (_lobby->getTeams()[1]->computeTotalScore() > 1000);
-    if ((_currentRound == 8) && gameIsOver == false) {
+    if ((_currentRound >= 7) && !isOver()) {
         Application::getInstance().displayNextButton();
     }
-    if (gameIsOver) {
+
+    if (isOver()) {
         Application::getInstance().displayEndButton();
     }
+}
+
+bool Game::isOver()
+{
+    return (_lobby->getTeams()[0]->computeTotalScore() > 1000)
+           || (_lobby->getTeams()[1]->computeTotalScore() > 1000);
 }
 
 void Game::displayAsset(Suit asset)

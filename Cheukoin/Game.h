@@ -71,6 +71,8 @@ public:
     std::shared_ptr<Player> getCurrentBiddingPlayer();
     int getCurrentRound();
 
+    bool isOver();
+
 private:
     GameMode const& _mode;
     std::shared_ptr<BidMaker> _bidMaker;

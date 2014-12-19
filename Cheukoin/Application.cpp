@@ -26,8 +26,6 @@ void Application::_handleClick()
 
     sf::Vector2i mousePosition = sf::Mouse::getPosition(*_window);
     sf::IntRect humanBounds = _game->getHuman()->getGlobalBounds();
-    bool gameIsOver = (_game->getLobby()->getTeams()[0]->computeTotalScore() > 1000
-                       || (_game->getLobby()->getTeams()[1]->computeTotalScore() > 1000));
 
     _game->addTrickToWinnerTeam();
 
@@ -45,7 +43,7 @@ void Application::_handleClick()
         _startNewGame();
     }
 
-    if (gameIsOver) {
+    if (_game->isOver()) {
         if (_endButton->getGlobalBounds().contains(mousePosition)) {
             cout << "game over" << endl;
         }
