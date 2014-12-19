@@ -36,6 +36,7 @@ public:
 
     sf::Vector2f getGlobalPosition() const;
     sf::Vector2f getGlobalSize() const;
+    sf::IntRect getGlobalBounds() const;
 
 protected:
     sf::Vector2f _size;

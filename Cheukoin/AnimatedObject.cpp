@@ -81,3 +81,7 @@ sf::Vector2f AnimatedObject::getGlobalSize() const
     return sf::Vector2f(_sprite->getGlobalBounds().width,
                         _sprite->getGlobalBounds().height);
 }
+sf::IntRect AnimatedObject::getGlobalBounds() const
+{
+    return sf::IntRect(getGlobalPosition().x, getGlobalPosition().y, getGlobalSize().x, getGlobalSize().y);
+}
