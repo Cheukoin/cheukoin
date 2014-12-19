@@ -103,10 +103,10 @@ void Application::initWindow()
 
 void Application::initGame()
 {
-    auto bot1 = make_shared<Bot>("Bot 1", Position::Top);
-    auto bot2 = make_shared<Bot>("Bot 2", Position::Left);
+    auto bot1 = make_shared<Bot>("North Bot", Position::Top);
+    auto bot2 = make_shared<Bot>("West Bot", Position::Left);
     auto human = make_shared<Human>("Human", Position::Bottom);
-    auto bot3 = make_shared<Bot>("Bot 3", Position::Right);
+    auto bot3 = make_shared<Bot>("East Bot", Position::Right);
 
     auto teamA = make_shared<Team>("Team A", bot1, human);
     auto teamB = make_shared<Team>("Team B", bot2, bot3);
