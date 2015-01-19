@@ -32,6 +32,9 @@ void Bot::initialize()
             _cardProbability[card.getSuit()][card.getValue()][_enemy1.getName()] = 0.33f;
             _cardProbability[card.getSuit()][card.getValue()][_enemy2.getName()] = 0.33f;
         }
+		// LJ : Donc, pour les cartes qu'on a on ne crée par d'entrée dans la map, alors que pour les cartes jouées
+		// LJ : il y aura une entrée dans la map, mais avec 0 en probabilité. Ce qui signifie qu'il va falloir gérer
+		// LJ : deux situations pour le même effet, ça aurait été plus simple de mettre toutes les valeurs
         if (card.getSuit() == _game->getBid()->getSuit()) {
             _remainingAssets.push_back(card.getValue());
         }
@@ -72,8 +75,9 @@ Card Bot::chooseCard()
         if (_remainingAssets.size() == 0 || _remainingAssets.size() == Rules::cardsForSuit(_cards, asset).size()) {
             // no more asset for other players
             if (_remainingAssets.size() == _cards.size()) {
-                // bot only has assets : play them
-                return playableCards.front();
+                // bot only has assets : play them // LJ : C'est généralement une mauvaise idée
+                return playableCards.front(); // LJ : Je ne vois pas le lien entre ce code et le commentaire juste au dessus
+
             }
 
             for (Card card : playableCards) {
@@ -124,6 +128,7 @@ bool Bot::_isCardMaster(Card card)
                  && Card(card.getSuit(), (Value)i).isGreaterThan(card, card.getSuit())
                  && _playersThatMayHave(card.getSuit(), (Value)i).size() != 0) {
             return false;
+			// LJ : Trop simpliste : Si le joueur ayant encore la carte a déjà joué, ma carte est maître
         }
     }
     return true;
@@ -139,6 +144,9 @@ bool Bot::_playerCutsFor(Player player, Suit suit)
     return true;
 }
 
+// LJ : Player étant une classe de base, et ayant une sémantique d'entité, faire un vector<player> n'est pas une bonne idée, car
+// LJ : il copie les joueurs (d'ailleurs, il aurait été intéressant d'interdire la copie dans cette classe pour éviter cette
+// LJ : situation qui n'ap as grand sens). Il vaudrait mieux faire un vector<Player*>.
 vector<Player> Bot::_playersThatMayHave(Suit suit, Value value)
 {
     vector<Player> players = { _friend, _enemy1, _enemy2 };
@@ -176,8 +184,8 @@ void Bot::_guessHands()
 
 void Bot::chooseBid()
 {
-    Suit asset;
-    int value, amount;
+    Suit asset = Clubs;
+    int value = 0, amount;
 
     vector<Card> cards = getCards();
     map<Suit, vector<Card> > cardsPerSuit;
@@ -215,6 +223,6 @@ void Bot::chooseBid()
     }
 
     amount = (amount > 180 ? 180 : amount);
-
+	// LJ : L'enchère est donc calculée seul dans son coin, sans tenir compte des enchères du partenaire ou des adversaires
     Application::getInstance().getGame()->getBidMaker()->setBid(asset, value);
 }

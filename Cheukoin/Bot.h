@@ -25,6 +25,8 @@ private:
     std::vector<Value> _remainingAssets;
 
     // probability that a card is in a player's hand ({suit: {value: {player}}})
+	// LJ : J'aurais plutôt fait un vector<vector<vector<float>>> avec en premier indice, la suit, en second
+	// LJ : value, et en troisième l'indice du player
     std::map<Suit, std::map<Value, std::map<std::string, float> > > _cardProbability;
     std::map<Suit, std::map<Value, Player> > _cardsPlayed;
 

@@ -11,6 +11,7 @@ public:
     Bid();
     ~Bid();
 
+	// LJ : Pourquoi permettre de modifier une enchère ?
     void setAmount(int amount);
     int getAmount();
 

@@ -13,7 +13,8 @@
 #include <map>
 #include <string>
 
-#define PLAYER_COUNT 4
+#define PLAYER_COUNT 4 // LJ : Préférer une constante à un #define : C'est typé, et c'est respectueux
+// LJ : des autres règles du C++ : int const PLAYER_COUNT = 4;
 #define END_GAME_SCORE 1000
 
 enum Suit {
@@ -39,6 +40,7 @@ enum GameMode {
     Offline
 };
 
+// LJ : Ici, un simple vector suffirait, pusique vous utilisez aussi ailleurs le fait que les enums vont avoir pour valeur 0...3 et 0...7
 std::map<Suit, std::string> const SuitNames = { { Clubs, "clubs" },
                                                 { Hearts, "hearts" },
                                                 { Diamonds, "diamonds" },

@@ -27,7 +27,9 @@ public:
 
     Bid makeBid(int amount, Suit const& asset);
 
-    virtual void play(){};
+    virtual void play(){}; // LJ : Je ne vois pas l'intérêt que cette fontion soit virtuelle. Elle n'est pas sensée faire autre chose que
+						   // LJ : chooseCard (qui est virtuelle) puis playCard (qui ne n'est pas)
+
     void sortCards();
     std::string getName() const;
     void setName(std::string name);
@@ -38,10 +40,10 @@ public:
     void setBid(Bid& bid);
     virtual void chooseBid(){};
 
-    void makeDealer();
+    void makeDealer(); // LJ : Pas utilisé
     void changeDealer();
     bool isDealer();
-    void playByClick();
+    void playByClick(); // LJ : Fonction pas définie, ni utilisée. À nettoyer
 
     void setCards(std::vector<Card> cards);
     Position getPosition() const;

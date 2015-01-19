@@ -1,0 +1,14 @@
+Il aurait été intéressant de séparer le moteur de jeu des éléments graphiques, ces derniers étant souvent moins stables. Ainsi, plutôt que de faire dériver Card de AnimatedObject, il aurait mieux valu avoir un objet Card indépendant, et une autre classe représentant graphiquement une carte.
+
+Il serait intéressant d'afficher plus de retour à l'utilisateur (enchères possibles, quel joueur doit jouer...) et de diminuer le nombre de clicks (pourquoi demander un click entre chaque carte des autres joueurs ?)
+
+Vous avez inversé des flèches dans votre diagramme de classe, indiquant par exemple que Player dérive de Bot, alors que c'est l'inverse.
+
+J'ai l'impression que pour toutes les données membre de vos classes, vous exposez ces données à l'aide de fonctions get et set, ce qui casse l'encapsulation de votre classe. Vous devez dans un premier temps définir quelle doit être l'interface d'utilisation de votre classe, puis dans un second temps réflécir à son implémentation. S'il se trouve qu'une partie de l'interface correspond à des fonctions get/set pour des données membre, pas de soucis, mais ça devrait ne rien avoir de systématique.
+
+L'organisation des tests unitaires n'est pas terrible : Telle que je l'ai comprise (difficile à voir : Le .vcxproj manque, et en lisant le makefile, on voit une erreur, dans le sens où le projet de test aura 2 main, et le .xcodeproj est illisible à la main), l'idée est d'avoir 2 projets qui partagent plein de fichiers, sauf le main. Ce qui va doubler les temps de compilation par rapport à une architecture avec une biblitohèque qui contient tout, et deux exécutables qui utilisent cette bibliothèque.
+
+Vous avez raisonnablement documenté l'implémentation, mais pour les interfaces, un peu d'explication sur le rôle des différents classes n'aurait pas fait de mal.
+
+
+On sent que le projet n'est pas allé aussi loin que ce qu'il prévoyait a départ : IA des bot limitée, jeu en réseau, le donneur qui ne tourne pas, pas mal de fonctions jamais appelées, voire pas définies...

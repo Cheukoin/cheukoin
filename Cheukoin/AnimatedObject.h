@@ -20,6 +20,7 @@ class AnimatedObject {
 public:
     AnimatedObject(std::string spriteName, sf::Vector2f size);
 
+
     virtual ~AnimatedObject();
 
     void draw() const;
@@ -43,6 +44,8 @@ public:
     sf::IntRect getGlobalBounds() const;
 
 protected:
+	// LJ : Certains noms commençant par _ sont réservés à l'usage exclusif du compilateur (les règles sont un peu plus compliquées que ça).
+	// LJ : il est donc déconseillé de prendre une convention de nommage qui fait commencer des noms par _
     bool _visible;
     sf::Vector2f _size;
     sf::Vector2f _targetPosition;

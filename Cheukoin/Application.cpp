@@ -160,7 +160,7 @@ std::shared_ptr<Game> Application::getGame()
 
 void Application::_makeNextButton()
 {
-    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize();
+    sf::Vector2u winSize = Application::getInstance().getWindow()->getSize(); // LJ : Simplement auto winSize = getWindow()->getSize();
     _nextGameButton = unique_ptr<AnimatedObject>(new AnimatedObject("nextButton.png", sf::Vector2f(530, 152)));
     _nextGameButton->setPosition(winSize.x / 2 - _nextGameButton->getGlobalSize().x / 2,
                                  winSize.y / 2 - _nextGameButton->getGlobalSize().y / 2);

@@ -65,7 +65,7 @@ bool Rules::isTrickValid(Trick trick)
     return valid;
 }
 
-vector<Card> Rules::cardsForSuit(vector<Card> cards, Suit suit)
+vector<Card> Rules::cardsForSuit(vector<Card> cards, Suit suit) // LJ : Passer l'argument par référence constante, pour éviter une copie
 {
     vector<Card> cardsForSuit;
     for (Card card : cards) {

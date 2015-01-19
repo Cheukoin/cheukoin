@@ -23,6 +23,7 @@ Human::~Human()
 
 void Human::initialize()
 {
+	// LJ : Je n'aime pas les fonctions 'initialize'. Pourquoi ne pas faire ça dans le constructeur dont c'est le rôle ?
     Player::initialize();
 
     for (unsigned i = 0; i < _cards.size(); i++) {

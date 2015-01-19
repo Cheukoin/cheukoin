@@ -90,7 +90,14 @@ Bid BidMaker::getCurrentBid()
 
 bool BidMaker::_shouldStartGame()
 {
+	// LJ : Plutôt qu'un singleton, j'aurais préféré que la classe BidMaker possède une référence à la partie à laquelle elle
+	// LJ : est liée. Ce qui permettrait par exemple à une évloution du jeu de permettre à un moteur de faire tourner plusieurs
+	// LJ : parties en parallèle.
+
+	// LJ : Je ne comprends pas trop le rôle de cette fonction : Elle a un nom qui ressemble à une simple demande d'information, mais on
+	// LJ : voit qu'en fait, elle valide l'enchère.
     if (Application::getInstance().getGame()->getCurrentBiddingPlayer()->getName() == _currentBid.getPlayerName()) {
+		// LJ : Le code suivant aurait marché : Application::getInstance().getGame()->setBid(make_shared<Bid>(_currentBid));
         Application::getInstance().getGame()->setBid(make_shared<Bid>(
             _currentBid.getSuit(), _currentBid.getAmount(), _currentBid.getPlayerName()));
         return true;

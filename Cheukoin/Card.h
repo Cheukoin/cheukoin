@@ -23,7 +23,8 @@ public:
     Value getValue() const;
     Suit getSuit() const;
 
-    void show();
+    void show(); // LJ : Il peut y avoir confusion entre cette fonction et AnimatedObject::show. Il vaudrait mieux lui choisir
+				 // LJ : un nom spécifique
 
     static std::vector<Card> getAllCards();
     static std::vector<Card> getAllCardsShuffled();

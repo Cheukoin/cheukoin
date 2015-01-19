@@ -76,6 +76,10 @@ vector<Card> Card::getAllCardsShuffled()
     return cards;
 }
 
+// LJ : Avec ce code, on peut avoir simultanément a > b et b > a, si on compare par exemple un 8T et un 7K, alors que l'atout
+// LJ : et la couleur demandée sont coeur.
+// LJ : Il ne respecte donc pas les règles d'un opérateur de comparaison bien conçu, ce qui peut se traduire par des effets étranges
+// LJ : quand on l'utilise dans un algorithme (par exemple, le résultat d'un std::sort pourrait dupiquer certaines valeurs)
 bool Card::isGreaterThan(Card other, Suit askedSuit) const
 {
     Suit asset = Application::getInstance().getGame()->getRules()->getAsset();
@@ -98,7 +102,7 @@ bool Card::isGreaterThan(Card other, Suit askedSuit) const
         // 2 cards are from same suit
         map<Value, int> order = _suit == asset ? Rules::CardValuesAsset : Rules::CardValues;
         if (order[_value] == order[other.getValue()]) {
-            return _value < other.getValue();
+            return (int)_value < (int)other.getValue();
         }
         return order[_value] > order[other.getValue()];
     }

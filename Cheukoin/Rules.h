@@ -21,7 +21,7 @@
 
 class Rules {
 public:
-    Rules(Suit asset);
+    Rules(Suit asset); // LJ : Je ne suis pas certain du vocabulaire asset pour désigner l'atout. J'ai toujours vu le mot trump pour ça.
     ~Rules();
 
     bool isTrickValid(Trick trick);
@@ -29,7 +29,7 @@ public:
 
     static std::vector<Card> cardsForSuit(std::vector<Card> cards, Suit suit);
     inline Suit getAsset() { return _asset; };
-    void setAsset(Suit asset);
+    void setAsset(Suit asset); // LJ : Inutile, cette information est déjà passée dans le constructeur
 
     static const std::map<Value, int> CardValues;
     static const std::map<Value, int> CardValuesAsset;

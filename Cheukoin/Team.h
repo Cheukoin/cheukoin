@@ -15,6 +15,7 @@ public:
     Team(std::string name, std::shared_ptr<Player> player1, std::shared_ptr<Player> player2);
     ~Team();
 
+	// LJ : Pourquoi différentier ces deux ajouts ?
     void addPlayer(Human const& human);
     void addPlayer(Bot const& bot);
 
@@ -38,7 +39,7 @@ public:
     bool isPlayerInTeam(Player const& player);
 
     bool isTeamWinning(Trick& trick);
-    
+
 
 private:
     std::string _name;

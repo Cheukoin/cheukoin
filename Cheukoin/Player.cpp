@@ -25,7 +25,7 @@ Player::~Player()
 {
 }
 
-void Player::sortCards()
+void Player::sortCards() // LJ : En plus de trier, ça positionne. Il serait intéressant que le nom de la fonction reflète ça
 {
     sf::Vector2f pos;
     sf::Vector2f winSize = (sf::Vector2f)Application::getInstance().getWindow()->getSize();
@@ -48,7 +48,7 @@ void Player::sortCards()
         positionBottomy = winSize.y - cardSize.y;
         break;
     case Left:
-        pos = sf::Vector2f(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2);
+        pos = sf::Vector2f(cardSize.x * 1.05, winSize.y / 2 - cardSize.y / 2); // LJ : Pourquoi 1.05 ? Eviter les valeurs magiques
         break;
     case Right:
         pos = sf::Vector2f(winSize.x - cardSize.x, winSize.y / 2 - cardSize.y / 2);
@@ -252,10 +252,14 @@ bool Player::isFriendMaster()
     int numberPlayedCards = (int)trickCards.size();
     vector<Card> enemyCards;
 
+	// LJ : Comme cette fonction est utilisée au fur et à mesure du jeu, et non pas uniquement quand arrive notre
+	// LJ : tour de jouer, elle devrait retourner true lorsque seul notre partenaire a joué
     if (numberPlayedCards > 1) {
         Card friendlyCard = trickCards[numberPlayedCards - 2];
         Suit askedSuit = trickCards.front().getSuit();
 
+		// LJ : Plutôt que de mettre dans le vector pour faire la comparaison un peu lourde par la suite, autant faire
+		// LJ : directement la comparaison dans cette boucle
         for (Card card : trickCards) {
             if (card != friendlyCard) {
                 enemyCards.push_back(card);
@@ -282,7 +286,7 @@ std::vector<Card> Player::getPlayableCards()
 
     // first, check whether the player has the asked suit in his hand
     if (demandedSuit != asset && cardsForSuit(demandedSuit).size() != 0) {
-        return cardsForSuit(demandedSuit);
+        return cardsForSuit(demandedSuit); // LJ : Dommage de calculer 2 fois cette sélection
     }
 
     // if not, he can still play whatever he wants if his friend is the current master of the trick
